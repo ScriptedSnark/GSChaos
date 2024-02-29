@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>C:\Program Files (x86)\Steam\steamapps\common\Half-Life\hl.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>-game valve -insecure -window -w 1024 -h 768 -novid -textmode -gl +m_rawinput 1 -stretchaspect</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>C:\Program Files (x86)\Steam\steamapps\common\Half-Life\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommand>C:\Program Files (x86)\Steam\steamapps\common\Half-Life\hl.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>-game valve -insecure -window -w 1024 -h 768 -novid -textmode -gl +m_rawinput 1 -stretchaspect</LocalDebuggerCommandArguments>
+    <LocalDebuggerWorkingDirectory>C:\Program Files (x86)\Steam\steamapps\common\Half-Life\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
+</Project>

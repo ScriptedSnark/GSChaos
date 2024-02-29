@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b711bd44-b111-4ee2-9445-111685c51b86}</ProjectGuid>
+    <RootNamespace>GSChaos</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;BUILD_HL25;GS_DEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>../external/funchook/funchook.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)filecopy.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying GSChaos to ASI directory</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;BUILD_HL25;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>false</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>../external/funchook/funchook.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)filecopy.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copying GSChaos to ASI directory</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\external\imgui\imgui.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\external\MinHook\buffer.c" />
+    <ClCompile Include="..\external\MinHook\hde\hde32.c" />
+    <ClCompile Include="..\external\MinHook\hde\hde64.c" />
+    <ClCompile Include="..\external\MinHook\hook.c" />
+    <ClCompile Include="..\external\MinHook\trampoline.c" />
+    <ClCompile Include="..\external\miniaudio\miniaudio.c" />
+    <ClCompile Include="..\external\SPTLib\DetoursUtils.cpp" />
+    <ClCompile Include="CChaos.cpp" />
+    <ClCompile Include="CChaosFeature.cpp" />
+    <ClCompile Include="CFeature20FPS.cpp" />
+    <ClCompile Include="CFeatureAudioCorrupt.cpp" />
+    <ClCompile Include="CFeatureCombineEffects.cpp" />
+    <ClCompile Include="CFeatureDarkness.cpp" />
+    <ClCompile Include="CFeatureEntitySpin.cpp" />
+    <ClCompile Include="CFeatureExplosion.cpp" />
+    <ClCompile Include="CFeatureFakeCrash.cpp" />
+    <ClCompile Include="CFeatureFly.cpp" />
+    <ClCompile Include="CFeatureForgotCSS.cpp" />
+    <ClCompile Include="CFeatureGiveGauss.cpp" />
+    <ClCompile Include="CFeatureGlobalGodMode.cpp" />
+    <ClCompile Include="CFeatureGodMode.cpp" />
+    <ClCompile Include="CFeatureGrieferShephard.cpp" />
+    <ClCompile Include="CFeatureGruntAmbush.cpp" />
+    <ClCompile Include="CFeatureGTA2Camera.cpp" />
+    <ClCompile Include="CFeatureGTA3HUD.cpp" />
+    <ClCompile Include="CFeatureHEVMadness.cpp" />
+    <ClCompile Include="CFeatureHighGravity.cpp" />
+    <ClCompile Include="CFeatureIchthyosaur.cpp" />
+    <ClCompile Include="CFeatureNewGame.cpp" />
+    <ClCompile Include="CFeatureInvisibleEntities.cpp" />
+    <ClCompile Include="CFeatureOhio.cpp" />
+    <ClCompile Include="CFeatureOnePercentDeath.cpp" />
+    <ClCompile Include="CFeatureRemoveArmor.cpp" />
+    <ClCompile Include="CFeatureBSPDementia.cpp" />
+    <ClCompile Include="CFeatureSet1HP.cpp" />
+    <ClCompile Include="CFeatureSleepy.cpp" />
+    <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
+    <ClCompile Include="CFeatureTotem.cpp" />
+    <ClCompile Include="CFeatureWeaponStrip.cpp" />
+    <ClCompile Include="CFeatureZeroGravity.cpp" />
+    <ClCompile Include="dynamic_precache.cpp" />
+    <ClCompile Include="GSChaos.cpp" />
+    <ClCompile Include="imgui_manager.cpp" />
+    <ClCompile Include="parsemsg.cpp" />
+    <ClCompile Include="Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_win32.h" />
+    <ClInclude Include="..\external\imgui\imconfig.h" />
+    <ClInclude Include="..\external\imgui\imgui.h" />
+    <ClInclude Include="..\external\imgui\imgui_internal.h" />
+    <ClInclude Include="..\external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\external\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\external\imgui\imstb_truetype.h" />
+    <ClInclude Include="..\external\MinHook\buffer.h" />
+    <ClInclude Include="..\external\MinHook\hde\hde32.h" />
+    <ClInclude Include="..\external\MinHook\hde\hde64.h" />
+    <ClInclude Include="..\external\MinHook\hde\pstdint.h" />
+    <ClInclude Include="..\external\MinHook\hde\table32.h" />
+    <ClInclude Include="..\external\MinHook\hde\table64.h" />
+    <ClInclude Include="..\external\MinHook\MinHook.h" />
+    <ClInclude Include="..\external\MinHook\trampoline.h" />
+    <ClInclude Include="..\external\miniaudio\miniaudio.h" />
+    <ClInclude Include="..\external\SPTLib\DetoursUtils.hpp" />
+    <ClInclude Include="..\external\SPTLib\MemUtils.h" />
+    <ClInclude Include="..\external\SPTLib\patterns.hpp" />
+    <ClInclude Include="..\external\SPTLib\patterns_macros.hpp" />
+    <ClInclude Include="..\external\SPTLib\sptlib-stdafx.hpp" />
+    <ClInclude Include="..\external\SPTLib\Utils.hpp" />
+    <ClInclude Include="arial_black.h" />
+    <ClInclude Include="CChaos.h" />
+    <ClInclude Include="CChaosFeature.h" />
+    <ClInclude Include="CFeature20FPS.h" />
+    <ClInclude Include="CFeatureAudioCorrupt.h" />
+    <ClInclude Include="CFeatureCombineEffects.h" />
+    <ClInclude Include="CFeatureDarkness.h" />
+    <ClInclude Include="CFeatureEntitySpin.h" />
+    <ClInclude Include="CFeatureExplosion.h" />
+    <ClInclude Include="CFeatureFakeCrash.h" />
+    <ClInclude Include="CFeatureFly.h" />
+    <ClInclude Include="CFeatureForgotCSS.h" />
+    <ClInclude Include="CFeatureGiveGauss.h" />
+    <ClInclude Include="CFeatureGlobalGodMode.h" />
+    <ClInclude Include="CFeatureGodMode.h" />
+    <ClInclude Include="CFeatureGrieferShephard.h" />
+    <ClInclude Include="CFeatureGruntAmbush.h" />
+    <ClInclude Include="CFeatureGTA2Camera.h" />
+    <ClInclude Include="CFeatureGTA3HUD.h" />
+    <ClInclude Include="CFeatureHEVMadness.h" />
+    <ClInclude Include="CFeatureHighGravity.h" />
+    <ClInclude Include="CFeatureIchthyosaur.h" />
+    <ClInclude Include="CFeatureNewGame.h" />
+    <ClInclude Include="CFeatureInvisibleEntities.h" />
+    <ClInclude Include="CFeatureOhio.h" />
+    <ClInclude Include="CFeatureOnePercentDeath.h" />
+    <ClInclude Include="CFeatureRemoveArmor.h" />
+    <ClInclude Include="CFeatureBSPDementia.h" />
+    <ClInclude Include="CFeatureSet1HP.h" />
+    <ClInclude Include="CFeatureSleepy.h" />
+    <ClInclude Include="CFeatureSpawnRandomEntity.h" />
+    <ClInclude Include="CFeatureTotem.h" />
+    <ClInclude Include="CFeatureWeaponStrip.h" />
+    <ClInclude Include="CFeatureZeroGravity.h" />
+    <ClInclude Include="dynamic_precache.h" />
+    <ClInclude Include="engine\enginecallback.h" />
+    <ClInclude Include="engine\model.h" />
+    <ClInclude Include="engine\svc_messages.h" />
+    <ClInclude Include="engine\sound.h" />
+    <ClInclude Include="engine_patterns.hpp" />
+    <ClInclude Include="GSChaos.h" />
+    <ClInclude Include="hlsdk_mini.hpp" />
+    <ClInclude Include="imgui_manager.hpp" />
+    <ClInclude Include="includes.h" />
+    <ClInclude Include="parsemsg.h" />
+    <ClInclude Include="pricedown.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GSChaos.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

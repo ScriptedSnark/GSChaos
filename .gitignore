@@ -1,0 +1,10 @@
+*.exe
+*.pdb
+
+Debug/
+Release/
+Launcher/launcher/Debug
+Launcher/launcher/Release
+.vs/
+Launcher/.vs/
+GSChaos/.vs/

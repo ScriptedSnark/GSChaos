@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CChaosFeature.cpp" />
+    <ClCompile Include="CChaos.cpp" />
+    <ClCompile Include="GSChaos.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="..\external\imgui\imgui.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_demo.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_manager.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\MinHook\buffer.c">
+      <Filter>Hooking\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\MinHook\hook.c">
+      <Filter>Hooking\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\MinHook\trampoline.c">
+      <Filter>Hooking\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\MinHook\hde\hde32.c">
+      <Filter>Hooking\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\MinHook\hde\hde64.c">
+      <Filter>Hooking\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\SPTLib\DetoursUtils.cpp">
+      <Filter>Hooking</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureNewGame.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureSet1HP.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureAudioCorrupt.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureFly.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureRemoveArmor.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureZeroGravity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureInvisibleEntities.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureOhio.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureFakeCrash.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureDarkness.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureTotem.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\miniaudio\miniaudio.c">
+      <Filter>MiniAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureForgotCSS.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureHighGravity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGodMode.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGlobalGodMode.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureExplosion.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureIchthyosaur.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGiveGauss.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGruntAmbush.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGTA3HUD.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureWeaponStrip.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="parsemsg.cpp" />
+    <ClCompile Include="CFeatureGrieferShephard.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="dynamic_precache.cpp" />
+    <ClCompile Include="CFeatureEntitySpin.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGTA2Camera.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureOnePercentDeath.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureSpawnRandomEntity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureSleepy.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeature20FPS.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureBSPDementia.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureHEVMadness.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureCombineEffects.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes.h" />
+    <ClInclude Include="CChaosFeature.h" />
+    <ClInclude Include="CChaos.h" />
+    <ClInclude Include="GSChaos.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="..\external\imgui\imconfig.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui_internal.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_rectpack.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_textedit.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_truetype.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_manager.hpp">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_win32.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\buffer.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\MinHook.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\trampoline.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\hde\hde32.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\hde\hde64.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\hde\pstdint.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\hde\table32.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\MinHook\hde\table64.h">
+      <Filter>Hooking\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\DetoursUtils.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\MemUtils.h">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\patterns.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\patterns_macros.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\sptlib-stdafx.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\SPTLib\Utils.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="engine_patterns.hpp">
+      <Filter>Hooking</Filter>
+    </ClInclude>
+    <ClInclude Include="hlsdk_mini.hpp" />
+    <ClInclude Include="CFeatureNewGame.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSet1HP.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureAudioCorrupt.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\sound.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureFly.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureRemoveArmor.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureZeroGravity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureInvisibleEntities.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\svc_messages.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureOhio.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureFakeCrash.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\enginecallback.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureDarkness.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureTotem.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\miniaudio\miniaudio.h">
+      <Filter>MiniAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureForgotCSS.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\model.h">
+      <Filter>Engine Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHighGravity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGodMode.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGlobalGodMode.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureExplosion.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureIchthyosaur.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveGauss.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGruntAmbush.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGTA3HUD.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureWeaponStrip.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="pricedown.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="arial_black.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="parsemsg.h" />
+    <ClInclude Include="CFeatureGrieferShephard.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="dynamic_precache.h" />
+    <ClInclude Include="CFeatureEntitySpin.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGTA2Camera.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureOnePercentDeath.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSpawnRandomEntity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSleepy.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeature20FPS.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureBSPDementia.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHEVMadness.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="CFeatureCombineEffects.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Hooking">
+      <UniqueIdentifier>{75ebef52-1b11-4d21-8441-6199d62e2cb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGUI">
+      <UniqueIdentifier>{f7761522-cd60-43b1-8bf9-8dd0ecacf5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooking\MinHook">
+      <UniqueIdentifier>{d6f9a094-badd-46b9-a2e7-57ef58bcfdf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effects">
+      <UniqueIdentifier>{d170554e-f0b9-44c9-8d91-d15bd29adb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine Headers">
+      <UniqueIdentifier>{053a6fdc-acba-4396-9066-59d2b4f71a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MiniAudio">
+      <UniqueIdentifier>{56993a47-7779-414c-8560-e53adca68e75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GSChaos.rc" />
+  </ItemGroup>
+</Project>
