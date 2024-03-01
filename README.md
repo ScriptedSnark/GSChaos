@@ -1,5 +1,8 @@
 # GSChaos
 
+![20240227184438_1](https://github.com/ScriptedSnark/GSChaos/assets/51358194/9ecded52-34cc-4722-9441-3280cb7df228)
+
+
 ASI plugin for GoldSrc Engine (steam_legacy / HL25). Adds "Chaos" in game.
 
 Inspired by Chaos mods from the GTA universe (by zolika1351), I decided to make my own for HL1 and GoldSrc in particular (you can run almost any mod with it).
