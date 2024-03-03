@@ -23,6 +23,12 @@ void CFeatureNegativeStepsize::DeactivateFeature()
 	CChaosFeature::DeactivateFeature();
 	m_bActivated = false;
 
+	if (!sv_stepsize)
+	{
+		SERVER_COMMAND("sv_stepsize 18\n");
+		return;
+	}
+
 	sv_stepsize->value = m_flOldStepsizeValue;
 }
 
