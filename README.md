@@ -44,6 +44,7 @@ Additional info:
 > BSP Dementia
 > HEV Madness
 > Negative Stepsize
+> Lobotomy
 > Combine Effects ( 3 in 1 )
 ```
 
