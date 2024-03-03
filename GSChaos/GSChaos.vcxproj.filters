@@ -145,6 +145,9 @@
     <ClCompile Include="CFeatureCombineEffects.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNegativeStepsize.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -340,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="CFeatureCombineEffects.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNegativeStepsize.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

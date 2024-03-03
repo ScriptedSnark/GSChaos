@@ -71,7 +71,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeature20FPS>();
 	RegisterChaosFeature<CFeatureBSPDementia>();
 	RegisterChaosFeature<CFeatureHEVMadness>();
-	RegisterChaosFeature<CFeatureCombineEffects>();
+	RegisterChaosFeature<CFeatureNegativeStepsize>();
+
+	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{

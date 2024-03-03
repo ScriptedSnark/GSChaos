@@ -115,6 +115,9 @@ extern client_state_HL25_t* cl_hl25;
 #include "CFeature20FPS.h"
 #include "CFeatureBSPDementia.h"
 #include "CFeatureHEVMadness.h"
+#include "CFeatureNegativeStepsize.h"
+
+
 #include "CFeatureCombineEffects.h"
 //========================
 
