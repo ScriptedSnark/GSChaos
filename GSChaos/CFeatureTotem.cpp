@@ -32,6 +32,8 @@ void CFeatureTotem::OnFrame(double time)
 
 		PARTICLE_EFFECT(origin, Vector(0, 0, 0), gChaos.GetRandomValue(250, 255), gChaos.GetRandomValue(10, 50));
 	}
+	else
+		DeactivateFeature();
 }
 
 void CFeatureTotem::DeactivateFeature()
