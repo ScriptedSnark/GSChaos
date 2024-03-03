@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - .gitignore
+      - README.md
+  pull_request:
+    paths-ignore:
+      - .gitignore
+      - README.md
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 1 * *' # Monthly
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+    - uses: microsoft/setup-msbuild@v1.1
+    - name: Build Chaos Mod
+      run: msbuild /m /t:Build /p:Configuration=Release GSChaos.sln
+    - name: Prepare artifacts
+      run: |
+        mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
+        mv Release/GSChaos.pdb .\gamedir\asi_plugins\
+    - name: Deploy
+      uses: actions/upload-artifact@v3
+      with:
+        name: GSChaos_DEV
+        path: gamedir
