@@ -133,6 +133,7 @@
     <ClCompile Include="CFeatureHEVMadness.cpp" />
     <ClCompile Include="CFeatureHighGravity.cpp" />
     <ClCompile Include="CFeatureIchthyosaur.cpp" />
+    <ClCompile Include="CFeatureLobotomy.cpp" />
     <ClCompile Include="CFeatureNegativeStepsize.cpp" />
     <ClCompile Include="CFeatureNewGame.cpp" />
     <ClCompile Include="CFeatureInvisibleEntities.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="CFeatureHEVMadness.h" />
     <ClInclude Include="CFeatureHighGravity.h" />
     <ClInclude Include="CFeatureIchthyosaur.h" />
+    <ClInclude Include="CFeatureLobotomy.h" />
     <ClInclude Include="CFeatureNegativeStepsize.h" />
     <ClInclude Include="CFeatureNewGame.h" />
     <ClInclude Include="CFeatureInvisibleEntities.h" />

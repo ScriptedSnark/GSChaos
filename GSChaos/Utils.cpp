@@ -83,6 +83,72 @@ void UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTER
 	TRACE_LINE(vecStart, vecEnd, (igmon == ignore_monsters ? TRUE : FALSE), pentIgnore, ptr);
 }
 
+static unsigned short FixedUnsigned16(float value, float scale)
+{
+	int output;
+
+	output = value * scale;
+	if (output < 0)
+		output = 0;
+	if (output > 0xFFFF)
+		output = 0xFFFF;
+
+	return (unsigned short)output;
+}
+
+static short FixedSigned16(float value, float scale)
+{
+	int output;
+
+	output = value * scale;
+
+	if (output > 32767)
+		output = 32767;
+
+	if (output < -32768)
+		output = -32768;
+
+	return (short)output;
+}
+
+void UTIL_ScreenFadeBuild(ScreenFade& fade, const Vector& color, float fadeTime, float fadeHold, int alpha, int flags)
+{
+	fade.duration = FixedUnsigned16(fadeTime, 1 << 12);		// 4.12 fixed
+	fade.holdTime = FixedUnsigned16(fadeHold, 1 << 12);		// 4.12 fixed
+	fade.r = (int)color.x;
+	fade.g = (int)color.y;
+	fade.b = (int)color.z;
+	fade.a = alpha;
+	fade.fadeFlags = flags;
+}
+
+
+void UTIL_ScreenFadeWrite(const ScreenFade& fade, edict_t* pEntity)
+{
+	if (!pEntity)
+		return;
+
+	MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("ScreenFade", sizeof(ScreenFade)), NULL, pEntity);		// use the magic #1 for "one client"
+
+	WRITE_SHORT(fade.duration);		// fade lasts this long
+	WRITE_SHORT(fade.holdTime);		// fade lasts this long
+	WRITE_SHORT(fade.fadeFlags);		// fade type (in / out)
+	WRITE_BYTE(fade.r);				// fade red
+	WRITE_BYTE(fade.g);				// fade green
+	WRITE_BYTE(fade.b);				// fade blue
+	WRITE_BYTE(fade.a);				// fade blue
+
+	MESSAGE_END();
+}
+
+void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, float fadeHold, int alpha, int flags)
+{
+	ScreenFade	fade;
+
+	UTIL_ScreenFadeBuild(fade, color, fadeTime, fadeHold, alpha, flags);
+	UTIL_ScreenFadeWrite(fade, pEntity);
+}
+
 // Simple helper function to load an image into a OpenGL texture with common settings
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 {

@@ -148,6 +148,9 @@
     <ClCompile Include="CFeatureNegativeStepsize.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureLobotomy.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -346,6 +349,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureNegativeStepsize.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureLobotomy.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
