@@ -40,6 +40,12 @@ public:
 	int GetFrameCount();
 	bool IsReady();
 
+	ImFont* m_fontTrebuchet;
+	ImFont* m_pArialBlack;
+	ImFont* m_pArialBlackItalic;
+	ImFont* m_pPricedown;
+	ImFont* m_pArborcrest;
+
 private:
 	std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<double, std::nano>> m_startTime;
 	std::chrono::high_resolution_clock::time_point m_startGlobalTime;
@@ -56,9 +62,6 @@ private:
 	int m_iBarColor[3];
 	int m_iHackCounter;
 	CChaosFeature* m_pCurrentFeature;
-	ImFont* m_fontTrebuchet;
-	ImFont* m_pArialBlack;
-	ImFont* m_pPricedown;
 };
 
 #else //!__cplusplus

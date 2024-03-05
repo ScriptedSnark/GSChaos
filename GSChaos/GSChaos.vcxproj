@@ -178,6 +178,7 @@
     <ClInclude Include="..\external\SPTLib\sptlib-stdafx.hpp" />
     <ClInclude Include="..\external\SPTLib\Utils.hpp" />
     <ClInclude Include="arial_black.h" />
+    <ClInclude Include="arial_black_italic.h" />
     <ClInclude Include="CChaos.h" />
     <ClInclude Include="CChaosFeature.h" />
     <ClInclude Include="CFeature20FPS.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="parsemsg.h" />
     <ClInclude Include="pricedown.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="sf_arborcrest.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>

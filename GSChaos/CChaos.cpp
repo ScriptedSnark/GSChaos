@@ -103,6 +103,10 @@ void CChaos::LoadFonts()
 	io.Fonts->Build();
 	m_pArialBlack = io.Fonts->AddFontFromMemoryCompressedTTF(arial_black_compressed_data, arial_black_compressed_size, 24.f);
 	io.Fonts->Build();
+	m_pArialBlackItalic = io.Fonts->AddFontFromMemoryCompressedTTF(arial_black_italic_compressed_data, arial_black_compressed_size, 32.f);
+	io.Fonts->Build();
+	m_pArborcrest = io.Fonts->AddFontFromMemoryCompressedTTF(SF_Arborcrest_compressed_data, SF_Arborcrest_compressed_size, 22.f);
+	io.Fonts->Build();
 	m_fontTrebuchet = io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 22.f);
 	io.Fonts->Build();
 

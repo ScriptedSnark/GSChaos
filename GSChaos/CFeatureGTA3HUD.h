@@ -19,6 +19,22 @@
 
 #ifdef __cplusplus
 
+#define GTA3_HUD_PATH "chaos/hud/"
+#define GTAVC_HUD_PATH "chaos/vc_hud/"
+
+// Colors
+#define GTA3_HUD_HEALTH_COLOR 186.0f / 255.0f, 101.0f / 255.0f, 50.0f / 255.0f
+#define GTA3_HUD_ARMOR_COLOR 124.0f / 255.0f, 140.0f / 255.0f, 95.0f / 255.0f
+
+#define GTAVC_HUD_HEALTH_COLOR 255.0f / 255.0f, 150 / 255.0f, 225 / 255.0f
+#define GTAVC_HUD_ARMOR_COLOR 185.0f / 255.0f, 185.0f / 255.0f, 185.0f / 255.0f
+
+// Notify
+#define BOX_WIDTH 300.0f
+#define BOX_HEIGHT 100.0f
+#define DISPLAY_DURATION 2.0f
+#define FADE_DURATION 1.0f
+
 class CFeatureGTA3HUD : public CChaosFeature
 {
 	void Init() override;
@@ -27,11 +43,14 @@ class CFeatureGTA3HUD : public CChaosFeature
 	const char* GetFeatureName() override;
 	void OnFrame(double time) override;
 	void Draw() override;
+	void Notify(const char* msg);
+	void DrawNotify();
 private:
-	ImFont* m_pArialBlack;
-	ImFont* m_pPricedown;
 	bool m_bActivated;
 	bool m_bFlashHealth;
+	bool m_bNotificationActive;
+	double m_notifyStartTime;
+	const char* m_notifyMessage;
 };
 
 #else //!__cplusplus

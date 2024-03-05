@@ -47,6 +47,8 @@ extern ma_engine miniAudio;
 #include "imgui_manager.hpp"
 #include "pricedown.h"
 #include "arial_black.h"
+#include "sf_arborcrest.h"
+#include "arial_black_italic.h"
 
 //HOOK
 #include "MinHook.h"

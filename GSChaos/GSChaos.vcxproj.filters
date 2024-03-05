@@ -354,6 +354,12 @@
     <ClInclude Include="CFeatureLobotomy.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="sf_arborcrest.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="arial_black_italic.h">
+      <Filter>ImGUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">
