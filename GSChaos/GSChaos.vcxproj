@@ -145,6 +145,7 @@
     <ClCompile Include="CFeatureSleepy.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
+    <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="CFeatureSleepy.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
     <ClInclude Include="CFeatureTotem.h" />
+    <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="dynamic_precache.h" />

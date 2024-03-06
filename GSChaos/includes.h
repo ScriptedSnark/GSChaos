@@ -119,6 +119,7 @@ extern client_state_HL25_t* cl_hl25;
 #include "CFeatureHEVMadness.h"
 #include "CFeatureNegativeStepsize.h"
 #include "CFeatureLobotomy.h"
+#include "CFeatureUpsideDown.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

@@ -73,6 +73,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureHEVMadness>();
 	RegisterChaosFeature<CFeatureNegativeStepsize>();
 	RegisterChaosFeature<CFeatureLobotomy>();
+	RegisterChaosFeature<CFeatureUpsideDown>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

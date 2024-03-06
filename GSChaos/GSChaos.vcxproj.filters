@@ -151,6 +151,9 @@
     <ClCompile Include="CFeatureLobotomy.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureUpsideDown.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -359,6 +362,9 @@
     </ClInclude>
     <ClInclude Include="arial_black_italic.h">
       <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureUpsideDown.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
