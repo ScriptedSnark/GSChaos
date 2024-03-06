@@ -120,6 +120,7 @@ extern client_state_HL25_t* cl_hl25;
 #include "CFeatureNegativeStepsize.h"
 #include "CFeatureLobotomy.h"
 #include "CFeatureUpsideDown.h"
+#include "CFeatureNPCExplode.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

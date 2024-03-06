@@ -154,6 +154,9 @@
     <ClCompile Include="CFeatureUpsideDown.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNPCExplode.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -364,6 +367,9 @@
       <Filter>ImGUI</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureUpsideDown.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNPCExplode.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

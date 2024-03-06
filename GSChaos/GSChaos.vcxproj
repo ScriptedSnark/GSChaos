@@ -137,6 +137,7 @@
     <ClCompile Include="CFeatureNegativeStepsize.cpp" />
     <ClCompile Include="CFeatureNewGame.cpp" />
     <ClCompile Include="CFeatureInvisibleEntities.cpp" />
+    <ClCompile Include="CFeatureNPCExplode.cpp" />
     <ClCompile Include="CFeatureOhio.cpp" />
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="CFeatureNegativeStepsize.h" />
     <ClInclude Include="CFeatureNewGame.h" />
     <ClInclude Include="CFeatureInvisibleEntities.h" />
+    <ClInclude Include="CFeatureNPCExplode.h" />
     <ClInclude Include="CFeatureOhio.h" />
     <ClInclude Include="CFeatureOnePercentDeath.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
