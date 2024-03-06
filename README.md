@@ -45,6 +45,8 @@ Additional info:
 > HEV Madness
 > Negative Stepsize
 > Lobotomy
+> Upside Down
+> Every NPC explodes
 > Combine Effects ( 3 in 1 )
 ```
 
