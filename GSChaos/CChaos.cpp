@@ -19,6 +19,11 @@ void ActivateChaosFeatureW()
 	gChaos.ActivateChaosFeature(atoi(pEngfuncs->Cmd_Argv(1)));
 }
 
+void ResetChaos()
+{
+	gChaos.Reset();
+}
+
 void CChaos::Init()
 {
 	DEBUG_PRINT("CChaos::Init\n");
@@ -34,6 +39,11 @@ void CChaos::Init()
 	InitDynamicPrecache();
 	FeatureInit();
 
+	m_lpRandomDevice = new CTrustedRandom();
+	m_lpRandomDevice->FeedRandWithTime(time(NULL));
+	m_lpRandomDevice->GenerateNewSeedTable();
+
+	pEngfuncs->pfnAddCommand("chaos_reset", ResetChaos);
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
@@ -113,6 +123,23 @@ void CChaos::LoadFonts()
 	io.Fonts->Build();
 
 	DEBUG_PRINT("CChaos::LoadFonts -> Adding Trebuchet MS...\nPath: %s\n", fontPath.c_str());
+}
+
+void CChaos::Reset()
+{
+	if (m_pCurrentFeature)
+		m_pCurrentFeature->DeactivateFeature();
+
+	m_pCurrentFeature = nullptr;
+
+	auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
+	m_startTime = currentTime;
+
+	m_pauseStartTime = std::chrono::high_resolution_clock::now();
+	m_flChaosTime = CHAOS_ACTIVATE_TIMER;
+
+	m_lpRandomDevice->FeedRandWithTime(time(NULL));
+	m_lpRandomDevice->GenerateNewSeedTable();
 }
 
 void CChaos::DrawBar()
@@ -247,7 +274,7 @@ void CChaos::OnFrame(double time)
 
 		// Pick random effect
 #ifndef GS_DEBUG
-		int i = GetRandomValue(0, gChaosFeatures.size() - 1);
+		int i = GetRandomEffect(0, gChaosFeatures.size() - 1);
 		CChaosFeature* randomFeature = gChaosFeatures[i];
 #else
 		CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
@@ -281,6 +308,21 @@ int CChaos::GetRandomValue(int min, int max)
 
 	std::uniform_int_distribution <int> range(min, max);
 	return range(randMT);
+}
+
+int CChaos::GetRandomEffect(int min, int max)
+{
+	int result = m_lpRandomDevice->Rand(min, max);
+
+	// intended for 30+ effects (not 2)
+	while (result == m_aiPreviousRandomValue[0] || result == m_aiPreviousRandomValue[1])
+	{
+		result = m_lpRandomDevice->Rand(min, max);
+	}
+
+	m_aiPreviousRandomValue[1] = m_aiPreviousRandomValue[0];
+	m_aiPreviousRandomValue[0] = result;
+	return result;
 }
 
 float CChaos::GetRandomValue(float min, float max)

@@ -28,12 +28,15 @@ public:
 	void Init();
 	void FeatureInit();
 	void LoadFonts();
+	void Reset();
+	void Shutdown();
 	void DrawBar();
 	void DrawEffectList();
 	void Draw();
 	void OnFrame(double time);
 	void ActivateChaosFeature(int i);
 	int GetRandomValue(int min, int max);
+	int GetRandomEffect(int min, int max);
 	float GetRandomValue(float min, float max);
 	double GetTime();
 	double GetGlobalTime();
@@ -51,6 +54,7 @@ private:
 	std::chrono::high_resolution_clock::time_point m_startGlobalTime;
 	std::chrono::high_resolution_clock::time_point m_pauseStartTime; 
 	std::chrono::duration<double> m_pauseOffset;
+	std::random_device m_randDevice;
 	bool m_bInitialized = false;
 	bool m_bInGame = false;
 	bool m_bPaused;
@@ -61,6 +65,8 @@ private:
 	int m_iFrameCount;
 	int m_iBarColor[3];
 	int m_iHackCounter;
+	int m_aiPreviousRandomValue[2];
+	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
 };
 

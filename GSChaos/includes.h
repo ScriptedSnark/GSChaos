@@ -57,6 +57,8 @@ extern ma_engine miniAudio;
 #include "Utils.hpp"
 #include "engine_patterns.hpp"
 
+#include "functional_lite_rng.hpp"
+
 //SDK
 #include "hlsdk_mini.hpp"
 #include "engine/sound.h"
