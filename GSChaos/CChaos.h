@@ -30,6 +30,7 @@ public:
 	void LoadFonts();
 	void Reset();
 	void Shutdown();
+	void PrintVersion();
 	void DrawBar();
 	void DrawEffectList();
 	void Draw();

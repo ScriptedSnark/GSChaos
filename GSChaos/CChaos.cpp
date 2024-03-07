@@ -24,6 +24,11 @@ void ResetChaos()
 	gChaos.Reset();
 }
 
+void PrintChaosVersion()
+{
+	gChaos.PrintVersion();
+}
+
 void CChaos::Init()
 {
 	DEBUG_PRINT("CChaos::Init\n");
@@ -43,6 +48,7 @@ void CChaos::Init()
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
 
+	pEngfuncs->pfnAddCommand("chaos_version", PrintChaosVersion);
 	pEngfuncs->pfnAddCommand("chaos_reset", ResetChaos);
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 
@@ -141,6 +147,23 @@ void CChaos::Reset()
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
 }
+
+void CChaos::PrintVersion()
+{
+	pEngfuncs->Con_Printf("GSChaos (Chaos Mod) by ScriptedSnark\n");
+	pEngfuncs->Con_Printf("============================\n");
+	pEngfuncs->Con_Printf("Build date: " __TIMESTAMP__ "\n");
+	pEngfuncs->Con_Printf("Effects: %i\n", (int)gChaosFeatures.size());
+	pEngfuncs->Con_Printf("List:\n");
+
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		pEngfuncs->Con_Printf("- %s\n", i->GetFeatureName());
+	}
+
+	pEngfuncs->Con_Printf("============================\n");
+}
+
 
 void CChaos::DrawBar()
 {
