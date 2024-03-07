@@ -157,6 +157,7 @@
     <ClCompile Include="CFeatureNPCExplode.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CLWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -372,6 +373,7 @@
     <ClInclude Include="CFeatureNPCExplode.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="CLWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">

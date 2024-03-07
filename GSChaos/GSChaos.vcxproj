@@ -149,6 +149,7 @@
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
+    <ClCompile Include="CLWrapper.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
     <ClCompile Include="GSChaos.cpp" />
     <ClCompile Include="imgui_manager.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
+    <ClInclude Include="CLWrapper.h" />
     <ClInclude Include="dynamic_precache.h" />
     <ClInclude Include="engine\enginecallback.h" />
     <ClInclude Include="engine\model.h" />

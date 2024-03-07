@@ -67,6 +67,7 @@ extern ma_engine miniAudio;
 #include "parsemsg.h"
 #include "Utils.h"
 #include "dynamic_precache.h"
+#include "CLWrapper.h"
 
 extern cl_enginefunc_t* pEngfuncs;
 extern enginefuncs_t* g_engfuncs;
