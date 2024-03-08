@@ -27,7 +27,7 @@ jobs:
       run: |
         mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
         mv Release/GSChaos.pdb .\gamedir\asi_plugins\
-        Compress-Archive -Path .\gamedir\* -Destination GSChaos_DEV.zip
+        Compress-Archive -Path .\gamedir\* -Destination GSChaos.zip
     - name: Deploy
       uses: actions/upload-artifact@v3
       with:
