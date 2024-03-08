@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: GSChaos_DEV
-        path: ./GSChaos.zip
+        path: ./gamedir/
     - name: Check for pull request
       uses: 8BitJonny/gh-get-current-pr@2.2.0
       id: pr-check
@@ -60,13 +60,14 @@ jobs:
       continue-on-error: true
       run: |
         sleep 20s
+        dir
 
     - name: Upload new release
       if: ${{ always() && github.ref == 'refs/heads/master' && steps.pr-check.outputs.pr_found == 'false' }}
       uses: softprops/action-gh-release@v0.1.15
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        files: GSChaos_DEV
+        files: GSChaos_DEV.zip
         tag_name: continuous
         draft: false
         prerelease: true
