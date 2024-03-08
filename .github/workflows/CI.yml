@@ -67,7 +67,7 @@ jobs:
       uses: softprops/action-gh-release@v0.1.15
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        files: GSChaos_DEV.zip
+        files: GSChaos.zip
         tag_name: continuous
         draft: false
         prerelease: true
