@@ -27,11 +27,12 @@ jobs:
       run: |
         mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
         mv Release/GSChaos.pdb .\gamedir\asi_plugins\
+        Compress-Archive -Path .\gamedir\* -Destination GSChaos_DEV.zip
     - name: Deploy
       uses: actions/upload-artifact@v3
       with:
         name: GSChaos_DEV
-        path: gamedir
+        path: ./GSChaos.zip
     - name: Check for pull request
       uses: 8BitJonny/gh-get-current-pr@2.2.0
       id: pr-check
