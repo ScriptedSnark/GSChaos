@@ -91,6 +91,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureLobotomy>();
 	RegisterChaosFeature<CFeatureUpsideDown>();
 	RegisterChaosFeature<CFeatureNPCExplode>();
+	RegisterChaosFeature<CFeatureJeepy>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
@@ -230,10 +231,7 @@ void CChaos::OnFrame(double time)
 
 	static bool bPaused;
 
-	if (!g_bHL25)
-		bPaused = cl->paused;
-	else
-		bPaused = cl_hl25->paused;
+	bPaused = CLWrapper::GetPausedState();
 
 	if (bPaused || !m_bInGame)
 	{

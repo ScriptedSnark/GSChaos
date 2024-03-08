@@ -158,6 +158,9 @@
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="CLWrapper.cpp" />
+    <ClCompile Include="CFeatureJeepy.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -374,6 +377,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CLWrapper.h" />
+    <ClInclude Include="CFeatureJeepy.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">

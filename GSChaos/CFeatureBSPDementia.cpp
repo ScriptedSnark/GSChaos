@@ -36,23 +36,11 @@ void CFeatureBSPDementia::OnFrame(double time)
 		return;
 	}
 
-	if (!g_bHL25)
+	if (!CLWrapper::GetWorldModel())
 	{
-		if (!cl->worldmodel)
-		{
-			m_bActivated = false;
-			return;
-		}
+		m_bActivated = false;
+		return;
 	}
-	else
-	{
-		if (!cl_hl25->worldmodel)
-		{
-			m_bActivated = false;
-			return;
-		}
-	}
-
 
 	for (int i = 1; i < sv->worldmodel->numplanes; i++)
 	{

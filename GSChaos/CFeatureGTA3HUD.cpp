@@ -185,6 +185,9 @@ void CFeatureGTA3HUD::ActivateFeature()
 
 	m_bActivated = true;
 
+	g_bActivatedGTAVCHUD = false;
+	g_bActivatedGTA3HUD = false;
+
 	if (gChaos.GetRandomValue(1, 2) == 2)
 		g_bActivatedGTAVCHUD = true;
 	else
@@ -212,16 +215,8 @@ void CFeatureGTA3HUD::Draw()
 	if (!m_bActivated)
 		return;
 
-	if (!g_bHL25)
-	{
-		if (cl->paused)
-			return;
-	}
-	else
-	{
-		if (cl_hl25->paused)
-			return;
-	}
+	if (CLWrapper::GetPausedState())
+		return;
 
 	DrawNotify();
 
@@ -476,5 +471,8 @@ void CFeatureGTA3HUD::OnFrame(double time)
 
 const char* CFeatureGTA3HUD::GetFeatureName()
 {
+	if (!g_bActivatedGTA3HUD && !g_bActivatedGTAVCHUD)
+		return "GTA HUD";
+
 	return g_bActivatedGTA3HUD ? "GTA 3 HUD" : "GTA Vice City HUD";
 }

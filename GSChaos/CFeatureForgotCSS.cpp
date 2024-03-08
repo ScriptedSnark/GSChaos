@@ -50,24 +50,60 @@ void CFeatureForgotCSS::Init()
 			}
 		});
 
+	/*
 	int status;
 	SPTFind(GL_Bind);
 	CreateHook(GL_Bind);
 
 	MH_EnableHook(MH_ALL_HOOKS);
+	*/
 }
 
 void CFeatureForgotCSS::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	bBrokenTextures = true;
+    bBrokenTextures = true;
+    m_bActivated = true;
 }
 
 void CFeatureForgotCSS::DeactivateFeature()
 {
-	CChaosFeature::DeactivateFeature();
-	bBrokenTextures = false;
+    CChaosFeature::DeactivateFeature();
+    bBrokenTextures = false;
+    m_bActivated = false;
+}
+
+void CFeatureForgotCSS::OnFrame(double time)
+{
+    if (!sv->active)
+        return;
+
+    if (!m_bActivated)
+        return;
+
+    const char* levelName = CLWrapper::GetLevelName();
+
+    if (levelName && levelName[0])
+    {
+        model_t* worldModel = CLWrapper::GetWorldModel();
+
+        if (!worldModel)
+            return;
+
+        for (int i = 0; i < worldModel->numtextures; i++)
+        {
+            if (worldModel->textures[i])
+            {
+                worldModel->textures[i]->gl_texturenum = GetTextureID();
+            }
+        }
+    }
+}
+
+int CFeatureForgotCSS::GetTextureID()
+{
+	return (*r_notexture_mip)->gl_texturenum;
 }
 
 const char* CFeatureForgotCSS::GetFeatureName()

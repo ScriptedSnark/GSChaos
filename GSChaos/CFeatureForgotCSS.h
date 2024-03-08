@@ -22,10 +22,13 @@
 class CFeatureForgotCSS : public CChaosFeature
 {
 	void Init() override;
-	void ActivateFeature() override;
 	void DeactivateFeature() override;
+	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+	virtual int GetTextureID();
 
+public:
+	void ActivateFeature() override;
 private:
 	bool m_bActivated = false;
 };
