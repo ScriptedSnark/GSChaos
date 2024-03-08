@@ -9,7 +9,7 @@ void CFeatureOnePercentDeath::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	if (RANDOM_LONG(1, 1000) % 100 == 0)
+	if (gChaos.GetRandomValue(1, 100) == 1)
 	{
 		edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING("rpg_rocket"));
 		if (!pent)
@@ -24,6 +24,11 @@ void CFeatureOnePercentDeath::ActivateFeature()
 		pent->v.nextthink = gpGlobals->time + 0.1f;
 		gEntityInterface->pfnSpawn(pent);
 		gEntityInterface->pfnThink(pent);
+		gEntityInterface->pfnTouch((*sv_player), pent);
+		gEntityInterface->pfnTouch(pent, (*sv_player));
+
+		if ((*sv_player)->v.health > 1.0f)
+			(*sv_player)->v.health = -20.0f;
 	}
 }
 
