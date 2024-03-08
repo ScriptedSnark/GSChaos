@@ -12,11 +12,10 @@ Additional info:
 - Save your game more often because of potential softlocks/crashes
 
 ## CVars and commands
-```
-chaos_activate - activate effect (from 0 to (LATEST EFFECT NUM - 1))
-chaos_reset - reset RNG, chaos bar (can be useful for potential runs)
-chaos_version - prints version and Chaos Mod details
-chaos_effectname_ypos - sets position of effect name text by vertical (Y coord)
+> `chaos_activate` - activate effect (from 0 to (LATEST EFFECT NUM - 1))
+> `chaos_reset` - reset RNG, chaos bar (can be useful for potential runs)
+> `chaos_version` - prints version and Chaos Mod details
+> `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 
 ## Effects
 ```
