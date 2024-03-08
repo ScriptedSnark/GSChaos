@@ -137,7 +137,7 @@ extern CChaos gChaos;
 
 extern bool g_bActivatedGTA3HUD;
 
-//#define GS_DEBUG
+#define GS_DEBUG
 
 #ifdef GS_DEBUG
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)

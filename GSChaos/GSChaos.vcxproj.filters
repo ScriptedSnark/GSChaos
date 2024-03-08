@@ -161,6 +161,9 @@
     <ClCompile Include="CFeatureJeepy.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>ImGUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -379,6 +382,9 @@
     <ClInclude Include="CLWrapper.h" />
     <ClInclude Include="CFeatureJeepy.h">
       <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>ImGUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -38,6 +38,18 @@ void CFeatureSet1HP::Init()
 
 				break;
 			}
+			case 2: // HL-4554
+			{
+				DEBUG_PRINT("Searching sv_player in HL-4554 pattern...\n");
+				sv_player = *reinterpret_cast<edict_t***>(reinterpret_cast<uintptr_t>(SV_ExecuteClientMessage) + 22);
+
+				if (sv_player)
+				{
+					DEBUG_PRINT("[hw dll] Found sv_player at 0x%p.\n", sv_player);
+				}
+
+				break;
+			}
 			}
 		});
 }

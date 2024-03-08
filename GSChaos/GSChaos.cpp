@@ -133,17 +133,25 @@ void HookEngine()
 			switch (pattern - patterns::engine::ClientDLL_Init.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching pEngfuncs in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching pEngfuncs in HL-9920 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 0x18B);
 
 				if (pEngfuncs)
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
-			case 1: // HL-Steampipe
-				DEBUG_PRINT("Searching pEngfuncs in HL-Steampipe pattern...\n");
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching pEngfuncs in HL-8684 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 181);
+
+				if (pEngfuncs)
+					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
+
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching pEngfuncs in HL-4554 pattern...\n");
+				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 226);
 
 				if (pEngfuncs)
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
@@ -160,8 +168,8 @@ void HookEngine()
 			switch (pattern - patterns::engine::LoadThisDll.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching g_engfuncs in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching g_engfuncs in HL-9920 pattern...\n");
 				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5F);
 				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5A);
 
@@ -172,10 +180,21 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
 
 				break;
-			case 1: // HL-Steampipe
-				DEBUG_PRINT("Searching g_engfuncs in HL-Steampipe pattern...\n");
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching g_engfuncs in HL-8684 pattern...\n");
 				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5F);
 				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5A);
+
+				if (g_engfuncs)
+					DEBUG_PRINT("[hw dll] Found g_engfuncs at 0x%p.\n", g_engfuncs);
+
+				if (gpGlobals)
+					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching g_engfuncs in HL-4554 pattern...\n");
+				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 91);
+				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 86);
 
 				if (g_engfuncs)
 					DEBUG_PRINT("[hw dll] Found g_engfuncs at 0x%p.\n", g_engfuncs);
@@ -194,17 +213,25 @@ void HookEngine()
 			switch (pattern - patterns::engine::LoadEntityDLLs.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching gEntityInterface in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching gEntityInterface in HL-9920 pattern...\n");
 				gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x4CF);
 
 				if (gEntityInterface)
 					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
 
 				break;
-			case 1: // HL-Steampipe
-				DEBUG_PRINT("Searching gEntityInterface in HL-Steampipe pattern...\n");
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching gEntityInterface in HL-8684 pattern...\n");
 				gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x48D);
+
+				if (gEntityInterface)
+					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
+
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching gEntityInterface in HL-4554 pattern...\n");
+				gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x41C);
 
 				if (gEntityInterface)
 					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
@@ -221,8 +248,8 @@ void HookEngine()
 			switch (pattern - patterns::engine::Host_ClearMemory.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching sv in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching sv in HL-9920 pattern...\n");
 				sv = *reinterpret_cast<server_t**>(reinterpret_cast<uintptr_t>(Host_ClearMemory) + 0xA4);
 
 				if (sv)
@@ -230,9 +257,17 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found sv at 0x%p.\n", sv);
 				}
 				break;
-			case 1: // HL-Steampipe
-				DEBUG_PRINT("Searching sv in HL-Steampipe pattern...\n");
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching sv in HL-8684 pattern...\n");
 				sv = *reinterpret_cast<server_t**>(reinterpret_cast<uintptr_t>(Host_ClearMemory) + 0x5E);
+				if (sv)
+				{
+					DEBUG_PRINT("[hw dll] Found sv at 0x%p.\n", sv);
+				}
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching sv in HL-4554 pattern...\n");
+				sv = *reinterpret_cast<server_t**>(reinterpret_cast<uintptr_t>(Host_ClearMemory) + 0x5C);
 				if (sv)
 				{
 					DEBUG_PRINT("[hw dll] Found sv at 0x%p.\n", sv);
@@ -249,8 +284,8 @@ void HookEngine()
 			switch (pattern - patterns::engine::CL_Init.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching cl in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching cl in HL-9920 pattern...\n");
 				cl_hl25 = *reinterpret_cast<client_state_HL25_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 0x52B);
 				
 				if (cl_hl25)
@@ -261,9 +296,19 @@ void HookEngine()
 					g_bHL25 = true;
 				}
 				break;
-			case 1: // HL-Steampipe
-				DEBUG_PRINT("Searching cl in HL-Steampipe pattern...\n");
-				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 0x4D6);
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching cl in HL-8684 pattern...\n");
+				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 1);
+				if (cl)
+				{
+					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
+					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
+					g_bHL25 = false;
+				}
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching cl in HL-4554 pattern...\n");
+				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 1);
 				if (cl)
 				{
 					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
@@ -282,8 +327,8 @@ void HookEngine()
 			switch (pattern - patterns::engine::SNDDMA_InitDirect.cbegin())
 			{
 			default:
-			case 0: // HL25
-				DEBUG_PRINT("Searching shm in HL25 pattern...\n");
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching shm in HL-9920 pattern...\n");
 				shm = *reinterpret_cast<dma_t**>(reinterpret_cast<uintptr_t>(SNDDMA_InitDirect) + 0x19);
 
 				if (shm)
@@ -292,8 +337,8 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] shm->speed == %i\n", shm->speed);
 				}
 				break;
-			case 1: // HL-SteamPipe
-				DEBUG_PRINT("Searching shm in HL-SteamPipe pattern...\n");
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching shm in HL-8684 pattern...\n");
 				shm = *reinterpret_cast<dma_t**>(reinterpret_cast<uintptr_t>(SNDDMA_InitDirect) + 0x46);
 
 				if (shm)
@@ -302,6 +347,17 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] shm->speed == %i\n", shm->speed);
 				}
 				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching shm in HL-4554 pattern...\n");
+				shm = *reinterpret_cast<dma_t**>(reinterpret_cast<uintptr_t>(SNDDMA_InitDirect) + 0xF);
+
+				if (shm)
+				{
+					DEBUG_PRINT("[hw dll] Found shm at 0x%p.\n", shm);
+					DEBUG_PRINT("[hw dll] shm->speed == %i\n", shm->speed);
+				}
+				break;
+			
 			}
 		});
 }

@@ -99,6 +99,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp" />
     <ClCompile Include="..\external\imgui\imgui.cpp" />
     <ClCompile Include="..\external\imgui\imgui_demo.cpp" />
@@ -159,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h" />
+    <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_win32.h" />
     <ClInclude Include="..\external\imgui\imconfig.h" />
     <ClInclude Include="..\external\imgui\imgui.h" />

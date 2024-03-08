@@ -47,6 +47,16 @@ void CFeatureForgotCSS::Init()
 				}
 
 				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching r_notexture_mip in HL-4554 pattern...\n");
+				r_notexture_mip = *reinterpret_cast<texture_t***>(reinterpret_cast<uintptr_t>(R_InitTextures) + 0x2D);
+
+				if (r_notexture_mip)
+				{
+					DEBUG_PRINT("[hw dll] Found r_notexture_mip at 0x%p.\n", r_notexture_mip);
+				}
+
+				break;
 			}
 		});
 
