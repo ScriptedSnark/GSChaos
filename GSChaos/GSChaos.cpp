@@ -158,6 +158,14 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
+			case 3: // HL-3248
+				DEBUG_PRINT("Searching pEngfuncs in HL-3248 pattern...\n");
+				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 203);
+
+				if (pEngfuncs)
+					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
+
+				break;
 			}
 		});
 
@@ -288,7 +296,7 @@ void HookEngine()
 			case 0: // HL-9920
 				DEBUG_PRINT("Searching cl in HL-9920 pattern...\n");
 				cl_hl25 = *reinterpret_cast<client_state_HL25_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 0x52B);
-				
+
 				if (cl_hl25)
 				{
 					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl_hl25);
@@ -311,6 +319,18 @@ void HookEngine()
 				break;
 			case 2: // HL-4554
 				DEBUG_PRINT("Searching cl in HL-4554 pattern...\n");
+				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 1);
+				if (cl)
+				{
+					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
+					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
+					g_bHL25 = false;
+					g_bPreSteamPipe = true;
+					DEBUG_PRINT("g_bPreSteamPipe: true\n");
+				}
+				break;
+			case 3:
+				DEBUG_PRINT("Searching cl in HL-3248 pattern...\n");
 				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 1);
 				if (cl)
 				{
