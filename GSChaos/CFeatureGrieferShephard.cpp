@@ -28,10 +28,6 @@ const char* CFeatureGrieferShephard::GetFeatureName()
 
 void CFeatureGrieferShephard::OnFrame(double time)
 {
-	if (!m_bActivated)
-		return;
-
-
 	static bool bPaused;
 	bPaused = CLWrapper::GetPausedState();
 

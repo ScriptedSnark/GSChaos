@@ -149,10 +149,14 @@ void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, floa
 	UTIL_ScreenFadeWrite(fade, pEntity);
 }
 
+#define TEXTURE_BASEID (4800 - 1) // MAX_GLTEXTURES
+
 // Simple helper function to load an image into a OpenGL texture with common settings
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 {
 	// Load from file
+	static int counter;
+
 	int image_width = 0;
 	int image_height = 0;
 	unsigned char* image_data = stbi_load(filename, &image_width, &image_height, NULL, 4);
@@ -161,7 +165,15 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 
 	// Create a OpenGL texture identifier
 	GLuint image_texture;
-	glGenTextures(1, &image_texture);
+	if (g_bPreSteamPipe) // set own IDs because of the engine...
+	{
+		// xWhitey, thank you so much for that idea!
+		counter++;
+		image_texture = TEXTURE_BASEID - counter;
+	}
+	else
+		glGenTextures(1, &image_texture);
+
 	glBindTexture(GL_TEXTURE_2D, image_texture);
 
 	// Setup filtering parameters for display

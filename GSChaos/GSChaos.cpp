@@ -39,6 +39,7 @@ HWND g_hWndOfGame;
 
 bool g_bDrawHUD;
 bool g_bHL25 = false;
+bool g_bPreSteamPipe = false;
 
 extern texture_t** r_notexture_mip;
 extern volatile dma_t* shm;
@@ -294,6 +295,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl_hl25->time);
 
 					g_bHL25 = true;
+					g_bPreSteamPipe = false;
 				}
 				break;
 			case 1: // HL-8684
@@ -304,6 +306,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
 					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
 					g_bHL25 = false;
+					g_bPreSteamPipe = false;
 				}
 				break;
 			case 2: // HL-4554
@@ -314,6 +317,8 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
 					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
 					g_bHL25 = false;
+					g_bPreSteamPipe = true;
+					DEBUG_PRINT("g_bPreSteamPipe: true\n");
 				}
 				break;
 			}

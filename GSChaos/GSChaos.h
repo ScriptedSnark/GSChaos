@@ -25,6 +25,7 @@ extern _wglSwapBuffers ORIG_wglSwapBuffers;
 extern _WndProc ORIG_WndProc;
 
 extern bool g_bHL25;
+extern bool g_bPreSteamPipe;
 extern bool g_bDrawHUD;
 
 void HookEngine();
