@@ -233,15 +233,24 @@ void InitDynamicPrecache()
 	SPTFind(S_FindName);
 	SPTFind(Mod_ForName);
 
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(g_engfuncs->pfnPrecacheModel);
+
 	status = MH_CreateHook(g_engfuncs->pfnPrecacheModel, HOOKED_PF_precache_model_I, reinterpret_cast<void**>(&ORIG_PF_precache_model_I));
 	if (status != MH_OK) {
 		DEBUG_PRINT("[hw dll] Couldn't create hook for S_LoadSound.\n");
 	}
 
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(g_engfuncs->pfnPrecacheSound);
+
 	status = MH_CreateHook(g_engfuncs->pfnPrecacheSound, HOOKED_PF_precache_sound_I, reinterpret_cast<void**>(&ORIG_PF_precache_sound_I));
 	if (status != MH_OK) {
 		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheModel.\n");
 	}
+
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(g_engfuncs->pfnSetModel);
 
 	status = MH_CreateHook(g_engfuncs->pfnSetModel, HOOKED_PF_setmodel_I, reinterpret_cast<void**>(&ORIG_PF_setmodel_I));
 	if (status != MH_OK) {

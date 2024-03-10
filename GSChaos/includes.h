@@ -77,6 +77,8 @@ extern server_t* sv;
 extern client_state_t* cl;
 extern client_state_HL25_t* cl_hl25;
 
+extern bool g_bEncrypted;
+
 #define STRING(offset)		((const char *)(gpGlobals->pStringBase + (unsigned int)(offset)))
 #define MAKE_STRING(str)	((uint64)(str) - (uint64)(STRING(0)))
 
@@ -152,10 +154,17 @@ extern bool g_bActivatedGTA3HUD;
         DEBUG_PRINT("[client dll] Could not find " #func_name ".\n");
 
 
-#define CreateHook(func_name) \
+#define EngineCreateHook(func_name) \
+		if (g_bEncrypted) { MemUtils::MarkAsExecutable(ORIG_##func_name); }\
         status = MH_CreateHook(ORIG_##func_name, HOOKED_##func_name, reinterpret_cast<void**>(&ORIG_##func_name)); \
         if (status != MH_OK) { \
-            DEBUG_PRINT("[client dll] Couldn't create hook for " #func_name ".\n"); \
+            DEBUG_PRINT("[hw dll] Couldn't create hook for " #func_name ".\n"); \
+        }
+
+#define CreateHook(lib, func_name) \
+        status = MH_CreateHook(ORIG_##func_name, HOOKED_##func_name, reinterpret_cast<void**>(&ORIG_##func_name)); \
+        if (status != MH_OK) { \
+            DEBUG_PRINT("[" #lib "] Couldn't create hook for " #func_name ".\n"); \
         }
 
 #define SPTFind(future_name)                                                                                                                  \

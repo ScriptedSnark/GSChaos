@@ -41,6 +41,8 @@ bool g_bDrawHUD;
 bool g_bHL25 = false;
 bool g_bPreSteamPipe = false;
 
+bool g_bEncrypted = false;
+
 extern texture_t** r_notexture_mip;
 extern volatile dma_t* shm;
 
@@ -109,19 +111,30 @@ void HookClient()
 
 	Find(Client, HUD_Frame);
 	Find(Client, HUD_Redraw);
-	CreateHook(HUD_Frame);
-	CreateHook(HUD_Redraw);
+	CreateHook(Client, HUD_Frame);
+	CreateHook(Client, HUD_Redraw);
 }
 
 void HookEngine()
 {
-	void* base;
-	size_t size;
+	static void* base;
+	static size_t size;
 
-	if (!MemUtils::GetModuleInfo(L"hw.dll", &g_lpHW, &base, &size))
+	if (!g_bEncrypted)
 	{
-		DEBUG_PRINT("HookEngine: can't get module info about hw.dll! Stopping hooking...\n");
-		return;
+		if (!MemUtils::GetModuleInfo(L"hw.dll", &g_lpHW, &base, &size))
+		{
+			DEBUG_PRINT("HookEngine: can't get module info about hw.dll! Stopping hooking...\n");
+
+			if (MemUtils::GetModuleInfo(L"hl.exe", &g_lpHW, &base, &size))
+			{
+				g_bEncrypted = true;
+
+				HookEngine();
+			}
+
+			return;
+		}
 	}
 
 	utils = Utils::Utils(g_lpHW, base, size);
@@ -240,7 +253,11 @@ void HookEngine()
 				break;
 			case 2: // HL-4554
 				DEBUG_PRINT("Searching gEntityInterface in HL-4554 pattern...\n");
-				gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x41C);
+
+				if (g_bEncrypted)
+					gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x35C);
+				else
+					gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x41C);
 
 				if (gEntityInterface)
 					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
@@ -399,7 +416,7 @@ void HookOpenGL()
 	ORIG_wglSwapBuffers = GetSwapBuffersAddr();
 
 	Find(OpenGL32, wglSwapBuffers);
-	CreateHook(wglSwapBuffers);
+	CreateHook(OpenGL32, wglSwapBuffers);
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 

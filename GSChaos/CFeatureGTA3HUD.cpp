@@ -173,8 +173,8 @@ void CFeatureGTA3HUD::Init()
 	int status;
 	SPTFind(S_StartDynamicSound);
 	SPTFind(S_StartStaticSound);
-	CreateHook(S_StartDynamicSound);
-	CreateHook(S_StartStaticSound);
+	EngineCreateHook(S_StartDynamicSound);
+	EngineCreateHook(S_StartStaticSound);
 
 	MH_EnableHook(MH_ALL_HOOKS);
 }

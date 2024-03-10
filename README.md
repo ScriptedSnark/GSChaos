@@ -7,6 +7,8 @@ ASI plugin for GoldSrc Engine (steam_legacy / HL25). Adds "Chaos" in game (new c
 
 Inspired by Chaos mods from the GTA universe (by zolika1351), I decided to make my own for HL1 and GoldSrc in particular (you can run almost any mod with it).
 
+**Download: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
+
 Additional info:
 - Chaos UI rendering is not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)
 - Save your game more often because of potential softlocks/crashes
@@ -53,6 +55,7 @@ Additional info:
 > Lobotomy
 > Upside Down
 > Every NPC explodes
+> Let's see Jeepy's lasagna
 > Combine Effects ( 3 in 1 )
 ```
 
