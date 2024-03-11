@@ -57,14 +57,19 @@ Additional info:
 > Every NPC explodes
 > Let's see Jeepy's lasagna
 > Hyper Gravity Field
+> Ice Skating
+> Invert Velocity
 > Combine Effects ( 3 in 1 )
 ```
 
 Credits
 ==============
 Author: ScriptedSnark
+
 Special thanks to:
-- anewnick (a.k.a codque) for GTA III-styled HUD icons
-- @SmileyAG for provided help about some aspects of hooking
-- @BlueNightHawk for late precache system
+- zolika1351 for his great, inspiring Chaos mods
+- anewnick (a.k.a codque) for designing HUDs
+- SmileyAG for provided help about some aspects of hooking
+- BlueNightHawk for late precache system
 - un4seen (a.k.a. yanny) for supporting/playtesting
+- Tankfird, StereoBucket, prolert, gatar and other people for suggesting effects, ideas
