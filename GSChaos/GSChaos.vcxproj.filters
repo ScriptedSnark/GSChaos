@@ -164,6 +164,9 @@
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl3.cpp">
       <Filter>ImGUI</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureGravityField.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -385,6 +388,9 @@
     </ClInclude>
     <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl3.h">
       <Filter>ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGravityField.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

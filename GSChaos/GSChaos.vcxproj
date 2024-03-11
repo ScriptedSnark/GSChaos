@@ -127,6 +127,7 @@
     <ClCompile Include="CFeatureGiveGauss.cpp" />
     <ClCompile Include="CFeatureGlobalGodMode.cpp" />
     <ClCompile Include="CFeatureGodMode.cpp" />
+    <ClCompile Include="CFeatureGravityField.cpp" />
     <ClCompile Include="CFeatureGrieferShephard.cpp" />
     <ClCompile Include="CFeatureGruntAmbush.cpp" />
     <ClCompile Include="CFeatureGTA2Camera.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="CFeatureGiveGauss.h" />
     <ClInclude Include="CFeatureGlobalGodMode.h" />
     <ClInclude Include="CFeatureGodMode.h" />
+    <ClInclude Include="CFeatureGravityField.h" />
     <ClInclude Include="CFeatureGrieferShephard.h" />
     <ClInclude Include="CFeatureGruntAmbush.h" />
     <ClInclude Include="CFeatureGTA2Camera.h" />

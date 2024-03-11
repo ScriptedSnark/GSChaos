@@ -56,6 +56,7 @@ Additional info:
 > Upside Down
 > Every NPC explodes
 > Let's see Jeepy's lasagna
+> Hyper Gravity Field
 > Combine Effects ( 3 in 1 )
 ```
 

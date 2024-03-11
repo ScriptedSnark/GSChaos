@@ -127,6 +127,7 @@ extern bool g_bEncrypted;
 #include "CFeatureUpsideDown.h"
 #include "CFeatureNPCExplode.h"
 #include "CFeatureJeepy.h"
+#include "CFeatureGravityField.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
