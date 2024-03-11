@@ -167,6 +167,9 @@
     <ClCompile Include="CFeatureGravityField.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureIceSkating.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -390,6 +393,9 @@
       <Filter>ImGUI</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGravityField.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureIceSkating.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

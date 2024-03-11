@@ -93,6 +93,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNPCExplode>();
 	RegisterChaosFeature<CFeatureJeepy>();
 	RegisterChaosFeature<CFeatureGravityField>();
+	RegisterChaosFeature<CFeatureIceSkating>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
