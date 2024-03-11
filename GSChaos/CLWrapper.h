@@ -1,8 +1,8 @@
 /**
  * Copyright - ScriptedSnark, 2024.
- * CLWrapper.h - description
+ * CLWrapper.h 
  *
- * Project (Project desc) header file
+ * Project (GSChaos) header file
  * Authors: ScriptedSnark.
  * Do not delete this comment block. Respect others' work!
  */

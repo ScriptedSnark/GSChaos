@@ -1,8 +1,8 @@
 /**
  * Copyright - ScriptedSnark, 2024.
- * CFeatureJeepy.h - description
+ * CFeatureJeepy.h
  *
- * Project (Project desc) header file
+ * Project (GSChaos) header file
  * Authors: ScriptedSnark.
  * Do not delete this comment block. Respect others' work!
  */
