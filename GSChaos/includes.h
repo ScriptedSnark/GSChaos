@@ -129,6 +129,7 @@ extern bool g_bEncrypted;
 #include "CFeatureJeepy.h"
 #include "CFeatureGravityField.h"
 #include "CFeatureIceSkating.h"
+#include "CFeatureInvertVelocity.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
