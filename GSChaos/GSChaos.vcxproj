@@ -139,6 +139,7 @@
     <ClCompile Include="CFeatureInvertVelocity.cpp" />
     <ClCompile Include="CFeatureJeepy.cpp" />
     <ClCompile Include="CFeatureLobotomy.cpp" />
+    <ClCompile Include="CFeatureNeedForSpeed.cpp" />
     <ClCompile Include="CFeatureNegativeStepsize.cpp" />
     <ClCompile Include="CFeatureNewGame.cpp" />
     <ClCompile Include="CFeatureInvisibleEntities.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="CFeatureInvertVelocity.h" />
     <ClInclude Include="CFeatureJeepy.h" />
     <ClInclude Include="CFeatureLobotomy.h" />
+    <ClInclude Include="CFeatureNeedForSpeed.h" />
     <ClInclude Include="CFeatureNegativeStepsize.h" />
     <ClInclude Include="CFeatureNewGame.h" />
     <ClInclude Include="CFeatureInvisibleEntities.h" />

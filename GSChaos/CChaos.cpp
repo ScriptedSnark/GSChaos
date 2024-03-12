@@ -95,6 +95,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGravityField>();
 	RegisterChaosFeature<CFeatureIceSkating>();
 	RegisterChaosFeature<CFeatureInvertVelocity>();
+	RegisterChaosFeature<CFeatureNeedForSpeed>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

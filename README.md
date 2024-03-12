@@ -59,6 +59,7 @@ Additional info:
 > Hyper Gravity Field
 > Ice Skating
 > Invert Velocity
+> Need for Speed (500 ups curse)
 > Combine Effects ( 3 in 1 )
 ```
 

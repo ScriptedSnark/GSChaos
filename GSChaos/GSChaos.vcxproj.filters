@@ -173,6 +173,9 @@
     <ClCompile Include="CFeatureInvertVelocity.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNeedForSpeed.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -402,6 +405,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureInvertVelocity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNeedForSpeed.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
