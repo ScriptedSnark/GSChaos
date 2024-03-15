@@ -19,6 +19,10 @@ Additional info:
 - `chaos_version` - prints version and Chaos Mod details
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 
+## Twitch voting integration (WIP)
+Chaos Mod supports voting feature via Twitch chat. You can setup it by editing `chaos/twitch.ini`. Get your OAuth pass **[here](https://twitchapps.com/tmi/)**. 
+If you don't want to play with this feature, you can delete (or rename) `chaos/twitch.ini`.
+
 ## Effects
 ```
 > New Game :tf:

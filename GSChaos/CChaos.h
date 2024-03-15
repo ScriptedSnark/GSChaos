@@ -21,18 +21,36 @@
 
 // Settings
 #define CHAOS_ACTIVATE_TIMER 30.0
+#define CHAOS_TWITCH_SETTINGS_FILE "chaos/twitch.ini"
+#define CHAOS_VOTING_PROGRESS_FILE "chaos/voting_progress.txt"
+
+struct TwitchVoter
+{
+	std::string userName;
+	int value;
+};
+
 
 class CChaos
 {
 public:
 	void Init();
+	bool LoadTwitchSettings();
+	void InitVotingSystem();
 	void FeatureInit();
 	void LoadFonts();
+	void VoteThink();
+	void WriteVotingProgress();
+	void StartVoting();
+	void Vote(const std::string& user, const std::string& msg);
+	int GetWinnerEffect();
 	void Reset();
 	void Shutdown();
 	void PrintVersion();
+	bool IsVoteStarted();
 	void DrawBar();
 	void DrawEffectList();
+	void DrawVoting();
 	void Draw();
 	void OnFrame(double time);
 	void ActivateChaosFeature(int i);
@@ -56,6 +74,7 @@ private:
 	std::chrono::high_resolution_clock::time_point m_pauseStartTime; 
 	std::chrono::duration<double> m_pauseOffset;
 	std::random_device m_randDevice;
+	ImVec2 m_chaosBarPos;
 	bool m_bInitialized = false;
 	bool m_bInGame = false;
 	bool m_bPaused;
@@ -69,6 +88,16 @@ private:
 	int m_aiPreviousRandomValue[2];
 	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
+	
+
+	// TWITCH
+	bool m_bTwitchVoting;
+	bool m_bStartedVoting;
+	int m_aiEffectsForVoting[3], m_aiVoteValues[3];
+	int m_iWinnerEffect;
+	std::string m_sUserName;
+	std::string m_oAuth;
+	std::vector<TwitchVoter> m_twitchVoters;
 };
 
 #else //!__cplusplus

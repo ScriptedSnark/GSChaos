@@ -28,6 +28,11 @@ ADDITIONAL INFO
 - Chaos UI rendering is not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)
 - Save your game more often because of potential softlocks/crashes
 
+TWITCH CHAT VOTING INTEGRATION
+==============
+Chaos Mod supports voting feature via Twitch chat. You can setup it by editing `chaos/twitch.ini`. Get your OAuth pass **[here](https://twitchapps.com/tmi/)**. 
+If you don't want to play with this feature, you can delete (or rename) `chaos/twitch.ini`.
+
 CREDITS
 ==============
 Author: ScriptedSnark

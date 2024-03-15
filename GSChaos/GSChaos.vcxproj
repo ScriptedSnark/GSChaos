@@ -62,7 +62,10 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>../external/funchook/funchook.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wsock32.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AdditionalOptions>/MAP %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SolutionDir)filecopy.bat</Command>
@@ -88,7 +91,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>../external/funchook/funchook.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wsock32.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>
+      </ModuleDefinitionFile>
+      <AdditionalOptions>/MAP %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>$(SolutionDir)filecopy.bat</Command>
@@ -98,6 +104,10 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\external\fmt\format.cc" />
+    <ClCompile Include="..\external\fmt\ostream.cc" />
+    <ClCompile Include="..\external\fmt\posix.cc" />
+    <ClCompile Include="..\external\fmt\printf.cc" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp" />
@@ -113,6 +123,7 @@
     <ClCompile Include="..\external\MinHook\trampoline.c" />
     <ClCompile Include="..\external\miniaudio\miniaudio.c" />
     <ClCompile Include="..\external\SPTLib\DetoursUtils.cpp" />
+    <ClCompile Include="..\external\twitch\twitch.cpp" />
     <ClCompile Include="CChaos.cpp" />
     <ClCompile Include="CChaosFeature.cpp" />
     <ClCompile Include="CFeature20FPS.cpp" />
@@ -163,6 +174,14 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\external\cpp_aux.h" />
+    <ClInclude Include="..\external\fmt\container.h" />
+    <ClInclude Include="..\external\fmt\format.h" />
+    <ClInclude Include="..\external\fmt\ostream.h" />
+    <ClInclude Include="..\external\fmt\posix.h" />
+    <ClInclude Include="..\external\fmt\printf.h" />
+    <ClInclude Include="..\external\fmt\string.h" />
+    <ClInclude Include="..\external\fmt\time.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl2.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="..\external\imgui\backends\imgui_impl_win32.h" />
@@ -187,6 +206,16 @@
     <ClInclude Include="..\external\SPTLib\patterns_macros.hpp" />
     <ClInclude Include="..\external\SPTLib\sptlib-stdafx.hpp" />
     <ClInclude Include="..\external\SPTLib\Utils.hpp" />
+    <ClInclude Include="..\external\twitch\libircclient.h" />
+    <ClInclude Include="..\external\twitch\libirc_errors.h" />
+    <ClInclude Include="..\external\twitch\libirc_events.h" />
+    <ClInclude Include="..\external\twitch\libirc_options.h" />
+    <ClInclude Include="..\external\twitch\libirc_rfcnumeric.h" />
+    <ClInclude Include="..\external\twitch\twitch.h" />
+    <ClInclude Include="..\external\utf8\checked.h" />
+    <ClInclude Include="..\external\utf8\core.h" />
+    <ClInclude Include="..\external\utf8\unchecked.h" />
+    <ClInclude Include="..\external\utf8\utf8.h" />
     <ClInclude Include="arial_black.h" />
     <ClInclude Include="arial_black_italic.h" />
     <ClInclude Include="CChaos.h" />

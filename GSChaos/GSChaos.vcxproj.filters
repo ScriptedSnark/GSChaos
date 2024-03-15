@@ -176,6 +176,21 @@
     <ClCompile Include="CFeatureNeedForSpeed.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="..\external\twitch\twitch.cpp">
+      <Filter>Twitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\fmt\format.cc">
+      <Filter>Twitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\fmt\ostream.cc">
+      <Filter>Twitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\fmt\posix.cc">
+      <Filter>Twitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\fmt\printf.cc">
+      <Filter>Twitch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -410,6 +425,60 @@
     <ClInclude Include="CFeatureNeedForSpeed.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="..\external\twitch\libirc_errors.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\twitch\libirc_events.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\twitch\libirc_options.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\twitch\libirc_rfcnumeric.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\twitch\libircclient.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\twitch\twitch.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\utf8\checked.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\utf8\core.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\utf8\unchecked.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\utf8\utf8.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\container.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\format.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\ostream.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\posix.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\printf.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\string.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\fmt\time.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\cpp_aux.h">
+      <Filter>Twitch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">
@@ -429,6 +498,9 @@
     </Filter>
     <Filter Include="MiniAudio">
       <UniqueIdentifier>{56993a47-7779-414c-8560-e53adca68e75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Twitch">
+      <UniqueIdentifier>{22c98969-d9a4-4bdd-b86c-c859bbe6b27b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

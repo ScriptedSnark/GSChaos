@@ -74,6 +74,7 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 	}
 
 	gImGui.Draw();
+
 	return ORIG_wglSwapBuffers(a1);
 }
 
@@ -120,6 +121,7 @@ void HookEngine()
 	static void* base;
 	static size_t size;
 
+	// now it's broken again so you can't restart the game via engine's _restart
 	if (!g_bEncrypted)
 	{
 		if (!MemUtils::GetModuleInfo(L"hw.dll", &g_lpHW, &base, &size))
@@ -453,6 +455,7 @@ extern "C" __declspec(dllexport) void ASIShutdown()
 {
 	ma_engine_uninit(&miniAudio);
 	MH_Uninitialize();
+	gChaos.Shutdown();
 }
 
 /*

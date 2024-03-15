@@ -1,4 +1,9 @@
+//TWITCH
+#include "twitch/twitch.h"
 #include "includes.h"
+
+Twitch* twitch = 0;
+std::thread twitch_thread;
 
 cvar_t* chaos_effectname_ypos;
 
@@ -53,6 +58,138 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
+	
+	for (int i = 0; i < 2; i++)
+	{
+		m_aiEffectsForVoting[i] = GetRandomEffect(0, gChaosFeatures.size() - 1);
+	}
+
+	// Init Twitch integration (thanks to Half-Payne for this)
+	if (!twitch)
+	{
+		twitch = new Twitch();
+		twitch->OnConnected = [this] {
+			pEngfuncs->Con_Printf("Connected to Twitch.\n");
+			twitch->SendChatMessage("GSChaos: connected!");
+			m_bTwitchVoting = true;
+			InitVotingSystem();
+			};
+		twitch->OnDisconnected = [this] {
+			pEngfuncs->Con_Printf("Disconnected from Twitch.\n");
+			m_bTwitchVoting = false;
+			};
+		twitch->OnError = [this](int errorCode, const std::string& error) {
+			pEngfuncs->Con_Printf("Twitch error. Code: %i | Error: %s\n", errorCode, error.c_str());
+			};
+		twitch->OnMessage = [this](const std::string& user, const std::string& msg) {
+			Vote(user, msg);
+			};
+
+		if (!LoadTwitchSettings())
+			return;
+
+		twitch_thread = twitch->Connect(m_sUserName, m_oAuth);
+		twitch_thread.detach();
+	}
+}
+
+bool CChaos::LoadTwitchSettings()
+{
+	std::ifstream file(CHAOS_TWITCH_SETTINGS_FILE);
+	if (!file.is_open()) {
+		printf("Failed to open file: " CHAOS_TWITCH_SETTINGS_FILE "\n");
+		return false;
+	}
+
+	std::string line;
+	while (std::getline(file, line))
+	{
+		std::istringstream iss(line);
+		std::string key, value;
+
+		if (std::getline(iss, key, '='))
+		{
+			key.erase(key.find_last_not_of(" \t\r\n") + 1);
+
+			if (!key.empty() && std::getline(iss >> std::ws, value))
+			{
+				value.erase(0, value.find_first_not_of(" \t\r\n"));
+				value.erase(value.find_last_not_of(" \t\r\n") + 1);
+
+				if (key == "oauth")
+					m_oAuth = value;
+				else if (key == "username")
+					m_sUserName = value;
+			}
+		}
+	}
+
+	file.close();
+
+	if (m_oAuth.empty() || m_sUserName.empty())
+		return false;
+
+	return true;
+}
+
+void CChaos::InitVotingSystem()
+{
+	std::ofstream outFile(CHAOS_VOTING_PROGRESS_FILE, std::ofstream::trunc);
+
+	if (!outFile)
+		pEngfuncs->Con_Printf("[CHAOS] Failed to open " CHAOS_VOTING_PROGRESS_FILE " for writing!\n");
+	else
+		outFile.close();
+
+	m_aiVoteValues[0] = m_aiVoteValues[1] = m_aiVoteValues[2] = 0;
+
+	m_twitchVoters.clear();
+	m_bStartedVoting = false;
+}
+
+void CChaos::Vote(const std::string& user, const std::string& msg)
+{
+	if (!IsVoteStarted())
+		return;
+
+	int voteValue = -1; // TODO: enum
+
+	auto it = std::find_if(m_twitchVoters.begin(), m_twitchVoters.end(), [&](const TwitchVoter& voter) {
+		return voter.userName == user;
+	});
+
+	if (it != m_twitchVoters.end())
+	{
+		DEBUG_PRINT("Twitch user %s has already voted.\n", user.c_str());
+		return;
+	}
+
+	// TODO: rename voting commands
+	if (msg.find("effect1") != std::string::npos) 
+		voteValue = 0;
+	else if (msg.find("effect2") != std::string::npos)
+		voteValue = 1;
+	else if (msg.find("effect3") != std::string::npos)
+		voteValue = 2;
+
+	if (voteValue != -1)
+	{
+		m_twitchVoters.push_back({ user, voteValue });
+		m_aiVoteValues[voteValue]++;
+		DEBUG_PRINT("Twitch user %s voted for option %i\n", user.c_str(), voteValue + 1);
+	}
+}
+
+int CChaos::GetWinnerEffect()
+{
+	int maxVotesIndex = std::max_element(std::begin(m_aiVoteValues), std::end(m_aiVoteValues)) - std::begin(m_aiVoteValues);
+
+	DEBUG_PRINT("Winner effect: %i\n", maxVotesIndex + 1);
+	DEBUG_PRINT("Effect 1: %i votes\n", m_aiVoteValues[0]);
+	DEBUG_PRINT("Effect 2: %i votes\n", m_aiVoteValues[1]);
+	DEBUG_PRINT("Effect 3: %i votes\n", m_aiVoteValues[2]);
+
+	return m_aiEffectsForVoting[maxVotesIndex];
 }
 
 void CChaos::FeatureInit()
@@ -136,6 +273,86 @@ void CChaos::LoadFonts()
 	DEBUG_PRINT("CChaos::LoadFonts -> Adding Trebuchet MS...\nPath: %s\n", fontPath.c_str());
 }
 
+void CChaos::VoteThink()
+{
+	if (!twitch)
+		return;
+
+	m_bTwitchVoting = twitch->status == TWITCH_CONNECTED ? true : false;
+
+	if (!m_bTwitchVoting)
+		return;
+
+	if (m_bStartedVoting)
+	{
+		static double timeToWrite = GetGlobalTime() + 1.0;
+		if (timeToWrite <= GetGlobalTime())
+		{
+			WriteVotingProgress();
+			timeToWrite = GetGlobalTime() + 1.0;
+		}
+		
+		return;
+	}
+
+	if (m_flTime > (CHAOS_ACTIVATE_TIMER / 3.0))
+	{
+		StartVoting();
+	}
+}
+
+void CChaos::WriteVotingProgress()
+{
+	std::ofstream outFile(CHAOS_VOTING_PROGRESS_FILE, std::ofstream::trunc);
+
+	if (!outFile)
+	{
+		pEngfuncs->Con_Printf("[CHAOS] Failed to open " CHAOS_VOTING_PROGRESS_FILE " for writing!\n");
+		return;
+	}
+
+	int totalVotes = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		totalVotes += m_aiVoteValues[i];
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		float percent;
+
+		if (totalVotes == 0)
+			percent = 0.0f;
+		else
+			percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
+
+		outFile << gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName() << " | " << m_aiVoteValues[i] << " (" << percent << "%)" << std::endl;
+	}
+
+	outFile << "Total Votes: " << totalVotes << std::endl;
+
+	outFile.close();
+}
+
+void CChaos::StartVoting()
+{
+	if (!m_bTwitchVoting)
+		return;
+
+	InitVotingSystem();
+
+	twitch->SendChatMessage("Start voting!");
+
+	DEBUG_PRINT("Start voting!\n");
+	DEBUG_PRINT("================\n");
+	DEBUG_PRINT("Effect 1: %s\n", gChaosFeatures[m_aiEffectsForVoting[0]]->GetFeatureName());
+	DEBUG_PRINT("Effect 2: %s\n", gChaosFeatures[m_aiEffectsForVoting[1]]->GetFeatureName());
+	DEBUG_PRINT("Effect 3: %s\n", gChaosFeatures[m_aiEffectsForVoting[2]]->GetFeatureName());
+	DEBUG_PRINT("================\n");
+
+	m_bStartedVoting = true;
+}
+
 void CChaos::Reset()
 {
 	if (m_pCurrentFeature)
@@ -151,6 +368,14 @@ void CChaos::Reset()
 
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
+
+	if (m_bTwitchVoting)
+		InitVotingSystem();
+}
+
+void CChaos::Shutdown()
+{
+	twitch->Disconnect();
 }
 
 void CChaos::PrintVersion()
@@ -169,6 +394,10 @@ void CChaos::PrintVersion()
 	pEngfuncs->Con_Printf("============================\n");
 }
 
+bool CChaos::IsVoteStarted()
+{
+	return (m_bTwitchVoting && m_bStartedVoting);
+}
 
 void CChaos::DrawBar()
 {
@@ -184,9 +413,11 @@ void CChaos::DrawBar()
 
 		//ImGui::Text("m_flTime: %.0f | m_flChaosTime: %.0f | progress: %.3f | bar_x: %.3f", m_flTime, m_flChaosTime, progress, bar_x);
 		window->DrawList->AddRectFilled(ImVec2(0.f, 0.f), ImVec2(bar_x, 30.f), ImGui::GetColorU32(ImVec4(m_iBarColor[0] / 255.f, m_iBarColor[1] / 255.f, m_iBarColor[2] / 255.f, 255 / 255.f)));
+
+		ImGui::End();
 	}
 
-	ImGui::End();
+	m_chaosBarPos = ImGui::GetCursorPos();
 }
 
 void CChaos::DrawEffectList()
@@ -214,6 +445,46 @@ void CChaos::DrawEffectList()
 
 		if (m_fontTrebuchet)
 			ImGui::PopFont();
+
+		ImGui::End();
+	}
+}
+
+void CChaos::DrawVoting()
+{
+	if (!IsVoteStarted())
+		return;
+
+	ImGui::SetNextWindowPos(ImVec2(2, m_chaosBarPos.y), ImGuiCond_Always);
+	ImGui::SetNextWindowSize(ImVec2(640.f, 320.f), ImGuiCond_Always);
+
+	if (ImGui::Begin("#VOTING", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings))
+	{
+		ImGuiWindow* window = ImGui::GetCurrentWindow();
+		ImGui::PushFont(gChaos.m_fontTrebuchet);
+
+		int totalVotes = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			totalVotes += m_aiVoteValues[i];
+		}
+
+		for (int i = 0; i < 3; i++)
+		{
+			float percent;
+
+			if (totalVotes == 0)
+				percent = 0.0f;
+			else
+				percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
+
+			ImGui::Text("%s | %i (%.2f%%)", gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName(), m_aiVoteValues[i], percent);
+		}
+
+		ImGui::Text("Total Votes: %i", totalVotes);
+
+		ImGui::PopFont();
+		ImGui::End();
 	}
 }
 
@@ -221,6 +492,7 @@ void CChaos::Draw()
 {
 	DrawBar();
 	DrawEffectList();
+	//DrawVoting();
 
 	// TODO: do not draw if cl.paused is true
 	for (CChaosFeature* i : gChaosFeatures)
@@ -274,6 +546,8 @@ void CChaos::OnFrame(double time)
 		i->OnFrame(m_flTime);
 	}
 
+	VoteThink();
+
 	if (m_flChaosTime && m_flChaosTime <= m_flTime)
 	{
 		DEBUG_PRINT("ACTIVATE NEW CHAOS FEATURE\n");
@@ -296,17 +570,33 @@ void CChaos::OnFrame(double time)
 
 		if ((*sv_player)->v.gravity <= 0.1f)
 			(*sv_player)->v.gravity = 1.0f;
-
-		// Pick random effect
+		
+		if (!m_bTwitchVoting)
+		{
+			// Pick random effect
 #ifndef GS_DEBUG
-		int i = GetRandomEffect(0, gChaosFeatures.size() - 1);
-		CChaosFeature* randomFeature = gChaosFeatures[i];
+			int i = GetRandomEffect(0, gChaosFeatures.size() - 1);
+			CChaosFeature* randomFeature = gChaosFeatures[i];
 #else
-		CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
+			CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
 #endif
 
-		// After
-		m_pCurrentFeature = randomFeature;
+			// After
+			m_pCurrentFeature = randomFeature;
+		}
+		else
+		{
+			m_iWinnerEffect = GetWinnerEffect();
+			m_pCurrentFeature = gChaosFeatures[m_iWinnerEffect];
+
+			InitVotingSystem();
+
+			for (int i = 0; i < 2; i++)
+			{
+				m_aiEffectsForVoting[i] = GetRandomEffect(0, gChaosFeatures.size() - 1);
+			}
+		}
+
 		m_pCurrentFeature->ActivateFeature();
 	}
 }
