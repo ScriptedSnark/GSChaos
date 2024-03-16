@@ -59,7 +59,7 @@ void CChaos::Init()
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
 	
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		m_aiEffectsForVoting[i] = GetRandomEffect(0, gChaosFeatures.size() - 1);
 	}
@@ -375,7 +375,8 @@ void CChaos::Reset()
 
 void CChaos::Shutdown()
 {
-	twitch->Disconnect();
+	if (twitch && twitch->status != TWITCH_DISCONNECTED)
+		twitch->Disconnect();
 }
 
 void CChaos::PrintVersion()
@@ -591,7 +592,7 @@ void CChaos::OnFrame(double time)
 
 			InitVotingSystem();
 
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 3; i++)
 			{
 				m_aiEffectsForVoting[i] = GetRandomEffect(0, gChaosFeatures.size() - 1);
 			}
