@@ -30,8 +30,15 @@ ADDITIONAL INFO
 
 TWITCH CHAT VOTING INTEGRATION
 ==============
-Chaos Mod supports voting feature via Twitch chat. You can setup it by editing `chaos/twitch.ini`. Get your OAuth pass **[here](https://twitchapps.com/tmi/)**. 
-If you don't want to play with this feature, you can delete (or rename) `chaos/twitch.ini`.
+GSChaos supports Twitch chat voting. If you want to use it, then do some steps:
+1. Edit `chaos/twitch.ini`. It should have your [OAuth password](https://twitchapps.com/tmi/) and Twitch username
+2. Add text element (GDI) to your OBS scene
+3. Create file - `chaos/voting_progress.txt`
+4. Pass a path of that file in text options
+5. Run the game and check if everything is installed successfully (wait for 10 seconds in game after chaos bar activating so you can check voting system)
+
+To vote, you need to type effectNUMBER in chat (for example, "effect2").
+If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISABLED.ini`.
 
 CREDITS
 ==============
