@@ -31,7 +31,7 @@ GSChaos supports Twitch chat voting. If you want to use it, then do some steps:
 
 7. Run the game and check if everything is installed successfully (wait for 10 seconds in game after chaos bar activating so you can check voting system)
 
-To vote, you need to type `effectNUMBER` in chat (for example, `effect2`).
+To vote, you need to type `NUMBER` in chat (for example, `2`).
 If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISABLED.ini`.
 
 ## Effects

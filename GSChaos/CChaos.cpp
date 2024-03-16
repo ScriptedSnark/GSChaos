@@ -164,19 +164,22 @@ void CChaos::Vote(const std::string& user, const std::string& msg)
 		return;
 	}
 
-	// TODO: rename voting commands
-	if (msg.find("effect1") != std::string::npos) 
-		voteValue = 0;
-	else if (msg.find("effect2") != std::string::npos)
-		voteValue = 1;
-	else if (msg.find("effect3") != std::string::npos)
-		voteValue = 2;
-
-	if (voteValue != -1)
+	if (msg.size() == 1 && std::isdigit(msg[0]))
 	{
-		m_twitchVoters.push_back({ user, voteValue });
-		m_aiVoteValues[voteValue]++;
-		DEBUG_PRINT("Twitch user %s voted for option %i\n", user.c_str(), voteValue + 1);
+		voteValue = std::stoi(msg);
+		if (voteValue >= 1 && voteValue <= 3)
+		{
+			m_twitchVoters.push_back({ user, voteValue - 1 });
+			m_aiVoteValues[voteValue - 1]++;
+			DEBUG_PRINT("Twitch user %s voted for option %i\n", user.c_str(), voteValue);
+		}
+		else
+		{
+			DEBUG_PRINT("Invalid vote value: %i\n", voteValue);
+		}
+	}
+	else {
+		DEBUG_PRINT("Invalid vote message: %s\n", msg.c_str());
 	}
 }
 
