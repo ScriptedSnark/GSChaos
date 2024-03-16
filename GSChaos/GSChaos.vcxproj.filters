@@ -71,7 +71,7 @@
     <ClCompile Include="CFeatureOhio.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
-    <ClCompile Include="CFeatureFakeCrash.cpp">
+    <ClCompile Include="CFeatureNothing.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="CFeatureDarkness.cpp">
@@ -301,7 +301,7 @@
     <ClInclude Include="CFeatureOhio.h">
       <Filter>Effects</Filter>
     </ClInclude>
-    <ClInclude Include="CFeatureFakeCrash.h">
+    <ClInclude Include="CFeatureNothing.h">
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="engine\enginecallback.h">

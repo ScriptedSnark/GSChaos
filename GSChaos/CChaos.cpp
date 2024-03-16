@@ -202,7 +202,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureZeroGravity>();
 	RegisterChaosFeature<CFeatureInvisibleEntities>();
 	RegisterChaosFeature<CFeatureOhio>();
-	RegisterChaosFeature<CFeatureFakeCrash>();
+	RegisterChaosFeature<CFeatureNothing>();
 	RegisterChaosFeature<CFeatureDarkness>();
 	RegisterChaosFeature<CFeatureTotem>();
 	RegisterChaosFeature<CFeatureForgotCSS>();

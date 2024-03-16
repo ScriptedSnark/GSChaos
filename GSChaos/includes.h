@@ -100,7 +100,7 @@ extern bool g_bEncrypted;
 #include "CFeatureZeroGravity.h"
 #include "CFeatureInvisibleEntities.h"
 #include "CFeatureOhio.h"
-#include "CFeatureFakeCrash.h"
+#include "CFeatureNothing.h"
 #include "CFeatureDarkness.h"
 #include "CFeatureTotem.h"
 #include "CFeatureForgotCSS.h"

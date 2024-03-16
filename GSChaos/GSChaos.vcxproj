@@ -132,7 +132,7 @@
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
-    <ClCompile Include="CFeatureFakeCrash.cpp" />
+    <ClCompile Include="CFeatureNothing.cpp" />
     <ClCompile Include="CFeatureFly.cpp" />
     <ClCompile Include="CFeatureForgotCSS.cpp" />
     <ClCompile Include="CFeatureGiveGauss.cpp" />
@@ -226,7 +226,7 @@
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
-    <ClInclude Include="CFeatureFakeCrash.h" />
+    <ClInclude Include="CFeatureNothing.h" />
     <ClInclude Include="CFeatureFly.h" />
     <ClInclude Include="CFeatureForgotCSS.h" />
     <ClInclude Include="CFeatureGiveGauss.h" />

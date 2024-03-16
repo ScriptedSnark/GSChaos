@@ -44,7 +44,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Zero Gravity
 > Invisible entities
 > Ohio
-> Fake Crash
+> Nothing
 > Darkness
 > Totem of Undying
 > Forgot to install CS 1.6 :o
