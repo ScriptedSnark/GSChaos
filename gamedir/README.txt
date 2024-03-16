@@ -43,8 +43,12 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 CREDITS
 ==============
 Author: ScriptedSnark
+
 Special thanks to:
-- anewnick (a.k.a codque) for GTA III-styled HUD icons
+- zolika1351 for his great, inspiring Chaos mods
+- anewnick (a.k.a codque) for designing HUDs and banner
 - SmileyAG for provided help about some aspects of hooking
 - BlueNightHawk for late precache system
+- suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
 - un4seen (a.k.a. yanny) for supporting/playtesting
+- Tankfird, StereoBucket, prolert, gatar and other people for suggesting effects, ideas
