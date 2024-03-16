@@ -1,13 +1,13 @@
 # GSChaos
 
-![20240227184438_1](https://github.com/ScriptedSnark/GSChaos/assets/51358194/9ecded52-34cc-4722-9441-3280cb7df228)
+![gsch_banner](https://github.com/anewnick/GSChaos/assets/90544338/5e286177-c56a-4212-98f7-919907a03b49)
 
-
+</div>
 ASI plugin for GoldSrc Engine (steam_legacy / HL25). Adds "Chaos" in game (new chaotic effect every 30 seconds).
 
 Inspired by Chaos mods from the GTA universe (by zolika1351), I decided to make my own for HL1 and GoldSrc in particular (you can run almost any mod with it).
 
-**Download: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
+**Download via Github: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
 
 Additional info:
 - Chaos UI rendering is not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)
@@ -84,7 +84,7 @@ Author: ScriptedSnark
 
 Special thanks to:
 - zolika1351 for his great, inspiring Chaos mods
-- anewnick (a.k.a codque) for designing HUDs
+- anewnick (a.k.a codque) for designing HUDs and banner
 - SmileyAG for provided help about some aspects of hooking
 - BlueNightHawk for late precache system
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
