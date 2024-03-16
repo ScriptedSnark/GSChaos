@@ -1,6 +1,6 @@
 # GSChaos
 
-![gsch_banner](https://github.com/anewnick/GSChaos/assets/90544338/5e286177-c56a-4212-98f7-919907a03b49)
+![gsch_banner](https://raw.githubusercontent.com/ScriptedSnark/GSChaos/master/gsch_banner.png)
 
 </div>
 ASI plugin for GoldSrc Engine (steam_legacy / HL25). Adds "Chaos" in game (new chaotic effect every 30 seconds).
