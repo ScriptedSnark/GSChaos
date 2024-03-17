@@ -18,7 +18,6 @@ std::vector<std::string> g_baseEntityList =
 	"monster_flyer_flock",
 	"monster_gargantua",
 	"monster_gman",
-	"monster_handgrenade",
 	"monster_headcrab",
 	"monster_hevsuit_dead",
 	"monster_hgrunt_dead",
