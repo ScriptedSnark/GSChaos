@@ -3,9 +3,11 @@
 ![gsch_banner](https://raw.githubusercontent.com/ScriptedSnark/GSChaos/master/gsch_banner.png)
 
 </div>
-ASI plugin for GoldSrc Engine (steam_legacy / HL25). Adds "Chaos" in game (new chaotic effect every 30 seconds).
+ASI plugin for GoldSrc Engine. Adds "Chaos" in game (new chaotic effect every 30 seconds).
 
 Inspired by Chaos mods from the GTA universe (by zolika1351), I decided to make my own for HL1 and GoldSrc in particular (you can run almost any mod with it).
+
+Supports builds `9920` (HL25), `8684` (steam_legacy), `4554` (GoldSrc Package, 2009), `3248` (Half-Life 2005 WON package)
 
 **Download via Github: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
 
