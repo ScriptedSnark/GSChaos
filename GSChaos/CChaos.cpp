@@ -90,6 +90,10 @@ void CChaos::Init()
 
 		twitch_thread = twitch->Connect(m_sUserName, m_oAuth);
 		twitch_thread.detach();
+
+		// just in case
+		m_sUserName.clear();
+		m_oAuth.clear();
 	}
 }
 
@@ -242,9 +246,11 @@ void CChaos::FeatureInit()
 	for (CChaosFeature* i : gChaosFeatures)
 	{
 		i->Init();
+		gChaosFeaturesNames.push_back(i->GetFeatureName());
 	}
 
 	gChaosFeatures.shrink_to_fit();
+	gChaosFeaturesNames.shrink_to_fit();
 
 	DEBUG_PRINT("CChaos::FeatureInit -> %i registered features.\n", gChaosFeatures.size());
 }
@@ -329,7 +335,7 @@ void CChaos::WriteVotingProgress()
 		else
 			percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
 
-		outFile << gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName() << " | " << m_aiVoteValues[i] << " (" << percent << "%)" << std::endl;
+		outFile << gChaosFeaturesNames[m_aiEffectsForVoting[i]] << " | " << m_aiVoteValues[i] << " (" << percent << "%)" << std::endl;
 	}
 
 	outFile << "Total Votes: " << totalVotes << std::endl;
@@ -348,9 +354,9 @@ void CChaos::StartVoting()
 
 	DEBUG_PRINT("Start voting!\n");
 	DEBUG_PRINT("================\n");
-	DEBUG_PRINT("Effect 1: %s\n", gChaosFeatures[m_aiEffectsForVoting[0]]->GetFeatureName());
-	DEBUG_PRINT("Effect 2: %s\n", gChaosFeatures[m_aiEffectsForVoting[1]]->GetFeatureName());
-	DEBUG_PRINT("Effect 3: %s\n", gChaosFeatures[m_aiEffectsForVoting[2]]->GetFeatureName());
+	DEBUG_PRINT("Effect 1: %s\n", gChaosFeaturesNames[m_aiEffectsForVoting[0]]);
+	DEBUG_PRINT("Effect 2: %s\n", gChaosFeaturesNames[m_aiEffectsForVoting[1]]);
+	DEBUG_PRINT("Effect 3: %s\n", gChaosFeaturesNames[m_aiEffectsForVoting[2]]);
 	DEBUG_PRINT("================\n");
 
 	m_bStartedVoting = true;
@@ -390,9 +396,9 @@ void CChaos::PrintVersion()
 	pEngfuncs->Con_Printf("Effects: %i\n", (int)gChaosFeatures.size());
 	pEngfuncs->Con_Printf("List:\n");
 
-	for (CChaosFeature* i : gChaosFeatures)
+	for (const char* effect : gChaosFeaturesNames)
 	{
-		pEngfuncs->Con_Printf("- %s\n", i->GetFeatureName());
+		pEngfuncs->Con_Printf("- %s\n", effect);
 	}
 
 	pEngfuncs->Con_Printf("============================\n");

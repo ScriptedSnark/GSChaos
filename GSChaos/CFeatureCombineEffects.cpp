@@ -10,7 +10,7 @@ void CFeatureCombineEffects::ActivateFeature()
 	CChaosFeature::ActivateFeature();
 
 	m_pszFeatureNames.clear();
-	m_sEffectList.erase();
+	m_sEffectList.clear();
 	m_pszEffectList = nullptr;
 
 	static std::random_device randDev;

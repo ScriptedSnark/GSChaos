@@ -31,6 +31,7 @@ public:
 };
 
 extern std::vector<CChaosFeature*> gChaosFeatures;
+extern std::vector<const char*> gChaosFeaturesNames;
 
 template <typename T>
 inline T* RegisterChaosFeature()

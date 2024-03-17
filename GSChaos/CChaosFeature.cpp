@@ -1,6 +1,7 @@
 #include "includes.h"
 
 std::vector<CChaosFeature*> gChaosFeatures;
+std::vector<const char*> gChaosFeaturesNames; // hack
 
 void CChaosFeature::Init()
 {
