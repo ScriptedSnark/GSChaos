@@ -69,17 +69,17 @@ void CChaos::Init()
 	{
 		twitch = new Twitch();
 		twitch->OnConnected = [this] {
-			pEngfuncs->Con_Printf("Connected to Twitch.\n");
+			printf("Connected to Twitch.\n");
 			twitch->SendChatMessage("GSChaos: connected!");
 			m_bTwitchVoting = true;
 			InitVotingSystem();
 			};
 		twitch->OnDisconnected = [this] {
-			pEngfuncs->Con_Printf("Disconnected from Twitch.\n");
+			printf("Disconnected from Twitch.\n");
 			m_bTwitchVoting = false;
 			};
 		twitch->OnError = [this](int errorCode, const std::string& error) {
-			pEngfuncs->Con_Printf("Twitch error. Code: %i | Error: %s\n", errorCode, error.c_str());
+			printf("Twitch error. Code: %i | Error: %s\n", errorCode, error.c_str());
 			};
 		twitch->OnMessage = [this](const std::string& user, const std::string& msg) {
 			Vote(user, msg);
@@ -288,11 +288,11 @@ void CChaos::VoteThink()
 
 	if (m_bStartedVoting)
 	{
-		static double timeToWrite = GetGlobalTime() + 1.0;
+		static double timeToWrite = GetGlobalTime() + CHAOS_VOTING_PROGRESS_UPDATE_TIME;
 		if (timeToWrite <= GetGlobalTime())
 		{
 			WriteVotingProgress();
-			timeToWrite = GetGlobalTime() + 1.0;
+			timeToWrite = GetGlobalTime() + CHAOS_VOTING_PROGRESS_UPDATE_TIME;
 		}
 		
 		return;
@@ -307,7 +307,7 @@ void CChaos::VoteThink()
 void CChaos::WriteVotingProgress()
 {
 	std::ofstream outFile(CHAOS_VOTING_PROGRESS_FILE, std::ofstream::trunc);
-
+	 
 	if (!outFile)
 	{
 		pEngfuncs->Con_Printf("[CHAOS] Failed to open " CHAOS_VOTING_PROGRESS_FILE " for writing!\n");
@@ -378,8 +378,8 @@ void CChaos::Reset()
 
 void CChaos::Shutdown()
 {
-	if (twitch && twitch->status != TWITCH_DISCONNECTED)
-		twitch->Disconnect();
+	if (twitch)
+		delete twitch;
 }
 
 void CChaos::PrintVersion()

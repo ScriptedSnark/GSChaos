@@ -435,6 +435,7 @@ extern "C" __declspec(dllexport) void ASIMain()
 
 	if (status != MH_OK)
 	{
+		printf("MH_STATUS: %s\n", MH_StatusToString(status));
 		MessageBoxA(NULL, "Failed to initialize MinHook. Exiting...", "GSChaos", MB_OK | MB_ICONERROR);
 		exit(1);
 		return;
@@ -453,9 +454,9 @@ extern "C" __declspec(dllexport) void ASIMain()
 
 extern "C" __declspec(dllexport) void ASIShutdown()
 {
+	gChaos.Shutdown();
 	ma_engine_uninit(&miniAudio);
 	MH_Uninitialize();
-	gChaos.Shutdown();
 }
 
 /*

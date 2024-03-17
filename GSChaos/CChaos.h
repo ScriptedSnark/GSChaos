@@ -21,7 +21,10 @@
 
 // Settings
 #define CHAOS_ACTIVATE_TIMER 30.0
+
 #define CHAOS_TWITCH_SETTINGS_FILE "chaos/twitch.ini"
+
+#define CHAOS_VOTING_PROGRESS_UPDATE_TIME 0.75
 #define CHAOS_VOTING_PROGRESS_FILE "chaos/voting_progress.txt"
 
 struct TwitchVoter
@@ -29,7 +32,6 @@ struct TwitchVoter
 	std::string userName;
 	int value;
 };
-
 
 class CChaos
 {
