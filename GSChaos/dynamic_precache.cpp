@@ -5,6 +5,7 @@ typedef sfx_t* (*_S_FindName)(char* name, int* pfInCache);
 typedef model_t* (*_Mod_ForName)(const char* name, qboolean crash, qboolean trackCRC);
 typedef int (*_PF_precache_model_I)(char* s);
 typedef int (*_PF_precache_sound_I)(char* s);
+typedef unsigned short (*_EV_Precache)(int type, const char* psz);
 typedef void (*_PF_setmodel_I)(edict_t* e, const char* m);
 
 _S_LoadSound ORIG_S_LoadSound = NULL;
@@ -13,6 +14,7 @@ _Mod_ForName ORIG_Mod_ForName = NULL;
 _PF_precache_model_I ORIG_PF_precache_model_I = NULL;
 _PF_precache_sound_I ORIG_PF_precache_sound_I = NULL;
 _PF_setmodel_I ORIG_PF_setmodel_I = NULL;
+_EV_Precache ORIG_EV_Precache = NULL;
 
 enum NeedLoad : int
 {
@@ -20,6 +22,15 @@ enum NeedLoad : int
 	NL_NEEDS_LOADED,	// The model needs to be loaded
 	NL_UNREFERENCED		// The model is unreferenced
 };
+
+void COM_FixSlashes(char* pname)
+{
+	for (char* pszNext = pname; *pszNext; ++pszNext)
+	{
+		if (*pszNext == '\\')
+			*pszNext = '/';
+	}
+}
 
 // By BlueNightHawk (first version of late precache system)
 // Will refactor and improve it - ScriptedSnark
@@ -238,7 +249,7 @@ void InitDynamicPrecache()
 
 	status = MH_CreateHook(g_engfuncs->pfnPrecacheModel, HOOKED_PF_precache_model_I, reinterpret_cast<void**>(&ORIG_PF_precache_model_I));
 	if (status != MH_OK) {
-		DEBUG_PRINT("[hw dll] Couldn't create hook for S_LoadSound.\n");
+		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheModel\n");
 	}
 
 	if (g_bEncrypted)
@@ -246,15 +257,25 @@ void InitDynamicPrecache()
 
 	status = MH_CreateHook(g_engfuncs->pfnPrecacheSound, HOOKED_PF_precache_sound_I, reinterpret_cast<void**>(&ORIG_PF_precache_sound_I));
 	if (status != MH_OK) {
-		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheModel.\n");
+		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheSound.\n");
 	}
+
+	/*
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(g_engfuncs->pfnPrecacheEvent);
+
+	status = MH_CreateHook(g_engfuncs->pfnPrecacheEvent, HOOKED_EV_Precache, reinterpret_cast<void**>(&ORIG_EV_Precache));
+	if (status != MH_OK) {
+		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheEvent.\n");
+	}
+	*/
 
 	if (g_bEncrypted)
 		MemUtils::MarkAsExecutable(g_engfuncs->pfnSetModel);
 
 	status = MH_CreateHook(g_engfuncs->pfnSetModel, HOOKED_PF_setmodel_I, reinterpret_cast<void**>(&ORIG_PF_setmodel_I));
 	if (status != MH_OK) {
-		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheModel.\n");
+		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnSetModel.\n");
 	}
 
 	MH_EnableHook(MH_ALL_HOOKS);

@@ -22,6 +22,7 @@
 namespace CLWrapper
 {
 	model_t* GetWorldModel();
+	event_t* GetEventPrecache();
 	qboolean GetPausedState();
 	const char* GetLevelName();
 }

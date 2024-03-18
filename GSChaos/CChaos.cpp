@@ -218,7 +218,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGlobalGodMode>();
 	RegisterChaosFeature<CFeatureExplosion>();
 	RegisterChaosFeature<CFeatureIchthyosaur>();
-	RegisterChaosFeature<CFeatureGiveGauss>();
+	RegisterChaosFeature<CFeatureGiveRandomWeapon>();
 	RegisterChaosFeature<CFeatureGruntAmbush>();
 	RegisterChaosFeature<CFeatureGTA3HUD>();
 	RegisterChaosFeature<CFeatureWeaponStrip>();

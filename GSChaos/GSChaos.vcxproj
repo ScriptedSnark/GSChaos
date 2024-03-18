@@ -62,7 +62,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>wsock32.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wsock32.lib;Dbghelp.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AdditionalOptions>/MAP %(AdditionalOptions)</AdditionalOptions>
@@ -91,7 +91,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>wsock32.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wsock32.lib;Dbghelp.lib;../external/funchook/funchook.lib;../external/libircclient.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AdditionalOptions>/MAP %(AdditionalOptions)</AdditionalOptions>
@@ -132,10 +132,10 @@
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
+    <ClCompile Include="CFeatureGiveRandomWeapon.cpp" />
     <ClCompile Include="CFeatureNothing.cpp" />
     <ClCompile Include="CFeatureFly.cpp" />
     <ClCompile Include="CFeatureForgotCSS.cpp" />
-    <ClCompile Include="CFeatureGiveGauss.cpp" />
     <ClCompile Include="CFeatureGlobalGodMode.cpp" />
     <ClCompile Include="CFeatureGodMode.cpp" />
     <ClCompile Include="CFeatureGravityField.cpp" />
@@ -226,10 +226,10 @@
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
+    <ClInclude Include="CFeatureGiveRandomWeapon.h" />
     <ClInclude Include="CFeatureNothing.h" />
     <ClInclude Include="CFeatureFly.h" />
     <ClInclude Include="CFeatureForgotCSS.h" />
-    <ClInclude Include="CFeatureGiveGauss.h" />
     <ClInclude Include="CFeatureGlobalGodMode.h" />
     <ClInclude Include="CFeatureGodMode.h" />
     <ClInclude Include="CFeatureGravityField.h" />

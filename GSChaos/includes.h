@@ -21,6 +21,7 @@
 
 //WINDOWS
 #include <windows.h>
+#include <DbgHelp.h>
 
 //STL
 #include <sstream>
@@ -109,7 +110,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGlobalGodMode.h"
 #include "CFeatureExplosion.h"
 #include "CFeatureIchthyosaur.h"
-#include "CFeatureGiveGauss.h"
+#include "CFeatureGiveRandomWeapon.h"
 #include "CFeatureGruntAmbush.h"
 #include "CFeatureGTA3HUD.h"
 #include "CFeatureWeaponStrip.h"

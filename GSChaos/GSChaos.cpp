@@ -11,6 +11,9 @@ typedef int (*_HUD_Redraw)(float time, int intermission);
 _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
 
+typedef void (*_LoadThisDll)(char* szDllFilename);
+_LoadThisDll ORIG_LoadThisDll = NULL;
+
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
 // long pointer to client.dll/opengl32.dll/hw.dll
@@ -37,6 +40,8 @@ _WndProc ORIG_WndProc = NULL;
 
 HWND g_hWndOfGame;
 
+std::vector<const char*> g_szExportedWeaponList, g_szExportedEntityList;
+
 bool g_bDrawHUD;
 bool g_bHL25 = false;
 bool g_bPreSteamPipe = false;
@@ -51,6 +56,12 @@ inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3
 {
 	ImGui_ImplWin32_WndProcHandler(a1, a2, a3, a4);
 	return CallWindowProcA(ORIG_WndProc, a1, a2, a3, a4);
+}
+
+// OPENGL
+_wglSwapBuffers GetSwapBuffersAddr()
+{
+	return reinterpret_cast<_wglSwapBuffers>(GetProcAddress(LoadLibrary(TEXT("OpenGL32.dll")), "wglSwapBuffers"));
 }
 
 int __stdcall HOOKED_wglSwapBuffers(HDC a1)
@@ -78,6 +89,7 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 	return ORIG_wglSwapBuffers(a1);
 }
 
+// CLIENT
 void HOOKED_HUD_Frame(double time)
 {
 	static bool initialized = false;
@@ -96,9 +108,69 @@ int HOOKED_HUD_Redraw(float time, int intermission)
 	return g_bDrawHUD ? 1 : ORIG_HUD_Redraw(time, intermission);
 }
 
-_wglSwapBuffers GetSwapBuffersAddr()
+// ENGINE
+void GetExportedMonstersAndWeapons(HMODULE module)
 {
-	return reinterpret_cast<_wglSwapBuffers>(GetProcAddress(LoadLibrary(TEXT("OpenGL32.dll")), "wglSwapBuffers"));
+	if (!module)
+	{
+		DEBUG_PRINT("Invalid module handle\n");
+		return;
+	}
+
+	PIMAGE_NT_HEADERS ntHeader = ImageNtHeader(module);
+	if (!ntHeader)
+	{
+		DEBUG_PRINT("Failed to get NT headers\n");
+		return;
+	}
+	DWORD exportRva = ntHeader->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress;
+	if (!exportRva)
+	{
+		DEBUG_PRINT("No export table found\n");
+		return;
+	}
+
+	PIMAGE_EXPORT_DIRECTORY exportDirectory = reinterpret_cast<PIMAGE_EXPORT_DIRECTORY>(reinterpret_cast<DWORD_PTR>(module) + exportRva);
+	DWORD* functionAddresses = reinterpret_cast<DWORD*>(reinterpret_cast<DWORD_PTR>(module) + exportDirectory->AddressOfFunctions);
+	DWORD* functionNames = reinterpret_cast<DWORD*>(reinterpret_cast<DWORD_PTR>(module) + exportDirectory->AddressOfNames);
+	WORD* nameOrdinals = reinterpret_cast<WORD*>(reinterpret_cast<DWORD_PTR>(module) + exportDirectory->AddressOfNameOrdinals);
+
+	for (DWORD i = 0; i < exportDirectory->NumberOfFunctions; i++)
+	{
+		DWORD nameRva = functionNames[i];
+		const char* functionName = reinterpret_cast<const char*>(reinterpret_cast<DWORD_PTR>(module) + nameRva);
+		if (strstr(functionName, "weapon_"))
+		{
+			DEBUG_PRINT("WEAPON: %s\n", functionName);
+			g_szExportedWeaponList.push_back(functionName);
+		}
+		else if (strstr(functionName, "monster_"))
+		{
+			DEBUG_PRINT("MONSTER: %s\n", functionName);
+			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic"))
+				continue;
+
+			g_szExportedEntityList.push_back(functionName);
+		}
+	}
+}
+
+void HOOKED_LoadThisDll(char* szDllFilename)
+{
+	DEBUG_PRINT("LoadThisDll | szDllFilename: %s\n", szDllFilename);
+	ORIG_LoadThisDll(szDllFilename);
+
+	HMODULE gameDLL = GetModuleHandle(szDllFilename);
+	if (!gameDLL)
+	{
+		DEBUG_PRINT("Failed to get module handle for Game DLL.\n");
+		return;
+	}
+
+	g_szExportedEntityList.clear();
+	g_szExportedWeaponList.clear();
+
+	GetExportedMonstersAndWeapons(gameDLL);
 }
 
 void HookClient()
@@ -404,6 +476,12 @@ void HookEngine()
 			
 			}
 		});
+
+	int status;
+	SPTFind(LoadThisDll);
+	EngineCreateHook(LoadThisDll);
+
+	MH_EnableHook(MH_ALL_HOOKS);
 }
 
 void HookOpenGL()

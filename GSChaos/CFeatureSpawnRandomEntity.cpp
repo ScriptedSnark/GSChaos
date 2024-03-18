@@ -1,7 +1,6 @@
 #include "includes.h"
 
-std::vector<std::string> g_szEntityList;
-std::vector<std::string> g_baseEntityList =
+std::vector<const char*> g_baseEntityList =
 {
 	"monster_alien_controller",
 	"monster_alien_grunt",
@@ -45,41 +44,9 @@ std::vector<std::string> g_baseEntityList =
 	"xen_tree"
 };
 
-bool CFeatureSpawnRandomEntity::LoadEntityList()
-{
-	std::string filePath = UTIL_VarArgs("chaos/entlist/%s.txt", pEngfuncs->pfnGetGameDirectory());
-
-	std::ifstream file(filePath);
-	if (!file.is_open())
-	{
-		DEBUG_PRINT("Failed to open file: %s\n", filePath.c_str());
-		return false;
-	}
-
-	std::string entityName;
-	while (std::getline(file, entityName))
-	{
-		if (!entityName.empty())
-			g_szEntityList.push_back(entityName);
-	}
-
-	file.close();
-
-	if (g_szEntityList.size() <= 1)
-		return false;
-
-	return true;
-}
-
 void CFeatureSpawnRandomEntity::Init()
 {
 	CChaosFeature::Init();
-
-	if (!LoadEntityList())
-	{
-		DEBUG_PRINT("Using base entity list.\n");
-		g_szEntityList = g_baseEntityList;
-	}
 
 	m_pszEntityName = nullptr;
 }
@@ -88,12 +55,15 @@ void CFeatureSpawnRandomEntity::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	int i = gChaos.GetRandomValue(0, g_szEntityList.size() - 1);
-	edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING(g_szEntityList[i].c_str()));
+	if (g_szExportedEntityList.empty())
+		g_szExportedEntityList = g_baseEntityList;
+
+	int i = gChaos.GetRandomValue(0, g_szExportedEntityList.size() - 1);
+	edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING(g_szExportedEntityList[i]));
 	if (!pent)
 		return;
 
-	m_pszEntityName = g_szEntityList[i].c_str();
+	m_pszEntityName = g_szExportedEntityList[i];
 
 	Vector origin = (*sv_player)->v.origin;
 	pent->v.origin = origin + gpGlobals->v_forward * 128;

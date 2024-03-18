@@ -55,7 +55,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Everyone has God Mode!
 > Create Explosion
 > Ichthyosaur jumpscare
-> Give Gauss
+> Give random weapon
 > Human grunt ambush!
 > GTA 3 HUD
 > player_weaponstrip
