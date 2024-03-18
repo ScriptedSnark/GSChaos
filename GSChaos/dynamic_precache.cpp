@@ -211,6 +211,88 @@ void HOOKED_PF_setmodel_I(edict_t* e, const char* m)
 	ORIG_PF_setmodel_I(e, m);
 }
 
+unsigned short HOOKED_EV_Precache(int type, const char* psz)
+{
+	if (!psz)
+	{
+		pEngfuncs->Con_DPrintf("%s: NULL pointer\n", __func__);
+		return 0;
+	}
+
+	if (*psz <= 32)
+	{
+		pEngfuncs->Con_DPrintf("%s: Bad string '%s'\n", __func__, psz);
+		return 0;
+	}
+
+	if (sv->state != ss_dead)
+	{
+		for (int i = 1; i < MAX_EVENTS; i++)
+		{
+			struct event_s* ev = &sv->event_precache[i];
+			if (!ev)
+				return 0;
+
+			if (!ev->filename)
+			{
+				if (type != 1)
+				{
+					pEngfuncs->Con_DPrintf("%s:  only file type 1 supported currently\n", __func__);
+					return 0;
+				}
+
+				char szpath[MAX_PATH];
+				snprintf(szpath, sizeof(szpath), "%s", psz);
+				COM_FixSlashes(szpath);
+
+				int scriptSize = 0;
+				char* evScript = (char*)pEngfuncs->COM_LoadFile(szpath, 5, &scriptSize);
+				if (!evScript)
+					pEngfuncs->Con_DPrintf("%s:  file %s missing from server\n", __func__, psz);
+
+				sv->event_precache[i].filename = psz;
+				sv->event_precache[i].filesize = scriptSize;
+				sv->event_precache[i].pszScript = evScript;
+				sv->event_precache[i].index = i;
+
+				if (sv->state == ss_active)
+				{
+					pEngfuncs->Con_DPrintf("Dynamically precaching %s...\n", psz);
+					// crashes
+					/*
+					event_t* event_precache = CLWrapper::GetEventPrecache();
+					event_precache[i].filename = psz;
+					event_precache[i].filesize = scriptSize;
+					event_precache[i].pszScript = evScript;
+					event_precache[i].index = i;
+					*/
+				}
+
+				return i;
+			}
+
+			if (!stricmp(ev->filename, psz))
+				return i;
+		}
+
+		pEngfuncs->Con_DPrintf("%s: '%s' overflow\n", __func__, psz);
+	}
+	else
+	{
+		for (int i = 1; i < MAX_EVENTS; i++)
+		{
+			struct event_s* ev = &sv->event_precache[i];
+			if (!stricmp(ev->filename, psz))
+				return i;
+		}
+
+		pEngfuncs->Con_DPrintf("%s: '%s' Precache can only be done when server is active/loading", __func__, psz);
+		return 0;
+	}
+
+	return 0;
+}
+
 void PrintEdictInfo()
 {
 	if (pEngfuncs->Cmd_Argc() <= 1)
@@ -260,7 +342,6 @@ void InitDynamicPrecache()
 		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheSound.\n");
 	}
 
-	/*
 	if (g_bEncrypted)
 		MemUtils::MarkAsExecutable(g_engfuncs->pfnPrecacheEvent);
 
@@ -268,7 +349,6 @@ void InitDynamicPrecache()
 	if (status != MH_OK) {
 		DEBUG_PRINT("[hw dll] Couldn't create hook for g_engfuncs->pfnPrecacheEvent.\n");
 	}
-	*/
 
 	if (g_bEncrypted)
 		MemUtils::MarkAsExecutable(g_engfuncs->pfnSetModel);
