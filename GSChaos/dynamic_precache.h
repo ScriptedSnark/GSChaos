@@ -20,6 +20,7 @@
 #ifdef __cplusplus
 
 void InitDynamicPrecache();
+sfx_t* S_LateLoadSound(char* name);
 int GetModelByIndex(const char* name);
 
 #else //!__cplusplus

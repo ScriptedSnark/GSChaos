@@ -191,6 +191,87 @@ inline Vector CrossProduct(const Vector& a, const Vector& b) { return Vector(a.y
 #define DAMAGE_YES 1
 #define DAMAGE_AIM 2
 
+#define DMG_GENERIC			0			// generic damage was done
+#define DMG_CRUSH			(1 << 0)	// crushed by falling or moving object
+#define DMG_BULLET			(1 << 1)	// shot
+#define DMG_SLASH			(1 << 2)	// cut, clawed, stabbed
+#define DMG_BURN			(1 << 3)	// heat burned
+#define DMG_FREEZE			(1 << 4)	// frozen
+#define DMG_FALL			(1 << 5)	// fell too far
+#define DMG_BLAST			(1 << 6)	// explosive blast damage
+#define DMG_CLUB			(1 << 7)	// crowbar, punch, headbutt
+#define DMG_SHOCK			(1 << 8)	// electric shock
+#define DMG_SONIC			(1 << 9)	// sound pulse shockwave
+#define DMG_ENERGYBEAM		(1 << 10)	// laser or other high energy beam 
+#define DMG_NEVERGIB		(1 << 12)	// with this bit OR'd in, no damage type will be able to gib victims upon death
+#define DMG_ALWAYSGIB		(1 << 13)	// with this bit OR'd in, any damage type can be made to gib victims upon death.
+#define DMG_DROWN			(1 << 14)	// Drowning
+// time-based damage
+#define DMG_TIMEBASED		(~(0x3fff))	// mask for time-based damage
+
+#define DMG_PARALYZE		(1 << 15)	// slows affected creature down
+#define DMG_NERVEGAS		(1 << 16)	// nerve toxins, very bad
+#define DMG_POISON			(1 << 17)	// blood poisioning
+#define DMG_RADIATION		(1 << 18)	// radiation exposure
+#define DMG_DROWNRECOVER	(1 << 19)	// drowning recovery
+#define DMG_ACID			(1 << 20)	// toxic chemicals or acid burns
+#define DMG_SLOWBURN		(1 << 21)	// in an oven
+#define DMG_SLOWFREEZE		(1 << 22)	// in a subzero freezer
+#define DMG_MORTAR			(1 << 23)	// Hit by air raid (done to distinguish grenade from mortar)
+
+// these are the damage types that are allowed to gib corpses
+#define DMG_GIB_CORPSE		( DMG_CRUSH | DMG_FALL | DMG_BLAST | DMG_SONIC | DMG_CLUB )
+
+// these are the damage types that have client hud art
+#define DMG_SHOWNHUD		(DMG_POISON | DMG_ACID | DMG_FREEZE | DMG_SLOWFREEZE | DMG_DROWN | DMG_BURN | DMG_SLOWBURN | DMG_NERVEGAS | DMG_RADIATION | DMG_SHOCK)
+
+#define TYPE_CLIENT				0	// client is a normal HL client (default)
+#define TYPE_PROXY				1	// client is another proxy
+#define TYPE_COMMENTATOR		3	// client is a commentator
+#define TYPE_DEMO				4	// client is a demo file
+
+// sub commands of svc_hltv:
+#define HLTV_ACTIVE				0	// tells client that he's an spectator and will get director commands
+#define HLTV_STATUS				1	// send status infos about proxy 
+#define HLTV_LISTEN				2	// tell client to listen to a multicast stream
+
+// director command types:
+#define DRC_CMD_NONE				0	// NULL director command
+#define DRC_CMD_START				1	// start director mode
+#define DRC_CMD_EVENT				2	// informs about director command
+#define DRC_CMD_MODE				3	// switches camera modes
+#define DRC_CMD_CAMERA				4	// set fixed camera
+#define DRC_CMD_TIMESCALE			5	// sets time scale
+#define DRC_CMD_MESSAGE				6	// send HUD centerprint
+#define DRC_CMD_SOUND				7	// plays a particular sound
+#define DRC_CMD_STATUS				8	// HLTV broadcast status
+#define DRC_CMD_BANNER				9	// set GUI banner
+#define DRC_CMD_STUFFTEXT			10	// like the normal svc_stufftext but as director command
+#define DRC_CMD_CHASE				11	// chase a certain player
+#define DRC_CMD_INEYE				12	// view player through own eyes
+#define DRC_CMD_MAP					13	// show overview map
+#define DRC_CMD_CAMPATH				14	// define camera waypoint
+#define DRC_CMD_WAYPOINTS			15	// start moving camera, inetranl message
+
+#define DRC_CMD_LAST				15
+
+
+// DRC_CMD_EVENT event flags
+#define DRC_FLAG_PRIO_MASK		0x0F	// priorities between 0 and 15 (15 most important)
+#define DRC_FLAG_SIDE			(1<<4)	// 
+#define DRC_FLAG_DRAMATIC		(1<<5)	// is a dramatic scene
+#define DRC_FLAG_SLOWMOTION		(1<<6)  // would look good in SloMo
+#define DRC_FLAG_FACEPLAYER		(1<<7)  // player is doning something (reload/defuse bomb etc)
+#define DRC_FLAG_INTRO			(1<<8)	// is a introduction scene
+#define DRC_FLAG_FINAL			(1<<9)	// is a final scene
+#define DRC_FLAG_NO_RANDOM		(1<<10)	// don't randomize event data
+
+
+// DRC_CMD_WAYPOINT flags
+#define DRC_FLAG_STARTPATH		1	// end with speed 0.0
+#define DRC_FLAG_SLOWSTART		2	// start with speed 0.0
+#define DRC_FLAG_SLOWEND		4	// end with speed 0.0
+
 // entity effects
 #define EF_BRIGHTFIELD 1 // swirling cloud of particles
 #define EF_MUZZLEFLASH 2 // single frame ELIGHT on entity attachment 0

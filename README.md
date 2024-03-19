@@ -19,6 +19,7 @@ Additional info:
 - `chaos_activate` - activate effect (from 0 to (LATEST EFFECT NUM - 1)) | `sv_cheats 1` is required!
 - `chaos_reset` - reset RNG, chaos bar (can be useful for potential runs)
 - `chaos_version` - prints version and Chaos Mod details
+- `chaos_dmca_safe` - if enabled, it doesn't allow to play some sounds which are ©
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 
 ## Twitch voting integration (WIP)
@@ -77,6 +78,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Ice Skating
 > Invert Velocity
 > Need for Speed (500 ups curse)
+> Make It Bun Dem
 > Combine Effects ( 3 in 1 )
 ```
 

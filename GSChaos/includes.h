@@ -132,6 +132,7 @@ extern bool g_bEncrypted;
 #include "CFeatureIceSkating.h"
 #include "CFeatureInvertVelocity.h"
 #include "CFeatureNeedForSpeed.h"
+#include "CFeatureMakeItBunDem.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

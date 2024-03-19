@@ -56,8 +56,8 @@ void CFeatureGrieferShephard::Spawn()
 	if (!m_pShephard)
 		return;
 
-	PRECACHE_MODEL("models/shephard.mdl");
-	SET_MODEL(m_pShephard, "models/shephard.mdl");
+	PRECACHE_MODEL("../chaos/shephard.mdl");
+	SET_MODEL(m_pShephard, "../chaos/shephard.mdl");
 
 	gEntityInterface->pfnSpawn(m_pShephard);
 	Vector playerOrigin = (*sv_player)->v.origin;

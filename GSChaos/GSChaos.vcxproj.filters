@@ -191,6 +191,9 @@
     <ClCompile Include="CFeatureGiveRandomWeapon.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMakeItBunDem.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -477,6 +480,9 @@
       <Filter>Twitch</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGiveRandomWeapon.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMakeItBunDem.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

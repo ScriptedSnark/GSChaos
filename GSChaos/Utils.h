@@ -44,6 +44,7 @@ Vector UTIL_VecToAngles(const Vector& vec);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, edict_t* pentIgnore, TraceResult* ptr);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, IGNORE_GLASS ignoreGlass, edict_t* pentIgnore, TraceResult* ptr);
 void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, float fadeHold, int alpha, int flags);
+void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType);
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture);
 
 #else //!__cplusplus

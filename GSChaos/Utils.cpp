@@ -6,6 +6,8 @@
 
 #define GL_CLAMP_TO_EDGE 0x812F
 
+inline int	  ENTINDEX(edict_t* pEdict) { return (*g_engfuncs->pfnIndexOfEdict)(pEdict); }
+
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a)
 {
 	glDisable(GL_TEXTURE_2D);
@@ -128,7 +130,7 @@ void UTIL_ScreenFadeWrite(const ScreenFade& fade, edict_t* pEntity)
 	if (!pEntity)
 		return;
 
-	MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("ScreenFade", sizeof(ScreenFade)), NULL, pEntity);		// use the magic #1 for "one client"
+	MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("ScreenFade", 0), NULL, pEntity);		// use the magic #1 for "one client"
 
 	WRITE_SHORT(fade.duration);		// fade lasts this long
 	WRITE_SHORT(fade.holdTime);		// fade lasts this long
@@ -147,6 +149,86 @@ void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, floa
 
 	UTIL_ScreenFadeBuild(fade, color, fadeTime, fadeHold, alpha, flags);
 	UTIL_ScreenFadeWrite(fade, pEntity);
+}
+
+#define ARMOR_RATIO	 0.2	// Armor Takes 80% of the damage
+#define ARMOR_BONUS  0.5	// Each Point of Armor is work 1/x points of health
+
+// I WANNA GET SOME STUFF FROM SERVER DLL BUT DOING THIS SMH - ScriptedSnark
+void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType)
+{	
+	float flBonus, flRatio;
+	float flHealthPrev = pevInflictor.health;
+
+	flBonus = ARMOR_BONUS;
+	flRatio = ARMOR_RATIO;
+
+	if (pevInflictor.armorvalue && !(bitsDamageType & (DMG_FALL | DMG_DROWN)))// armor doesn't protect against fall or drown damage!
+	{
+		float flNew = flDamage * flRatio;
+
+		float flArmor;
+
+		flArmor = (flDamage - flNew) * flBonus;
+
+		// Does this use more armor than we have?
+		if (flArmor > pevInflictor.armorvalue)
+		{
+			flArmor = pevInflictor.armorvalue;
+			flArmor *= (1 / flBonus);
+			flNew = flDamage - flArmor;
+			pevInflictor.armorvalue = 0;
+		}
+		else
+			pevInflictor.armorvalue -= flArmor;
+
+		flDamage = flNew;
+	}
+
+	// check for godmode or invincibility
+	if (pevInflictor.flags & FL_GODMODE)
+		return;
+
+	if (pevInflictor.health <= 0)
+		return;
+
+	pevInflictor.dmg_take += flDamage;
+
+	if (pevInflictor.dmg_take)
+	{
+		MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("Damage", 0), NULL, pevInflictor.pContainingEntity);
+		WRITE_BYTE(0);
+		WRITE_BYTE(pevInflictor.dmg_take);
+		WRITE_LONG(bitsDamageType);
+		WRITE_COORD(0);
+		WRITE_COORD(0);
+		WRITE_COORD(0);
+		MESSAGE_END();
+	}
+
+	if ((int)pevInflictor.health > (int)flDamage)
+		pevInflictor.health = int(pevInflictor.health - flDamage);
+	else
+	{
+		pevInflictor.takedamage = DAMAGE_NO;
+		pevInflictor.health = -1;
+		pevInflictor.deadflag = DEAD_DYING;
+		pevInflictor.movetype = MOVETYPE_TOSS;
+
+		if (pevInflictor.pContainingEntity)
+		{
+			// Tell Ammo Hud that the player is dead
+			MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("CurWeapon", 0), NULL, pevInflictor.pContainingEntity);
+			WRITE_BYTE(0);
+			WRITE_BYTE(0XFF);
+			WRITE_BYTE(0xFF);
+			MESSAGE_END();
+
+			MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("SetFOV", 0), NULL, pevInflictor.pContainingEntity);
+			WRITE_BYTE(0);
+			MESSAGE_END();
+		}
+	}
 }
 
 #define TEXTURE_BASEID (4800 - 1) // MAX_GLTEXTURES

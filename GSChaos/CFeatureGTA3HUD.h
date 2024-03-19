@@ -35,6 +35,11 @@
 #define DISPLAY_DURATION 2.0f
 #define FADE_DURATION 1.0f
 
+typedef void (*_S_StartDynamicSound)(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch);
+typedef void (*_S_StartStaticSound)(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch);
+extern _S_StartDynamicSound ORIG_S_StartDynamicSound;
+extern _S_StartStaticSound ORIG_S_StartStaticSound;
+
 class CFeatureGTA3HUD : public CChaosFeature
 {
 	void Init() override;

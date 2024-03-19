@@ -6,6 +6,7 @@ Twitch* twitch = 0;
 std::thread twitch_thread;
 
 cvar_t* chaos_effectname_ypos;
+cvar_t* chaos_dmca_safe;
 
 void ActivateChaosFeatureW()
 {
@@ -58,7 +59,8 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
-	
+	chaos_dmca_safe = pEngfuncs->pfnRegisterVariable("chaos_dmca_safe", "1", 0);
+
 	for (int i = 0; i < 3; i++)
 	{
 		m_aiEffectsForVoting[i] = GetRandomEffect(0, gChaosFeatures.size() - 1);
@@ -240,6 +242,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureIceSkating>();
 	RegisterChaosFeature<CFeatureInvertVelocity>();
 	RegisterChaosFeature<CFeatureNeedForSpeed>();
+	RegisterChaosFeature<CFeatureMakeItBunDem>(); // DMCA
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

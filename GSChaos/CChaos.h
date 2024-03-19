@@ -33,6 +33,8 @@ struct TwitchVoter
 	int value;
 };
 
+extern cvar_t* chaos_dmca_safe;
+
 class CChaos
 {
 public:

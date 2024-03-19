@@ -2,8 +2,6 @@
 
 // With Vice City HUD this code became even worse! MUGA
 
-typedef void (*_S_StartDynamicSound)(int entnum,int entchannel,sfx_t* sfx,vec_t* origin,float fvol,float attenuation,int flags,int pitch);
-typedef void (*_S_StartStaticSound)(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch);
 _S_StartDynamicSound ORIG_S_StartDynamicSound = NULL;
 _S_StartStaticSound ORIG_S_StartStaticSound = NULL;
 
