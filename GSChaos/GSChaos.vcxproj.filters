@@ -101,9 +101,6 @@
     <ClCompile Include="CFeatureIchthyosaur.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
-    <ClCompile Include="CFeatureGiveGauss.cpp">
-      <Filter>Effects</Filter>
-    </ClCompile>
     <ClCompile Include="CFeatureGruntAmbush.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
@@ -190,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="..\external\fmt\printf.cc">
       <Filter>Twitch</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGiveRandomWeapon.cpp">
+      <Filter>Effects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,9 +337,6 @@
     <ClInclude Include="CFeatureIchthyosaur.h">
       <Filter>Effects</Filter>
     </ClInclude>
-    <ClInclude Include="CFeatureGiveGauss.h">
-      <Filter>Effects</Filter>
-    </ClInclude>
     <ClInclude Include="CFeatureGruntAmbush.h">
       <Filter>Effects</Filter>
     </ClInclude>
@@ -478,6 +475,9 @@
     </ClInclude>
     <ClInclude Include="..\external\cpp_aux.h">
       <Filter>Twitch</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveRandomWeapon.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
