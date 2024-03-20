@@ -4,7 +4,8 @@ int g_flameSpr;
 
 void CFeatureMakeItBunDem::Burn()
 {
-	UTIL_TakeDamage((*sv_player)->v, 4.0f, DMG_BURN);
+	int damage = gChaos.GetRandomValue(1, 5);
+	UTIL_TakeDamage((*sv_player)->v, (float)damage, DMG_BURN);
 }
 
 void CFeatureMakeItBunDem::Init()
@@ -39,14 +40,14 @@ void CFeatureMakeItBunDem::OnFrame(double time)
 	if (!m_bActivated)
 		return;
 
-	static double burnTimer = gChaos.GetGlobalTime() + 1.1;
+	static double burnTimer = gChaos.GetGlobalTime() + 0.6;
 	static double flameTimer = gChaos.GetGlobalTime() + 0.1;
 
 	if (gChaos.GetGlobalTime() > burnTimer)
 	{
 		g_flameSpr = PRECACHE_MODEL("../chaos/flame.spr"); // smh
 		Burn();
-		burnTimer = gChaos.GetGlobalTime() + 1.1;
+		burnTimer = gChaos.GetGlobalTime() + 0.6;
 	}
 
 	if (gChaos.GetGlobalTime() > flameTimer)
