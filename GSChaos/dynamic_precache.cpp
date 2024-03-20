@@ -7,6 +7,7 @@ typedef int (*_PF_precache_model_I)(char* s);
 typedef int (*_PF_precache_sound_I)(char* s);
 typedef unsigned short (*_EV_Precache)(int type, const char* psz);
 typedef void (*_PF_setmodel_I)(edict_t* e, const char* m);
+typedef void (*_SV_AddSampleToHashedLookupTable)(const char* pszSample, int iSampleIndex);
 
 _S_LoadSound ORIG_S_LoadSound = NULL;
 _S_FindName ORIG_S_FindName = NULL;
@@ -15,6 +16,7 @@ _PF_precache_model_I ORIG_PF_precache_model_I = NULL;
 _PF_precache_sound_I ORIG_PF_precache_sound_I = NULL;
 _PF_setmodel_I ORIG_PF_setmodel_I = NULL;
 _EV_Precache ORIG_EV_Precache = NULL;
+_SV_AddSampleToHashedLookupTable ORIG_SV_AddSampleToHashedLookupTable = NULL;
 
 enum NeedLoad : int
 {
@@ -166,7 +168,7 @@ int HOOKED_PF_precache_sound_I(char* s)
 
 	// is this used??
 	if (sv->state == ss_loading)
-		sv->sound_precache_hashedlookup_built = false;
+		sv->sound_precache_hashedlookup_built = FALSE;
 
 	index = 0;
 	while (1)
@@ -195,6 +197,11 @@ int HOOKED_PF_precache_sound_I(char* s)
 			cl->sound_precache[index] = S_LateLoadSound(s);
 		else
 			cl_hl25->sound_precache[index] = S_LateLoadSound(s);
+
+		if (ORIG_SV_AddSampleToHashedLookupTable)
+			ORIG_SV_AddSampleToHashedLookupTable(s, index);
+		else
+			sv->sound_precache_hashedlookup_built = FALSE;
 	}
 
 	return index;
@@ -325,6 +332,7 @@ void InitDynamicPrecache()
 	SPTFind(S_LoadSound);
 	SPTFind(S_FindName);
 	SPTFind(Mod_ForName);
+	SPTFind(SV_AddSampleToHashedLookupTable);
 
 	if (g_bEncrypted)
 		MemUtils::MarkAsExecutable(g_engfuncs->pfnPrecacheModel);

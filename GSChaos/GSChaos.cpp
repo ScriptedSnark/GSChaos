@@ -147,7 +147,7 @@ void GetExportedMonstersAndWeapons(HMODULE module)
 		else if (strstr(functionName, "monster_"))
 		{
 			DEBUG_PRINT("MONSTER: %s\n", functionName);
-			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic"))
+			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic") || strstr(functionName, "mortar"))
 				continue;
 
 			g_szExportedEntityList.push_back(functionName);
@@ -478,6 +478,7 @@ void HookEngine()
 		});
 
 	int status;
+
 	SPTFind(LoadThisDll);
 	EngineCreateHook(LoadThisDll);
 

@@ -132,6 +132,12 @@ namespace patterns
 			"HL-4554",
 			"81 EC B8 00 00 00 53 56");
 
+		PATTERNS(SV_AddSampleToHashedLookupTable,
+			"HL-8684",
+			"55 8B EC 8B 45 ?? 56 57 68 FF 03 00 00",
+			"HL-4554",
+			"8B 44 24 ?? 56 57 68 FF 03 00 00");
+
 		PATTERNS(SV_ExecuteClientMessage,
 			"HL-9920",
 			"55 8B EC A1 ?? ?? ?? ?? 83 EC 08 F2 0F 10 05 ?? ?? ?? ??",
