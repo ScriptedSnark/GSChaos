@@ -37,7 +37,6 @@ void CFeatureGTA2Camera::ActivateFeature()
 	m_bActivated = true;
 	m_bAnimating = true;
 
-	ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 	ma_engine_play_sound(&miniAudio, "chaos/sci_respect.wav", NULL);
 }
 

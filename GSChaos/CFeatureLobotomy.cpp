@@ -62,7 +62,6 @@ void CFeatureLobotomy::OnFrame(double time)
 	{
 		if (!m_bPlayedSound)
 		{
-			ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 			ma_engine_play_sound(&miniAudio, "chaos/lobotomy.wav", NULL);
 			m_bPlayedSound = true;
 		}

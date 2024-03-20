@@ -106,14 +106,12 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 
 	if (strstr(sfx->name, "items/gunpickup2.wav"))
 	{
-		ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 		ma_engine_play_sound(&miniAudio, g_bActivatedGTA3HUD ? GTA3_HUD_PATH "wpn_pickup.wav" : GTAVC_HUD_PATH "wpn_pickup.wav", NULL);
 		return;
 	}
 
 	if (strstr(sfx->name, "items/smallmedkit1.wav"))
 	{
-		ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 		ma_engine_play_sound(&miniAudio, g_bActivatedGTA3HUD ? GTA3_HUD_PATH "item_pickup.wav" : GTAVC_HUD_PATH "item_pickup.wav", NULL);
 		return;
 	}
@@ -133,7 +131,6 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 
 	if (strstr(sfx->name, "!HEV_A1"))
 	{
-		ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 		ma_engine_play_sound(&miniAudio, g_bActivatedGTA3HUD ? GTA3_HUD_PATH "item_pickup.wav" : GTAVC_HUD_PATH "item_pickup.wav", NULL);
 		return;
 	}
@@ -413,7 +410,6 @@ void CFeatureGTA3HUD::Notify(const char* msg)
 	m_notifyMessage = msg;
 	m_bNotificationActive = true;
 
-	ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 	if (g_bActivatedGTA3HUD)
 		ma_engine_play_sound(&miniAudio, GTA3_HUD_PATH "notify.wav", NULL);
 	else

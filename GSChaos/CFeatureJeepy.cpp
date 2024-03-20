@@ -9,7 +9,6 @@ void CFeatureJeepy::ActivateFeature()
 {
 	CFeatureForgotCSS::ActivateFeature();
 
-	ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 	ma_engine_play_sound(&miniAudio, "chaos/lasagna.mp3", NULL);
 }
 

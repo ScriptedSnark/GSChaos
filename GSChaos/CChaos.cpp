@@ -516,6 +516,12 @@ void CChaos::Draw()
 
 void CChaos::OnFrame(double time)
 {
+	static cvar_t* volume;
+	if (!volume)
+		volume = CVAR_GET_POINTER("volume");
+
+	ma_engine_set_volume(&miniAudio, volume->value);
+
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 
 	static bool bPaused;

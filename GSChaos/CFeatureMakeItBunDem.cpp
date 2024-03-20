@@ -20,7 +20,6 @@ void CFeatureMakeItBunDem::ActivateFeature()
 
 	if (chaos_dmca_safe->value == 0)
 	{
-		ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 		ma_engine_play_sound(&miniAudio, "chaos/ucieczka_nastroj.wav", NULL);
 	}
 	

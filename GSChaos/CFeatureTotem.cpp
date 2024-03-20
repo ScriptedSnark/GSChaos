@@ -12,9 +12,7 @@ void CFeatureTotem::ActivateFeature()
 	m_bActivated = true;
 	m_flTotemTime = gChaos.GetGlobalTime() + TOTEM_TIME;
 	
-	ma_engine_set_volume(&miniAudio, CVAR_GET_FLOAT("volume"));
 	ma_engine_play_sound(&miniAudio, "chaos/totem.wav", NULL);
-	
 }
 
 void CFeatureTotem::OnFrame(double time)
