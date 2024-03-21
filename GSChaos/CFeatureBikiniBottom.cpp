@@ -39,18 +39,20 @@ void CFeatureBikiniBottom::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
+	if (g_svpmove)
+	{
+		g_svpmove->PM_PointContents = PM_PointContents;
+		return;
+	}
+
 	// I could do that earlier but I'm too lazy to hook LoadEntityDLLs
 	// (pfnPM_Move is nullptr in other cases)
-
 	if (g_bEncrypted)
 		MemUtils::MarkAsExecutable(gEntityInterface->pfnPM_Move);
 
 	int status = MH_CreateHook(gEntityInterface->pfnPM_Move, HOOKED_PM_Move, reinterpret_cast<void**>(&ORIG_PM_Move));
 
-	if (status == MH_ERROR_ALREADY_CREATED)
-		g_svpmove->PM_PointContents = PM_PointContents;
-	else if (status == MH_OK)
-		MH_EnableHook(MH_ALL_HOOKS);
+	MH_EnableHook(MH_ALL_HOOKS);
 }
 
 void CFeatureBikiniBottom::DeactivateFeature()
