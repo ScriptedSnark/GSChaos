@@ -135,6 +135,7 @@ extern bool g_bEncrypted;
 #include "CFeatureMakeItBunDem.h"
 #include "CFeatureBikiniBottom.h"
 #include "CFeatureX10Gravity.h"
+#include "CFeatureOverwriteQuicksave.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

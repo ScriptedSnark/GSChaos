@@ -200,6 +200,9 @@
     <ClCompile Include="CFeatureX10Gravity.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureOverwriteQuicksave.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -495,6 +498,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureBikiniBottom.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureOverwriteQuicksave.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

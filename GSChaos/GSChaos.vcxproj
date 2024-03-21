@@ -160,6 +160,7 @@
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
+    <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="CFeatureOnePercentDeath.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
+    <ClInclude Include="CFeatureOverwriteQuicksave.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureSleepy.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
