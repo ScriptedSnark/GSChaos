@@ -48,6 +48,8 @@ bool g_bPreSteamPipe = false;
 
 bool g_bEncrypted = false;
 
+bool g_bIchthyosaurExists = false;
+
 extern texture_t** r_notexture_mip;
 extern volatile dma_t* shm;
 
@@ -150,9 +152,26 @@ void GetExportedMonstersAndWeapons(HMODULE module)
 			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic") || strstr(functionName, "mortar"))
 				continue;
 
+			if (strstr(functionName, "ichthyosaur"))
+				g_bIchthyosaurExists = true;
+
 			g_szExportedEntityList.push_back(functionName);
 		}
 	}
+}
+
+bool IsEntityAvailable(const char* entityName)
+{
+	if (!entityName)
+		return false;
+
+	for (const char* entity : g_szExportedEntityList)
+	{
+		if (strstr(entity, entityName))
+			return true;
+	}
+
+	return false;
 }
 
 void HOOKED_LoadThisDll(char* szDllFilename)

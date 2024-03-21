@@ -29,7 +29,10 @@ extern std::vector<const char*> g_szExportedEntityList;
 
 extern bool g_bHL25;
 extern bool g_bPreSteamPipe;
+extern bool g_bIchthyosaurExists;
 extern bool g_bDrawHUD;
+
+bool IsEntityAvailable(const char* entityName);
 
 void HookEngine();
 void HookClient();
