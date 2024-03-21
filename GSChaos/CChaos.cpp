@@ -246,6 +246,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureBikiniBottom>();
 	RegisterChaosFeature<CFeatureX10Gravity>();
 	RegisterChaosFeature<CFeatureOverwriteQuicksave>();
+	RegisterChaosFeature<CFeatureStop>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

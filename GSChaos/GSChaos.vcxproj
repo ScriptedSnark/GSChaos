@@ -164,6 +164,7 @@
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
+    <ClCompile Include="CFeatureStop.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureSleepy.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
+    <ClInclude Include="CFeatureStop.h" />
     <ClInclude Include="CFeatureTotem.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
