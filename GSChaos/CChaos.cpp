@@ -243,7 +243,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureInvertVelocity>();
 	RegisterChaosFeature<CFeatureNeedForSpeed>();
 	RegisterChaosFeature<CFeatureMakeItBunDem>(); // DMCA
-	RegisterChaosFeature<CFeatureVoid>();
+	RegisterChaosFeature<CFeatureBikiniBottom>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

@@ -41,6 +41,10 @@ void CFeatureBikiniBottom::ActivateFeature()
 
 	// I could do that earlier but I'm too lazy to hook LoadEntityDLLs
 	// (pfnPM_Move is nullptr in other cases)
+
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(gEntityInterface->pfnPM_Move);
+
 	int status = MH_CreateHook(gEntityInterface->pfnPM_Move, HOOKED_PM_Move, reinterpret_cast<void**>(&ORIG_PM_Move));
 
 	if (status == MH_ERROR_ALREADY_CREATED)
