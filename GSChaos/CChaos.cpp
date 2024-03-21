@@ -219,15 +219,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGodMode>();
 	RegisterChaosFeature<CFeatureGlobalGodMode>();
 	RegisterChaosFeature<CFeatureExplosion>();
-
-	if (IsEntityAvailable("ichthyosaur"))
-		RegisterChaosFeature<CFeatureIchthyosaur>();
-
+	RegisterChaosFeature<CFeatureIchthyosaur>();
 	RegisterChaosFeature<CFeatureGiveRandomWeapon>();
-
-	if (IsEntityAvailable("human_grunt"))
-		RegisterChaosFeature<CFeatureGruntAmbush>();
-
+	RegisterChaosFeature<CFeatureGruntAmbush>();
 	RegisterChaosFeature<CFeatureGTA3HUD>();
 	RegisterChaosFeature<CFeatureWeaponStrip>();
 	RegisterChaosFeature<CFeatureGrieferShephard>();
@@ -249,6 +243,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureInvertVelocity>();
 	RegisterChaosFeature<CFeatureNeedForSpeed>();
 	RegisterChaosFeature<CFeatureMakeItBunDem>(); // DMCA
+	RegisterChaosFeature<CFeatureVoid>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

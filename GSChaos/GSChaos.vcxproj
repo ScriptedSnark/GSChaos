@@ -165,6 +165,7 @@
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
+    <ClCompile Include="CFeatureBikiniBottom.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
     <ClInclude Include="CFeatureTotem.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
+    <ClInclude Include="CFeatureBikiniBottom.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="CLWrapper.h" />

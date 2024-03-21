@@ -79,6 +79,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Invert Velocity
 > Need for Speed (500 ups curse)
 > Make It Bun Dem
+> Bikini Bottom
 > Combine Effects ( 3 in 1 )
 ```
 

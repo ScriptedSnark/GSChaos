@@ -164,6 +164,8 @@ bool IsEntityAvailable(const char* entityName)
 	{
 		if (strstr(entity, entityName))
 			return true;
+		else
+			continue;
 	}
 
 	return false;
