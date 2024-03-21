@@ -194,6 +194,12 @@
     <ClCompile Include="CFeatureMakeItBunDem.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureBikiniBottom.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureX10Gravity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -483,6 +489,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMakeItBunDem.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureX10Gravity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureBikiniBottom.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
