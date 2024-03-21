@@ -98,6 +98,7 @@ extern bool g_bEncrypted;
 #include "CFeatureAudioCorrupt.h"
 #include "CFeatureFly.h"
 #include "CFeatureRemoveArmor.h"
+#include "CFeatureHighGravity.h"
 #include "CFeatureZeroGravity.h"
 #include "CFeatureInvisibleEntities.h"
 #include "CFeatureOhio.h"
@@ -105,7 +106,6 @@ extern bool g_bEncrypted;
 #include "CFeatureDarkness.h"
 #include "CFeatureTotem.h"
 #include "CFeatureForgotCSS.h"
-#include "CFeatureHighGravity.h"
 #include "CFeatureGodMode.h"
 #include "CFeatureGlobalGodMode.h"
 #include "CFeatureExplosion.h"
@@ -134,6 +134,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNeedForSpeed.h"
 #include "CFeatureMakeItBunDem.h"
 #include "CFeatureBikiniBottom.h"
+#include "CFeatureX10Gravity.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

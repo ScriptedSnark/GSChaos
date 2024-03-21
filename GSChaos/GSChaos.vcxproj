@@ -167,6 +167,7 @@
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
+    <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
+    <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="CLWrapper.h" />
     <ClInclude Include="dynamic_precache.h" />

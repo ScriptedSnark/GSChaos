@@ -25,7 +25,7 @@ void CFeatureHighGravity::DeactivateFeature()
 
 	if (!sv_gravity)
 	{
-		SERVER_COMMAND("sv_gravity 800\n");
+		SERVER_COMMAND(UTIL_VarArgs("sv_gravity %.01f\n", GetGravityValue()));
 		return;
 	}
 
@@ -40,10 +40,15 @@ void CFeatureHighGravity::OnFrame(double time)
 	if (!sv_gravity)
 		return;
 
-	sv_gravity->value = 1600.0f;
+	sv_gravity->value = GetGravityValue();
 }
 
 const char* CFeatureHighGravity::GetFeatureName()
 {
 	return "X2 Gravity";
+}
+
+float CFeatureHighGravity::GetGravityValue()
+{
+	return 1600.0f;
 }

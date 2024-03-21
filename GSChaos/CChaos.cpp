@@ -244,6 +244,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNeedForSpeed>();
 	RegisterChaosFeature<CFeatureMakeItBunDem>(); // DMCA
 	RegisterChaosFeature<CFeatureBikiniBottom>();
+	RegisterChaosFeature<CFeatureX10Gravity>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

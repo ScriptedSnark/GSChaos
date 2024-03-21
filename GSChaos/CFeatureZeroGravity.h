@@ -19,17 +19,10 @@
 
 #ifdef __cplusplus
 
-class CFeatureZeroGravity : public CChaosFeature
+class CFeatureZeroGravity : public CFeatureHighGravity
 {
-	void Init() override;
-	void ActivateFeature() override;
-	void DeactivateFeature() override;
-	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
-private:
-	bool m_bActivated;
-	cvar_t* sv_gravity;
-	float m_flOldGravityValue;
+	float GetGravityValue() override;
 };
 
 #else //!__cplusplus
