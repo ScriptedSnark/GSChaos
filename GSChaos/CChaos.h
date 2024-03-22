@@ -21,7 +21,7 @@
 
 // Settings
 #define CHAOS_ACTIVATE_TIMER 30.0
-
+#define CHAOS_ADDITIONAL_TIME 15.0
 #define CHAOS_TWITCH_SETTINGS_FILE "chaos/twitch.ini"
 
 #define CHAOS_VOTING_PROGRESS_UPDATE_TIME 0.75

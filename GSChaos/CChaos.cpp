@@ -74,6 +74,7 @@ void CChaos::Init()
 			printf("Connected to Twitch.\n");
 			twitch->SendChatMessage("GSChaos: connected!");
 			m_bTwitchVoting = true;
+			Reset();
 			InitVotingSystem();
 			};
 		twitch->OnDisconnected = [this] {
@@ -380,7 +381,7 @@ void CChaos::Reset()
 	m_startTime = currentTime;
 
 	m_pauseStartTime = std::chrono::high_resolution_clock::now();
-	m_flChaosTime = CHAOS_ACTIVATE_TIMER;
+	m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
 
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
@@ -430,6 +431,10 @@ void CChaos::DrawBar()
 
 		//ImGui::Text("m_flTime: %.0f | m_flChaosTime: %.0f | progress: %.3f | bar_x: %.3f", m_flTime, m_flChaosTime, progress, bar_x);
 		window->DrawList->AddRectFilled(ImVec2(0.f, 0.f), ImVec2(bar_x, 30.f), ImGui::GetColorU32(ImVec4(m_iBarColor[0] / 255.f, m_iBarColor[1] / 255.f, m_iBarColor[2] / 255.f, 255 / 255.f)));
+
+		ImGui::PushFont(m_fontTrebuchet);
+		ImGui::TextWrapped("%.01f", (m_flChaosTime - m_flTime));
+		ImGui::PopFont();
 
 		ImGui::End();
 	}
@@ -578,7 +583,7 @@ void CChaos::OnFrame(double time)
 		// Reset timer
 		auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
 		m_startTime = currentTime;
-		m_flChaosTime = CHAOS_ACTIVATE_TIMER;
+		m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
 		
 		m_iBarColor[0] = GetRandomValue(0, 255);
 		m_iBarColor[1] = GetRandomValue(0, 255);
