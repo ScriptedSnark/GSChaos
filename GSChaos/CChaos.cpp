@@ -343,7 +343,7 @@ void CChaos::WriteVotingProgress()
 		else
 			percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
 
-		outFile << gChaosFeaturesNames[m_aiEffectsForVoting[i]] << " | " << m_aiVoteValues[i] << " (" << percent << "%)" << std::endl;
+		outFile << gChaosFeaturesNames[m_aiEffectsForVoting[i]] << " | " << m_aiVoteValues[i] << " (" << (int)percent << "%)" << std::endl;
 	}
 
 	outFile << "Total Votes: " << totalVotes << std::endl;
