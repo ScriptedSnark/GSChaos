@@ -34,3 +34,9 @@ const char* CFeatureGodMode::GetFeatureName()
 {
 	return "God Mode";
 }
+
+void CFeatureGodMode::ResetStates()
+{
+	if ((*sv_player)->v.flags & FL_GODMODE)
+		(*sv_player)->v.flags &= ~FL_GODMODE;
+}

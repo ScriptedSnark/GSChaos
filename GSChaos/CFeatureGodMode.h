@@ -26,6 +26,7 @@ class CFeatureGodMode : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+	void ResetStates() override;
 private:
 	bool m_bActivated;
 };

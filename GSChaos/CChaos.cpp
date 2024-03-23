@@ -248,6 +248,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureX10Gravity>();
 	RegisterChaosFeature<CFeatureOverwriteQuicksave>();
 	RegisterChaosFeature<CFeatureStop>();
+	RegisterChaosFeature<CFeatureNoclip>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
@@ -523,6 +524,21 @@ void CChaos::Draw()
 	}
 }
 
+void CChaos::ResetStates()
+{
+	if (!(*sv_player))
+		return;
+
+	if (sv->state == ss_dead)
+		return;
+
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (!i->IsActive())
+			i->ResetStates();
+	}
+}
+
 void CChaos::OnFrame(double time)
 {
 	static cvar_t* volume;
@@ -593,11 +609,8 @@ void CChaos::OnFrame(double time)
 		if (m_pCurrentFeature)
 			m_pCurrentFeature->DeactivateFeature();
 
-		// Do some setup (?)
-		(*sv_player)->v.flags &= ~FL_GODMODE;
-
-		if ((*sv_player)->v.gravity <= 0.1f)
-			(*sv_player)->v.gravity = 1.0f;
+		// Do some setup
+		ResetStates();
 		
 		if (!m_bTwitchVoting)
 		{

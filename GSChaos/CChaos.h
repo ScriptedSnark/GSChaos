@@ -56,6 +56,7 @@ public:
 	void DrawEffectList();
 	void DrawVoting();
 	void Draw();
+	void ResetStates();
 	void OnFrame(double time);
 	void ActivateChaosFeature(int i);
 	int GetRandomValue(int min, int max);

@@ -19,6 +19,11 @@
 
 #ifdef __cplusplus
 
+typedef void (*_PM_Move)(struct playermove_s* ppmove, qboolean server);
+extern _PM_Move ORIG_PM_Move;
+
+void HOOKED_PM_Move(struct playermove_s* ppmove, qboolean server);
+
 class CFeatureBikiniBottom : public CChaosFeature
 {
 	void Init() override;

@@ -137,6 +137,7 @@ extern bool g_bEncrypted;
 #include "CFeatureX10Gravity.h"
 #include "CFeatureOverwriteQuicksave.h"
 #include "CFeatureStop.h"
+#include "CFeatureNoclip.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

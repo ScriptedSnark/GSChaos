@@ -12,7 +12,12 @@ _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
 
 typedef void (*_LoadThisDll)(char* szDllFilename);
+typedef void (*_LoadEntityDLLs)(char* szBaseDir);
+typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
+
 _LoadThisDll ORIG_LoadThisDll = NULL;
+_LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
+_ServerActivate ORIG_ServerActivate = NULL;
 
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
@@ -187,6 +192,37 @@ void HOOKED_LoadThisDll(char* szDllFilename)
 	g_szExportedWeaponList.clear();
 
 	GetExportedMonstersAndWeapons(gameDLL);
+}
+
+void HOOKED_ServerActivate(edict_t* pEdictList, int edictCount, int clientMax)
+{
+	ORIG_ServerActivate(pEdictList, edictCount, clientMax);
+	gChaos.ResetStates();
+}
+
+void HOOKED_LoadEntityDLLs(char* szBaseDir)
+{
+	ORIG_LoadEntityDLLs(szBaseDir);
+
+	int status;
+
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(gEntityInterface->pfnPM_Move);
+
+	status = MH_CreateHook(gEntityInterface->pfnPM_Move, HOOKED_PM_Move, reinterpret_cast<void**>(&ORIG_PM_Move));
+	if (status != MH_OK) {
+		DEBUG_PRINT("[hw dll] Couldn't create hook for gEntityInterface->pfnPM_Move.\n");
+	}
+
+	if (g_bEncrypted)
+		MemUtils::MarkAsExecutable(gEntityInterface->pfnServerActivate);
+
+	status = MH_CreateHook(gEntityInterface->pfnServerActivate, HOOKED_ServerActivate, reinterpret_cast<void**>(&ORIG_ServerActivate));
+	if (status != MH_OK) {
+		DEBUG_PRINT("[hw dll] Couldn't create hook for gEntityInterface->pfnServerActivate.\n");
+	}
+
+	MH_EnableHook(MH_ALL_HOOKS);
 }
 
 void HookClient()
@@ -496,7 +532,9 @@ void HookEngine()
 	int status;
 
 	SPTFind(LoadThisDll);
+	SPTFind(LoadEntityDLLs);
 	EngineCreateHook(LoadThisDll);
+	EngineCreateHook(LoadEntityDLLs);
 
 	MH_EnableHook(MH_ALL_HOOKS);
 }

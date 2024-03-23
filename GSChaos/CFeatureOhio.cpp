@@ -87,3 +87,9 @@ const char* CFeatureOhio::GetFeatureName()
 {
 	return "Ohio";
 }
+
+void CFeatureOhio::ResetStates()
+{
+	if ((*sv_player)->v.gravity <= 0.1f)
+		(*sv_player)->v.gravity = 1.0f;
+}

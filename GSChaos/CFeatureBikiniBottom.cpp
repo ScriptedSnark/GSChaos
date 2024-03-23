@@ -1,6 +1,5 @@
 #include "includes.h"
 
-typedef void (*_PM_Move)(struct playermove_s* ppmove, qboolean server);
 typedef int	(*_PM_PointContents) (vec3_t p, int* truecontents);
 
 _PM_Move ORIG_PM_Move = NULL;
@@ -27,7 +26,7 @@ void HOOKED_PM_Move(struct playermove_s* ppmove, qboolean server)
 		g_svpmove = ppmove;
 
 		ORIG_PM_PointContents = ppmove->PM_PointContents;
-		g_svpmove->PM_PointContents = PM_PointContents;
+		//g_svpmove->PM_PointContents = PM_PointContents;
 
 		bHooked = true;
 	}
@@ -40,19 +39,7 @@ void CFeatureBikiniBottom::ActivateFeature()
 	CChaosFeature::ActivateFeature();
 
 	if (g_svpmove)
-	{
 		g_svpmove->PM_PointContents = PM_PointContents;
-		return;
-	}
-
-	// I could do that earlier but I'm too lazy to hook LoadEntityDLLs
-	// (pfnPM_Move is nullptr in other cases)
-	if (g_bEncrypted)
-		MemUtils::MarkAsExecutable(gEntityInterface->pfnPM_Move);
-
-	int status = MH_CreateHook(gEntityInterface->pfnPM_Move, HOOKED_PM_Move, reinterpret_cast<void**>(&ORIG_PM_Move));
-
-	MH_EnableHook(MH_ALL_HOOKS);
 }
 
 void CFeatureBikiniBottom::DeactivateFeature()

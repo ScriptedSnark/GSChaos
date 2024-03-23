@@ -28,6 +28,10 @@ public:
 	virtual void OnFrame(double time);
 	virtual const char* GetFeatureName();
 	virtual void Draw();
+	virtual void ResetStates();
+	virtual bool IsActive();
+private:
+	bool m_bActivated;
 };
 
 extern std::vector<CChaosFeature*> gChaosFeatures;

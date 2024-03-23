@@ -12,11 +12,14 @@ void CChaosFeature::ActivateFeature()
 {
 	DEBUG_PRINT("CChaosFeature::ActivateFeature\n");
 	DEBUG_PRINT("%s\n", GetFeatureName());
+
+	m_bActivated = true;
 }
 
 void CChaosFeature::DeactivateFeature()
 {
 	DEBUG_PRINT("CChaosFeature::DeactivateFeature\n");
+	m_bActivated = false;
 }
 
 void CChaosFeature::OnFrame(double time)
@@ -32,4 +35,14 @@ const char* CChaosFeature::GetFeatureName()
 void CChaosFeature::Draw()
 {
 	;
+}
+
+void CChaosFeature::ResetStates()
+{
+	;
+}
+
+bool CChaosFeature::IsActive()
+{
+	return m_bActivated;
 }
