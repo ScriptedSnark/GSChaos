@@ -132,6 +132,7 @@
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
+    <ClCompile Include="CFeatureGiveArmor.cpp" />
     <ClCompile Include="CFeatureGiveHealth.cpp" />
     <ClCompile Include="CFeatureGiveRandomWeapon.cpp" />
     <ClCompile Include="CFeatureHL2Movement.cpp" />
@@ -234,6 +235,7 @@
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
+    <ClInclude Include="CFeatureGiveArmor.h" />
     <ClInclude Include="CFeatureGiveHealth.h" />
     <ClInclude Include="CFeatureGiveRandomWeapon.h" />
     <ClInclude Include="CFeatureHL2Movement.h" />

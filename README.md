@@ -86,6 +86,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Get Noclip
 > Give +100 HP
 > HL2 Movement
+> Give +100 armor
 > Combine Effects ( 3 in 1 )
 ```
 
