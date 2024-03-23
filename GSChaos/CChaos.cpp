@@ -249,6 +249,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureOverwriteQuicksave>();
 	RegisterChaosFeature<CFeatureStop>();
 	RegisterChaosFeature<CFeatureNoclip>();
+	RegisterChaosFeature<CFeatureGiveHealth>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
