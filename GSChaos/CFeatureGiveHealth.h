@@ -1,8 +1,8 @@
 /**
  * Copyright - ScriptedSnark, 2024.
- * CFeatureGiveHealth.h - description
+ * CFeatureGiveHealth.h
  *
- * Project (Project desc) header file
+ * Project (GSChaos) header file
  * Authors: ScriptedSnark.
  * Do not delete this comment block. Respect others' work!
  */

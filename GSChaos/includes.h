@@ -139,6 +139,7 @@ extern bool g_bEncrypted;
 #include "CFeatureStop.h"
 #include "CFeatureNoclip.h"
 #include "CFeatureGiveHealth.h"
+#include "CFeatureHL2Movement.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

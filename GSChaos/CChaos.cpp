@@ -250,6 +250,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureStop>();
 	RegisterChaosFeature<CFeatureNoclip>();
 	RegisterChaosFeature<CFeatureGiveHealth>();
+	RegisterChaosFeature<CFeatureHL2Movement>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

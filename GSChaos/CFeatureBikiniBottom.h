@@ -19,6 +19,9 @@
 
 #ifdef __cplusplus
 
+
+extern playermove_s* g_svpmove;
+
 typedef void (*_PM_Move)(struct playermove_s* ppmove, qboolean server);
 extern _PM_Move ORIG_PM_Move;
 
