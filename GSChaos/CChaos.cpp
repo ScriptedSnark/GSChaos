@@ -252,6 +252,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGiveHealth>();
 	RegisterChaosFeature<CFeatureHL2Movement>();
 	RegisterChaosFeature<CFeatureGiveArmor>();
+	RegisterChaosFeature<CFeatureAmIDead>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

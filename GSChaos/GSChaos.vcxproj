@@ -127,6 +127,7 @@
     <ClCompile Include="CChaos.cpp" />
     <ClCompile Include="CChaosFeature.cpp" />
     <ClCompile Include="CFeature20FPS.cpp" />
+    <ClCompile Include="CFeatureAmIDead.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
     <ClCompile Include="CFeatureCombineEffects.cpp" />
     <ClCompile Include="CFeatureDarkness.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="CChaos.h" />
     <ClInclude Include="CChaosFeature.h" />
     <ClInclude Include="CFeature20FPS.h" />
+    <ClInclude Include="CFeatureAmIDead.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
     <ClInclude Include="CFeatureCombineEffects.h" />
     <ClInclude Include="CFeatureDarkness.h" />
