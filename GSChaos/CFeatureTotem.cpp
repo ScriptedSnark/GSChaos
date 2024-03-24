@@ -20,7 +20,7 @@ void CFeatureTotem::OnFrame(double time)
 	if (!m_bActivated)
 		return;
 
-	if (m_flTotemTime >= gChaos.GetGlobalTime())
+	if (m_flTotemTime > gChaos.GetGlobalTime())
 	{
 		(*sv_player)->v.health += 0.15f;
 		(*sv_player)->v.armorvalue += 0.02f;

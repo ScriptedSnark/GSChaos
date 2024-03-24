@@ -309,7 +309,7 @@ void CChaos::VoteThink()
 	if (m_bStartedVoting)
 	{
 		static double timeToWrite = GetGlobalTime() + CHAOS_VOTING_PROGRESS_UPDATE_TIME;
-		if (timeToWrite <= GetGlobalTime())
+		if (timeToWrite < GetGlobalTime())
 		{
 			WriteVotingProgress();
 			timeToWrite = GetGlobalTime() + CHAOS_VOTING_PROGRESS_UPDATE_TIME;

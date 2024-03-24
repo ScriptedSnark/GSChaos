@@ -28,7 +28,7 @@ void CFeatureSleepy::OnFrame(double time)
 	if (!m_bActivated)
 		return;
 
-	if (gChaos.GetGlobalTime() >= m_flSleepyTime)
+	if (gChaos.GetGlobalTime() > m_flSleepyTime)
 	{
 		UTIL_ScreenFade((*sv_player), Vector(0, 0, 0), 1.75f, 0.1f, 255, FFADE_IN);
 		m_flSleepyTime = gChaos.GetGlobalTime() + SLEEPY_TIME;

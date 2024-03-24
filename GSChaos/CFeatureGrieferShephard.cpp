@@ -91,7 +91,7 @@ void CFeatureGrieferShephard::Think()
 	m_pShephard->v.effects = 0;
 
 	//DEBUG_PRINT("GetChaosTime(): %.01f | m_flRocketTime: %.01f\n", gChaos.GetGlobalTime(), m_flRocketTime);
-	if (gChaos.GetGlobalTime() >= m_flRocketTime)
+	if (gChaos.GetGlobalTime() > m_flRocketTime)
 	{
 		DEBUG_PRINT("CFeatureGrieferShephard::LaunchRocket\n");
 		LaunchRocket();

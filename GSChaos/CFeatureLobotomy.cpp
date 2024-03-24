@@ -31,7 +31,7 @@ void CFeatureLobotomy::DeactivateFeature()
 
 void CFeatureLobotomy::DoMegaLobotomy(double time)
 {
-	if (m_flLobotomyTPTime >= gChaos.GetGlobalTime())
+	if (m_flLobotomyTPTime > gChaos.GetGlobalTime())
 		return;
 
 	UTIL_ScreenFade((*sv_player), Vector(gChaos.GetRandomValue(0, 200), gChaos.GetRandomValue(0, 160), 0), 1.35f, 0.1f, 100, FFADE_IN);
@@ -70,7 +70,7 @@ void CFeatureLobotomy::OnFrame(double time)
 		return;
 	}
 
-	if (m_flLobotomyTPTime <= gChaos.GetGlobalTime())
+	if (m_flLobotomyTPTime < gChaos.GetGlobalTime())
 	{
 		UTIL_ScreenFade((*sv_player), Vector(gChaos.GetRandomValue(0, 200), gChaos.GetRandomValue(0, 160), 0), 1.35f, 0.1f, 255, FFADE_IN);
 		(*sv_player)->v.origin = m_lobotomyOrigin;
