@@ -221,6 +221,9 @@
     <ClCompile Include="CFeatureHL2Movement.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNodeGraphRebuilding.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -537,6 +540,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureHL2Movement.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNodeGraphRebuilding.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

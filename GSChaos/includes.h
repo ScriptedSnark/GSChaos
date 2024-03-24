@@ -142,6 +142,7 @@ extern bool g_bEncrypted;
 #include "CFeatureHL2Movement.h"
 #include "CFeatureGiveArmor.h"
 #include "CFeatureAmIDead.h"
+#include "CFeatureNodeGraphRebuilding.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

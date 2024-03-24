@@ -88,6 +88,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > HL2 Movement
 > Give +100 armor
 > Am I dead?
+> Node Graph
 > Combine Effects ( 3 in 1 )
 ```
 
