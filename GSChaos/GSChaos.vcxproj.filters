@@ -209,6 +209,18 @@
     <ClCompile Include="CFeatureNoclip.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureAmIDead.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGiveArmor.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureGiveHealth.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureHL2Movement.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -513,6 +525,18 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureNoclip.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureAmIDead.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveArmor.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveHealth.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHL2Movement.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
