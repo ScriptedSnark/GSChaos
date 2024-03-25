@@ -26,7 +26,7 @@ void CFeatureNodeGraphRebuilding::OnFrame(double time)
 
 	if (gChaos.GetGlobalTime() > m_flStartTime)
 	{
-		Sleep(1000); // we're rebuilding node graph, don't worry
+		Sleep(2000); // we're rebuilding node graph, don't worry
 		DeactivateFeature();
 		g_engfuncs->pfnClientPrintf((*sv_player), print_center, "Thanks for your patience! :DDDDDDDD");
 	}
