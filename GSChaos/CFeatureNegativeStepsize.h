@@ -26,6 +26,8 @@ class CFeatureNegativeStepsize : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+
+	virtual float GetStepsizeValue();
 private:
 	bool m_bActivated;
 	cvar_t* sv_stepsize;

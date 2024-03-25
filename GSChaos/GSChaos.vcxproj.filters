@@ -227,6 +227,9 @@
     <ClCompile Include="CFeatureNice.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureInsaneStepsize.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -549,6 +552,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureNice.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureInsaneStepsize.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

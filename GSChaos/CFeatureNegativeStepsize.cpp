@@ -14,7 +14,7 @@ void CFeatureNegativeStepsize::ActivateFeature()
 		return;
 
 	m_flOldStepsizeValue = sv_stepsize->value;
-	sv_stepsize->value = -18.0f;
+	sv_stepsize->value = GetStepsizeValue();
 	m_bActivated = true;
 }
 
@@ -25,7 +25,7 @@ void CFeatureNegativeStepsize::DeactivateFeature()
 
 	if (!sv_stepsize)
 	{
-		SERVER_COMMAND("sv_stepsize 18\n");
+		SERVER_COMMAND(UTIL_VarArgs("sv_stepsize %.01f\n", GetStepsizeValue()));
 		return;
 	}
 
@@ -40,10 +40,15 @@ void CFeatureNegativeStepsize::OnFrame(double time)
 	if (!sv_stepsize)
 		return;
 
-	sv_stepsize->value = -18.0f;
+	sv_stepsize->value = GetStepsizeValue();
 }
 
 const char* CFeatureNegativeStepsize::GetFeatureName()
 {
 	return "Negative Stepsize";
+}
+
+float CFeatureNegativeStepsize::GetStepsizeValue()
+{
+	return -18.0f;
 }

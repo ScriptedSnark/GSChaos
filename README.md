@@ -90,6 +90,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Am I dead?
 > Node Graph
 > Nice
+> Insane Stepsize
 > Combine Effects ( 3 in 1 )
 ```
 
