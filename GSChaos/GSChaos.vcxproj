@@ -138,6 +138,7 @@
     <ClCompile Include="CFeatureGiveRandomWeapon.cpp" />
     <ClCompile Include="CFeatureHL2Movement.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
+    <ClCompile Include="CFeatureNice.cpp" />
     <ClCompile Include="CFeatureNoclip.cpp" />
     <ClCompile Include="CFeatureNodeGraphRebuilding.cpp" />
     <ClCompile Include="CFeatureNothing.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="CFeatureGiveRandomWeapon.h" />
     <ClInclude Include="CFeatureHL2Movement.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
+    <ClInclude Include="CFeatureNice.h" />
     <ClInclude Include="CFeatureNoclip.h" />
     <ClInclude Include="CFeatureNodeGraphRebuilding.h" />
     <ClInclude Include="CFeatureNothing.h" />
