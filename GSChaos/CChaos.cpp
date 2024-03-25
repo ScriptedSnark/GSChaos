@@ -256,6 +256,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNodeGraphRebuilding>();
 	RegisterChaosFeature<CFeatureNice>();
 	RegisterChaosFeature<CFeatureInsaneStepsize>();
+	RegisterChaosFeature<CFeatureDeleteRandomEntity>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

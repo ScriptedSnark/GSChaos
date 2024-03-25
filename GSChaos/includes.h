@@ -145,6 +145,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNodeGraphRebuilding.h"
 #include "CFeatureNice.h"
 #include "CFeatureInsaneStepsize.h"
+#include "CFeatureDeleteRandomEntity.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

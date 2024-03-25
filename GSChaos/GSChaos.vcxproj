@@ -131,6 +131,7 @@
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
     <ClCompile Include="CFeatureCombineEffects.cpp" />
     <ClCompile Include="CFeatureDarkness.cpp" />
+    <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
     <ClCompile Include="CFeatureGiveArmor.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="CFeatureAudioCorrupt.h" />
     <ClInclude Include="CFeatureCombineEffects.h" />
     <ClInclude Include="CFeatureDarkness.h" />
+    <ClInclude Include="CFeatureDeleteRandomEntity.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
     <ClInclude Include="CFeatureGiveArmor.h" />
