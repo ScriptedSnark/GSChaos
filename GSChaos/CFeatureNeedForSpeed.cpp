@@ -43,7 +43,7 @@ void CFeatureNeedForSpeed::Draw()
 		return;
 
 	char buffer[64];
-	snprintf(buffer, sizeof(buffer), "%.01f | STAY ABOVE 500 UPS!", (*sv_player)->v.velocity.Length2D());
+	snprintf(buffer, sizeof(buffer), "%.01f | STAY ABOVE 320 UPS!", (*sv_player)->v.velocity.Length2D());
 
 	ImGui::PushFont(gChaos.m_fontTrebuchet);
 

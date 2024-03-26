@@ -19,7 +19,7 @@
 
 #ifdef __cplusplus
 
-#define NFS_REQUIRED_SPEED 500.0f
+#define NFS_REQUIRED_SPEED 320.0f
 #define NFS_INIT_FAIL_TIME 1.5
 #define NFS_FAIL_TIME 0.35
 
