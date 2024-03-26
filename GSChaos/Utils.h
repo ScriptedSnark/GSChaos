@@ -34,6 +34,14 @@ typedef struct
 	byte			r, g, b, a;		// fade to color ( max alpha )
 } ScreenFade;
 
+// This structure is sent over the net to describe a screen shake event
+typedef struct
+{
+	unsigned short	amplitude;		// FIXED 4.12 amount of shake
+	unsigned short 	duration;		// FIXED 4.12 seconds duration
+	unsigned short	frequency;		// FIXED 8.8 noise frequency (low frequency is a jerk,high frequency is a rumble)
+} ScreenShake;
+
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a);
 char* UTIL_VarArgs(char* format, ...);
 edict_t* UTIL_FindEntityInSphere(edict_t* pStartEntity, const Vector& vecCenter, float flRadius);
@@ -43,6 +51,7 @@ void UTIL_MakeAimVectors(const Vector& vecAngles);
 Vector UTIL_VecToAngles(const Vector& vec);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, edict_t* pentIgnore, TraceResult* ptr);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, IGNORE_GLASS ignoreGlass, edict_t* pentIgnore, TraceResult* ptr);
+void UTIL_ScreenShake(const Vector& center, float amplitude, float frequency, float duration, float radius);
 void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, float fadeHold, int alpha, int flags);
 void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType);
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture);

@@ -151,6 +151,50 @@ void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, floa
 	UTIL_ScreenFadeWrite(fade, pEntity);
 }
 
+// Shake the screen of all clients within radius
+// radius == 0, shake all clients
+// UNDONE: Allow caller to shake clients not ONGROUND?
+// UNDONE: Fix falloff model (disabled)?
+// UNDONE: Affect user controls?
+void UTIL_ScreenShake(const Vector& center, float amplitude, float frequency, float duration, float radius)
+{
+	int			i;
+	float		localAmplitude;
+	ScreenShake	shake;
+
+	shake.duration = FixedUnsigned16(duration, 1 << 12);		// 4.12 fixed
+	shake.frequency = FixedUnsigned16(frequency, 1 << 8);	// 8.8 fixed
+
+	if (!(*sv_player) || !((*sv_player)->v.flags & FL_ONGROUND))	// Don't shake if not onground
+		return;
+
+	localAmplitude = 0;
+
+	if (radius <= 0)
+		localAmplitude = amplitude;
+	else
+	{
+		Vector delta = center - (*sv_player)->v.origin;
+		float distance = delta.Length();
+
+		// Had to get rid of this falloff - it didn't work well
+		if (distance < radius)
+			localAmplitude = amplitude;//radius - distance;
+	}
+	if (localAmplitude)
+	{
+		shake.amplitude = FixedUnsigned16(localAmplitude, 1 << 12);		// 4.12 fixed
+
+		MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("ScreenShake", 0), NULL, (*sv_player));		// use the magic #1 for "one client"
+
+		WRITE_SHORT(shake.amplitude);				// shake amount
+		WRITE_SHORT(shake.duration);				// shake lasts this long
+		WRITE_SHORT(shake.frequency);				// shake noise frequency
+
+		MESSAGE_END();
+	}
+}
+
 #define ARMOR_RATIO	 0.2	// Armor Takes 80% of the damage
 #define ARMOR_BONUS  0.5	// Each Point of Armor is work 1/x points of health
 

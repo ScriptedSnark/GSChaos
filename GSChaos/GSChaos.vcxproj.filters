@@ -230,6 +230,9 @@
     <ClCompile Include="CFeatureInsaneStepsize.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureDeleteRandomEntity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -555,6 +558,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureInsaneStepsize.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureDeleteRandomEntity.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
