@@ -70,6 +70,10 @@ extern ma_engine miniAudio;
 #include "dynamic_precache.h"
 #include "CLWrapper.h"
 
+extern void* g_lpClient;
+extern void* g_lpOpenGL32;
+extern void* g_lpHW;
+
 extern cl_enginefunc_t* pEngfuncs;
 extern enginefuncs_t* g_engfuncs;
 extern globalvars_t* gpGlobals;
@@ -147,7 +151,7 @@ extern bool g_bEncrypted;
 #include "CFeatureInsaneStepsize.h"
 #include "CFeatureDeleteRandomEntity.h"
 #include "CFeatureNuke.h"
-
+#include "CFeaturePlusDuck.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

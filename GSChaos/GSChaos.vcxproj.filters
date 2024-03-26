@@ -233,6 +233,12 @@
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNuke.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeaturePlusDuck.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -561,6 +567,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureDeleteRandomEntity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNuke.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeaturePlusDuck.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
