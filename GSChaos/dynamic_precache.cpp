@@ -1,14 +1,5 @@
 #include "includes.h"
 
-typedef sfxcache_t* (*_S_LoadSound)(sfx_t* s, channel_t* ch);
-typedef sfx_t* (*_S_FindName)(char* name, int* pfInCache);
-typedef model_t* (*_Mod_ForName)(const char* name, qboolean crash, qboolean trackCRC);
-typedef int (*_PF_precache_model_I)(char* s);
-typedef int (*_PF_precache_sound_I)(char* s);
-typedef unsigned short (*_EV_Precache)(int type, const char* psz);
-typedef void (*_PF_setmodel_I)(edict_t* e, const char* m);
-typedef void (*_SV_AddSampleToHashedLookupTable)(const char* pszSample, int iSampleIndex);
-
 _S_LoadSound ORIG_S_LoadSound = NULL;
 _S_FindName ORIG_S_FindName = NULL;
 _Mod_ForName ORIG_Mod_ForName = NULL;

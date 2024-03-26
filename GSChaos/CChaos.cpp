@@ -259,6 +259,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureDeleteRandomEntity>();
 	RegisterChaosFeature<CFeatureNuke>();
 	RegisterChaosFeature<CFeaturePlusDuck>();
+	RegisterChaosFeature<CFeatureMonsterWorldspawn>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

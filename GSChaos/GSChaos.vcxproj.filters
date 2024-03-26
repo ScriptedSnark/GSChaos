@@ -239,6 +239,9 @@
     <ClCompile Include="CFeaturePlusDuck.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMonsterWorldspawn.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -573,6 +576,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeaturePlusDuck.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMonsterWorldspawn.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

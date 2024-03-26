@@ -152,6 +152,7 @@ extern bool g_bEncrypted;
 #include "CFeatureDeleteRandomEntity.h"
 #include "CFeatureNuke.h"
 #include "CFeaturePlusDuck.h"
+#include "CFeatureMonsterWorldspawn.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
