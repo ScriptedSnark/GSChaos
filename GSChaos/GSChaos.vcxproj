@@ -175,6 +175,7 @@
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
+    <ClCompile Include="CFeatureSpawnFastrun.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
     <ClCompile Include="CFeatureStop.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureSleepy.h" />
+    <ClInclude Include="CFeatureSpawnFastrun.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
     <ClInclude Include="CFeatureStop.h" />
     <ClInclude Include="CFeatureTotem.h" />

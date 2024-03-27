@@ -242,6 +242,9 @@
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureSpawnFastrun.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -579,6 +582,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMonsterWorldspawn.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSpawnFastrun.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -153,6 +153,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNuke.h"
 #include "CFeaturePlusDuck.h"
 #include "CFeatureMonsterWorldspawn.h"
+#include "CFeatureSpawnFastrun.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
