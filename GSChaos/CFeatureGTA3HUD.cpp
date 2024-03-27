@@ -84,7 +84,7 @@ GLuint g_iVCHealthIconID, g_iVCArmorIconID;
 
 void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch)
 {
-	//DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
+	DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
 
 	if (g_bHEVMadness)
 	{
@@ -92,6 +92,16 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		{
 			int i = gChaos.GetRandomValue(0, g_szHEVSentences.size() - 1);
 			strcpy_s(sfx->name, UTIL_VarArgs("!HEV_%s%i", g_szHEVSentences[i], gChaos.GetRandomValue(0, 5)));
+			DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		}
+		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
+		return;
+	}
+	else if (g_bScientistMadness)
+	{
+		if ((sfx->name[0] == '!') && !strstr(sfx->name, "!HEV") && ORIG_EDICT_NUM(entnum) != (*sv_player) && entchannel != CHAN_STATIC)
+		{
+			strcpy_s(sfx->name, UTIL_VarArgs("!SC_SCREAM%i", gChaos.GetRandomValue(0, 14)));
 			DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 		}
 		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);

@@ -264,6 +264,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureWorldHallucination>();
 	RegisterChaosFeature<CFeatureGiveOneHP>();
 	RegisterChaosFeature<CFeatureTakeOneHP>();
+	RegisterChaosFeature<CFeatureScientistMadness>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
