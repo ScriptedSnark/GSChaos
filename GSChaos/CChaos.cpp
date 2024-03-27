@@ -261,6 +261,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeaturePlusDuck>();
 	RegisterChaosFeature<CFeatureMonsterWorldspawn>();
 	RegisterChaosFeature<CFeatureSpawnFastrun>();
+	RegisterChaosFeature<CFeatureWorldHallucination>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

@@ -182,6 +182,7 @@
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
+    <ClCompile Include="CFeatureWorldHallucination.cpp" />
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
@@ -294,6 +295,7 @@
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
+    <ClInclude Include="CFeatureWorldHallucination.h" />
     <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="CLWrapper.h" />
