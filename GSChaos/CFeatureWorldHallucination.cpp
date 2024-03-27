@@ -9,7 +9,6 @@ void CFeatureWorldHallucination::ActivateFeature()
 	GetWorldspawnEdict()->v.rendermode = kRenderTransTexture;
 	GetWorldspawnEdict()->v.rendercolor = Vector(32, 32, 32);
 	GetWorldspawnEdict()->v.renderfx = kRenderFxPulseSlowWide;
-
 }
 
 void CFeatureWorldHallucination::DeactivateFeature()
@@ -49,6 +48,7 @@ void CFeatureWorldHallucination::OnFrame(double time)
 		worldspawn->v.origin = currentOrigin + deltaOrigin;
 	}
 }
+
 const char* CFeatureWorldHallucination::GetFeatureName()
 {
 	return "World Hallucination";

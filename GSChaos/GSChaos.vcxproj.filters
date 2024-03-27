@@ -248,6 +248,9 @@
     <ClCompile Include="CFeatureWorldHallucination.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureGiveOneHP.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -591,6 +594,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureWorldHallucination.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveOneHP.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
