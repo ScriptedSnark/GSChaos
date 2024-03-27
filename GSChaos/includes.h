@@ -156,6 +156,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSpawnFastrun.h"
 #include "CFeatureWorldHallucination.h"
 #include "CFeatureGiveOneHP.h"
+#include "CFeatureTakeOneHP.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
