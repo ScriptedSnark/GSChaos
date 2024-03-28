@@ -267,6 +267,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureScientistMadness>();
 	RegisterChaosFeature<CFeatureMLGAudio>();
 	RegisterChaosFeature<CFeatureNoHUD>();
+	RegisterChaosFeature<CFeatureQuakePro>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

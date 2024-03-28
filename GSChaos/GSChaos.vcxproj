@@ -173,6 +173,7 @@
     <ClCompile Include="CFeatureOhio.cpp" />
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
+    <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="CFeatureOhio.h" />
     <ClInclude Include="CFeatureOnePercentDeath.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
+    <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />
