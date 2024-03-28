@@ -134,6 +134,7 @@
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
+    <ClCompile Include="CFeatureExtremeGrieferShephard.cpp" />
     <ClCompile Include="CFeatureGiveArmor.cpp" />
     <ClCompile Include="CFeatureGiveHealth.cpp" />
     <ClCompile Include="CFeatureGiveOneHP.cpp" />
@@ -183,6 +184,8 @@
     <ClCompile Include="CFeatureSleepy.cpp" />
     <ClCompile Include="CFeatureSpawnFastrun.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
+    <ClCompile Include="CFeatureSqueakShephard.cpp" />
+    <ClCompile Include="CFeatureSqueakShephards.cpp" />
     <ClCompile Include="CFeatureStop.cpp" />
     <ClCompile Include="CFeatureTakeOneHP.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
@@ -254,6 +257,7 @@
     <ClInclude Include="CFeatureDeleteRandomEntity.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
+    <ClInclude Include="CFeatureExtremeGrieferShephard.h" />
     <ClInclude Include="CFeatureGiveArmor.h" />
     <ClInclude Include="CFeatureGiveHealth.h" />
     <ClInclude Include="CFeatureGiveOneHP.h" />
@@ -303,6 +307,8 @@
     <ClInclude Include="CFeatureSleepy.h" />
     <ClInclude Include="CFeatureSpawnFastrun.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
+    <ClInclude Include="CFeatureSqueakShephard.h" />
+    <ClInclude Include="CFeatureSqueakShephards.h" />
     <ClInclude Include="CFeatureStop.h" />
     <ClInclude Include="CFeatureTakeOneHP.h" />
     <ClInclude Include="CFeatureTotem.h" />

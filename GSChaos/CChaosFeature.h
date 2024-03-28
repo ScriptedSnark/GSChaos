@@ -29,6 +29,7 @@ public:
 	virtual const char* GetFeatureName();
 	virtual void Draw();
 	virtual void ResetStates();
+	virtual void Restore();
 	virtual bool IsActive();
 private:
 	bool m_bActivated;

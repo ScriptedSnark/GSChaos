@@ -148,7 +148,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGiveArmor.h"
 #include "CFeatureAmIDead.h"
 #include "CFeatureNodeGraphRebuilding.h"
-#include "CFeatureNice.h"
+#include "CFeatureExtremeGrieferShephard.h"
 #include "CFeatureInsaneStepsize.h"
 #include "CFeatureDeleteRandomEntity.h"
 #include "CFeatureNuke.h"
@@ -163,6 +163,9 @@ extern bool g_bEncrypted;
 #include "CFeatureNoHUD.h"
 #include "CFeatureQuakePro.h"
 #include "CFeatureNegativeAccelerate.h"
+#include "CFeatureNice.h"
+#include "CFeatureSqueakShephard.h"
+#include "CFeatureSqueakShephards.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

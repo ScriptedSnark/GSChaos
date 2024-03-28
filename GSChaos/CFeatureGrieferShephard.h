@@ -19,6 +19,8 @@
 
 #ifdef __cplusplus
 
+#define SHEPHARD_ROCKET_TIME 1.25
+
 class CFeatureGrieferShephard : public CChaosFeature
 {
 	void Init() override;
@@ -26,9 +28,9 @@ class CFeatureGrieferShephard : public CChaosFeature
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
 	void OnFrame(double time) override;
-	void Spawn();
-	void Think();
-	void LaunchRocket();
+	virtual void Spawn();
+	virtual void Think();
+	virtual void LaunchRocket();
 private:
 	double m_flRocketTime;
 	edict_t* m_pShephard;

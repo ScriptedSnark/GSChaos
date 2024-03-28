@@ -42,6 +42,11 @@ void CChaosFeature::ResetStates()
 	;
 }
 
+void CChaosFeature::Restore()
+{
+	;
+}
+
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;

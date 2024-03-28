@@ -89,7 +89,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Give +100 armor
 > Am I dead?
 > Node Graph
-> Nice
+> Spawn Extreme Griefer Shephard
 > Insane Stepsize
 > Delete random entity :xdd:
 > Nuke player
@@ -104,6 +104,8 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > No HUD
 > Quake Pro
 > Negative Accelerate
+> Spawn Squeak Shephard
+> Spawn Squeak Shephards
 > Combine Effects ( 3 in 1 )
 ```
 

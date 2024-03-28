@@ -254,7 +254,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGiveArmor>();
 	RegisterChaosFeature<CFeatureAmIDead>();
 	RegisterChaosFeature<CFeatureNodeGraphRebuilding>();
-	RegisterChaosFeature<CFeatureNice>();
+	RegisterChaosFeature<CFeatureExtremeGrieferShephard>();
 	RegisterChaosFeature<CFeatureInsaneStepsize>();
 	RegisterChaosFeature<CFeatureDeleteRandomEntity>();
 	RegisterChaosFeature<CFeatureNuke>();
@@ -269,6 +269,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNoHUD>();
 	RegisterChaosFeature<CFeatureQuakePro>();
 	RegisterChaosFeature<CFeatureNegativeAccelerate>();
+	RegisterChaosFeature<CFeatureSqueakShephard>();
+	RegisterChaosFeature<CFeatureSqueakShephards>();
+	RegisterChaosFeature<CFeatureNice>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
@@ -397,6 +400,8 @@ void CChaos::Reset()
 		m_pCurrentFeature->DeactivateFeature();
 
 	m_pCurrentFeature = nullptr;
+
+	g_bDespawnExShephard = true;
 
 	auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
 	m_startTime = currentTime;
@@ -556,6 +561,8 @@ void CChaos::ResetStates()
 	{
 		if (!i->IsActive())
 			i->ResetStates();
+
+		i->Restore();
 	}
 }
 

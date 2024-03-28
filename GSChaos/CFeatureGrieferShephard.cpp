@@ -1,7 +1,5 @@
 #include "includes.h"
 
-#define SHEPHARD_ROCKET_TIME 1.25
-
 void CFeatureGrieferShephard::Init()
 {
 	CChaosFeature::Init();
