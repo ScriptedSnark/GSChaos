@@ -143,6 +143,7 @@
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
+    <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
     <ClCompile Include="CFeatureNoclip.cpp" />
     <ClCompile Include="CFeatureNodeGraphRebuilding.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="CFeatureMakeItBunDem.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
+    <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />
     <ClInclude Include="CFeatureNoclip.h" />
     <ClInclude Include="CFeatureNodeGraphRebuilding.h" />

@@ -162,6 +162,7 @@ extern bool g_bEncrypted;
 #include "CFeatureMLGAudio.h"
 #include "CFeatureNoHUD.h"
 #include "CFeatureQuakePro.h"
+#include "CFeatureNegativeAccelerate.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

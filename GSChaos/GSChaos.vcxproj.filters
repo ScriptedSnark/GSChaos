@@ -266,6 +266,9 @@
     <ClCompile Include="CFeatureQuakePro.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNegativeAccelerate.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -627,6 +630,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureQuakePro.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNegativeAccelerate.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
