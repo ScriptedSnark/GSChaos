@@ -160,6 +160,7 @@ extern bool g_bEncrypted;
 #include "CFeatureTakeOneHP.h"
 #include "CFeatureScientistMadness.h"
 #include "CFeatureMLGAudio.h"
+#include "CFeatureNoHUD.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

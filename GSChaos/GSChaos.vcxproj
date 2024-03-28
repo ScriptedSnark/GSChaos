@@ -146,6 +146,7 @@
     <ClCompile Include="CFeatureNice.cpp" />
     <ClCompile Include="CFeatureNoclip.cpp" />
     <ClCompile Include="CFeatureNodeGraphRebuilding.cpp" />
+    <ClCompile Include="CFeatureNoHUD.cpp" />
     <ClCompile Include="CFeatureNothing.cpp" />
     <ClCompile Include="CFeatureFly.cpp" />
     <ClCompile Include="CFeatureForgotCSS.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="CFeatureNice.h" />
     <ClInclude Include="CFeatureNoclip.h" />
     <ClInclude Include="CFeatureNodeGraphRebuilding.h" />
+    <ClInclude Include="CFeatureNoHUD.h" />
     <ClInclude Include="CFeatureNothing.h" />
     <ClInclude Include="CFeatureFly.h" />
     <ClInclude Include="CFeatureForgotCSS.h" />
