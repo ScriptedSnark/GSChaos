@@ -32,6 +32,7 @@
 #include <array>
 #include <random>
 #include <fstream>
+#include <filesystem>
 
 //GL
 #include <gl/GL.h>
@@ -158,6 +159,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGiveOneHP.h"
 #include "CFeatureTakeOneHP.h"
 #include "CFeatureScientistMadness.h"
+#include "CFeatureMLGAudio.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

@@ -257,6 +257,9 @@
     <ClCompile Include="CFeatureScientistMadness.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMLGAudio.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -609,6 +612,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureScientistMadness.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMLGAudio.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

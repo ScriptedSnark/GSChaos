@@ -86,11 +86,30 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 {
 	DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
 
+	int i;
+
+	if (g_bMLGAudio)
+	{
+		i = gChaos.GetRandomValue(0, g_szMLGSounds.size() - 1);
+
+		char buffer[64];
+		if (!strstr(sfx->name, "weapons"))
+			sprintf_s(buffer, "../../chaos/mlg/%s", g_szMLGSounds[i].c_str());
+		else
+			sprintf_s(buffer, "../../chaos/mlg/intervention_420.wav");
+
+		sfx = S_LateLoadSound(buffer);
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
+		return;
+	}
+
 	if (g_bHEVMadness)
 	{
 		if ((sfx->name[0] == '!') && !strstr(sfx->name, "!HEV") && ORIG_EDICT_NUM(entnum) != (*sv_player) && entchannel != CHAN_STATIC)
 		{
-			int i = gChaos.GetRandomValue(0, g_szHEVSentences.size() - 1);
+			i = gChaos.GetRandomValue(0, g_szHEVSentences.size() - 1);
 			strcpy_s(sfx->name, UTIL_VarArgs("!HEV_%s%i", g_szHEVSentences[i], gChaos.GetRandomValue(0, 5)));
 			DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 		}
@@ -131,7 +150,24 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 
 void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch)
 {
-	//DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
+	DEBUG_PRINT("[hw.dll] S_StartStaticSound: %s\n", sfx->name);
+
+	if (g_bMLGAudio)
+	{
+		int i = gChaos.GetRandomValue(0, g_szMLGSounds.size() - 1);
+
+		char buffer[64];
+		if (!strstr(sfx->name, "weapons"))
+			sprintf_s(buffer, "../../chaos/mlg/%s", g_szMLGSounds[i].c_str());
+		else
+			sprintf_s(buffer, "../../chaos/mlg/intervention_420.wav");
+		
+		sfx = S_LateLoadSound(buffer);
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartStaticSound(entnum, CHAN_VOICE, sfx, origin, fvol, attenuation, flags, pitch);
+		return;
+	}
 
 	if (!g_bActivatedGTA3HUD && !g_bActivatedGTAVCHUD)
 	{

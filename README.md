@@ -100,6 +100,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Give +1 HP
 > Take 1 HP
 > Scientist Madness
+> MLG Audio
 > Combine Effects ( 3 in 1 )
 ```
 
