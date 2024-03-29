@@ -274,6 +274,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNegativeAccelerate>();
 	RegisterChaosFeature<CFeatureSqueakShephard>();
 	RegisterChaosFeature<CFeatureSqueakShephards>();
+	RegisterChaosFeature<CFeatureBoost>();
 	RegisterChaosFeature<CFeatureNice>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!

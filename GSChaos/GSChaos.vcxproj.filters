@@ -278,6 +278,9 @@
     <ClCompile Include="CFeatureSqueakShephards.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureBoost.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -651,6 +654,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureSqueakShephards.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureBoost.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

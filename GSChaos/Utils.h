@@ -42,6 +42,7 @@ typedef struct
 	unsigned short	frequency;		// FIXED 8.8 noise frequency (low frequency is a jerk,high frequency is a rumble)
 } ScreenShake;
 
+void _AngleVectors(const Vector angles, Vector forward, Vector right, Vector up);
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a);
 char* UTIL_VarArgs(char* format, ...);
 edict_t* UTIL_FindEntityInSphere(edict_t* pStartEntity, const Vector& vecCenter, float flRadius);

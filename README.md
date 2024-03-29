@@ -105,7 +105,9 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Quake Pro
 > Negative Accelerate
 > Spawn Squeak Shephard
-> Spawn Squeak Shephards
+> Squeak Shephard Ambush
+> Boost
+> Nice
 > Combine Effects ( 3 in 1 )
 ```
 

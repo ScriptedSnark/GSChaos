@@ -129,6 +129,7 @@
     <ClCompile Include="CFeature20FPS.cpp" />
     <ClCompile Include="CFeatureAmIDead.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
+    <ClCompile Include="CFeatureBoost.cpp" />
     <ClCompile Include="CFeatureCombineEffects.cpp" />
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
@@ -252,6 +253,7 @@
     <ClInclude Include="CFeature20FPS.h" />
     <ClInclude Include="CFeatureAmIDead.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
+    <ClInclude Include="CFeatureBoost.h" />
     <ClInclude Include="CFeatureCombineEffects.h" />
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureDeleteRandomEntity.h" />
