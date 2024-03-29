@@ -260,7 +260,10 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNuke>();
 	RegisterChaosFeature<CFeaturePlusDuck>();
 	RegisterChaosFeature<CFeatureMonsterWorldspawn>();
-	RegisterChaosFeature<CFeatureSpawnFastrun>();
+
+	if (!g_bEncrypted)
+		RegisterChaosFeature<CFeatureSpawnFastrun>();
+
 	RegisterChaosFeature<CFeatureWorldHallucination>();
 	RegisterChaosFeature<CFeatureGiveOneHP>();
 	RegisterChaosFeature<CFeatureTakeOneHP>();
@@ -430,9 +433,11 @@ void CChaos::PrintVersion()
 	pEngfuncs->Con_Printf("Effects: %i\n", (int)gChaosFeatures.size());
 	pEngfuncs->Con_Printf("List:\n");
 
+	int i = 0;
 	for (const char* effect : gChaosFeaturesNames)
 	{
-		pEngfuncs->Con_Printf("- %s\n", effect);
+		pEngfuncs->Con_Printf("- %s (ID: %i)\n", effect, i);
+		i++;
 	}
 
 	pEngfuncs->Con_Printf("============================\n");
