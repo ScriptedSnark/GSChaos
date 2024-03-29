@@ -13,7 +13,7 @@ void CFeatureExtremeGrieferShephard::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 	Spawn();
-	m_flDespawnTime = gChaos.GetGlobalTime() + 360.0;
+	m_flDespawnTime = gChaos.GetGlobalTime() + 180.0;
 	ma_engine_play_sound(&miniAudio, "chaos/opfor01.mp3", NULL);
 }
 
