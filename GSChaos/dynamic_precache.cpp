@@ -44,7 +44,8 @@ int HOOKED_PF_precache_model_I(char* s)
 		if (sv->models[0] == nullptr)
 			g_ErrorModel = ORIG_PF_precache_model_I("models/player.mdl");
 
-		ORIG_PF_precache_model_I("../chaos/fastrun.bsp");
+		if (!g_bEncrypted && !g_bPreSteamPipe)
+			ORIG_PF_precache_model_I("../chaos/fastrun.bsp");
 	}
 
 	modelname = s;

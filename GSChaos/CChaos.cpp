@@ -261,7 +261,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeaturePlusDuck>();
 	RegisterChaosFeature<CFeatureMonsterWorldspawn>();
 
-	if (!g_bEncrypted)
+	if (!g_bEncrypted && !g_bPreSteamPipe)
 		RegisterChaosFeature<CFeatureSpawnFastrun>();
 
 	RegisterChaosFeature<CFeatureWorldHallucination>();

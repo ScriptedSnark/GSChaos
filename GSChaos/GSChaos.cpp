@@ -591,20 +591,3 @@ extern "C" __declspec(dllexport) void ASIShutdown()
 	ma_engine_uninit(&miniAudio);
 	MH_Uninitialize();
 }
-
-/*
-================
-DllMain
-================
-*/
-BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
-{
-	if (fdwReason == DLL_PROCESS_ATTACH)
-	{
-		DisableThreadLibraryCalls(hinstDLL); // said to increase performance?
-		//CreateThread(NULL, NULL, reinterpret_cast<LPTHREAD_START_ROUTINE>(ASIMain), NULL, NULL, NULL); // start another thread running the hooking stuff
-		return TRUE;
-	}
-
-	return FALSE;
-}

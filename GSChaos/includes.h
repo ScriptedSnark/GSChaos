@@ -172,6 +172,7 @@ extern bool g_bEncrypted;
 //========================
 
 #include "CChaos.h"
+#include "CrashHandler.h"
 
 extern HWND g_hWndOfGame;
 extern Utils utils;

@@ -281,6 +281,10 @@
     <ClCompile Include="CFeatureBoost.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CrashHandler.cpp" />
+    <ClCompile Include="..\external\StackWalker.cpp">
+      <Filter>StackWalker</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -659,6 +663,10 @@
     <ClInclude Include="CFeatureBoost.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="CrashHandler.h" />
+    <ClInclude Include="..\external\StackWalker.h">
+      <Filter>StackWalker</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">
@@ -681,6 +689,9 @@
     </Filter>
     <Filter Include="Twitch">
       <UniqueIdentifier>{22c98969-d9a4-4bdd-b86c-c859bbe6b27b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StackWalker">
+      <UniqueIdentifier>{e28e131f-1ea9-461d-ad2b-7d3ab6f3c434}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

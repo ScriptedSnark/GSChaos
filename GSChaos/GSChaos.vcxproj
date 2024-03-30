@@ -123,6 +123,7 @@
     <ClCompile Include="..\external\MinHook\trampoline.c" />
     <ClCompile Include="..\external\miniaudio\miniaudio.c" />
     <ClCompile Include="..\external\SPTLib\DetoursUtils.cpp" />
+    <ClCompile Include="..\external\StackWalker.cpp" />
     <ClCompile Include="..\external\twitch\twitch.cpp" />
     <ClCompile Include="CChaos.cpp" />
     <ClCompile Include="CChaosFeature.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
+    <ClCompile Include="CrashHandler.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
     <ClCompile Include="GSChaos.cpp" />
     <ClCompile Include="imgui_manager.cpp" />
@@ -236,6 +238,7 @@
     <ClInclude Include="..\external\SPTLib\patterns_macros.hpp" />
     <ClInclude Include="..\external\SPTLib\sptlib-stdafx.hpp" />
     <ClInclude Include="..\external\SPTLib\Utils.hpp" />
+    <ClInclude Include="..\external\StackWalker.h" />
     <ClInclude Include="..\external\twitch\libircclient.h" />
     <ClInclude Include="..\external\twitch\libirc_errors.h" />
     <ClInclude Include="..\external\twitch\libirc_events.h" />
@@ -321,6 +324,7 @@
     <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="CLWrapper.h" />
+    <ClInclude Include="CrashHandler.h" />
     <ClInclude Include="dynamic_precache.h" />
     <ClInclude Include="engine\enginecallback.h" />
     <ClInclude Include="engine\model.h" />
