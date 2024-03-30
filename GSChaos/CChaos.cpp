@@ -586,7 +586,7 @@ void CChaos::OnFrame(double time)
 
 	bPaused = CLWrapper::GetPausedState();
 
-	if (bPaused || !m_bInGame)
+	if (bPaused || !m_bInGame || sv->state != ss_active)
 	{
 		if (!m_bPaused)
 		{

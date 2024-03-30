@@ -90,7 +90,7 @@ void CFeatureExtremeGrieferShephard::OnFrame(double time)
 
 void CFeatureExtremeGrieferShephard::Spawn()
 {
-	if (m_pShephard)
+	if (m_pShephard && !stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
 	{
 		g_engfuncs->pfnRemoveEntity(m_pShephard);
 		if (m_pShephard->pvPrivateData != NULL)
@@ -173,23 +173,9 @@ void CFeatureExtremeGrieferShephard::Restore()
 	if (!m_bSpawned)
 		return;
 
-	edict_t* e;
-	for (int i = 1; i < sv->num_edicts; i++)
-	{
-		e = ORIG_EDICT_NUM(i);
-		if (!e)
-			continue;
+	if (!m_pShephard || stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+		Spawn();
 
-		if (!stricmp(STRING(e->v.classname), "chaos_exgriefer"))
-		{
-			g_engfuncs->pfnRemoveEntity(e);
-			if (e->pvPrivateData != NULL)
-			{
-				FREE_PRIVATE(e);
-			}
-		}
-	}
-
-	Spawn();
-	m_pShephard->v.origin = m_shephardLatestOrigin;
+	if (!stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+		m_pShephard->v.origin = m_shephardLatestOrigin;
 }

@@ -38,7 +38,7 @@ void CFeatureGrieferShephard::OnFrame(double time)
 
 void CFeatureGrieferShephard::Spawn()
 {
-	if (m_pShephard)
+	if (m_pShephard && strstr(STRING(m_pShephard->v.classname), "generic"))
 	{
 		g_engfuncs->pfnRemoveEntity(m_pShephard);
 		if (m_pShephard->pvPrivateData != NULL)
