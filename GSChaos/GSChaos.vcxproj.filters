@@ -285,6 +285,9 @@
     <ClCompile Include="..\external\StackWalker.cpp">
       <Filter>StackWalker</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNotarget.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -666,6 +669,9 @@
     <ClInclude Include="CrashHandler.h" />
     <ClInclude Include="..\external\StackWalker.h">
       <Filter>StackWalker</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNotarget.h">
+      <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
