@@ -703,12 +703,13 @@ int CChaos::GetRandomEffect(int min, int max)
 {
 	int result = m_lpRandomDevice->Rand(min, max);
 
-	// intended for 30+ effects (not 2)
-	while (result == m_aiPreviousRandomValue[0] || result == m_aiPreviousRandomValue[1])
+	// intended for 30+ effects (not 3)
+	while (result == m_aiPreviousRandomValue[0] || result == m_aiPreviousRandomValue[1] || result == m_aiPreviousRandomValue[2])
 	{
 		result = m_lpRandomDevice->Rand(min, max);
 	}
 
+	m_aiPreviousRandomValue[2] = m_aiPreviousRandomValue[1];
 	m_aiPreviousRandomValue[1] = m_aiPreviousRandomValue[0];
 	m_aiPreviousRandomValue[0] = result;
 	return result;

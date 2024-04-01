@@ -152,7 +152,7 @@ void GetExportedMonstersAndWeapons(HMODULE module)
 		else if (strstr(functionName, "monster_"))
 		{
 			DEBUG_PRINT("MONSTER: %s\n", functionName);
-			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic") || strstr(functionName, "mortar"))
+			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic") || strstr(functionName, "mortar") || strstr(functionName, "osprey"))
 				continue;
 
 			g_szExportedEntityList.push_back(functionName);

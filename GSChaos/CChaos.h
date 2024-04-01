@@ -90,7 +90,7 @@ private:
 	int m_iFrameCount;
 	int m_iBarColor[3];
 	int m_iHackCounter;
-	int m_aiPreviousRandomValue[2];
+	int m_aiPreviousRandomValue[3];
 	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
 	
