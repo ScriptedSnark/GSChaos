@@ -560,7 +560,7 @@ void CChaos::ResetStates()
 	if (!(*sv_player))
 		return;
 
-	if (sv->state == ss_dead)
+	if (sv->state != ss_active)
 		return;
 
 	for (CChaosFeature* i : gChaosFeatures)
@@ -648,12 +648,12 @@ void CChaos::OnFrame(double time)
 		if (!m_bTwitchVoting)
 		{
 			// Pick random effect
-#ifndef GS_DEBUG
+//#ifndef GS_DEBUG
 			int i = GetRandomEffect(0, gChaosFeatures.size() - 1);
 			CChaosFeature* randomFeature = gChaosFeatures[i];
-#else
-			CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
-#endif
+//#else
+//			CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
+//#endif
 
 			// After
 			m_pCurrentFeature = randomFeature;
