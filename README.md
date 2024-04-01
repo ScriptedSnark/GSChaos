@@ -21,6 +21,8 @@ Additional info:
 - `chaos_version` - prints version and Chaos Mod details
 - `chaos_dmca_safe` - if enabled, it doesn't allow to play some sounds which are ©
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
+- `chaos_show_voting` - draw voting progress in Chaos UI so you can see it without checking OBS
+- `chaos_timer` - sets time until the next effect
 
 ## Twitch voting integration (WIP)
 GSChaos supports Twitch chat voting. If you want to use it, then do some steps:

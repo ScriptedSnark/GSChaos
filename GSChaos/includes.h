@@ -181,7 +181,7 @@ extern CChaos gChaos;
 
 extern bool g_bActivatedGTA3HUD;
 
-#define GS_DEBUG
+//#define GS_DEBUG
 
 #ifdef GS_DEBUG
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)
@@ -191,22 +191,22 @@ extern bool g_bActivatedGTA3HUD;
 
 #define Find(lib, func_name) \
     if ((ORIG_##func_name = reinterpret_cast<_##func_name>(GetProcAddress(reinterpret_cast<HMODULE>(g_lp##lib), #func_name)))) \
-        DEBUG_PRINT("[client dll] Found " #func_name " at %p.\n", ORIG_##func_name); \
+        printf("[client dll] Found " #func_name " at %p.\n", ORIG_##func_name); \
     else \
-        DEBUG_PRINT("[client dll] Could not find " #func_name ".\n");
+        printf("[client dll] Could not find " #func_name ".\n");
 
 
 #define EngineCreateHook(func_name) \
 		if (g_bEncrypted) { MemUtils::MarkAsExecutable(ORIG_##func_name); }\
         status = MH_CreateHook(ORIG_##func_name, HOOKED_##func_name, reinterpret_cast<void**>(&ORIG_##func_name)); \
         if (status != MH_OK) { \
-            DEBUG_PRINT("[hw dll] Couldn't create hook for " #func_name ".\n"); \
+            printf("[hw dll] Couldn't create hook for " #func_name ".\n"); \
         }
 
 #define CreateHook(lib, func_name) \
         status = MH_CreateHook(ORIG_##func_name, HOOKED_##func_name, reinterpret_cast<void**>(&ORIG_##func_name)); \
         if (status != MH_OK) { \
-            DEBUG_PRINT("[" #lib "] Couldn't create hook for " #func_name ".\n"); \
+            printf("[" #lib "] Couldn't create hook for " #func_name ".\n"); \
         }
 
 #define SPTFind(future_name)                                                                                                                  \
@@ -215,7 +215,7 @@ extern bool g_bActivatedGTA3HUD;
 		auto pattern = f##future_name.get();                                                                                               \
 		if (ORIG_##future_name)                                                                                                            \
 		{                                                                                                                                  \
-			DEBUG_PRINT("[hw dll] Found " #future_name " at %p (using the %s pattern).\n", ORIG_##future_name, pattern->name()); \
+			printf("[hw dll] Found " #future_name " at %p (using the %s pattern).\n", ORIG_##future_name, pattern->name()); \
 		}                                                                                                                                  \
 	}
 

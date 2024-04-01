@@ -201,7 +201,7 @@ void CFeatureGTA3HUD::Init()
 
 		sprintf(szPath, GTAVC_HUD_PATH "%s.png", g_szWeaponList[i]);
 
-		if (!LoadTextureFromFile(szPath, &g_Weapon[i].vcTextureID)); // for some reason it fails even if everything is ok (mission failed successfully)
+		if (!LoadTextureFromFile(szPath, &g_Weapon[i].vcTextureID)) // for some reason it fails even if everything is ok (mission failed successfully)
 			DEBUG_PRINT("[GTA VC HUD] Failed to load %s!\n", szPath);
 	}
 

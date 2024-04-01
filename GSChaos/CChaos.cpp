@@ -7,6 +7,8 @@ std::thread twitch_thread;
 
 cvar_t* chaos_effectname_ypos;
 cvar_t* chaos_dmca_safe;
+cvar_t* chaos_show_voting;
+cvar_t* chaos_timer;
 
 void ActivateChaosFeatureW()
 {
@@ -60,6 +62,8 @@ void CChaos::Init()
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
 	chaos_dmca_safe = pEngfuncs->pfnRegisterVariable("chaos_dmca_safe", "1", 0);
+	chaos_show_voting = pEngfuncs->pfnRegisterVariable("chaos_show_voting", "0", 0);
+	chaos_timer = pEngfuncs->pfnRegisterVariable("chaos_timer", "30.0", 0);
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -411,7 +415,11 @@ void CChaos::Reset()
 	m_startTime = currentTime;
 
 	m_pauseStartTime = std::chrono::high_resolution_clock::now();
-	m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
+
+	if (chaos_timer && chaos_timer->value > 15.0f)
+		m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
+	else
+		m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
 
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
@@ -509,6 +517,9 @@ void CChaos::DrawVoting()
 	if (!IsVoteStarted())
 		return;
 
+	if (chaos_show_voting->value == 0)
+		return;
+
 	ImGui::SetNextWindowPos(ImVec2(2, m_chaosBarPos.y), ImGuiCond_Always);
 	ImGui::SetNextWindowSize(ImVec2(640.f, 320.f), ImGuiCond_Always);
 
@@ -532,7 +543,7 @@ void CChaos::DrawVoting()
 			else
 				percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
 
-			ImGui::Text("%s | %i (%.2f%%)", gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName(), m_aiVoteValues[i], percent);
+			ImGui::Text("%s | %i (%.02f%%)", gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName(), m_aiVoteValues[i], percent);
 		}
 
 		ImGui::Text("Total Votes: %i", totalVotes);
@@ -546,7 +557,7 @@ void CChaos::Draw()
 {
 	DrawBar();
 	DrawEffectList();
-	//DrawVoting();
+	DrawVoting();
 
 	// TODO: do not draw if cl.paused is true
 	for (CChaosFeature* i : gChaosFeatures)
@@ -632,7 +643,11 @@ void CChaos::OnFrame(double time)
 		// Reset timer
 		auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
 		m_startTime = currentTime;
-		m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
+
+		if (chaos_timer && chaos_timer->value > 15.0f)
+			m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
+		else
+			m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
 		
 		m_iBarColor[0] = GetRandomValue(0, 255);
 		m_iBarColor[1] = GetRandomValue(0, 255);
