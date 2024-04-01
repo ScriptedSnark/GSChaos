@@ -32,11 +32,12 @@ class CFeatureLobotomy : public CChaosFeature
 private:
 	bool m_bActivated;
 	bool m_bPlayedSound;
+	bool m_bInitializedSecondPos;
 	double m_flLobotomyTPTime;
-	Vector m_lobotomyOrigin;
-	Vector m_lobotomyAngles;
-	Vector m_lobotomyViewAngles;
-	Vector m_lobotomyVelocity;
+	Vector m_lobotomyOrigin[2];
+	Vector m_lobotomyAngles[2];
+	Vector m_lobotomyViewAngles[2];
+	Vector m_lobotomyVelocity[2];
 };
 
 #else //!__cplusplus
