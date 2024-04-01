@@ -168,6 +168,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSqueakShephards.h"
 #include "CFeatureBoost.h"
 #include "CFeatureNotarget.h"
+#include "CFeatureHalfGravity.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

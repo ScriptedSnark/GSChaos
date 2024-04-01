@@ -288,6 +288,9 @@
     <ClCompile Include="CFeatureNotarget.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureHalfGravity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -671,6 +674,9 @@
       <Filter>StackWalker</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureNotarget.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHalfGravity.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

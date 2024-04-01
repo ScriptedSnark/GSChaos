@@ -276,10 +276,12 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSqueakShephards>();
 	RegisterChaosFeature<CFeatureBoost>();
 	RegisterChaosFeature<CFeatureNotarget>();
-	RegisterChaosFeature<CFeatureNice>();
 
 	if (!g_bEncrypted && !g_bPreSteamPipe)
 		RegisterChaosFeature<CFeatureSpawnFastrun>();
+
+	RegisterChaosFeature<CFeatureNice>();
+	RegisterChaosFeature<CFeatureHalfGravity>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 
