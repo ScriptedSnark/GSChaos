@@ -4,7 +4,7 @@ int g_flameSpr;
 
 void CFeatureMakeItBunDem::Burn()
 {
-	int damage = gChaos.GetRandomValue(1, 5);
+	int damage = gChaos.GetRandomValue(1, 3);
 	UTIL_TakeDamage((*sv_player)->v, (float)damage, DMG_BURN);
 }
 
