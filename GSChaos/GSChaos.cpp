@@ -123,7 +123,6 @@ void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
 	{
 		pparams->viewangles[2] += 0.1f;
 		pparams->cl_viewangles[2] = pparams->viewangles[2];
-		printf("viewangles[2]: %.01f\n", pparams->cl_viewangles[2]);
 	}
 
 	g_pRefParams = pparams;
