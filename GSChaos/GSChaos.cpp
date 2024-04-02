@@ -8,8 +8,11 @@
 
 typedef void (*_HUD_Frame)(double time);
 typedef int (*_HUD_Redraw)(float time, int intermission);
+typedef void (*_V_CalcRefdef)(struct ref_params_s* pparams);
+
 _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
+_V_CalcRefdef ORIG_V_CalcRefdef = NULL;
 
 typedef void (*_LoadThisDll)(char* szDllFilename);
 typedef void (*_LoadEntityDLLs)(char* szBaseDir);
@@ -34,6 +37,7 @@ DLL_FUNCTIONS* gEntityInterface;
 server_t* sv;
 client_state_t* cl;
 client_state_HL25_t* cl_hl25;
+ref_params_t* g_pRefParams;
 
 CChaos gChaos;
 CImGuiManager gImGui;
@@ -111,6 +115,19 @@ void HOOKED_HUD_Frame(double time)
 int HOOKED_HUD_Redraw(float time, int intermission)
 {
 	return g_bDrawHUD ? 1 : ORIG_HUD_Redraw(time, intermission);
+}
+
+void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
+{
+	if (g_bActivatedRollin)
+	{
+		pparams->viewangles[2] += 0.1f;
+		pparams->cl_viewangles[2] = pparams->viewangles[2];
+		printf("viewangles[2]: %.01f\n", pparams->cl_viewangles[2]);
+	}
+
+	g_pRefParams = pparams;
+	ORIG_V_CalcRefdef(pparams);
 }
 
 // ENGINE
@@ -236,8 +253,10 @@ void HookClient()
 
 	Find(Client, HUD_Frame);
 	Find(Client, HUD_Redraw);
+	Find(Client, V_CalcRefdef);
 	CreateHook(Client, HUD_Frame);
 	CreateHook(Client, HUD_Redraw);
+	CreateHook(Client, V_CalcRefdef);
 }
 
 void HookEngine()

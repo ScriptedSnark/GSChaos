@@ -82,6 +82,7 @@ extern DLL_FUNCTIONS* gEntityInterface;
 extern server_t* sv;
 extern client_state_t* cl;
 extern client_state_HL25_t* cl_hl25;
+extern ref_params_t* g_pRefParams;
 
 extern bool g_bEncrypted;
 
@@ -169,6 +170,7 @@ extern bool g_bEncrypted;
 #include "CFeatureBoost.h"
 #include "CFeatureNotarget.h"
 #include "CFeatureHalfGravity.h"
+#include "CFeatureRollin.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

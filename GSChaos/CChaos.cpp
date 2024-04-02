@@ -282,6 +282,7 @@ void CChaos::FeatureInit()
 
 	RegisterChaosFeature<CFeatureNice>();
 	RegisterChaosFeature<CFeatureHalfGravity>();
+	RegisterChaosFeature<CFeatureRollin>();
 
 	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
 

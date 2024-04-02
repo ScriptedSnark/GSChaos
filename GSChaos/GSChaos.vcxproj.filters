@@ -291,6 +291,9 @@
     <ClCompile Include="CFeatureHalfGravity.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureRollin.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -677,6 +680,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureHalfGravity.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureRollin.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

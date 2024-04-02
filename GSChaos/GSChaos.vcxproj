@@ -183,6 +183,7 @@
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
+    <ClCompile Include="CFeatureRollin.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
@@ -311,6 +312,7 @@
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />
+    <ClInclude Include="CFeatureRollin.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureSleepy.h" />
