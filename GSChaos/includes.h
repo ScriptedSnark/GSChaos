@@ -35,7 +35,9 @@
 #include <filesystem>
 
 //GL
+#include <gl/glew.h>
 #include <gl/GL.h>
+#include "Shader.h"
 
 //MINIAUDIO
 #include "miniaudio.h"
@@ -171,6 +173,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNotarget.h"
 #include "CFeatureHalfGravity.h"
 #include "CFeatureRollin.h"
+#include "CFeatureHigh.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

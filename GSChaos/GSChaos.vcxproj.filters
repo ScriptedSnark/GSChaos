@@ -294,6 +294,10 @@
     <ClCompile Include="CFeatureRollin.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="CFeatureHigh.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -683,6 +687,10 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureRollin.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="CFeatureHigh.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -17,10 +17,12 @@ _V_CalcRefdef ORIG_V_CalcRefdef = NULL;
 typedef void (*_LoadThisDll)(char* szDllFilename);
 typedef void (*_LoadEntityDLLs)(char* szBaseDir);
 typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
+typedef void (*_R_DrawWorld)();
 
 _LoadThisDll ORIG_LoadThisDll = NULL;
 _LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
 _ServerActivate ORIG_ServerActivate = NULL;
+_R_DrawWorld ORIG_R_DrawWorld = NULL;
 
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
@@ -57,6 +59,8 @@ bool g_bPreSteamPipe = false;
 
 bool g_bEncrypted = false;
 
+bool g_bActivatedShader = false;
+
 extern texture_t** r_notexture_mip;
 extern volatile dma_t* shm;
 
@@ -73,11 +77,21 @@ _wglSwapBuffers GetSwapBuffersAddr()
 	return reinterpret_cast<_wglSwapBuffers>(GetProcAddress(LoadLibrary(TEXT("OpenGL32.dll")), "wglSwapBuffers"));
 }
 
+GLuint program;
+
 int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 {
 	static bool initialized = false;
+
 	if (!initialized)
 	{
+		GLenum result = glewInit();
+		if (result != GLEW_OK)
+		{
+			MessageBoxA(NULL, "Failed to initialize GLEW. Exiting...\n", "GSChaos", MB_OK | MB_ICONERROR);
+			exit(1);
+		}
+
 		HookEngine();
 		HookClient();
 		MH_EnableHook(MH_ALL_HOOKS);
@@ -85,10 +99,14 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 		g_hWndOfGame = WindowFromDC(a1);
 
 		ORIG_WndProc = reinterpret_cast<WNDPROC>(SetWindowLongPtrA(g_hWndOfGame, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HOOKED_WndProc)));
-		
+
 		gImGui.Init();
 		gImGui.InitBackends(g_hWndOfGame);
 		gChaos.LoadFonts();
+
+		GLuint fragment = OpenGLShader::CreateFragmentShader("chaos/frag.glsl");
+		//GLuint vertex = OpenGLShader::CreateVertexShader("chaos/vertex.glsl");
+		program = OpenGLShader::CreateProgram(NULL, fragment);
 
 		initialized = true;
 	}
@@ -239,6 +257,22 @@ void HOOKED_LoadEntityDLLs(char* szBaseDir)
 	}
 
 	MH_EnableHook(MH_ALL_HOOKS);
+}
+
+void HOOKED_R_DrawWorld()
+{
+	if (!g_bActivatedShader)
+	{
+		ORIG_R_DrawWorld();
+		return;
+	}
+
+	glUseProgram(program);
+	glUniform2f(glGetUniformLocation(program, "iResolution"), ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y);
+	glUniform1f(glGetUniformLocation(program, "iTime"), (float)gChaos.GetGlobalTime());
+	ORIG_R_DrawWorld();
+
+	glUseProgram(0);
 }
 
 void HookClient()
@@ -551,8 +585,10 @@ void HookEngine()
 
 	SPTFind(LoadThisDll);
 	SPTFind(LoadEntityDLLs);
+	SPTFind(R_DrawWorld);
 	EngineCreateHook(LoadThisDll);
 	EngineCreateHook(LoadEntityDLLs);
+	EngineCreateHook(R_DrawWorld);
 
 	MH_EnableHook(MH_ALL_HOOKS);
 }

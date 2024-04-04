@@ -113,6 +113,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Notarget
 > Half-Gravity
 > Rollin'
+> High
 > Combine Effects ( 3 in 1 )
 ```
 

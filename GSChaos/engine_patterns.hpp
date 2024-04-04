@@ -74,6 +74,28 @@ namespace patterns
 			"HL-8684",
 			"55 8B EC 8B 45 ?? 8B 0D ?? ?? ?? ?? 56");
 
+		PATTERNS(R_DrawSkyBox,
+			"HL-9920",
+			"55 8B EC 81 EC 10 03 00 00 A1 ?? ?? ?? ?? 33 C5 89 45 ?? 53 8B 5D ??",
+			"HL-SteamPipe",
+			"55 8B EC 83 EC 1C A1 ?? ?? ?? ?? 53 56",
+			"HL-4554",
+			"83 EC 1C A1 ?? ?? ?? ?? 53 55",
+			"HL-WON-1712",
+			"83 EC 0C 53 55 56 57 E8 ?? ?? ?? ?? 33 FF",
+			"CoF-5936",
+			"55 8B EC 83 EC 24 C7 45 ?? 00 00 00 00 C7 45 ?? 00 00 80 3F"
+		);
+
+		PATTERNS(R_DrawWorld,
+			"HL-9920",
+			"55 8B EC 81 EC C0 0B 00 00",
+			"HL-8684",
+			"?? ?? ?? ?? EC B8 0B 00 00",
+			"HL-4554",
+			"?? ?? ?? ?? ?? ?? 68 B8 0B 00 00 8D 44 24 04 6A 00"
+		);
+
 		PATTERNS(R_InitTextures,
 			"HL-9920",
 			"55 8B EC 83 EC 10 53 56 57 68 ?? ?? ?? ?? 68 9C 01 00 00",
