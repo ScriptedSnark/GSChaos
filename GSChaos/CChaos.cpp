@@ -24,6 +24,9 @@ void ActivateChaosFeatureW()
 	if (atoi(pEngfuncs->Cmd_Argv(1)) < 0 || (atoi(pEngfuncs->Cmd_Argv(1)) > int(gChaosFeatures.size() - 1)))
 		return;
 
+	if (sv->state != ss_active)
+		return;
+
 	gChaos.ActivateChaosFeature(atoi(pEngfuncs->Cmd_Argv(1)));
 }
 
