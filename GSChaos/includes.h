@@ -176,6 +176,7 @@ extern bool g_bEncrypted;
 #include "CFeatureHigh.h"
 #include "CFeatureShake.h"
 #include "CFeatureSlap.h"
+#include "CFeaturePlayAG.h"
 
 #include "CFeatureCombineEffects.h"
 //========================
