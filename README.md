@@ -12,7 +12,7 @@ Supports builds `9920` (HL25), `8684` (steam_legacy), `4554` (GoldSrc Package, 2
 **Download via Github: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
 
 Additional info:
-- Chaos UI rendering is not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)
+- Chaos UI rendering is not visible in OBS scene (if chaos_draw_as_overlay is enabled) if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)
 - Save your game more often because of potential softlocks/crashes
 
 ## CVars and commands
@@ -23,6 +23,7 @@ Additional info:
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 - `chaos_show_voting` - draw voting progress in Chaos UI so you can see it without checking OBS
 - `chaos_timer` - sets time until the next effect
+- `chaos_draw_as_overlay` - if enabled, it draws Chaos UI as overlay and requires enabling 3rd-party overlays in OBS
 
 ## Twitch voting integration (WIP)
 GSChaos supports Twitch chat voting. If you want to use it, then do some steps:

@@ -34,6 +34,7 @@ struct TwitchVoter
 };
 
 extern cvar_t* chaos_dmca_safe;
+extern cvar_t* chaos_draw_as_overlay;
 
 class CChaos
 {

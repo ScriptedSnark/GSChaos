@@ -9,6 +9,7 @@ cvar_t* chaos_effectname_ypos;
 cvar_t* chaos_dmca_safe;
 cvar_t* chaos_show_voting;
 cvar_t* chaos_timer;
+cvar_t* chaos_draw_as_overlay;
 
 void ActivateChaosFeatureW()
 {
@@ -67,6 +68,7 @@ void CChaos::Init()
 	chaos_dmca_safe = pEngfuncs->pfnRegisterVariable("chaos_dmca_safe", "1", 0);
 	chaos_show_voting = pEngfuncs->pfnRegisterVariable("chaos_show_voting", "0", 0);
 	chaos_timer = pEngfuncs->pfnRegisterVariable("chaos_timer", "30.0", 0);
+	chaos_draw_as_overlay = pEngfuncs->pfnRegisterVariable("chaos_draw_as_overlay", "0", 0);
 
 	for (int i = 0; i < 3; i++)
 	{

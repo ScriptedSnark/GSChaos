@@ -111,7 +111,13 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 		initialized = true;
 	}
 
-	gImGui.Draw();
+	if (chaos_draw_as_overlay)
+	{
+		if (chaos_draw_as_overlay->value > 0.0f)
+			gImGui.Draw();
+	}
+	else
+		gImGui.Draw();
 
 	return ORIG_wglSwapBuffers(a1);
 }
@@ -132,6 +138,9 @@ void HOOKED_HUD_Frame(double time)
 
 int HOOKED_HUD_Redraw(float time, int intermission)
 {
+	if (chaos_draw_as_overlay && chaos_draw_as_overlay->value <= 0.0f)
+		gImGui.Draw();
+
 	return g_bDrawHUD ? 1 : ORIG_HUD_Redraw(time, intermission);
 }
 

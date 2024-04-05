@@ -23,7 +23,7 @@ INSTALLATION (FOR WON 2005)
 
 ADDITIONAL INFO
 ==============
-- !!!Chaos UI rendering is not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)!!!
+- !!!Chaos UI rendering is not visible in OBS scene (if chaos_draw_as_overlay is enabled) if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)!!!
 - Save your game more often because of potential softlocks/crashes
 
 CVARS AND COMMANDS
@@ -35,6 +35,7 @@ CVARS AND COMMANDS
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 - `chaos_show_voting` - draw voting progress in Chaos UI so you can see it without checking OBS
 - `chaos_timer` - sets time until the next effect
+- `chaos_draw_as_overlay` - if enabled, it draws Chaos UI as overlay and requires enabling 3rd-party overlays in OBS
 
 TWITCH CHAT VOTING INTEGRATION
 ==============
