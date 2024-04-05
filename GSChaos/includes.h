@@ -174,6 +174,7 @@ extern bool g_bEncrypted;
 #include "CFeatureHalfGravity.h"
 #include "CFeatureRollin.h"
 #include "CFeatureHigh.h"
+#include "CFeatureShake.h"
 
 #include "CFeatureCombineEffects.h"
 //========================

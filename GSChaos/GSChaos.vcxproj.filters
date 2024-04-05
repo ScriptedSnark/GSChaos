@@ -298,6 +298,9 @@
     <ClCompile Include="CFeatureHigh.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureShake.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -691,6 +694,9 @@
     </ClInclude>
     <ClInclude Include="Shader.h" />
     <ClInclude Include="CFeatureHigh.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureShake.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
