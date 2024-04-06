@@ -36,6 +36,10 @@ void CFeatureQuakePro::OnFrame(double time)
 
 	// couldn't check if we're zooming so yeah
 	(*sv_player)->v.fov = 150.f; // maybe it's supposed to be 110 but buh
+
+	if (!default_fov)
+		return;
+
 	default_fov->value = 150.f;
 }
 
