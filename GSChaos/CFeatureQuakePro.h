@@ -26,6 +26,9 @@ class CFeatureQuakePro : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+private:
+	cvar_t* default_fov;
+	float m_flOldFOVValue;
 };
 
 #else //!__cplusplus

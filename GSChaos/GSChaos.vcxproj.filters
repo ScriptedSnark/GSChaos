@@ -304,6 +304,9 @@
     <ClCompile Include="CFeatureSlap.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeaturePlayAG.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -703,6 +706,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureSlap.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeaturePlayAG.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
