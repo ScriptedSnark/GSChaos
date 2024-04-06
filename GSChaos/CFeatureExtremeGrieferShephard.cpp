@@ -140,6 +140,9 @@ void CFeatureExtremeGrieferShephard::Think()
 	Vector angle = (*sv_player)->v.v_angle;
 	angle.y -= 180;
 	m_pShephard->v.angles = angle;
+	m_pShephard->v.rendercolor = Vector(255, 0, 0);
+	m_pShephard->v.renderamt = 255;
+	m_pShephard->v.renderfx = kRenderFxGlowShell;
 
 	//DEBUG_PRINT("GetChaosTime(): %.01f | m_flRocketTime: %.01f\n", gChaos.GetGlobalTime(), m_flRocketTime);
 	if (gChaos.GetGlobalTime() > m_flRocketTime)
