@@ -32,6 +32,7 @@ class CFeatureBikiniBottom : public CChaosFeature
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
+	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
 };
 

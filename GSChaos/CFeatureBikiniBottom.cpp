@@ -50,6 +50,15 @@ void CFeatureBikiniBottom::DeactivateFeature()
 		g_svpmove->PM_PointContents = ORIG_PM_PointContents;
 }
 
+void CFeatureBikiniBottom::OnFrame(double time)
+{
+	if (!IsActive())
+		return;
+
+	// https://github.com/ValveSoftware/halflife/blob/master/dlls/player.cpp#L1206
+	(*sv_player)->v.pain_finished = gpGlobals->time + 1; // disable drowning damage
+}
+
 const char* CFeatureBikiniBottom::GetFeatureName()
 {
 	return "Bikini Bottom";
