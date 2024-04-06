@@ -293,7 +293,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSlap>();
 	RegisterChaosFeature<CFeaturePlayAG>();
 
-	RegisterChaosFeature<CFeatureCombineEffects>(); // must be last!!!
+	// must be last
+	RegisterChaosFeature<CFeatureCombineEffects>();
+	RegisterChaosFeature<CFeature10Effects>();
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{

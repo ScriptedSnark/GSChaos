@@ -19,29 +19,27 @@ void CFeatureCombineEffects::ActivateFeature()
 	std::vector<CChaosFeature*> shuffledFeatures = gChaosFeatures;
 	std::shuffle(shuffledFeatures.begin(), shuffledFeatures.end(), randMT);
 
-	for (int i = 0; i < 3; i++)
+	int effectsNum = HowManyEffects();
+	for (int i = 0; i < effectsNum; i++)
 	{
+		// doing so bad things here
 		//yanderedev sim
-		if (shuffledFeatures[i] == this)
-			m_pFeatures[i] = shuffledFeatures[9]; // pick 10th effect then
+		if (shuffledFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 1]) // Let's make it more chaotic
+			m_pFeatures[i] = shuffledFeatures[15];
+
+		if (shuffledFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 2]) // Combine effects
+			m_pFeatures[i] = shuffledFeatures[12];
+
+		if (shuffledFeatures[i] == this || strstr(shuffledFeatures[i]->GetFeatureName(), GetBaseFeatureName()))
+			m_pFeatures[i] = shuffledFeatures[18]; // pick 17th effect then
 		else
 			m_pFeatures[i] = shuffledFeatures[i];
 
-		if (strstr(m_pFeatures[i]->GetFeatureName(), "Fake Crash"))
-		{
-			m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(20, 29)];
+		if (strstr(m_pFeatures[i]->GetFeatureName(), "New Game :tf:") || strstr(m_pFeatures[i]->GetFeatureName(), "BSP Dementia"))
+			m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(19, (int)(gChaosFeatures.size() - 3))];
 
-			if (strstr(m_pFeatures[i]->GetFeatureName(), "Fake Crash") || strstr(m_pFeatures[i]->GetFeatureName(), "New Game :tf:"))
-				m_pFeatures[i] = gChaosFeatures[10]; // totem
-		}
-
-		if (strstr(m_pFeatures[i]->GetFeatureName(), "New Game :tf:"))
-		{
-			m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(10, 19)];
-
-			if (strstr(m_pFeatures[i]->GetFeatureName(), "Fake Crash") || strstr(m_pFeatures[i]->GetFeatureName(), "New Game :tf:"))
-				m_pFeatures[i] = gChaosFeatures[10]; // totem (X2)
-		}
+		if (!m_pFeatures[i])
+			continue;
 
 		m_pszFeatureNames.push_back(m_pFeatures[i]->GetFeatureName());
 		
@@ -62,9 +60,11 @@ void CFeatureCombineEffects::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
 
-	for (int i = 0; i < 3; i++)
+	int effectsNum = HowManyEffects();
+	for (int i = 0; i < effectsNum; i++)
 	{
-		m_pFeatures[i]->DeactivateFeature();
+		if (m_pFeatures[i])
+			m_pFeatures[i]->DeactivateFeature();
 	}
 
 	m_pszFeatureNames.clear();
@@ -77,7 +77,17 @@ void CFeatureCombineEffects::DeactivateFeature()
 const char* CFeatureCombineEffects::GetFeatureName()
 {
 	if (!m_bActivated)
-		return "Combine Effects";
+		return GetBaseFeatureName();
 
-	return const_cast<const char*>(UTIL_VarArgs("Combine Effects %s", m_sEffectList.c_str()));
+	return const_cast<const char*>(UTIL_VarArgs("%s %s", GetBaseFeatureName(), m_sEffectList.c_str()));
+}
+
+const char* CFeatureCombineEffects::GetBaseFeatureName()
+{
+	return "Combine Effects";
+}
+
+int CFeatureCombineEffects::HowManyEffects()
+{
+	return 3;
 }

@@ -25,9 +25,11 @@ class CFeatureCombineEffects : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+	virtual const char* GetBaseFeatureName();
+	virtual int HowManyEffects();
 private:
 	bool m_bActivated;
-	CChaosFeature* m_pFeatures[3];
+	CChaosFeature* m_pFeatures[10];
 	const char* m_pszEffectList;
 	std::string m_sEffectList;
 	std::vector<const char*> m_pszFeatureNames;

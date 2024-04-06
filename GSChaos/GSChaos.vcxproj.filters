@@ -307,6 +307,9 @@
     <ClCompile Include="CFeaturePlayAG.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeature10Effects.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -709,6 +712,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeaturePlayAG.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeature10Effects.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

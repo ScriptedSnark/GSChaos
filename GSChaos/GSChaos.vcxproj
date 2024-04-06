@@ -127,6 +127,7 @@
     <ClCompile Include="..\external\twitch\twitch.cpp" />
     <ClCompile Include="CChaos.cpp" />
     <ClCompile Include="CChaosFeature.cpp" />
+    <ClCompile Include="CFeature10Effects.cpp" />
     <ClCompile Include="CFeature20FPS.cpp" />
     <ClCompile Include="CFeatureAmIDead.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="arial_black_italic.h" />
     <ClInclude Include="CChaos.h" />
     <ClInclude Include="CChaosFeature.h" />
+    <ClInclude Include="CFeature10Effects.h" />
     <ClInclude Include="CFeature20FPS.h" />
     <ClInclude Include="CFeatureAmIDead.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
