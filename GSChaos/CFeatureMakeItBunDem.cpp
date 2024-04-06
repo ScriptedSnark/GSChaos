@@ -42,6 +42,9 @@ void CFeatureMakeItBunDem::OnFrame(double time)
 	static double burnTimer = gChaos.GetGlobalTime() + 0.6;
 	static double flameTimer = gChaos.GetGlobalTime() + 0.1;
 
+	if ((*sv_player)->v.waterlevel > 1)
+		return;
+
 	if (gChaos.GetGlobalTime() > burnTimer)
 	{
 		g_flameSpr = PRECACHE_MODEL("../chaos/flame.spr"); // smh
