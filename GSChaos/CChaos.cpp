@@ -585,7 +585,7 @@ void CChaos::ResetStates()
 	if (!(*sv_player))
 		return;
 
-	if (sv->state != ss_active)
+	if (sv->state == ss_dead)
 		return;
 
 	for (CChaosFeature* i : gChaosFeatures)
