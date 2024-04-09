@@ -292,6 +292,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureShake>();
 	RegisterChaosFeature<CFeatureSlap>();
 	RegisterChaosFeature<CFeaturePlayAG>();
+	RegisterChaosFeature<CFeatureSwapHealth>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
