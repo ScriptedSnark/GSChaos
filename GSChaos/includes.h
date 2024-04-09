@@ -178,6 +178,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSlap.h"
 #include "CFeaturePlayAG.h"
 #include "CFeatureSwapHealth.h"
+#include "CFeatureTeleportToRandomNPC.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

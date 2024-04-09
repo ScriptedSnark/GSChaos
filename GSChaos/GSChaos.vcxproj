@@ -199,6 +199,7 @@
     <ClCompile Include="CFeatureStop.cpp" />
     <ClCompile Include="CFeatureSwapHealth.cpp" />
     <ClCompile Include="CFeatureTakeOneHP.cpp" />
+    <ClCompile Include="CFeatureTeleportToRandomNPC.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
@@ -335,6 +336,7 @@
     <ClInclude Include="CFeatureStop.h" />
     <ClInclude Include="CFeatureSwapHealth.h" />
     <ClInclude Include="CFeatureTakeOneHP.h" />
+    <ClInclude Include="CFeatureTeleportToRandomNPC.h" />
     <ClInclude Include="CFeatureTotem.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
