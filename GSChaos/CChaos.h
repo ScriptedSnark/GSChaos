@@ -64,6 +64,7 @@ public:
 	int GetRandomEffect(int min, int max);
 	float GetRandomValue(float min, float max);
 	double GetTime();
+	double GetChaosTime();
 	double GetGlobalTime();
 	int GetFrameCount();
 	bool IsReady();

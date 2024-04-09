@@ -759,6 +759,11 @@ double CChaos::GetTime()
 	return m_flTime;
 }
 
+double CChaos::GetChaosTime()
+{
+	return m_flChaosTime;
+}
+
 double CChaos::GetGlobalTime()
 {
 	return m_flGlobalTime;

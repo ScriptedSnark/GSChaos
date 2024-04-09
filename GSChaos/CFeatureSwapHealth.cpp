@@ -14,7 +14,7 @@ void CFeatureSwapHealth::ActivateFeature()
 	armor = (*sv_player)->v.armorvalue;
 
 	(*sv_player)->v.health = max(1.0f, armor);
-	(*sv_player)->v.armorvalue = health;
+	(*sv_player)->v.armorvalue = min(health, 4000.0f); // 5000-5100 is crash point - StereoBucket
 }
 
 void CFeatureSwapHealth::DeactivateFeature()
