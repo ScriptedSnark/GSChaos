@@ -190,6 +190,7 @@
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureShake.cpp" />
+    <ClCompile Include="CFeatureShuffleEntitiesPositions.cpp" />
     <ClCompile Include="CFeatureSlap.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
     <ClCompile Include="CFeatureSpawnFastrun.cpp" />
@@ -327,6 +328,7 @@
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureShake.h" />
+    <ClInclude Include="CFeatureShuffleEntitiesPositions.h" />
     <ClInclude Include="CFeatureSlap.h" />
     <ClInclude Include="CFeatureSleepy.h" />
     <ClInclude Include="CFeatureSpawnFastrun.h" />

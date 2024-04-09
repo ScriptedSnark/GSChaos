@@ -120,6 +120,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Play AG
 > Swap health and armor
 > Teleport to random NPC
+> Shuffle entities positions
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```
@@ -135,4 +136,4 @@ Special thanks to:
 - BlueNightHawk for late precache system
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
 - un4seen (a.k.a. yanny) for supporting/playtesting
-- Tankfird, StereoBucket, prolert, gatar and other people for suggesting effects, ideas
+- Tankfird, StereoBucket, prolert, gatar, Eold and other people for suggesting effects, ideas

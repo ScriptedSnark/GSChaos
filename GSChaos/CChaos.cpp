@@ -294,6 +294,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeaturePlayAG>();
 	RegisterChaosFeature<CFeatureSwapHealth>();
 	RegisterChaosFeature<CFeatureTeleportToRandomNPC>();
+	RegisterChaosFeature<CFeatureShuffleEntitiesPositions>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
