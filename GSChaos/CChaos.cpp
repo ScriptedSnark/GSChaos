@@ -390,7 +390,7 @@ void CChaos::WriteVotingProgress()
 		else
 			percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
 
-		outFile << gChaosFeaturesNames[m_aiEffectsForVoting[i]] << " | " << m_aiVoteValues[i] << " (" << (int)percent << "%)" << std::endl;
+		outFile << "(" << i + 1 << ") " << gChaosFeaturesNames[m_aiEffectsForVoting[i]] << " | " << m_aiVoteValues[i] << " (" << (int)percent << "%)" << std::endl;
 	}
 
 	outFile << "Total Votes: " << totalVotes << std::endl;
@@ -558,7 +558,7 @@ void CChaos::DrawVoting()
 			else
 				percent = (float)m_aiVoteValues[i] / (float)totalVotes * 100.f;
 
-			ImGui::Text("%s | %i (%.02f%%)", gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName(), m_aiVoteValues[i], percent);
+			ImGui::Text("(%i) %s | %i (%.02f%%)", i + 1, gChaosFeatures[m_aiEffectsForVoting[i]]->GetFeatureName(), m_aiVoteValues[i], percent);
 		}
 
 		ImGui::Text("Total Votes: %i", totalVotes);
