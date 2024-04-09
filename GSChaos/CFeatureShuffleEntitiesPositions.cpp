@@ -13,6 +13,7 @@ void CFeatureShuffleEntitiesPositions::ActivateFeature()
 	std::mt19937 randMT(randDev());
 
 	std::vector<Vector> entPositions;
+	std::vector<int> entNumbers;
 
 	edict_t* e;
 	for (int i = 1; i < sv->num_edicts; i++)
@@ -30,6 +31,7 @@ void CFeatureShuffleEntitiesPositions::ActivateFeature()
 				continue;
 
 			entPositions.push_back(e->v.origin);
+			entNumbers.push_back(i);
 		}
 	}
 
@@ -37,7 +39,7 @@ void CFeatureShuffleEntitiesPositions::ActivateFeature()
 
 	for (size_t i = 0; i < entPositions.size(); i++)
 	{
-		e = ORIG_EDICT_NUM(i + 1);
+		e = ORIG_EDICT_NUM(entNumbers[i]);
 		if (e)
 		{
 			if (e->v.flags & FL_CLIENT)

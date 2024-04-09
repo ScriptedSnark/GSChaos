@@ -313,6 +313,12 @@
     <ClCompile Include="CFeatureSwapHealth.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureShuffleEntitiesPositions.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureTeleportToRandomNPC.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -721,6 +727,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureSwapHealth.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureTeleportToRandomNPC.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureShuffleEntitiesPositions.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
