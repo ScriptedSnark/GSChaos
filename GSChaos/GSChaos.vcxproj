@@ -180,6 +180,7 @@
     <ClCompile Include="CFeatureNuke.cpp" />
     <ClCompile Include="CFeatureOhio.cpp" />
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
+    <ClCompile Include="CFeaturePaperNPCs.cpp" />
     <ClCompile Include="CFeaturePlayAG.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
@@ -201,10 +202,13 @@
     <ClCompile Include="CFeatureSwapHealth.cpp" />
     <ClCompile Include="CFeatureTakeOneHP.cpp" />
     <ClCompile Include="CFeatureTeleportToRandomNPC.cpp" />
+    <ClCompile Include="CFeatureTinyNPCs.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
+    <ClCompile Include="CFeatureUltraWideNPCs.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
+    <ClCompile Include="CFeatureWideNPCs.cpp" />
     <ClCompile Include="CFeatureWorldHallucination.cpp" />
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
@@ -318,6 +322,7 @@
     <ClInclude Include="CFeatureNuke.h" />
     <ClInclude Include="CFeatureOhio.h" />
     <ClInclude Include="CFeatureOnePercentDeath.h" />
+    <ClInclude Include="CFeaturePaperNPCs.h" />
     <ClInclude Include="CFeaturePlayAG.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
@@ -339,10 +344,13 @@
     <ClInclude Include="CFeatureSwapHealth.h" />
     <ClInclude Include="CFeatureTakeOneHP.h" />
     <ClInclude Include="CFeatureTeleportToRandomNPC.h" />
+    <ClInclude Include="CFeatureTinyNPCs.h" />
     <ClInclude Include="CFeatureTotem.h" />
+    <ClInclude Include="CFeatureUltraWideNPCs.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
+    <ClInclude Include="CFeatureWideNPCs.h" />
     <ClInclude Include="CFeatureWorldHallucination.h" />
     <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />

@@ -40,6 +40,7 @@ server_t* sv;
 client_state_t* cl;
 client_state_HL25_t* cl_hl25;
 ref_params_t* g_pRefParams;
+engine_studio_api_t* engine_studio_api;
 
 CChaos gChaos;
 CImGuiManager gImGui;
@@ -587,6 +588,47 @@ void HookEngine()
 				}
 				break;
 			
+			}
+		});
+
+	void* ClientDLL_HudInit;
+	auto fClientDLL_HudInit = utils.FindAsync(
+		ClientDLL_HudInit,
+		patterns::engine::ClientDLL_HudInit,
+		[&](auto pattern) {
+			switch (pattern - patterns::engine::ClientDLL_HudInit.cbegin())
+			{
+			default:
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching engine_studio_api in HL-9920 pattern...\n");
+				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x4D);
+
+				if (engine_studio_api)
+				{
+					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
+				}
+
+				break;
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching engine_studio_api in HL-8684 pattern...\n");
+				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x2A);
+
+				if (engine_studio_api)
+				{
+					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
+				}
+
+				break;
+			case 2: // HL-4554
+				DEBUG_PRINT("Searching engine_studio_api in HL-4554 pattern...\n");
+				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x28);
+
+				if (engine_studio_api)
+				{
+					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
+				}
+
+				break;
 			}
 		});
 

@@ -295,6 +295,10 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSwapHealth>();
 	RegisterChaosFeature<CFeatureTeleportToRandomNPC>();
 	RegisterChaosFeature<CFeatureShuffleEntitiesPositions>();
+	RegisterChaosFeature<CFeatureWideNPCs>();
+	RegisterChaosFeature<CFeatureUltraWideNPCs>();
+	RegisterChaosFeature<CFeatureTinyNPCs>();
+	RegisterChaosFeature<CFeaturePaperNPCs>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

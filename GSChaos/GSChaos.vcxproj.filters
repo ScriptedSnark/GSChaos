@@ -319,6 +319,18 @@
     <ClCompile Include="CFeatureTeleportToRandomNPC.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureWideNPCs.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureUltraWideNPCs.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureTinyNPCs.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeaturePaperNPCs.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -733,6 +745,18 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureShuffleEntitiesPositions.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureWideNPCs.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureUltraWideNPCs.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureTinyNPCs.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeaturePaperNPCs.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

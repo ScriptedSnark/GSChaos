@@ -85,6 +85,7 @@ extern server_t* sv;
 extern client_state_t* cl;
 extern client_state_HL25_t* cl_hl25;
 extern ref_params_t* g_pRefParams;
+extern engine_studio_api_t* engine_studio_api;
 
 extern bool g_bEncrypted;
 
@@ -180,6 +181,10 @@ extern bool g_bEncrypted;
 #include "CFeatureSwapHealth.h"
 #include "CFeatureTeleportToRandomNPC.h"
 #include "CFeatureShuffleEntitiesPositions.h"
+#include "CFeatureWideNPCs.h"
+#include "CFeatureUltraWideNPCs.h"
+#include "CFeatureTinyNPCs.h"
+#include "CFeaturePaperNPCs.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
