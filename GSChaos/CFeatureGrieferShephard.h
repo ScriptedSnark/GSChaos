@@ -35,6 +35,7 @@ private:
 	double m_flRocketTime;
 	edict_t* m_pShephard;
 	bool m_bActivated;
+	bool m_bActivateMeleeCombat;
 };
 
 #else //!__cplusplus

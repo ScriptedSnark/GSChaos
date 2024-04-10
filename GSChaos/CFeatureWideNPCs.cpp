@@ -38,6 +38,8 @@ void CFeatureWideNPCs::Init()
 		}
 
 		MH_EnableHook(MH_ALL_HOOKS);
+
+		bHooked = true;
 	}
 }
 

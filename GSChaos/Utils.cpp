@@ -43,6 +43,19 @@ void _AngleVectors(const Vector angles, Vector forward, Vector right, Vector up)
 	}
 }
 
+float Length(const vec3_t v)
+{
+	int i;
+	float length;
+
+	length = 0;
+	for (i = 0; i < 3; i++)
+		length += v[i] * v[i];
+	length = static_cast<float>(sqrt(length)); // FIXME
+
+	return length;
+}
+
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a)
 {
 	glDisable(GL_TEXTURE_2D);

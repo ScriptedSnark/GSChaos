@@ -160,7 +160,30 @@ void CFeatureExtremeGrieferShephard::LaunchRocket()
 	edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING("rpg_rocket"));
 
 	if (!pent)
+	{
+		Vector target = (*sv_player)->v.origin - m_pShephard->v.origin;
+
+		float distance = Length(target);
+		Vector direction = target / distance;
+		Vector velocity = direction * gChaos.GetRandomValue(1000.0f, MAGNET_SPEED);
+
+		m_pShephard->v.velocity = velocity;
+		m_pShephard->v.movetype = MOVETYPE_NOCLIP;
+		m_pShephard->v.solid = SOLID_BBOX;
+		m_pShephard->v.gaitsequence = m_pShephard->v.sequence = 10; // swim
+		Vector angle = (*sv_player)->v.v_angle;
+		angle.y -= 180;
+		m_pShephard->v.angles = angle;
+
+		if (abs(distance) < gChaos.GetRandomValue(100.0f, 200.0f))
+		{
+			m_pShephard->v.sequence = m_pShephard->v.gaitsequence = 26; // crowbar
+			pEngfuncs->pfnClientCmd(";spk weapons/cbar_hitbod3;\n");
+			UTIL_TakeDamage((*sv_player)->v, gChaos.GetRandomValue(5.0f, 15.0f), DMG_SLASH);
+			(*sv_player)->v.punchangle = Vector(gChaos.GetRandomValue(-64.0f, 64.f), gChaos.GetRandomValue(-84.0f, 0.0f), 0.0f);
+		}
 		return;
+	}
 
 	pent->v.origin = m_pShephard->v.origin + (m_pShephard->v.view_ofs * 64);
 	pent->v.angles = m_pShephard->v.angles;

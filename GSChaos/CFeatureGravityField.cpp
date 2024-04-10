@@ -1,19 +1,5 @@
 #include "includes.h"
 
-// From engine's mathlib.c
-float Length(const vec3_t v)
-{
-	int i;
-	float length;
-
-	length = 0;
-	for (i = 0; i < 3; i++)
-		length += v[i] * v[i];
-	length = static_cast<float>(sqrt(length)); // FIXME
-
-	return length;
-}
-
 void CFeatureGravityField::Init()
 {
 	CChaosFeature::Init();

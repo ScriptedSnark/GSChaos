@@ -43,6 +43,7 @@ typedef struct
 } ScreenShake;
 
 void _AngleVectors(const Vector angles, Vector forward, Vector right, Vector up);
+float Length(const vec3_t v);
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a);
 char* UTIL_VarArgs(char* format, ...);
 edict_t* UTIL_FindEntityInSphere(edict_t* pStartEntity, const Vector& vecCenter, float flRadius);

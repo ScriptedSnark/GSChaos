@@ -17,6 +17,7 @@ void CFeatureGrieferShephard::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
 	m_bActivated = false;
+	m_bActivateMeleeCombat = false;
 }
 
 const char* CFeatureGrieferShephard::GetFeatureName()
@@ -59,7 +60,7 @@ void CFeatureGrieferShephard::Spawn()
 
 	gEntityInterface->pfnSpawn(m_pShephard);
 	Vector playerOrigin = (*sv_player)->v.origin;
-	playerOrigin.z += 10.0f;
+	playerOrigin.z += 64.0f;
 
 	m_pShephard->v.health = 1337;
 	m_pShephard->v.origin = playerOrigin;
@@ -69,6 +70,7 @@ void CFeatureGrieferShephard::Spawn()
 	m_pShephard->v.sequence = 11;
 	m_pShephard->v.gaitsequence = 11;
 
+	m_bActivateMeleeCombat = false;
 	m_flRocketTime = gChaos.GetGlobalTime() + SHEPHARD_ROCKET_TIME;
 	ma_engine_play_sound(&miniAudio, "valve/sound/hgrunt/c2a3_hg_laugh.wav", NULL);
 }
@@ -84,13 +86,37 @@ void CFeatureGrieferShephard::Think()
 	if (!strstr(STRING(m_pShephard->v.classname), "monster_generic"))
 		return;
 
-	m_pShephard->v.sequence = 11;
-	m_pShephard->v.gaitsequence = 11;
 	m_pShephard->v.effects = 0;
+
+	float distance;
+	if (m_bActivateMeleeCombat)
+	{
+		Vector target = (*sv_player)->v.origin - m_pShephard->v.origin;
+
+		distance = Length(target);
+		Vector direction = target / distance;
+		Vector velocity = direction * 50.0f;
+
+		m_pShephard->v.velocity = velocity;
+		Vector angle = (*sv_player)->v.v_angle;
+		angle.y -= 180;
+		m_pShephard->v.angles = angle;
+	}
 
 	//DEBUG_PRINT("GetChaosTime(): %.01f | m_flRocketTime: %.01f\n", gChaos.GetGlobalTime(), m_flRocketTime);
 	if (gChaos.GetGlobalTime() > m_flRocketTime)
 	{
+		if (m_bActivateMeleeCombat && distance < 100.0f)
+		{
+			SET_SIZE(m_pShephard, (*sv_player)->v.mins, (*sv_player)->v.maxs);
+			m_pShephard->v.movetype = MOVETYPE_STEP;
+			m_pShephard->v.solid = SOLID_BBOX;
+
+			m_pShephard->v.sequence = m_pShephard->v.gaitsequence = 26; // crowbar
+			pEngfuncs->pfnClientCmd(";spk weapons/cbar_hitbod3;\n");
+			UTIL_TakeDamage((*sv_player)->v, gChaos.GetRandomValue(1.0f, 15.0f), DMG_SLASH);
+		}
+
 		DEBUG_PRINT("CFeatureGrieferShephard::LaunchRocket\n");
 		LaunchRocket();
 		m_flRocketTime = gChaos.GetGlobalTime() + SHEPHARD_ROCKET_TIME;
@@ -101,7 +127,14 @@ void CFeatureGrieferShephard::LaunchRocket()
 {
 	edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING("rpg_rocket"));
 	if (!pent)
+	{
+		m_bActivateMeleeCombat = true;
+
 		return;
+	}
+
+	m_pShephard->v.sequence = 11;
+	m_pShephard->v.gaitsequence = 11;
 
 	Vector vecTarget = gpGlobals->v_forward;
 	Vector vecDir;
