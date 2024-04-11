@@ -140,6 +140,7 @@
     <ClCompile Include="CFeatureExtremeGrieferShephard.cpp" />
     <ClCompile Include="CFeatureGiveArmor.cpp" />
     <ClCompile Include="CFeatureGiveHealth.cpp" />
+    <ClCompile Include="CFeatureGiveOneArmor.cpp" />
     <ClCompile Include="CFeatureGiveOneHP.cpp" />
     <ClCompile Include="CFeatureGiveRandomWeapon.cpp" />
     <ClCompile Include="CFeatureHalfGravity.cpp" />
@@ -282,6 +283,7 @@
     <ClInclude Include="CFeatureExtremeGrieferShephard.h" />
     <ClInclude Include="CFeatureGiveArmor.h" />
     <ClInclude Include="CFeatureGiveHealth.h" />
+    <ClInclude Include="CFeatureGiveOneArmor.h" />
     <ClInclude Include="CFeatureGiveOneHP.h" />
     <ClInclude Include="CFeatureGiveRandomWeapon.h" />
     <ClInclude Include="CFeatureHalfGravity.h" />

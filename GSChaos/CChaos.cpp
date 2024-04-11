@@ -299,6 +299,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureUltraWideNPCs>();
 	RegisterChaosFeature<CFeatureTinyNPCs>();
 	RegisterChaosFeature<CFeaturePaperNPCs>();
+	RegisterChaosFeature<CFeatureGiveOneArmor>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

@@ -331,6 +331,9 @@
     <ClCompile Include="CFeaturePaperNPCs.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureGiveOneArmor.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -757,6 +760,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeaturePaperNPCs.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGiveOneArmor.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
