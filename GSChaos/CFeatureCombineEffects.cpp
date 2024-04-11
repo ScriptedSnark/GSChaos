@@ -25,22 +25,33 @@ void CFeatureCombineEffects::ActivateFeature()
 		// doing so bad things here
 		//yanderedev sim
 		if (shuffledFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 1]) // Let's make it more chaotic
-			m_pFeatures[i] = shuffledFeatures[15];
-
-		if (shuffledFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 2]) // Combine effects
-			m_pFeatures[i] = shuffledFeatures[12];
-
-		if (shuffledFeatures[i] == this || strstr(shuffledFeatures[i]->GetFeatureName(), GetBaseFeatureName()))
-			m_pFeatures[i] = shuffledFeatures[18]; // pick 17th effect then
+		{
+			if (shuffledFeatures[i] != this)
+				m_pFeatures[i] = shuffledFeatures[15];
+		}
+		else if (shuffledFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 2]) // Combine effects
+		{
+			if (shuffledFeatures[i] != this)
+				m_pFeatures[i] = shuffledFeatures[12];
+		}
+		else if (shuffledFeatures[i] == this || strstr(shuffledFeatures[i]->GetFeatureName(), GetBaseFeatureName()))
+		{
+			if (shuffledFeatures[i] != this)
+				m_pFeatures[i] = shuffledFeatures[18]; // pick 17th effect then
+		}
+		else if (strstr(shuffledFeatures[i]->GetFeatureName(), "New Game :tf:") || strstr(shuffledFeatures[i]->GetFeatureName(), "BSP Dementia"))
+		{
+			if (shuffledFeatures[i] != this)
+				m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(19, (int)(gChaosFeatures.size() - 3))];
+		}
 		else
+		{
 			m_pFeatures[i] = shuffledFeatures[i];
-
-		if (strstr(m_pFeatures[i]->GetFeatureName(), "New Game :tf:") || strstr(m_pFeatures[i]->GetFeatureName(), "BSP Dementia"))
-			m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(19, (int)(gChaosFeatures.size() - 3))];
+		}
 
 		if (!m_pFeatures[i])
 			continue;
-
+	
 		m_pszFeatureNames.push_back(m_pFeatures[i]->GetFeatureName());
 		
 		m_pFeatures[i]->ActivateFeature();
