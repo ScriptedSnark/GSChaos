@@ -165,7 +165,7 @@ void CFeatureExtremeGrieferShephard::LaunchRocket()
 
 		float distance = Length(target);
 		Vector direction = target / distance;
-		Vector velocity = direction * gChaos.GetRandomValue(1000.0f, MAGNET_SPEED);
+		Vector velocity = direction * gChaos.GetRandomValue(777.0f, MAGNET_SPEED);
 
 		m_pShephard->v.velocity = velocity;
 		m_pShephard->v.movetype = MOVETYPE_NOCLIP;
@@ -175,7 +175,7 @@ void CFeatureExtremeGrieferShephard::LaunchRocket()
 		angle.y -= 180;
 		m_pShephard->v.angles = angle;
 
-		if (abs(distance) < gChaos.GetRandomValue(100.0f, 200.0f))
+		if (abs(distance) < gChaos.GetRandomValue(100.0f, 300.0f))
 		{
 			m_pShephard->v.sequence = m_pShephard->v.gaitsequence = 26; // crowbar
 			pEngfuncs->pfnClientCmd(";spk weapons/cbar_hitbod3;\n");
