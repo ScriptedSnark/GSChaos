@@ -25,12 +25,15 @@ class CFeatureForgotCSS : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	virtual int GetTextureID();
 
 public:
 	void ActivateFeature() override;
 private:
 	bool m_bActivated = false;
+	model_t* m_pErrorModel;
+	int m_pErrorIndex;
 };
 
 #else //!__cplusplus

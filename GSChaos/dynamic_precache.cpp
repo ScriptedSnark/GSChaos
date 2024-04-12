@@ -42,7 +42,7 @@ int HOOKED_PF_precache_model_I(char* s)
 	if (sv->state == ss_loading)
 	{
 		if (sv->models[0] == nullptr)
-			g_ErrorModel = ORIG_PF_precache_model_I("models/player.mdl");
+			g_ErrorModel = ORIG_PF_precache_model_I("../chaos/error.mdl");
 
 		if (!g_bEncrypted && !g_bPreSteamPipe)
 			ORIG_PF_precache_model_I("../chaos/fastrun.bsp");
@@ -206,7 +206,7 @@ void HOOKED_PF_setmodel_I(edict_t* e, const char* m)
 	if (!HOOKED_PF_precache_model_I((char*)m))
 	{
 		pEngfuncs->Con_DPrintf("PF_setmodel_I: Could not set model %s \n", m);
-		m = "models/player.mdl";
+		m = "../chaos/error.mdl";
 	}
 
 	ORIG_PF_setmodel_I(e, m);

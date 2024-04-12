@@ -19,6 +19,8 @@
 
 #ifdef __cplusplus
 
+extern int g_ErrorModel;
+
 typedef sfxcache_t* (*_S_LoadSound)(sfx_t* s, channel_t* ch);
 typedef sfx_t* (*_S_FindName)(char* name, int* pfInCache);
 typedef model_t* (*_Mod_ForName)(const char* name, qboolean crash, qboolean trackCRC);

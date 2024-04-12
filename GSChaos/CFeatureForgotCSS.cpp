@@ -111,6 +111,26 @@ void CFeatureForgotCSS::OnFrame(double time)
     }
 }
 
+void CFeatureForgotCSS::HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
+{
+	if (ent->model->type != mod_studio)
+		return;
+
+	if (!m_pErrorModel)
+		m_pErrorModel = sv->models[g_ErrorModel];
+	
+	if (!m_pErrorModel)
+		return;
+
+	ent->model = m_pErrorModel;
+
+	ent->prevstate.renderfx = kRenderFxGlowShell;
+	ent->prevstate.rendercolor = { 255, 0, 0 };
+
+	ent->curstate.renderfx = kRenderFxGlowShell;
+	ent->curstate.rendercolor = { 255, 0, 0};
+}
+
 int CFeatureForgotCSS::GetTextureID()
 {
 	return (*r_notexture_mip)->gl_texturenum;
