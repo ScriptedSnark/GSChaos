@@ -24,6 +24,7 @@ class CFeaturePlayAG : public CFeatureForgotCSS
 	void Init() override;
 	void ActivateFeature();
 	int GetTextureID() override;
+	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	const char* GetFeatureName() override;
 private:
 	GLuint m_iPlayAGID;
