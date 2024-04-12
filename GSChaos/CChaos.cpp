@@ -300,6 +300,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureTinyNPCs>();
 	RegisterChaosFeature<CFeaturePaperNPCs>();
 	RegisterChaosFeature<CFeatureGiveOneArmor>();
+	RegisterChaosFeature<CFeatureReplaceModelsWithPlayer>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

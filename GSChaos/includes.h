@@ -186,6 +186,7 @@ extern bool g_bEncrypted;
 #include "CFeatureTinyNPCs.h"
 #include "CFeaturePaperNPCs.h"
 #include "CFeatureGiveOneArmor.h"
+#include "CFeatureReplaceModelsWithPlayer.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

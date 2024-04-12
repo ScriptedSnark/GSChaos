@@ -30,6 +30,7 @@ public:
 	virtual void Draw();
 	virtual void ResetStates();
 	virtual void Restore();
+	virtual void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname);
 	virtual bool IsActive();
 private:
 	bool m_bActivated;

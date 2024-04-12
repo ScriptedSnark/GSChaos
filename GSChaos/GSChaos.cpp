@@ -9,10 +9,12 @@
 typedef void (*_HUD_Frame)(double time);
 typedef int (*_HUD_Redraw)(float time, int intermission);
 typedef void (*_V_CalcRefdef)(struct ref_params_s* pparams);
+typedef int (*_HUD_AddEntity)(int type, struct cl_entity_s* ent, const char* modelname);
 
 _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
 _V_CalcRefdef ORIG_V_CalcRefdef = NULL;
+_HUD_AddEntity ORIG_HUD_AddEntity = NULL;
 
 typedef void (*_LoadThisDll)(char* szDllFilename);
 typedef void (*_LoadEntityDLLs)(char* szBaseDir);
@@ -157,6 +159,17 @@ void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
 	ORIG_V_CalcRefdef(pparams);
 }
 
+int HOOKED_HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
+{
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (i->IsActive())
+			i->HUD_AddEntity(type, ent, modelname);
+	}
+
+	return ORIG_HUD_AddEntity(type, ent, modelname);
+}
+
 // ENGINE
 void GetExportedMonstersAndWeapons(HMODULE module)
 {
@@ -297,9 +310,11 @@ void HookClient()
 	Find(Client, HUD_Frame);
 	Find(Client, HUD_Redraw);
 	Find(Client, V_CalcRefdef);
+	Find(Client, HUD_AddEntity);
 	CreateHook(Client, HUD_Frame);
 	CreateHook(Client, HUD_Redraw);
 	CreateHook(Client, V_CalcRefdef);
+	CreateHook(Client, HUD_AddEntity);
 }
 
 void HookEngine()

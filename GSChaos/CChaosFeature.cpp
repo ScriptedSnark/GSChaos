@@ -47,6 +47,11 @@ void CChaosFeature::Restore()
 	;
 }
 
+void CChaosFeature::HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
+{
+	;
+}
+
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;
