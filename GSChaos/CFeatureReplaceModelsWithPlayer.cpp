@@ -29,4 +29,10 @@ void CFeatureReplaceModelsWithPlayer::HUD_AddEntity(int type, struct cl_entity_s
 	ent->model = player->model;
 	ent->curstate.modelindex = player->curstate.modelindex;
 	ent->curstate.gaitsequence = ent->curstate.sequence;
+	// just for fit
+	if (type != 2) // TEMPENTITY
+	{
+		ent->origin.z += 36.f;
+		ent->curstate.origin.z += 36.f;
+	}
 }
