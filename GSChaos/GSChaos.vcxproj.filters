@@ -337,6 +337,9 @@
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureHorrorAudio.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -769,6 +772,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHorrorAudio.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

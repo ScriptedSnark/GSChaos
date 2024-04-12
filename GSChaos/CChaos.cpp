@@ -301,6 +301,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeaturePaperNPCs>();
 	RegisterChaosFeature<CFeatureGiveOneArmor>();
 	RegisterChaosFeature<CFeatureReplaceModelsWithPlayer>();
+	RegisterChaosFeature<CFeatureHorrorAudio>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

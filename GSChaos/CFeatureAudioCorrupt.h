@@ -19,6 +19,8 @@
 
 #ifdef __cplusplus
 
+extern volatile dma_t* shm;
+
 class CFeatureAudioCorrupt : public CChaosFeature
 {
 	void Init() override;
