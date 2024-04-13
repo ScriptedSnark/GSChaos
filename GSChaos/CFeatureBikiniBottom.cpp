@@ -1,20 +1,41 @@
 #include "includes.h"
 
 typedef int	(*_PM_PointContents) (vec3_t p, int* truecontents);
+typedef const char* (*_PM_Info_ValueForKey)(const char* s, const char* key);
+
+_PM_PointContents ORIG_PM_PointContents = NULL;
+_PM_Info_ValueForKey ORIG_PM_Info_ValueForKey = NULL;
 
 _PM_Move ORIG_PM_Move = NULL;
-_PM_PointContents ORIG_PM_PointContents = NULL;
-
 playermove_s* g_svpmove;
 
-void CFeatureBikiniBottom::Init()
+bool g_bActivatedBikiniBottom;
+
+// HACK
+// We need to perform HL2_PM_Jump code in PM_Jump environment but I'm too lazy to support million server DLLs so yeah...
+// It can also mess player movement in other mods btw
+const char* HOOKED_PM_Info_ValueForKey(const char* s, const char* key)
 {
-	CChaosFeature::Init();
+	const char* result = ORIG_PM_Info_ValueForKey(s, key);
+
+	if (!stricmp(key, "slj"))
+	{
+		for (CChaosFeature* i : gChaosFeatures)
+		{
+			if (i->IsActive())
+				i->PM_Jump();
+		}
+	}
+
+	return result;
 }
 
 int PM_PointContents(vec3_t p, int* truecontents)
 {
-	return CONTENTS_WATER;
+	if (g_bActivatedBikiniBottom)
+		return CONTENTS_WATER;
+
+	return ORIG_PM_PointContents(p, truecontents);
 }
 
 // hack
@@ -25,29 +46,42 @@ void HOOKED_PM_Move(struct playermove_s* ppmove, qboolean server)
 	{
 		g_svpmove = ppmove;
 
-		ORIG_PM_PointContents = ppmove->PM_PointContents;
-		//g_svpmove->PM_PointContents = PM_PointContents;
+		if (g_bEncrypted)
+			MemUtils::MarkAsExecutable(g_svpmove->PM_Info_ValueForKey);
 
+		MH_STATUS status = MH_CreateHook(g_svpmove->PM_Info_ValueForKey, HOOKED_PM_Info_ValueForKey, reinterpret_cast<void**>(&ORIG_PM_Info_ValueForKey));
+		if (status != MH_OK)
+			DEBUG_PRINT("[hw dll] Couldn't create hook for g_svpmove->PM_Info_ValueForKey.\n");
+
+		if (g_bEncrypted)
+			MemUtils::MarkAsExecutable(g_svpmove->PM_PointContents);
+
+		status = MH_CreateHook(g_svpmove->PM_PointContents, PM_PointContents, reinterpret_cast<void**>(&ORIG_PM_PointContents));
+		if (status != MH_OK)
+			DEBUG_PRINT("[hw dll] Couldn't create hook for g_svpmove->PM_Info_ValueForKey.\n");
+
+		MH_EnableHook(MH_ALL_HOOKS);
 		bHooked = true;
 	}
 
 	ORIG_PM_Move(ppmove, server);
 }
 
+void CFeatureBikiniBottom::Init()
+{
+	CChaosFeature::Init();
+}
+
 void CFeatureBikiniBottom::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-
-	if (g_svpmove)
-		g_svpmove->PM_PointContents = PM_PointContents;
+	g_bActivatedBikiniBottom = true;
 }
 
 void CFeatureBikiniBottom::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
-
-	if (g_svpmove)
-		g_svpmove->PM_PointContents = ORIG_PM_PointContents;
+	g_bActivatedBikiniBottom = false;
 }
 
 void CFeatureBikiniBottom::OnFrame(double time)

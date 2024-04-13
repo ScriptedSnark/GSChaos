@@ -52,6 +52,11 @@ void CChaosFeature::HUD_AddEntity(int type, struct cl_entity_s* ent, const char*
 	;
 }
 
+void CChaosFeature::PM_Jump()
+{
+	;
+}
+
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;

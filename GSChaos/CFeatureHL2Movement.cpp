@@ -14,9 +14,6 @@
 #undef vec3_t // for some reason that code is not friendly with Vector class (always returns 0,0,0)
 typedef vec_t vec3_t[3];
 
-typedef const char* (*_PM_Info_ValueForKey)(const char* s, const char* key);
-_PM_Info_ValueForKey ORIG_PM_Info_ValueForKey = NULL;
-
 void AngleVectors(const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up)
 {
 	float		angle;
@@ -110,19 +107,6 @@ void HL2_PM_Jump()
 	VectorAdd(fwd, g_svpmove->velocity, g_svpmove->velocity);
 }
 
-// HACK
-// We need to perform HL2_PM_Jump code in PM_Jump environment but I'm too lazy to support million server DLLs so yeah...
-// It can also mess player movement in other mods btw
-const char* HOOKED_PM_Info_ValueForKey(const char* s, const char* key)
-{
-	const char* result = ORIG_PM_Info_ValueForKey(s, key);
-
-	if (!stricmp(key, "slj"))
-		HL2_PM_Jump();
-
-	return result;
-}
-
 //===============
 // Effect code
 //===============
@@ -134,22 +118,16 @@ void CFeatureHL2Movement::Init()
 void CFeatureHL2Movement::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-
-	if (!g_svpmove)
-		return;
-
-	ORIG_PM_Info_ValueForKey = g_svpmove->PM_Info_ValueForKey;
-	g_svpmove->PM_Info_ValueForKey = HOOKED_PM_Info_ValueForKey;
 }
 
 void CFeatureHL2Movement::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
+}
 
-	if (!g_svpmove)
-		return;
-
-	g_svpmove->PM_Info_ValueForKey = ORIG_PM_Info_ValueForKey;
+void CFeatureHL2Movement::PM_Jump()
+{
+	HL2_PM_Jump();
 }
 
 const char* CFeatureHL2Movement::GetFeatureName()
