@@ -148,6 +148,7 @@
     <ClCompile Include="CFeatureHL2Movement.cpp" />
     <ClCompile Include="CFeatureHorrorAudio.cpp" />
     <ClCompile Include="CFeatureInsaneStepsize.cpp" />
+    <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="CFeatureHL2Movement.h" />
     <ClInclude Include="CFeatureHorrorAudio.h" />
     <ClInclude Include="CFeatureInsaneStepsize.h" />
+    <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />

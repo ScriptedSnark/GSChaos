@@ -340,6 +340,9 @@
     <ClCompile Include="CFeatureHorrorAudio.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureLowFOV.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -775,6 +778,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureHorrorAudio.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureLowFOV.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,7 +15,7 @@ void CFeatureQuakePro::ActivateFeature()
 		return;
 
 	m_flOldFOVValue = default_fov->value;
-	default_fov->value = 150.f;
+	default_fov->value = GetFOV();
 }
 
 void CFeatureQuakePro::DeactivateFeature()
@@ -34,16 +34,20 @@ void CFeatureQuakePro::OnFrame(double time)
 	if (!IsActive())
 		return;
 
-	// couldn't check if we're zooming so yeah
-	(*sv_player)->v.fov = 150.f; // maybe it's supposed to be 110 but buh
+	(*sv_player)->v.fov = GetFOV();
 
 	if (!default_fov)
 		return;
 
-	default_fov->value = 150.f;
+	default_fov->value = GetFOV();
 }
 
 const char* CFeatureQuakePro::GetFeatureName()
 {
 	return "Quake Pro";
+}
+
+float CFeatureQuakePro::GetFOV()
+{
+	return 150.0f;
 }

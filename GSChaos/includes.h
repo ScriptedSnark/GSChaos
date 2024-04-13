@@ -188,6 +188,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGiveOneArmor.h"
 #include "CFeatureReplaceModelsWithPlayer.h"
 #include "CFeatureHorrorAudio.h"
+#include "CFeatureLowFOV.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

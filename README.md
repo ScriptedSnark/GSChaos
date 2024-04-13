@@ -128,6 +128,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Give +1 armor
 > Replace models with player
 > Horror Audio
+> Low FOV
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```
