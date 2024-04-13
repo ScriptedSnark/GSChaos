@@ -368,7 +368,7 @@ void CChaos::VoteThink()
 		return;
 	}
 
-	if (m_flTime > (CHAOS_ACTIVATE_TIMER / 3.0))
+	if (m_flTime > (m_flChaosTime / 3.0))
 	{
 		StartVoting();
 	}
@@ -612,8 +612,8 @@ void CChaos::OnFrame(double time)
 	static cvar_t* volume;
 	if (!volume)
 		volume = CVAR_GET_POINTER("volume");
-
-	ma_engine_set_volume(&miniAudio, volume->value);
+	else
+		ma_engine_set_volume(&miniAudio, volume->value);
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 
