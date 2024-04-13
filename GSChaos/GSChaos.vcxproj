@@ -188,6 +188,7 @@
     <ClCompile Include="CFeaturePlayAG.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
+    <ClCompile Include="CFeatureRandomFog.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
@@ -335,6 +336,7 @@
     <ClInclude Include="CFeaturePlayAG.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
+    <ClInclude Include="CFeatureRandomFog.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />

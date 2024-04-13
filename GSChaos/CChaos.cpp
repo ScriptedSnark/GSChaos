@@ -304,6 +304,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureHorrorAudio>();
 	RegisterChaosFeature<CFeatureLowFOV>();
 	RegisterChaosFeature<CFeatureDisableChaosUI>();
+	RegisterChaosFeature<CFeatureRandomFog>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

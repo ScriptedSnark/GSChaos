@@ -126,6 +126,59 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 }
 
 // CLIENT
+qboolean g_FogSkybox, g_FogOn;
+float g_FogDensity, g_FogStartDistance, g_FogStopDistance;
+float g_FogColor[4], g_FogColorRGB[4];
+
+void InitFog()
+{
+	g_FogSkybox = TRUE;
+	g_FogOn = TRUE;
+	g_FogDensity = gChaos.GetRandomValue(7.0f, 16.0f);
+	g_FogStartDistance = gChaos.GetRandomValue(0.0f, 500.0f);
+	g_FogStopDistance = gChaos.GetRandomValue(2000.0f, 3000.0f);
+
+	for (int i = 0; i < 3; i++)
+	{
+		g_FogColor[i] = gChaos.GetRandomValue(0.00f, 1.00f);
+	}
+
+	g_FogColor[3] = 1.0f;
+
+	for (int i = 0; i < 3; i++)
+	{
+		g_FogColorRGB[i] = g_FogColor[i] * 255.0f;
+	}
+}
+
+void RenderFog()
+{
+	if (g_FogOn == FALSE)
+		return;
+
+	pEngfuncs->pTriAPI->FogParams(0.00025f * g_FogDensity, g_FogSkybox);
+	pEngfuncs->pTriAPI->Fog(g_FogColorRGB, g_FogStartDistance, g_FogStopDistance, 1);
+
+	glEnable(GL_FOG);
+	glFogi(GL_FOG_MODE, GL_EXP2);
+	glFogf(GL_FOG_DENSITY, 0.00025f * g_FogDensity);
+	glHint(GL_FOG_HINT, GL_NICEST);
+
+	glFogfv(GL_FOG_COLOR, g_FogColor);
+	glFogf(GL_FOG_START, g_FogStartDistance);
+	glFogf(GL_FOG_END, g_FogStopDistance);
+}
+
+void DisableFog()
+{
+	g_FogOn = FALSE;
+
+	pEngfuncs->pTriAPI->FogParams(0, 0);
+	pEngfuncs->pTriAPI->Fog(0, 0, 0, 0);
+
+	glDisable(GL_FOG);
+}
+
 void HOOKED_HUD_Frame(double time)
 {
 	static bool initialized = false;
@@ -157,6 +210,9 @@ void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
 
 	g_pRefParams = pparams;
 	ORIG_V_CalcRefdef(pparams);
+
+	if (g_FogSkybox == TRUE)
+		RenderFog();
 }
 
 int HOOKED_HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)

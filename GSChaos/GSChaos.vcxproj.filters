@@ -343,6 +343,12 @@
     <ClCompile Include="CFeatureLowFOV.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureDisableChaosUI.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureRandomFog.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -781,6 +787,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureLowFOV.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureDisableChaosUI.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureRandomFog.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
