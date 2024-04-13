@@ -216,6 +216,7 @@
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
     <ClCompile Include="CFeatureWorldHallucination.cpp" />
+    <ClCompile Include="CFeatureWorstBhopCap.cpp" />
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
@@ -364,6 +365,7 @@
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />
     <ClInclude Include="CFeatureWorldHallucination.h" />
+    <ClInclude Include="CFeatureWorstBhopCap.h" />
     <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
     <ClInclude Include="CLWrapper.h" />

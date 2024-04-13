@@ -131,6 +131,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Low FOV
 > Disable Chaos UI
 > Random fog
+> Worst Bhop Cap
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```
