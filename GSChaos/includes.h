@@ -189,6 +189,7 @@ extern bool g_bEncrypted;
 #include "CFeatureReplaceModelsWithPlayer.h"
 #include "CFeatureHorrorAudio.h"
 #include "CFeatureLowFOV.h"
+#include "CFeatureDisableChaosUI.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

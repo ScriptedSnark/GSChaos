@@ -303,6 +303,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureReplaceModelsWithPlayer>();
 	RegisterChaosFeature<CFeatureHorrorAudio>();
 	RegisterChaosFeature<CFeatureLowFOV>();
+	RegisterChaosFeature<CFeatureDisableChaosUI>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

@@ -11,6 +11,8 @@
 #include "imgui.h"
 #include "backends/imgui_impl_opengl2.h"
 
+extern bool g_bDisableChaosUI;
+
 class CImGuiManager
 {
 public:

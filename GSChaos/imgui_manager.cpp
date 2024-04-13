@@ -1,5 +1,7 @@
 #include "includes.h"
 
+bool g_bDisableChaosUI;
+
 //-----------------------------------------------------------------------------
 // Initialize ImGui by creating context
 //-----------------------------------------------------------------------------
@@ -36,7 +38,8 @@ void CImGuiManager::Draw()
 	// Here you draw...
 	// -------------------------
 
-	gChaos.Draw();
+	if (!g_bDisableChaosUI)
+		gChaos.Draw();
 	//ImGui::ShowDemoWindow();
 
 	// -------------------------
