@@ -352,6 +352,9 @@
     <ClCompile Include="CFeatureWorstBhopCap.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureLongJump.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -799,6 +802,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureWorstBhopCap.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureLongJump.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
