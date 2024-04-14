@@ -190,6 +190,7 @@
     <ClCompile Include="CFeaturePlusDuck.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRandomFog.cpp" />
+    <ClCompile Include="CFeatureReloadAutosave.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
@@ -340,6 +341,7 @@
     <ClInclude Include="CFeaturePlusDuck.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRandomFog.h" />
+    <ClInclude Include="CFeatureReloadAutosave.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />

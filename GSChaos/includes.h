@@ -193,6 +193,7 @@ extern bool g_bEncrypted;
 #include "CFeatureRandomFog.h"
 #include "CFeatureWorstBhopCap.h"
 #include "CFeatureLongJump.h"
+#include "CFeatureReloadAutosave.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

@@ -355,6 +355,9 @@
     <ClCompile Include="CFeatureLongJump.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureReloadAutosave.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -805,6 +808,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureLongJump.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureReloadAutosave.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

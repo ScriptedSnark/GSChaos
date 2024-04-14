@@ -307,6 +307,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureRandomFog>();
 	RegisterChaosFeature<CFeatureWorstBhopCap>();
 	RegisterChaosFeature<CFeatureLongJump>();
+	RegisterChaosFeature<CFeatureReloadAutosave>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
