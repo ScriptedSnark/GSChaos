@@ -308,6 +308,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureWorstBhopCap>();
 	RegisterChaosFeature<CFeatureLongJump>();
 	RegisterChaosFeature<CFeatureReloadAutosave>();
+	RegisterChaosFeature<CFeatureExtremeGrieferJesus>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
@@ -619,7 +620,7 @@ void CChaos::OnFrame(double time)
 	if (!volume)
 		volume = CVAR_GET_POINTER("volume");
 	else
-		ma_engine_set_volume(&miniAudio, volume->value);
+		ma_engine_set_volume(&miniAudio, volume->value + 0.25f);
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 

@@ -138,6 +138,7 @@
     <ClCompile Include="CFeatureDisableChaosUI.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
+    <ClCompile Include="CFeatureExtremeGrieferJesus.cpp" />
     <ClCompile Include="CFeatureExtremeGrieferShephard.cpp" />
     <ClCompile Include="CFeatureGiveArmor.cpp" />
     <ClCompile Include="CFeatureGiveHealth.cpp" />
@@ -289,6 +290,7 @@
     <ClInclude Include="CFeatureDisableChaosUI.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureExplosion.h" />
+    <ClInclude Include="CFeatureExtremeGrieferJesus.h" />
     <ClInclude Include="CFeatureExtremeGrieferShephard.h" />
     <ClInclude Include="CFeatureGiveArmor.h" />
     <ClInclude Include="CFeatureGiveHealth.h" />

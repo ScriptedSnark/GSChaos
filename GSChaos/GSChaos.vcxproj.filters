@@ -358,6 +358,9 @@
     <ClCompile Include="CFeatureReloadAutosave.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureExtremeGrieferJesus.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -811,6 +814,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureReloadAutosave.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureExtremeGrieferJesus.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

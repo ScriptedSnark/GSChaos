@@ -23,6 +23,7 @@ extern bool g_bDespawnExShephard;
 
 class CFeatureExtremeGrieferShephard : public CFeatureGrieferShephard
 {
+public:
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
@@ -32,10 +33,14 @@ class CFeatureExtremeGrieferShephard : public CFeatureGrieferShephard
 	void Think() override;
 	void LaunchRocket() override;
 	void Restore() override;
+	virtual const char* GetModelName();
+	virtual const char* GetClassname();
+	virtual bool UseRenderFX();
+
+	bool m_bSpawned;
+	double m_flDespawnTime;
 private:
 	double m_flRocketTime;
-	double m_flDespawnTime;
-	bool m_bSpawned;
 	edict_t* m_pShephard;
 	Vector m_shephardLatestOrigin;
 };

@@ -12,6 +12,9 @@ void CFeatureExtremeGrieferShephard::Init()
 void CFeatureExtremeGrieferShephard::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
+
+	m_bSpawned = false;
+
 	Spawn();
 	m_flDespawnTime = gChaos.GetGlobalTime() + 180.0;
 	ma_engine_play_sound(&miniAudio, "chaos/opfor01.mp3", NULL);
@@ -90,7 +93,7 @@ void CFeatureExtremeGrieferShephard::OnFrame(double time)
 
 void CFeatureExtremeGrieferShephard::Spawn()
 {
-	if (m_pShephard && !stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+	if (m_pShephard && !stricmp(STRING(m_pShephard->v.classname), GetClassname()))
 	{
 		g_engfuncs->pfnRemoveEntity(m_pShephard);
 		if (m_pShephard->pvPrivateData != NULL)
@@ -106,21 +109,22 @@ void CFeatureExtremeGrieferShephard::Spawn()
 	if (!m_pShephard)
 		return;
 
-	PRECACHE_MODEL("../chaos/shephard.mdl");
-	SET_MODEL(m_pShephard, "../chaos/shephard.mdl");
+	PRECACHE_MODEL(const_cast<char*>(GetModelName()));
+	SET_MODEL(m_pShephard, const_cast<char*>(GetModelName()));
 
 	gEntityInterface->pfnSpawn(m_pShephard);
 	m_bSpawned = true;
-	Vector playerOrigin = (*sv_player)->v.origin + gpGlobals->v_forward * 96;
+	Vector playerOrigin = (*sv_player)->v.origin;
+	playerOrigin.z += 32.f;
 
 	SET_SIZE(m_pShephard, (*sv_player)->v.mins, (*sv_player)->v.maxs);
-	m_pShephard->v.health = 666;
+	m_pShephard->v.health = 777;
 	m_pShephard->v.takedamage = DAMAGE_NO;
 	m_pShephard->v.origin = playerOrigin;
 	m_pShephard->v.angles = (*sv_player)->v.angles;
-	m_pShephard->v.movetype = MOVETYPE_STEP;
-	m_pShephard->v.solid = SOLID_BBOX;
-	m_pShephard->v.classname = MAKE_STRING("chaos_exgriefer");
+	m_pShephard->v.movetype = MOVETYPE_NOCLIP;
+	m_pShephard->v.solid = SOLID_NOT;
+	m_pShephard->v.classname = MAKE_STRING(GetClassname());
 
 	m_flRocketTime = gChaos.GetGlobalTime() + (SHEPHARD_ROCKET_TIME / 2.0);
 }
@@ -133,17 +137,20 @@ void CFeatureExtremeGrieferShephard::Think()
 	if (m_pShephard->free)
 		return;
 
-	if (stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+	if (stricmp(STRING(m_pShephard->v.classname), GetClassname()))
 		return;
 
 	m_pShephard->v.effects = 0;
 	Vector angle = (*sv_player)->v.v_angle;
 	angle.y -= 180;
 	m_pShephard->v.angles = angle;
-	m_pShephard->v.rendercolor = Vector(255, 0, 0);
-	m_pShephard->v.renderamt = 255;
-	m_pShephard->v.renderfx = kRenderFxGlowShell;
 
+	if (UseRenderFX())
+	{
+		m_pShephard->v.rendercolor = Vector(255, 0, 0);
+		m_pShephard->v.renderamt = 255;
+		m_pShephard->v.renderfx = kRenderFxGlowShell;
+	}
 	//DEBUG_PRINT("GetChaosTime(): %.01f | m_flRocketTime: %.01f\n", gChaos.GetGlobalTime(), m_flRocketTime);
 	if (gChaos.GetGlobalTime() > m_flRocketTime)
 	{
@@ -199,9 +206,24 @@ void CFeatureExtremeGrieferShephard::Restore()
 	if (!m_bSpawned)
 		return;
 
-	if (!m_pShephard || stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+	if (!m_pShephard || stricmp(STRING(m_pShephard->v.classname), GetClassname()))
 		Spawn();
 
-	if (!stricmp(STRING(m_pShephard->v.classname), "chaos_exgriefer"))
+	if (!stricmp(STRING(m_pShephard->v.classname), GetClassname()))
 		m_pShephard->v.origin = m_shephardLatestOrigin;
+}
+
+const char* CFeatureExtremeGrieferShephard::GetModelName()
+{
+	return "../chaos/shephard.mdl";
+}
+
+const char* CFeatureExtremeGrieferShephard::GetClassname()
+{
+	return "chaos_exgriefer";
+}
+
+bool CFeatureExtremeGrieferShephard::UseRenderFX()
+{
+	return true;
 }
