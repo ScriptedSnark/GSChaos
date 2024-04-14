@@ -361,6 +361,9 @@
     <ClCompile Include="CFeatureExtremeGrieferJesus.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMegaJump.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -817,6 +820,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureExtremeGrieferJesus.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMegaJump.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

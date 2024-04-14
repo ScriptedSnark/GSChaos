@@ -309,6 +309,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureLongJump>();
 	RegisterChaosFeature<CFeatureReloadAutosave>();
 	RegisterChaosFeature<CFeatureExtremeGrieferJesus>();
+	RegisterChaosFeature<CFeatureMegaJump>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

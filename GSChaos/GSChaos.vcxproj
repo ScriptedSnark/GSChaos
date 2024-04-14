@@ -153,6 +153,7 @@
     <ClCompile Include="CFeatureLongJump.cpp" />
     <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
+    <ClCompile Include="CFeatureMegaJump.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
@@ -305,6 +306,7 @@
     <ClInclude Include="CFeatureLongJump.h" />
     <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
+    <ClInclude Include="CFeatureMegaJump.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />

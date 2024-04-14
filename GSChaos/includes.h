@@ -195,6 +195,7 @@ extern bool g_bEncrypted;
 #include "CFeatureLongJump.h"
 #include "CFeatureReloadAutosave.h"
 #include "CFeatureExtremeGrieferJesus.h"
+#include "CFeatureMegaJump.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
