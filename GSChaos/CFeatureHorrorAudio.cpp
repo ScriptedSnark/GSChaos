@@ -8,7 +8,7 @@ void CFeatureHorrorAudio::Init()
 void CFeatureHorrorAudio::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	shm->speed = 48000;
+	shm->speed = 44100;
 }
 
 void CFeatureHorrorAudio::DeactivateFeature()
