@@ -621,7 +621,12 @@ void CChaos::OnFrame(double time)
 	if (!volume)
 		volume = CVAR_GET_POINTER("volume");
 	else
-		ma_engine_set_volume(&miniAudio, volume->value + 0.25f);
+	{ // spaghetti
+		if (volume->value != 0.0f)
+			ma_engine_set_volume(&miniAudio, volume->value + 0.25f);
+		else
+			ma_engine_set_volume(&miniAudio, 0.0f);
+	}
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 
