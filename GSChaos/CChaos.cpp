@@ -622,8 +622,8 @@ void CChaos::OnFrame(double time)
 		volume = CVAR_GET_POINTER("volume");
 	else
 	{ // spaghetti
-		if (volume->value != 0.0f)
-			ma_engine_set_volume(&miniAudio, volume->value + 0.25f);
+		if (volume->value > 0.0f)
+			ma_engine_set_volume(&miniAudio, max(0.0f, volume->value) + 0.25f);
 		else
 			ma_engine_set_volume(&miniAudio, 0.0f);
 	}
