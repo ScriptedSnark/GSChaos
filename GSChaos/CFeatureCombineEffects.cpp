@@ -41,6 +41,11 @@ void CFeatureCombineEffects::ActivateFeature()
 		if (!m_pFeatures[i])
 			continue;
 
+		while (m_pFeatures[i] == this || m_pFeatures[i] == gChaosFeatures[gChaosFeatures.size() - 1])
+		{
+			m_pFeatures[i] = shuffledFeatures[gChaos.GetRandomValue(19, (int)(gChaosFeatures.size() - 3))];
+		}
+
 		m_pszFeatureNames.push_back(m_pFeatures[i]->GetFeatureName());
 		
 		m_pFeatures[i]->ActivateFeature();
