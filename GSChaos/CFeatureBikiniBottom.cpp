@@ -10,6 +10,7 @@ _PM_Move ORIG_PM_Move = NULL;
 playermove_s* g_svpmove;
 
 bool g_bActivatedBikiniBottom;
+bool g_bActivatedDisableWater;
 
 // HACK
 // We need to perform HL2_PM_Jump code in PM_Jump environment but I'm too lazy to support million server DLLs so yeah...
@@ -34,6 +35,9 @@ int PM_PointContents(vec3_t p, int* truecontents)
 {
 	if (g_bActivatedBikiniBottom)
 		return CONTENTS_WATER;
+
+	if (g_bActivatedDisableWater)
+		return CONTENTS_SOLID;
 
 	return ORIG_PM_PointContents(p, truecontents);
 }

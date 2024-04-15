@@ -312,6 +312,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureMegaJump>();
 	RegisterChaosFeature<CFeatureSpawn5RandomEntities>();
 	RegisterChaosFeature<CFeatureGiveAllWeapons>();
+	RegisterChaosFeature<CFeatureWaterIsALie>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
