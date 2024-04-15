@@ -47,6 +47,7 @@ void CFeatureOhio::OnFrame(double time)
 			e->v.gaitsequence = e->v.sequence = 0;
 			e->v.flags |= (FL_SWIM | FL_FLOAT);
 			e->v.effects |= (EF_MUZZLEFLASH | EF_BRIGHTLIGHT);
+			e->v.renderfx = kRenderFxExplode;
 		}
 	}
 }
@@ -79,6 +80,7 @@ void CFeatureOhio::DeactivateFeature()
 			e->v.gravity = 1.0f;
 			e->v.scale = 1.f;
 			e->v.effects ^= (EF_MUZZLEFLASH | EF_BRIGHTLIGHT);
+			e->v.renderfx = kRenderFxNone;
 		}
 	}
 }
