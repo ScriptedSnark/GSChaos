@@ -19,6 +19,8 @@
 
 #ifdef __cplusplus
 
+extern bool g_bDespawnJesus;
+
 class CFeatureExtremeGrieferJesus : public CFeatureExtremeGrieferShephard
 {
 	void ActivateFeature() override;

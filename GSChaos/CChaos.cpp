@@ -310,6 +310,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureReloadAutosave>();
 	RegisterChaosFeature<CFeatureExtremeGrieferJesus>();
 	RegisterChaosFeature<CFeatureMegaJump>();
+	RegisterChaosFeature<CFeatureSpawn5RandomEntities>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
@@ -442,6 +443,7 @@ void CChaos::Reset()
 	m_pCurrentFeature = nullptr;
 
 	g_bDespawnExShephard = true;
+	g_bDespawnJesus = true;
 
 	auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
 	m_startTime = currentTime;
@@ -658,6 +660,10 @@ void CChaos::OnFrame(double time)
 	auto duration = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - m_startTime);
 	auto globalDuration = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - m_startGlobalTime);
 
+	auto realTime = std::chrono::high_resolution_clock::now();
+	auto realDuration = std::chrono::duration_cast<std::chrono::duration<double>>(realTime - m_startGlobalTime);
+	m_flRealTime = realDuration.count();
+
 	m_flTime = duration.count();
 	m_flGlobalTime = globalDuration.count();
 
@@ -791,6 +797,10 @@ double CChaos::GetGlobalTime()
 	return m_flGlobalTime;
 }
 
+double CChaos::GetRealTime()
+{
+	return m_flRealTime;
+}
 
 int CChaos::GetFrameCount() // did it only for GTA 3 HUD effect so flickering depends on FPS
 {

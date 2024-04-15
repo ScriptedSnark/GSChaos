@@ -21,7 +21,7 @@
 
 class CFeatureSpawnRandomEntity : public CChaosFeature
 {
-	bool LoadEntityList();
+public:
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;

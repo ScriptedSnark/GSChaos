@@ -1,5 +1,7 @@
 #include "includes.h"
 
+bool g_bDespawnJesus;
+
 void CFeatureExtremeGrieferJesus::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
@@ -7,7 +9,7 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 	if (m_bActivated)
 		return;
 
-	m_flTimeForSpawn = gChaos.GetGlobalTime() + 38.0;
+	m_flTimeForSpawn = gChaos.GetRealTime() + 38.0;
 	m_bActivated = true;
 	m_bSpawned = false;
 
@@ -16,6 +18,14 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 
 void CFeatureExtremeGrieferJesus::OnFrame(double time)
 {
+	if (g_bDespawnJesus)
+	{
+		m_bSpawned = false;
+		g_bDespawnJesus = false;
+		m_flDespawnTime = 0.0;
+		return;
+	}
+
 	if (m_bSpawned)
 	{
 		CFeatureExtremeGrieferShephard::OnFrame(time);
@@ -24,7 +34,7 @@ void CFeatureExtremeGrieferJesus::OnFrame(double time)
 	if (!m_bActivated)
 		return;
 
-	if (m_flTimeForSpawn > gChaos.GetGlobalTime())
+	if (m_flTimeForSpawn > gChaos.GetRealTime())
 	{
 		CChaosFeature::OnFrame(time);
 		return;

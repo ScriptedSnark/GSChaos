@@ -204,6 +204,7 @@
     <ClCompile Include="CFeatureShuffleEntitiesPositions.cpp" />
     <ClCompile Include="CFeatureSlap.cpp" />
     <ClCompile Include="CFeatureSleepy.cpp" />
+    <ClCompile Include="CFeatureSpawn5RandomEntities.cpp" />
     <ClCompile Include="CFeatureSpawnFastrun.cpp" />
     <ClCompile Include="CFeatureSpawnRandomEntity.cpp" />
     <ClCompile Include="CFeatureSqueakShephard.cpp" />
@@ -357,6 +358,7 @@
     <ClInclude Include="CFeatureShuffleEntitiesPositions.h" />
     <ClInclude Include="CFeatureSlap.h" />
     <ClInclude Include="CFeatureSleepy.h" />
+    <ClInclude Include="CFeatureSpawn5RandomEntities.h" />
     <ClInclude Include="CFeatureSpawnFastrun.h" />
     <ClInclude Include="CFeatureSpawnRandomEntity.h" />
     <ClInclude Include="CFeatureSqueakShephard.h" />

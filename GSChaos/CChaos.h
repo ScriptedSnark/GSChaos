@@ -66,6 +66,7 @@ public:
 	double GetTime();
 	double GetChaosTime();
 	double GetGlobalTime();
+	double GetRealTime();
 	int GetFrameCount();
 	bool IsReady();
 
@@ -87,6 +88,7 @@ private:
 	bool m_bPaused;
 	float m_flProgress;
 	double m_flChaosTime;
+	double m_flRealTime;
 	double m_flTime;
 	double m_flGlobalTime;
 	int m_iFrameCount;

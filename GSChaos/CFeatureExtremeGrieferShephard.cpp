@@ -39,6 +39,8 @@ void CFeatureExtremeGrieferShephard::OnFrame(double time)
 	{
 		m_bSpawned = false;
 		g_bDespawnExShephard = false;
+		m_flDespawnTime = 0.0;
+		return;
 	}
 
 	if (gChaos.GetGlobalTime() > m_flDespawnTime)

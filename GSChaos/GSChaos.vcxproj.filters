@@ -364,6 +364,9 @@
     <ClCompile Include="CFeatureMegaJump.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureSpawn5RandomEntities.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -823,6 +826,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMegaJump.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSpawn5RandomEntities.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
