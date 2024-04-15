@@ -191,6 +191,7 @@
     <ClCompile Include="CFeaturePaperNPCs.cpp" />
     <ClCompile Include="CFeaturePlayAG.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
+    <ClCompile Include="CFeatureQuakeJumpSound.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRandomFog.cpp" />
     <ClCompile Include="CFeatureReloadAutosave.cpp" />
@@ -347,6 +348,7 @@
     <ClInclude Include="CFeaturePaperNPCs.h" />
     <ClInclude Include="CFeaturePlayAG.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
+    <ClInclude Include="CFeatureQuakeJumpSound.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRandomFog.h" />
     <ClInclude Include="CFeatureReloadAutosave.h" />

@@ -138,6 +138,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Spawn 5 random entities
 > Give all weapons
 > Water is a lie
+> Quake jump sound
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```

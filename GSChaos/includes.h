@@ -199,6 +199,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSpawn5RandomEntities.h"
 #include "CFeatureGiveAllWeapons.h"
 #include "CFeatureWaterIsALie.h"
+#include "CFeatureQuakeJumpSound.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
