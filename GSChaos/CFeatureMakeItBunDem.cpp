@@ -73,3 +73,13 @@ const char* CFeatureMakeItBunDem::GetFeatureName()
 {
 	return "Make It Bun Dem";
 }
+
+double CFeatureMakeItBunDem::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.35;
+}
+
+bool CFeatureMakeItBunDem::UseCustomDuration()
+{
+	return true;
+}

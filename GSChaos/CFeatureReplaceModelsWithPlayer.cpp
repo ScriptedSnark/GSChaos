@@ -36,3 +36,13 @@ void CFeatureReplaceModelsWithPlayer::HUD_AddEntity(int type, struct cl_entity_s
 		ent->curstate.origin.z += 36.f;
 	}
 }
+
+double CFeatureReplaceModelsWithPlayer::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.5;
+}
+
+bool CFeatureReplaceModelsWithPlayer::UseCustomDuration()
+{
+	return true;
+}

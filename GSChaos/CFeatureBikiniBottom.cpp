@@ -101,3 +101,13 @@ const char* CFeatureBikiniBottom::GetFeatureName()
 {
 	return "Bikini Bottom";
 }
+
+double CFeatureBikiniBottom::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.45;
+}
+
+bool CFeatureBikiniBottom::UseCustomDuration()
+{
+	return true;
+}

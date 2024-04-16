@@ -140,3 +140,13 @@ const char* CFeatureForgotCSS::GetFeatureName()
 {
 	return "Forgot to install CS 1.6 :o";
 }
+
+double CFeatureForgotCSS::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.2;
+}
+
+bool CFeatureForgotCSS::UseCustomDuration()
+{
+	return true;
+}

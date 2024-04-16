@@ -39,3 +39,13 @@ const char* CFeaturePlusDuck::GetFeatureName()
 {
 	return "+duck";
 }
+
+double CFeaturePlusDuck::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.25;
+}
+
+bool CFeaturePlusDuck::UseCustomDuration()
+{
+	return true;
+}

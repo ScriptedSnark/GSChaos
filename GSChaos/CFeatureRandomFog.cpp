@@ -21,3 +21,13 @@ const char* CFeatureRandomFog::GetFeatureName()
 {
 	return "Random fog";
 }
+
+double CFeatureRandomFog::GetDuration()
+{
+	return gChaos.GetChaosTime() * 3.0;
+}
+
+bool CFeatureRandomFog::UseCustomDuration()
+{
+	return true;
+}

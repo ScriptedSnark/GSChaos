@@ -35,3 +35,13 @@ const char* CFeatureEntitySpin::GetFeatureName()
 {
 	return "Entity spin";
 }
+
+double CFeatureEntitySpin::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.5;
+}
+
+bool CFeatureEntitySpin::UseCustomDuration()
+{
+	return true;
+}

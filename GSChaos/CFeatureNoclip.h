@@ -26,6 +26,8 @@ class CFeatureNoclip : public CChaosFeature
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
 	void ResetStates() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 };
 
 #else //!__cplusplus

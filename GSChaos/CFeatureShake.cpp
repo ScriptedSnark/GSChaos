@@ -27,3 +27,13 @@ const char* CFeatureShake::GetFeatureName()
 {
 	return "Shake";
 }
+
+double CFeatureShake::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.0;
+}
+
+bool CFeatureShake::UseCustomDuration()
+{
+	return true;
+}

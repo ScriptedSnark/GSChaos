@@ -26,3 +26,13 @@ const char* CFeatureWorstBhopCap::GetFeatureName()
 {
 	return "Worst Bhop Cap";
 }
+
+double CFeatureWorstBhopCap::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.2;
+}
+
+bool CFeatureWorstBhopCap::UseCustomDuration()
+{
+	return true;
+}

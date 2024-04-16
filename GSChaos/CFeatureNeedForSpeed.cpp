@@ -30,7 +30,7 @@ void CFeatureNeedForSpeed::OnFrame(double time)
 		if (gChaos.GetGlobalTime() > m_flTimeToFail)
 		{
 			Explode();
-			m_bActivated = false;
+			DeactivateFeature();
 		}
 	}
 	else
@@ -84,4 +84,14 @@ void CFeatureNeedForSpeed::Explode() // TODO: make this thing public for every c
 const char* CFeatureNeedForSpeed::GetFeatureName()
 {
 	return "Need for Speed";
+}
+
+double CFeatureNeedForSpeed::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.35;
+}
+
+bool CFeatureNeedForSpeed::UseCustomDuration()
+{
+	return true;
 }

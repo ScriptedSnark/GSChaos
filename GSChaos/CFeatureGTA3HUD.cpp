@@ -516,3 +516,13 @@ const char* CFeatureGTA3HUD::GetFeatureName()
 
 	return g_bActivatedGTA3HUD ? "GTA 3 HUD" : "GTA Vice City HUD";
 }
+
+double CFeatureGTA3HUD::GetDuration()
+{
+	return gChaos.GetChaosTime() * 3.75;
+}
+
+bool CFeatureGTA3HUD::UseCustomDuration()
+{
+	return true;
+}

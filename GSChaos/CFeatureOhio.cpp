@@ -95,3 +95,13 @@ void CFeatureOhio::ResetStates()
 	if ((*sv_player)->v.gravity <= 0.1f)
 		(*sv_player)->v.gravity = 1.0f;
 }
+
+double CFeatureOhio::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.25;
+}
+
+bool CFeatureOhio::UseCustomDuration()
+{
+	return true;
+}

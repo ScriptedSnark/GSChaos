@@ -26,6 +26,8 @@ class CFeatureReplaceModelsWithPlayer : public CChaosFeature
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
 	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 };
 
 #else //!__cplusplus

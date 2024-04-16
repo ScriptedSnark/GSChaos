@@ -134,3 +134,13 @@ const char* CFeatureHL2Movement::GetFeatureName()
 {
 	return "HL2 Movement";
 }
+
+double CFeatureHL2Movement::GetDuration()
+{
+	return gChaos.GetChaosTime() * 5.0;
+}
+
+bool CFeatureHL2Movement::UseCustomDuration()
+{
+	return true;
+}

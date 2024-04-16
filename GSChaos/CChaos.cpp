@@ -2,6 +2,8 @@
 #include "twitch/twitch.h"
 #include "includes.h"
 
+#undef max
+
 Twitch* twitch = 0;
 std::thread twitch_thread;
 
@@ -443,6 +445,14 @@ void CChaos::Reset()
 	if (m_pCurrentFeature)
 		m_pCurrentFeature->DeactivateFeature();
 
+	for (CChaosFeature* feature : m_activeFeatures)
+	{
+		if (feature->IsActive())
+			feature->DeactivateFeature();
+	}
+
+	m_activeFeatures.clear();
+
 	m_pCurrentFeature = nullptr;
 
 	g_bDespawnExShephard = true;
@@ -536,11 +546,27 @@ void CChaos::DrawEffectList()
 		if (m_fontTrebuchet)
 			ImGui::PushFont(m_fontTrebuchet);
 
-		ImVec2 textPos = ImGui::GetCursorPos();
-		ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "- %s", m_pCurrentFeature->GetFeatureName());
-		ImGui::SetCursorPos(textPos);
-		ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "- %s", m_pCurrentFeature->GetFeatureName());
+		for (CChaosFeature* feature : m_activeFeatures)
+		{
+			ImVec2 textPos = ImGui::GetCursorPos();
+			const char* featureName = feature->GetFeatureName();
+			double timer = std::max(0.0, feature->m_flExpireTime - gChaos.GetGlobalTime());
+
+			if (timer <= 0.0 || !feature->UseCustomDuration())
+			{
+				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
+				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "- %s", featureName);
+				ImGui::SetCursorPos(textPos);
+				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "- %s", featureName);
+			}
+			else
+			{
+				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
+				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "- %s (%.01f)", featureName, timer);
+				ImGui::SetCursorPos(textPos);
+				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "- %s (%.01f)", featureName, timer);
+			}
+		}
 
 		if (m_fontTrebuchet)
 			ImGui::PopFont();
@@ -628,7 +654,7 @@ void CChaos::OnFrame(double time)
 	else
 	{ // spaghetti
 		if (volume->value > 0.0f)
-			ma_engine_set_volume(&miniAudio, max(0.0f, volume->value) + 0.25f);
+			ma_engine_set_volume(&miniAudio, std::max(0.0f, volume->value) + 0.25f);
 		else
 			ma_engine_set_volume(&miniAudio, 0.0f);
 	}
@@ -677,6 +703,7 @@ void CChaos::OnFrame(double time)
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{
+		i->ExpireThink();
 		i->OnFrame(m_flTime);
 	}
 
@@ -700,7 +727,7 @@ void CChaos::OnFrame(double time)
 		m_iBarColor[2] = GetRandomValue(0, 255);
 		
 		// Before
-		if (m_pCurrentFeature)
+		if (m_pCurrentFeature && !m_pCurrentFeature->UseCustomDuration())
 			m_pCurrentFeature->DeactivateFeature();
 
 		// Do some setup

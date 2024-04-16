@@ -14,17 +14,37 @@ void CChaosFeature::ActivateFeature()
 	DEBUG_PRINT("%s\n", GetFeatureName());
 
 	m_bActivated = true;
+	m_flExpireTime = gChaos.GetGlobalTime() + GetDuration();
+
+	if (std::find(gChaos.m_activeFeatures.begin(), gChaos.m_activeFeatures.end(), this) == gChaos.m_activeFeatures.end())
+		gChaos.m_activeFeatures.push_back(this);
 }
 
 void CChaosFeature::DeactivateFeature()
 {
 	DEBUG_PRINT("CChaosFeature::DeactivateFeature\n");
 	m_bActivated = false;
+
+	auto it = std::find(gChaos.m_activeFeatures.begin(), gChaos.m_activeFeatures.end(), this);
+	if (it != gChaos.m_activeFeatures.end())
+		gChaos.m_activeFeatures.erase(it);
 }
 
 void CChaosFeature::OnFrame(double time)
 {
 	;
+}
+
+void CChaosFeature::ExpireThink()
+{
+	if (!IsActive())
+		return;
+
+	if (!UseCustomDuration())
+		return;
+
+	if (m_flExpireTime < gChaos.GetGlobalTime())
+		DeactivateFeature();
 }
 
 const char* CChaosFeature::GetFeatureName()
@@ -60,4 +80,14 @@ void CChaosFeature::PM_Jump()
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;
+}
+
+double CChaosFeature::GetDuration()
+{
+	return gChaos.GetChaosTime(); // by default it's 30-45 seconds
+}
+
+bool CChaosFeature::UseCustomDuration()
+{
+	return false;
 }

@@ -26,6 +26,7 @@ public:
 	virtual void ActivateFeature();
 	virtual void DeactivateFeature();
 	virtual void OnFrame(double time);
+	virtual void ExpireThink();
 	virtual const char* GetFeatureName();
 	virtual void Draw();
 	virtual void ResetStates();
@@ -33,6 +34,10 @@ public:
 	virtual void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname);
 	virtual void PM_Jump();
 	virtual bool IsActive();
+	virtual double GetDuration();
+	virtual bool UseCustomDuration();
+
+	double m_flExpireTime;
 private:
 	bool m_bActivated;
 };

@@ -10,7 +10,6 @@ void CFeatureLobotomy::Init()
 void CFeatureLobotomy::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	m_bActivated = true;
 	m_flLobotomyTPTime = gChaos.GetGlobalTime() + LOBOTOMY_TP_TIME;
 	m_lobotomyOrigin[0] = (*sv_player)->v.origin;
 
@@ -25,7 +24,6 @@ void CFeatureLobotomy::ActivateFeature()
 void CFeatureLobotomy::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
-	m_bActivated = false;
 	m_bPlayedSound = false;
 	m_bInitializedSecondPos = false;
 }
@@ -56,15 +54,15 @@ void CFeatureLobotomy::DoMegaLobotomy(double time)
 
 	EMIT_SOUND_DYN2((*sv_player), CHAN_ITEM, "fvox/beep.wav", 1.0, ATTN_IDLE, 0, gChaos.GetRandomValue(PITCH_LOW - 20, PITCH_HIGH + 20));
 
-	m_flLobotomyTPTime = gChaos.GetGlobalTime() + (((gChaos.GetChaosTime() / 2.0) / time) / 2.0); // :skull:
+	m_flLobotomyTPTime = gChaos.GetGlobalTime() + (((GetDuration() / 2.0) / time) / 2.0); // :skull:
 }
 
 void CFeatureLobotomy::OnFrame(double time)
 {
-	if (!m_bActivated)
+	if (!IsActive())
 		return;
 
-	if (time > (gChaos.GetChaosTime() - 10.0f))
+	if (time > (GetDuration() - 10.0f))
 	{
 		if (!m_bPlayedSound)
 		{
@@ -102,7 +100,7 @@ void CFeatureLobotomy::OnFrame(double time)
 
 		EMIT_SOUND_DYN2((*sv_player), CHAN_ITEM, "fvox/beep.wav", 1.0, ATTN_IDLE, 0, gChaos.GetRandomValue(PITCH_LOW - 20, PITCH_HIGH + 20));
 		
-		if (time > (gChaos.GetChaosTime() - 10.0f))
+		if (time > (GetDuration() - 10.0f))
 			m_flLobotomyTPTime = gChaos.GetGlobalTime() + 0.5;
 		else
 			m_flLobotomyTPTime = gChaos.GetGlobalTime() + (LOBOTOMY_TP_TIME / 4.0);

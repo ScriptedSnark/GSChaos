@@ -52,3 +52,13 @@ const char* CFeatureGravityField::GetFeatureName()
 {
 	return "Hyper Gravity Field";
 }
+
+double CFeatureGravityField::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.45;
+}
+
+bool CFeatureGravityField::UseCustomDuration()
+{
+	return true;
+}

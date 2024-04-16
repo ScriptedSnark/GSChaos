@@ -37,3 +37,13 @@ const char* CFeatureUpsideDown::GetFeatureName()
 {
 	return "Upside Down";
 }
+
+double CFeatureUpsideDown::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.75;
+}
+
+bool CFeatureUpsideDown::UseCustomDuration()
+{
+	return true;
+}

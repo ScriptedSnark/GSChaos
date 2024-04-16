@@ -21,3 +21,13 @@ const char* CFeatureHigh::GetFeatureName()
 {
 	return "High";
 }
+
+double CFeatureHigh::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.5;
+}
+
+bool CFeatureHigh::UseCustomDuration()
+{
+	return true;
+}

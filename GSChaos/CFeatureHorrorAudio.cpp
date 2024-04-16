@@ -21,3 +21,13 @@ const char* CFeatureHorrorAudio::GetFeatureName()
 {
 	return "Horror Audio";
 }
+
+double CFeatureHorrorAudio::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.95;
+}
+
+bool CFeatureHorrorAudio::UseCustomDuration()
+{
+	return true;
+}

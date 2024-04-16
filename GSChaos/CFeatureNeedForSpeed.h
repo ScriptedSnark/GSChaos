@@ -32,6 +32,8 @@ class CFeatureNeedForSpeed : public CChaosFeature
 	void Draw() override;
 	void Explode();
 	const char* GetFeatureName() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 private:
 	bool m_bActivated;
 	double m_flTimeToFail;

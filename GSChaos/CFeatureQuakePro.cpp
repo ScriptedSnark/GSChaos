@@ -51,3 +51,13 @@ float CFeatureQuakePro::GetFOV()
 {
 	return 150.0f;
 }
+
+double CFeatureQuakePro::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.75;
+}
+
+bool CFeatureQuakePro::UseCustomDuration()
+{
+	return true;
+}

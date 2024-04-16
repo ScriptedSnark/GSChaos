@@ -24,3 +24,13 @@ void CFeatureMegaJump::PM_Jump()
 {
 	(*sv_player)->v.velocity.z += 1337.f;
 }
+
+double CFeatureMegaJump::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.69; // cursed timing xdd
+}
+
+bool CFeatureMegaJump::UseCustomDuration()
+{
+	return true;
+}

@@ -104,3 +104,13 @@ const char* CFeatureGlobalGodMode::GetFeatureName()
 {
 	return "Everyone has God Mode!";
 }
+
+double CFeatureGlobalGodMode::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.48;
+}
+
+bool CFeatureGlobalGodMode::UseCustomDuration()
+{
+	return true;
+}

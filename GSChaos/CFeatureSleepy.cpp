@@ -39,3 +39,13 @@ const char* CFeatureSleepy::GetFeatureName()
 {
 	return "Sleepy";
 }
+
+double CFeatureSleepy::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.5;
+}
+
+bool CFeatureSleepy::UseCustomDuration()
+{
+	return true;
+}

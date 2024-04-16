@@ -35,3 +35,13 @@ const char* CFeatureAmIDead::GetFeatureName()
 {
 	return "Am I dead?";
 }
+
+double CFeatureAmIDead::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.9;
+}
+
+bool CFeatureAmIDead::UseCustomDuration()
+{
+	return true;
+}

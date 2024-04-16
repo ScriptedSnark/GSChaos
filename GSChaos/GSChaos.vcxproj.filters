@@ -370,6 +370,12 @@
     <ClCompile Include="CFeatureGiveAllWeapons.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureQuakeJumpSound.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureWaterIsALie.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -835,6 +841,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGiveAllWeapons.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureWaterIsALie.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureQuakeJumpSound.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

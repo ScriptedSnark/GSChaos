@@ -68,7 +68,7 @@ void CFeatureCombineEffects::DeactivateFeature()
 	int effectsNum = HowManyEffects();
 	for (int i = 0; i < effectsNum; i++)
 	{
-		if (m_pFeatures[i])
+		if (m_pFeatures[i] && !m_pFeatures[i]->UseCustomDuration())
 			m_pFeatures[i]->DeactivateFeature();
 	}
 
@@ -81,15 +81,14 @@ void CFeatureCombineEffects::DeactivateFeature()
 
 const char* CFeatureCombineEffects::GetFeatureName()
 {
-	if (!m_bActivated)
-		return GetBaseFeatureName();
+	return GetBaseFeatureName();
 
-	return const_cast<const char*>(UTIL_VarArgs("%s %s", GetBaseFeatureName(), m_sEffectList.c_str()));
+	//return const_cast<const char*>(UTIL_VarArgs("%s %s", GetBaseFeatureName(), m_sEffectList.c_str()));
 }
 
 const char* CFeatureCombineEffects::GetBaseFeatureName()
 {
-	return "Combine Effects";
+	return "3 Effects in 1";
 }
 
 int CFeatureCombineEffects::HowManyEffects()

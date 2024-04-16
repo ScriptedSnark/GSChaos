@@ -26,6 +26,8 @@ class CFeatureGTA2Camera : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 private:
 	std::chrono::steady_clock::time_point m_lastFrameTime;
 	bool m_bActivated;

@@ -29,6 +29,8 @@ public:
 	void ScaleModel();
 	virtual void Transform(float transform[3][4]);
 	virtual float GetScale();
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 private:
 	cl_entity_t* m_pCurrentEntity;
 	model_t* m_pRenderModel;

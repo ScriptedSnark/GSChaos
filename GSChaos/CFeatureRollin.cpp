@@ -28,3 +28,13 @@ const char* CFeatureRollin::GetFeatureName()
 {
 	return "Rollin'";
 }
+
+double CFeatureRollin::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.9;
+}
+
+bool CFeatureRollin::UseCustomDuration()
+{
+	return true;
+}

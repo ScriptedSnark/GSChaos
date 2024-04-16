@@ -31,3 +31,13 @@ const char* CFeatureHEVMadness::GetFeatureName()
 {
 	return "HEV Madness";
 }
+
+double CFeatureHEVMadness::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.15;
+}
+
+bool CFeatureHEVMadness::UseCustomDuration()
+{
+	return true;
+}

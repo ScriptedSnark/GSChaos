@@ -94,3 +94,13 @@ float CFeatureWideNPCs::GetScale()
 {
 	return 4.0f;
 }
+
+double CFeatureWideNPCs::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.0;
+}
+
+bool CFeatureWideNPCs::UseCustomDuration()
+{
+	return true;
+}

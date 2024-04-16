@@ -23,3 +23,13 @@ const char* CFeatureScientistMadness::GetFeatureName()
 {
 	return "Scientist Madness";
 }
+
+double CFeatureScientistMadness::GetDuration()
+{
+	return gChaos.GetChaosTime() * 3.5;
+}
+
+bool CFeatureScientistMadness::UseCustomDuration()
+{
+	return true;
+}

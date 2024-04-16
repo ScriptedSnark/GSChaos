@@ -50,3 +50,13 @@ const char* CFeatureMLGAudio::GetFeatureName()
 {
 	return "MLG Audio";
 }
+
+double CFeatureMLGAudio::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.0;
+}
+
+bool CFeatureMLGAudio::UseCustomDuration()
+{
+	return true;
+}

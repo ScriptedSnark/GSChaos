@@ -33,3 +33,13 @@ const char* CFeature20FPS::GetFeatureName()
 {
 	return "Force 20 FPS";
 }
+
+double CFeature20FPS::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.05;
+}
+
+bool CFeature20FPS::UseCustomDuration()
+{
+	return true;
+}

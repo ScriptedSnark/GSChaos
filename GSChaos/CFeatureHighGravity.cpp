@@ -52,3 +52,13 @@ float CFeatureHighGravity::GetGravityValue()
 {
 	return 1600.0f;
 }
+
+double CFeatureHighGravity::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.75;
+}
+
+bool CFeatureHighGravity::UseCustomDuration()
+{
+	return true;
+}

@@ -38,3 +38,13 @@ const char* CFeatureNotarget::GetFeatureName()
 {
 	return "Notarget";
 }
+
+double CFeatureNotarget::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.25;
+}
+
+bool CFeatureNotarget::UseCustomDuration()
+{
+	return true;
+}

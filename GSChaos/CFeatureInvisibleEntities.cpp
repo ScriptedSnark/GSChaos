@@ -61,3 +61,13 @@ const char* CFeatureInvisibleEntities::GetFeatureName()
 {
 	return "Invisible entities";
 }
+
+double CFeatureInvisibleEntities::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.5;
+}
+
+bool CFeatureInvisibleEntities::UseCustomDuration()
+{
+	return true;
+}

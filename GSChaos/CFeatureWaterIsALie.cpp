@@ -21,3 +21,13 @@ const char* CFeatureWaterIsALie::GetFeatureName()
 {
 	return "Water is a lie";
 }
+
+double CFeatureWaterIsALie::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.0;
+}
+
+bool CFeatureWaterIsALie::UseCustomDuration()
+{
+	return true;
+}

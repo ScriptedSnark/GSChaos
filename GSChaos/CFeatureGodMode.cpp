@@ -40,3 +40,13 @@ void CFeatureGodMode::ResetStates()
 	if ((*sv_player)->v.flags & FL_GODMODE)
 		(*sv_player)->v.flags &= ~FL_GODMODE;
 }
+
+double CFeatureGodMode::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.25;
+}
+
+bool CFeatureGodMode::UseCustomDuration()
+{
+	return true;
+}

@@ -24,3 +24,13 @@ const char* CFeatureQuakeJumpSound::GetFeatureName()
 {
 	return "Quake jump sound";
 }
+
+double CFeatureQuakeJumpSound::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.5;
+}
+
+bool CFeatureQuakeJumpSound::UseCustomDuration()
+{
+	return true;
+}

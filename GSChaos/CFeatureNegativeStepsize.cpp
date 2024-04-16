@@ -52,3 +52,13 @@ float CFeatureNegativeStepsize::GetStepsizeValue()
 {
 	return -18.0f;
 }
+
+double CFeatureNegativeStepsize::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.33;
+}
+
+bool CFeatureNegativeStepsize::UseCustomDuration()
+{
+	return true;
+}

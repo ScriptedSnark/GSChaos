@@ -44,3 +44,13 @@ const char* CFeatureIceSkating::GetFeatureName()
 {
 	return "Ice skating";
 }
+
+double CFeatureIceSkating::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.8;
+}
+
+bool CFeatureIceSkating::UseCustomDuration()
+{
+	return true;
+}

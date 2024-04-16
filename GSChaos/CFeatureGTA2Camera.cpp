@@ -67,3 +67,13 @@ const char* CFeatureGTA2Camera::GetFeatureName()
 {
 	return "2D Camera";
 }
+
+double CFeatureGTA2Camera::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.0;
+}
+
+bool CFeatureGTA2Camera::UseCustomDuration()
+{
+	return true;
+}

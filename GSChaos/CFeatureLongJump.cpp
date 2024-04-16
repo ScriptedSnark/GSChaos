@@ -25,3 +25,13 @@ const char* CFeatureLongJump::GetFeatureName()
 {
 	return "Long Jump";
 }
+
+double CFeatureLongJump::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.75;
+}
+
+bool CFeatureLongJump::UseCustomDuration()
+{
+	return true;
+}

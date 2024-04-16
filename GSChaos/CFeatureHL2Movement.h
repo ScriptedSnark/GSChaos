@@ -28,6 +28,8 @@ class CFeatureHL2Movement : public CChaosFeature
 	void DeactivateFeature() override;
 	void PM_Jump() override;
 	const char* GetFeatureName() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 };
 
 #else //!__cplusplus

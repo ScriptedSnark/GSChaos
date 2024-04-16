@@ -23,6 +23,8 @@ class CFeatureZeroGravity : public CFeatureHighGravity
 {
 	const char* GetFeatureName() override;
 	float GetGravityValue() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;	
 };
 
 #else //!__cplusplus

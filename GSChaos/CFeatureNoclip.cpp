@@ -27,3 +27,13 @@ void CFeatureNoclip::ResetStates()
 	if ((*sv_player)->v.movetype == MOVETYPE_NOCLIP)
 		(*sv_player)->v.movetype = MOVETYPE_WALK;
 }
+
+double CFeatureNoclip::GetDuration()
+{
+	return gChaos.GetChaosTime() * 0.4;
+}
+
+bool CFeatureNoclip::UseCustomDuration()
+{
+	return true;
+}

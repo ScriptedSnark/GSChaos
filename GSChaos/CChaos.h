@@ -76,6 +76,8 @@ public:
 	ImFont* m_pPricedown;
 	ImFont* m_pArborcrest;
 
+	std::vector<CChaosFeature*> m_activeFeatures;
+
 private:
 	std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<double, std::nano>> m_startTime;
 	std::chrono::high_resolution_clock::time_point m_startGlobalTime;
@@ -97,7 +99,6 @@ private:
 	int m_aiPreviousRandomValue[3];
 	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
-	
 
 	// TWITCH
 	bool m_bTwitchVoting;

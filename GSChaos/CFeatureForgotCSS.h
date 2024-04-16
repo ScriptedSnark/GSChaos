@@ -27,7 +27,8 @@ class CFeatureForgotCSS : public CChaosFeature
 	const char* GetFeatureName() override;
 	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	virtual int GetTextureID();
-
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 public:
 	void ActivateFeature() override;
 private:

@@ -26,6 +26,8 @@ class CFeatureMegaJump : public CChaosFeature
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
 	void PM_Jump() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 };
 
 #else //!__cplusplus

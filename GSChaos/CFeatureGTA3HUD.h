@@ -50,6 +50,8 @@ class CFeatureGTA3HUD : public CChaosFeature
 	void Draw() override;
 	void Notify(const char* msg);
 	void DrawNotify();
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 private:
 	bool m_bActivated;
 	bool m_bFlashHealth;

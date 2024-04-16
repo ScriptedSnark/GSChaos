@@ -154,5 +154,5 @@ Special thanks to:
 - BlueNightHawk for late precache system
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
 - un4seen (a.k.a. yanny) for supporting/playtesting
-- Tankfird, StereoBucket, prolert, gatar, Eold and other people for suggesting effects, ideas
+- Tankfird, StereoBucket, JeepyGMI, prolert, gatar, Eold, Bartek(GMI) and other people for suggesting effects, ideas
 - [Ryder Joestar](https://gamebanana.com/members/2142275) for modelling help

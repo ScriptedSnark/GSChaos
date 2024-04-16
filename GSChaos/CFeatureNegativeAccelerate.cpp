@@ -45,3 +45,13 @@ const char* CFeatureNegativeAccelerate::GetFeatureName()
 {
 	return "Negative Accelerate";
 }
+
+double CFeatureNegativeAccelerate::GetDuration()
+{
+	return gChaos.GetChaosTime() * 2.0;
+}
+
+bool CFeatureNegativeAccelerate::UseCustomDuration()
+{
+	return true;
+}
