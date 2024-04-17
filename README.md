@@ -1,5 +1,7 @@
 # GSChaos
 
+<a href="https://www.moddb.com/mods/gschaos" title="View GSChaos (Chaos Mod) on ModDB" target="_blank"><img src="https://button.moddb.com/popularity/medium/mods/61878.png" alt="GSChaos (Chaos Mod)" /></a>
+
 ![gsch_banner](https://raw.githubusercontent.com/ScriptedSnark/GSChaos/master/gsch_banner.png)
 
 </div>
