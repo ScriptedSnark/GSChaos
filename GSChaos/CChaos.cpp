@@ -442,13 +442,13 @@ void CChaos::StartVoting()
 
 void CChaos::Reset()
 {
-	if (m_pCurrentFeature)
-		m_pCurrentFeature->DeactivateFeature();
-
-	for (CChaosFeature* feature : m_activeFeatures)
+	for (CChaosFeature* feature : gChaosFeatures)
 	{
-		if (feature->IsActive())
+		if (feature && feature->IsActive())
+		{
 			feature->DeactivateFeature();
+			feature->m_flExpireTime = 0.0;
+		}
 	}
 
 	m_activeFeatures.clear();
