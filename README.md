@@ -155,6 +155,8 @@ Special thanks to:
 - SmileyAG for provided help about some aspects of hooking
 - BlueNightHawk for late precache system
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
-- un4seen (a.k.a. yanny) for supporting/playtesting
+- un4seen (a.k.a. yanny), JeepyGMI, Kalifron4ik for supporting/playtesting when GSChaos didn't have even 50 effects
 - Tankfird, StereoBucket, JeepyGMI, prolert, gatar, Eold, Bartek(GMI) and other people for suggesting effects, ideas
 - [Ryder Joestar](https://gamebanana.com/members/2142275) for modelling help
+- YaLTeR for SPTLib
+- Valve for Half-Life, GoldSrc engine

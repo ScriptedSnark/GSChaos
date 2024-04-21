@@ -11,7 +11,7 @@ INSTALLATION (FOR GOLDSRC PACKAGE / STEAM VERSION)
 ==============
 1. Extract ZIP to your Half-Life directory (you can create backup for hl.exe)
 2. Run game
-3. If you see progress bar on top, Chaos Mod is installed successfully!
+3. If you see progress bar on top in game, Chaos Mod is installed successfully!
 
 INSTALLATION (FOR WON 2005)
 ==============
@@ -19,7 +19,7 @@ INSTALLATION (FOR WON 2005)
 2. Rename DemoPlayer.dll to any name (for backup)
 3. Rename ASILoader_3248.dll to DemoPlayer.dll
 4. Run game
-5. If you see progress bar on top, Chaos Mod is installed successfully!
+5. If you see progress bar on top in game, Chaos Mod is installed successfully!
 
 ADDITIONAL INFO
 ==============
@@ -48,6 +48,21 @@ GSChaos supports Twitch chat voting. If you want to use it, then do some steps:
 To vote, you need to type "NUMBER" in chat (for example, "2").
 If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISABLED.ini`.
 
+TROUBLESHOOTING
+==============
+Issue: "Could not find filesystem dll to load."
+Solution: "Do not replace hl.exe. It seems like you use build 3248 which is encrypted. Use installation guide for 2005 WON. You can find backup of original hl.exe in certain folder."
+
+Issue: "Failed to initialize GLEW. Exiting..."
+Solution: "Check if your GPU has updated drivers and supports GLSL shaders."
+
+Issue: Effect "High" doesn't work.
+Solution: "If you use HL25, disable shader stuff ("gl_use_shaders 0" or just disable it in video options). Otherwise, it seems like custom mod replaces shader and we can't do anything to fix that."
+
+Some effects can't work with custom mods which replace original game logic / monsters.
+
+If you have any other issues, create an issue! https://github.com/ScriptedSnark/GSChaos/issues
+
 CREDITS
 ==============
 Author: ScriptedSnark
@@ -58,6 +73,8 @@ Special thanks to:
 - SmileyAG for provided help about some aspects of hooking
 - BlueNightHawk for late precache system
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
-- un4seen (a.k.a. yanny) for supporting/playtesting
+- un4seen (a.k.a. yanny), JeepyGMI, prolert, Kalifron4ik for supporting/playtesting when GSChaos didn't have even 50 effects
 - Tankfird, StereoBucket, JeepyGMI, prolert, gatar, Eold, Bartek(GMI) and other people for suggesting effects, ideas
 - [Ryder Joestar](https://gamebanana.com/members/2142275) for modelling help
+- YaLTeR for SPTLib
+- Valve for Half-Life, GoldSrc engine
