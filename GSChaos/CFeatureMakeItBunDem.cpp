@@ -76,7 +76,7 @@ const char* CFeatureMakeItBunDem::GetFeatureName()
 
 double CFeatureMakeItBunDem::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.35;
+	return gChaos.GetChaosTime() * 0.6;
 }
 
 bool CFeatureMakeItBunDem::UseCustomDuration()
