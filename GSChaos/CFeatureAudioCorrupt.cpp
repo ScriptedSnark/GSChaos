@@ -36,7 +36,7 @@ const char* CFeatureAudioCorrupt::GetFeatureName()
 
 double CFeatureAudioCorrupt::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.4;
+	return gChaos.GetChaosTime() * 0.15;
 }
 
 bool CFeatureAudioCorrupt::UseCustomDuration()
