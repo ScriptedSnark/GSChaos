@@ -19,6 +19,8 @@
 
 #ifdef __cplusplus
 
+extern bool g_bActivatedHorrorAudio;
+
 class CFeatureHorrorAudio : public CChaosFeature
 {
 	void Init() override;

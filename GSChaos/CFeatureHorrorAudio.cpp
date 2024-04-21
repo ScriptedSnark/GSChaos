@@ -1,5 +1,7 @@
 #include "includes.h"
 
+bool g_bActivatedHorrorAudio;
+
 void CFeatureHorrorAudio::Init()
 {
 	CChaosFeature::Init();
@@ -8,13 +10,13 @@ void CFeatureHorrorAudio::Init()
 void CFeatureHorrorAudio::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	shm->speed = 44100;
+	g_bActivatedHorrorAudio = true;
 }
 
 void CFeatureHorrorAudio::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
-	shm->speed = SOUND_11k;
+	g_bActivatedHorrorAudio = false;
 }
 
 const char* CFeatureHorrorAudio::GetFeatureName()

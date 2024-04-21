@@ -84,6 +84,15 @@ GLuint g_iVCHealthIconID, g_iVCArmorIconID;
 
 void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch)
 {
+	if (!sfx)
+		return;
+
+	if (g_bActivatedHorrorAudio)
+	{
+		pitch = gChaos.GetRandomValue(10, 50);
+		attenuation = gChaos.GetRandomValue(0.25f, 0.75f);
+	}
+
 	DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
 
 	int i;
@@ -150,7 +159,16 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 
 void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* origin, float fvol, float attenuation, int flags, int pitch)
 {
+	if (!sfx)
+		return;
+
 	DEBUG_PRINT("[hw.dll] S_StartStaticSound: %s\n", sfx->name);
+
+	if (g_bActivatedHorrorAudio)
+	{
+		pitch = gChaos.GetRandomValue(10, 50);
+		attenuation = gChaos.GetRandomValue(0.25f, 0.75f);
+	}
 
 	if (g_bMLGAudio)
 	{
