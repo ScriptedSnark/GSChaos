@@ -8,6 +8,8 @@ void CFeature20FPS::Init()
 void CFeature20FPS::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
+
+	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", g_bPreSteamPipe ? 20.0f : 19.5f));
 	fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
 	fps_value = fps_max->value;
 	m_bActivated = true;
@@ -19,6 +21,7 @@ void CFeature20FPS::DeactivateFeature()
 	m_bActivated = false;
 
 	fps_max->value = fps_value;
+	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", fps_value));
 }
 
 void CFeature20FPS::OnFrame(double time)
