@@ -27,10 +27,11 @@ void CFeatureHook::OnFrame(double time)
 	if ((*sv_player)->v.health <= 0)
 		return;
 
-	Vector end = (*sv_player)->v.origin + gpGlobals->v_forward * 8192;
-
-	TraceResult tr;
 	UTIL_MakeVectors((*sv_player)->v.v_angle);
+
+	Vector end = (*sv_player)->v.origin + gpGlobals->v_forward * 8192;
+	TraceResult tr;
+
 	UTIL_TraceLine((*sv_player)->v.origin, end, dont_ignore_monsters, (*sv_player), &tr);
 
 	int iBeam = pEngfuncs->pEventAPI->EV_FindModelIndex("sprites/smoke.spr");
@@ -39,7 +40,7 @@ void CFeatureHook::OnFrame(double time)
 		(*sv_player)->v.origin,
 		tr.vecEndPos,
 		iBeam,
-		0.01,
+		0.05,
 		2.0,
 		0.1,
 		255,
