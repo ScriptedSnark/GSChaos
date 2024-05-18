@@ -200,6 +200,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGiveAllWeapons.h"
 #include "CFeatureWaterIsALie.h"
 #include "CFeatureQuakeJumpSound.h"
+#include "CFeatureHook.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

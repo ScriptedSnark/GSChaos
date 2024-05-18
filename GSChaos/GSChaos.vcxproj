@@ -149,6 +149,7 @@
     <ClCompile Include="CFeatureHalfGravity.cpp" />
     <ClCompile Include="CFeatureHigh.cpp" />
     <ClCompile Include="CFeatureHL2Movement.cpp" />
+    <ClCompile Include="CFeatureHook.cpp" />
     <ClCompile Include="CFeatureHorrorAudio.cpp" />
     <ClCompile Include="CFeatureInsaneStepsize.cpp" />
     <ClCompile Include="CFeatureLongJump.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="CFeatureHalfGravity.h" />
     <ClInclude Include="CFeatureHigh.h" />
     <ClInclude Include="CFeatureHL2Movement.h" />
+    <ClInclude Include="CFeatureHook.h" />
     <ClInclude Include="CFeatureHorrorAudio.h" />
     <ClInclude Include="CFeatureInsaneStepsize.h" />
     <ClInclude Include="CFeatureLongJump.h" />

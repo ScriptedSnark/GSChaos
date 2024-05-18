@@ -376,6 +376,9 @@
     <ClCompile Include="CFeatureWaterIsALie.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureHook.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -847,6 +850,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureQuakeJumpSound.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureHook.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

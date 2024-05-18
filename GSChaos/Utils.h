@@ -51,6 +51,7 @@ typedef enum { ignore_monsters = 1, dont_ignore_monsters = 0, missile = 2 } IGNO
 typedef enum { ignore_glass = 1, dont_ignore_glass = 0 } IGNORE_GLASS;
 void UTIL_MakeAimVectors(const Vector& vecAngles);
 Vector UTIL_VecToAngles(const Vector& vec);
+void UTIL_MakeVectors(const Vector& vecAngles);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, edict_t* pentIgnore, TraceResult* ptr);
 extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, IGNORE_GLASS ignoreGlass, edict_t* pentIgnore, TraceResult* ptr);
 void UTIL_ScreenShake(const Vector& center, float amplitude, float frequency, float duration, float radius);

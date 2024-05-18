@@ -121,6 +121,11 @@ Vector UTIL_VecToAngles(const Vector& vec)
 	return Vector(rgflVecOut);
 }
 
+void UTIL_MakeVectors(const Vector& vecAngles)
+{
+	MAKE_VECTORS(vecAngles);
+}
+
 // Overloaded to add IGNORE_GLASS
 void UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNORE_MONSTERS igmon, IGNORE_GLASS ignoreGlass, edict_t* pentIgnore, TraceResult* ptr)
 {
