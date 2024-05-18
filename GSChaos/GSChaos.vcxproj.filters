@@ -379,6 +379,9 @@
     <ClCompile Include="CFeatureHook.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureSpawnTeleport.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -853,6 +856,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureHook.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureSpawnTeleport.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

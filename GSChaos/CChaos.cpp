@@ -317,6 +317,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureWaterIsALie>();
 	RegisterChaosFeature<CFeatureQuakeJumpSound>();
 	RegisterChaosFeature<CFeatureHook>();
+	RegisterChaosFeature<CFeatureSpawnTeleport>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
