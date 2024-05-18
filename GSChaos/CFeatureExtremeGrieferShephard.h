@@ -33,6 +33,8 @@ public:
 	void Think() override;
 	void LaunchRocket() override;
 	void Restore() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 	virtual const char* GetModelName();
 	virtual const char* GetClassname();
 	virtual bool UseRenderFX();

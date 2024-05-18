@@ -168,7 +168,7 @@ void CFeatureExtremeGrieferShephard::LaunchRocket()
 {
 	edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING("rpg_rocket"));
 
-	if (!pent)
+	if (!pent || RANDOM_LONG(1, 100) <= 5)
 	{
 		Vector target = (*sv_player)->v.origin - m_pShephard->v.origin;
 
@@ -226,6 +226,16 @@ const char* CFeatureExtremeGrieferShephard::GetClassname()
 }
 
 bool CFeatureExtremeGrieferShephard::UseRenderFX()
+{
+	return true;
+}
+
+double CFeatureExtremeGrieferShephard::GetDuration()
+{
+	return 180.0;
+}
+
+bool CFeatureExtremeGrieferShephard::UseCustomDuration()
 {
 	return true;
 }

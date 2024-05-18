@@ -66,3 +66,13 @@ bool CFeatureExtremeGrieferJesus::UseRenderFX()
 {
 	return false;
 }
+
+double CFeatureExtremeGrieferJesus::GetDuration()
+{
+	return 0.0;
+}
+
+bool CFeatureExtremeGrieferJesus::UseCustomDuration()
+{
+	return false;
+}

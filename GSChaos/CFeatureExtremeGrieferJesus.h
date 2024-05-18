@@ -29,6 +29,8 @@ class CFeatureExtremeGrieferJesus : public CFeatureExtremeGrieferShephard
 	const char* GetModelName() override;
 	const char* GetClassname() override;
 	bool UseRenderFX() override;
+	double GetDuration() override;
+	bool UseCustomDuration() override;
 private:
 	bool m_bActivated;
 	double m_flTimeForSpawn;
