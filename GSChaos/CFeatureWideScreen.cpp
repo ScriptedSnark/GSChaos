@@ -23,3 +23,13 @@ const char* CFeatureWideScreen::GetFeatureName()
 {
 	return "\"It's easier to aim\", they said";
 }
+
+double CFeatureWideScreen::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.08;
+}
+
+bool CFeatureWideScreen::UseCustomDuration()
+{
+	return true;
+}
