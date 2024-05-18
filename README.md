@@ -145,6 +145,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Teleport to spawn point
 > rorriM
 > "It's easier to aim", they said
+> Creepypasta Mode
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```

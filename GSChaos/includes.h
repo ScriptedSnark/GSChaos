@@ -204,6 +204,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSpawnTeleport.h"
 #include "CFeatureMirrorScreen.h"
 #include "CFeatureWideScreen.h"
+#include "CFeatureCreepypasta.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

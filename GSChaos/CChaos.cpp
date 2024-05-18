@@ -320,6 +320,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSpawnTeleport>();
 	RegisterChaosFeature<CFeatureMirrorScreen>();
 	RegisterChaosFeature<CFeatureWideScreen>();
+	RegisterChaosFeature<CFeatureCreepypasta>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

@@ -388,6 +388,9 @@
     <ClCompile Include="CFeatureWideScreen.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureCreepypasta.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -871,6 +874,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureWideScreen.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureCreepypasta.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
