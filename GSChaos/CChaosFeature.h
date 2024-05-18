@@ -32,6 +32,7 @@ public:
 	virtual void ResetStates();
 	virtual void Restore();
 	virtual void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname);
+	virtual void SwapBuffers();
 	virtual void PM_Jump();
 	virtual bool IsActive();
 	virtual double GetDuration();

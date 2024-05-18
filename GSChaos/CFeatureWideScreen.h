@@ -27,6 +27,7 @@ class CFeatureWideScreen : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+	void SwapBuffers() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
 };

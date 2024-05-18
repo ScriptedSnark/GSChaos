@@ -82,118 +82,6 @@ _wglSwapBuffers GetSwapBuffersAddr()
 	return reinterpret_cast<_wglSwapBuffers>(GetProcAddress(LoadLibrary(TEXT("OpenGL32.dll")), "wglSwapBuffers"));
 }
 
-void MirrorScreen()
-{
-	int width = ImGui::GetIO().DisplaySize.x;
-	int height = ImGui::GetIO().DisplaySize.y;
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
-	glEnable(GL_BLEND);
-
-	// bind texture
-	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
-	glCopyTexImage2D(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0, width, height, 0);
-
-	// enable some OpenGL stuff
-	glEnable(GL_TEXTURE_RECTANGLE_NV);
-	glColor3f(1, 1, 1);
-	glDisable(GL_DEPTH_TEST);
-
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	glOrtho(0, 1, 1, 0, 0.1, 100);
-
-	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
-
-	glColor4f(1, 1, 1, 1);
-
-	int of = 0;
-
-	glBegin(GL_QUADS);
-
-	glTexCoord2f(width, 0);
-	glVertex3f(0, 1, -1);
-	glTexCoord2f(width, height);
-	glVertex3f(0, 0, -1);
-	glTexCoord2f(0, height);
-	glVertex3f(1, 0, -1);
-	glTexCoord2f(0, 0);
-	glVertex3f(1, 1, -1);
-
-	glEnd();
-
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
-	glDisable(GL_TEXTURE_RECTANGLE_NV);
-	glEnable(GL_DEPTH_TEST);
-
-
-	glDisable(GL_BLEND);
-}
-
-void WideScreen()
-{
-	int width = ImGui::GetIO().DisplaySize.x;
-	int height = ImGui::GetIO().DisplaySize.y;
-
-	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
-	glEnable(GL_BLEND);
-
-	// bind texture
-	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
-	glCopyTexImage2D(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0, width, height, 0);
-
-	// enable some OpenGL stuff
-	glEnable(GL_TEXTURE_RECTANGLE_NV);
-	glColor3f(1, 1, 1);
-	glDisable(GL_DEPTH_TEST);
-
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	glOrtho(0, 1, 1, 0, 0.1, 100);
-
-	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
-
-	glColor4f(1, 1, 1, 1);
-
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 0);
-	glVertex3f(-1, 1, -1);
-	glTexCoord2f(0, height);
-	glVertex3f(-1, 0, -1);
-	glTexCoord2f(width, height);
-	glVertex3f(2, 0, -1);
-	glTexCoord2f(width, 0);
-	glVertex3f(2, 1, -1);
-	glEnd();
-
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
-	glDisable(GL_TEXTURE_RECTANGLE_NV);
-	glEnable(GL_DEPTH_TEST);
-
-
-	glDisable(GL_BLEND);
-}
-
 int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 {
 	static bool initialized = false;
@@ -234,11 +122,11 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 	else
 		gImGui.Draw();
 
-	if (g_bActivatedMirror)
-		MirrorScreen();
-
-	if (g_bActivatedWideScreen)
-		WideScreen();
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (i->IsActive())
+			i->SwapBuffers();
+	}
 
 	return ORIG_wglSwapBuffers(a1);
 }

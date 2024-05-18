@@ -72,6 +72,11 @@ void CChaosFeature::HUD_AddEntity(int type, struct cl_entity_s* ent, const char*
 	;
 }
 
+void CChaosFeature::SwapBuffers()
+{
+	;
+}
+
 void CChaosFeature::PM_Jump()
 {
 	;
