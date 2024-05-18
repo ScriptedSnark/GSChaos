@@ -75,12 +75,124 @@ inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3
 }
 
 // OPENGL
+GLuint program;
+
 _wglSwapBuffers GetSwapBuffersAddr()
 {
 	return reinterpret_cast<_wglSwapBuffers>(GetProcAddress(LoadLibrary(TEXT("OpenGL32.dll")), "wglSwapBuffers"));
 }
 
-GLuint program;
+void MirrorScreen()
+{
+	int width = ImGui::GetIO().DisplaySize.x;
+	int height = ImGui::GetIO().DisplaySize.y;
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
+	glEnable(GL_BLEND);
+
+	// bind texture
+	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
+	glCopyTexImage2D(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0, width, height, 0);
+
+	// enable some OpenGL stuff
+	glEnable(GL_TEXTURE_RECTANGLE_NV);
+	glColor3f(1, 1, 1);
+	glDisable(GL_DEPTH_TEST);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	glOrtho(0, 1, 1, 0, 0.1, 100);
+
+	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
+
+	glColor4f(1, 1, 1, 1);
+
+	int of = 0;
+
+	glBegin(GL_QUADS);
+
+	glTexCoord2f(width, 0);
+	glVertex3f(0, 1, -1);
+	glTexCoord2f(width, height);
+	glVertex3f(0, 0, -1);
+	glTexCoord2f(0, height);
+	glVertex3f(1, 0, -1);
+	glTexCoord2f(0, 0);
+	glVertex3f(1, 1, -1);
+
+	glEnd();
+
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_RECTANGLE_NV);
+	glEnable(GL_DEPTH_TEST);
+
+
+	glDisable(GL_BLEND);
+}
+
+void WideScreen()
+{
+	int width = ImGui::GetIO().DisplaySize.x;
+	int height = ImGui::GetIO().DisplaySize.y;
+
+	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
+	glEnable(GL_BLEND);
+
+	// bind texture
+	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
+	glCopyTexImage2D(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, 0, 0, width, height, 0);
+
+	// enable some OpenGL stuff
+	glEnable(GL_TEXTURE_RECTANGLE_NV);
+	glColor3f(1, 1, 1);
+	glDisable(GL_DEPTH_TEST);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	glOrtho(0, 1, 1, 0, 0.1, 100);
+
+	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
+
+	glColor4f(1, 1, 1, 1);
+
+	glBegin(GL_QUADS);
+	glTexCoord2f(0, 0);
+	glVertex3f(-1, 1, -1);
+	glTexCoord2f(0, height);
+	glVertex3f(-1, 0, -1);
+	glTexCoord2f(width, height);
+	glVertex3f(2, 0, -1);
+	glTexCoord2f(width, 0);
+	glVertex3f(2, 1, -1);
+	glEnd();
+
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_RECTANGLE_NV);
+	glEnable(GL_DEPTH_TEST);
+
+
+	glDisable(GL_BLEND);
+}
 
 int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 {
@@ -121,6 +233,12 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 	}
 	else
 		gImGui.Draw();
+
+	if (g_bActivatedMirror)
+		MirrorScreen();
+
+	if (g_bActivatedWideScreen)
+		WideScreen();
 
 	return ORIG_wglSwapBuffers(a1);
 }
@@ -185,6 +303,21 @@ void HOOKED_HUD_Frame(double time)
 	if (!initialized)
 	{
 		gChaos.Init();
+
+		// create a load of blank pixels to create textures with
+		unsigned char* pBlankTex = new unsigned char[ImGui::GetIO().DisplaySize.x * ImGui::GetIO().DisplaySize.y * 3];
+		memset(pBlankTex, 0, ImGui::GetIO().DisplaySize.x * ImGui::GetIO().DisplaySize.y * 3);
+
+		// Create the SCREEN-HOLDING TEXTURE
+		glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
+
+		glTexParameteri(GL_TEXTURE_RECTANGLE_NV, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_RECTANGLE_NV, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexImage2D(GL_TEXTURE_RECTANGLE_NV, 0, GL_RGBA8, ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y, 0, GL_RGBA8, GL_UNSIGNED_BYTE, 0);
+
+		// free the memory
+		delete[] pBlankTex;
+
 		initialized = true;
 	}
 

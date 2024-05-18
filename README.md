@@ -141,6 +141,10 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Give all weapons
 > Water is a lie
 > Quake jump sound
+> +hook
+> Teleport to spawn point
+> rorriM
+> "It's easier to aim", they said
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```

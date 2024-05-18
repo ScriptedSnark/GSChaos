@@ -318,6 +318,8 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureQuakeJumpSound>();
 	RegisterChaosFeature<CFeatureHook>();
 	RegisterChaosFeature<CFeatureSpawnTeleport>();
+	RegisterChaosFeature<CFeatureMirrorScreen>();
+	RegisterChaosFeature<CFeatureWideScreen>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

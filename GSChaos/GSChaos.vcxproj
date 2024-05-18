@@ -156,6 +156,7 @@
     <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
     <ClCompile Include="CFeatureMegaJump.cpp" />
+    <ClCompile Include="CFeatureMirrorScreen.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
@@ -225,6 +226,7 @@
     <ClCompile Include="CFeatureWaterIsALie.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
+    <ClCompile Include="CFeatureWideScreen.cpp" />
     <ClCompile Include="CFeatureWorldHallucination.cpp" />
     <ClCompile Include="CFeatureWorstBhopCap.cpp" />
     <ClCompile Include="CFeatureX10Gravity.cpp" />
@@ -315,6 +317,7 @@
     <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
     <ClInclude Include="CFeatureMegaJump.h" />
+    <ClInclude Include="CFeatureMirrorScreen.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
@@ -384,6 +387,7 @@
     <ClInclude Include="CFeatureWaterIsALie.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />
+    <ClInclude Include="CFeatureWideScreen.h" />
     <ClInclude Include="CFeatureWorldHallucination.h" />
     <ClInclude Include="CFeatureWorstBhopCap.h" />
     <ClInclude Include="CFeatureX10Gravity.h" />

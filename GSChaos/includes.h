@@ -202,6 +202,8 @@ extern bool g_bEncrypted;
 #include "CFeatureQuakeJumpSound.h"
 #include "CFeatureHook.h"
 #include "CFeatureSpawnTeleport.h"
+#include "CFeatureMirrorScreen.h"
+#include "CFeatureWideScreen.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
