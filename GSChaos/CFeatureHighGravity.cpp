@@ -12,7 +12,10 @@ void CFeatureHighGravity::ActivateFeature()
 	sv_gravity = g_engfuncs->pfnCVarGetPointer("sv_gravity");
 
 	if (!sv_gravity)
+	{
+		SERVER_COMMAND(UTIL_VarArgs("sv_gravity %.01f\n", GetGravityValue()));
 		return;
+	}
 
 	m_flOldGravityValue = sv_gravity->value;
 	m_bActivated = true;
@@ -25,7 +28,7 @@ void CFeatureHighGravity::DeactivateFeature()
 
 	if (!sv_gravity)
 	{
-		SERVER_COMMAND(UTIL_VarArgs("sv_gravity %.01f\n", GetGravityValue()));
+		SERVER_COMMAND("sv_gravity 800\n");
 		return;
 	}
 
@@ -52,6 +55,15 @@ float CFeatureHighGravity::GetGravityValue()
 {
 	return 1600.0f;
 }
+
+void CFeatureHighGravity::ResetStates()
+{
+	if (sv_gravity && m_flOldGravityValue)
+		sv_gravity->value = m_flOldGravityValue;
+	else
+		SERVER_COMMAND("sv_gravity 800\n");
+}
+
 
 double CFeatureHighGravity::GetDuration()
 {
