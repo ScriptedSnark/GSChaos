@@ -20,7 +20,7 @@
 #ifdef __cplusplus
 
 extern bool g_bHEVMadness;
-extern std::vector<const char*> g_szHEVSentences;
+extern std::vector<std::string> g_szHEVSounds;
 
 class CFeatureHEVMadness : public CChaosFeature
 {

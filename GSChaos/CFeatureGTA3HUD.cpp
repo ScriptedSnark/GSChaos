@@ -111,29 +111,35 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
-		return;
 	}
 
 	if (g_bHEVMadness)
 	{
-		if ((sfx->name[0] == '!') && !strstr(sfx->name, "!HEV") && ORIG_EDICT_NUM(entnum) != (*sv_player) && entchannel != CHAN_STATIC)
-		{
-			i = gChaos.GetRandomValue(0, g_szHEVSentences.size() - 1);
-			strcpy_s(sfx->name, UTIL_VarArgs("!HEV_%s%i", g_szHEVSentences[i], gChaos.GetRandomValue(0, 5)));
-			DEBUG_PRINT("sfx->name: %s\n", sfx->name);
-		}
-		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
-		return;
+		i = gChaos.GetRandomValue(0, g_szHEVSounds.size() - 1);
+
+		char buffer[64];
+		if (!strstr(sfx->name, "weapons"))
+			sprintf_s(buffer, "../../valve/sound/fvox/%s", g_szHEVSounds[i].c_str());
+		else
+			sprintf_s(buffer, "../../valve/sound/fvox/beep.wav");
+
+		sfx = S_LateLoadSound(buffer);
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
-	else if (g_bScientistMadness)
+
+	if (g_bScientistMadness)
 	{
-		if ((sfx->name[0] == '!') && !strstr(sfx->name, "!HEV") && ORIG_EDICT_NUM(entnum) != (*sv_player) && entchannel != CHAN_STATIC)
-		{
-			strcpy_s(sfx->name, UTIL_VarArgs("!SC_SCREAM%i", gChaos.GetRandomValue(0, 14)));
-			DEBUG_PRINT("sfx->name: %s\n", sfx->name);
-		}
-		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
-		return;
+		i = gChaos.GetRandomValue(0, g_szSciSounds.size() - 1);
+
+		char buffer[64];
+		sprintf_s(buffer, "../../valve/sound/scientist/%s", g_szSciSounds[i].c_str());
+
+		sfx = S_LateLoadSound(buffer);
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
 
 	if (!g_bActivatedGTA3HUD && !g_bActivatedGTAVCHUD)

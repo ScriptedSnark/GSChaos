@@ -20,6 +20,7 @@
 #ifdef __cplusplus
 
 extern bool g_bScientistMadness;
+extern std::vector<std::string> g_szSciSounds;
 
 class CFeatureScientistMadness : public CChaosFeature
 {
