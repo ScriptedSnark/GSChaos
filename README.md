@@ -147,6 +147,8 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > "It's easier to aim", they said
 > Creepypasta Mode
 > Mess Up World
+> Kick World
+> Tall World
 > Combine Effects ( 3 in 1 )
 > Let's make it more chaotic
 ```
