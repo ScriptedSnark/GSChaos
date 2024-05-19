@@ -399,7 +399,7 @@ void HookEngine()
 	static void* base;
 	static size_t size;
 
-	// now it's broken again so you can't restart the game via engine's _restart
+	// now it's broken again so you can't restart the game via engine's _restart (only for build 3248 iirc)
 	if (!g_bEncrypted)
 	{
 		if (!MemUtils::GetModuleInfo(L"hw.dll", &g_lpHW, &base, &size))
