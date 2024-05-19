@@ -77,6 +77,11 @@ void CChaosFeature::SwapBuffers()
 	;
 }
 
+void CChaosFeature::R_DrawWorld()
+{
+	;
+}
+
 void CChaosFeature::PM_Jump()
 {
 	;

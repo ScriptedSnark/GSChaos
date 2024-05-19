@@ -394,6 +394,9 @@
     <ClCompile Include="CFeatureMessWorld.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureKickWorld.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -883,6 +886,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMessWorld.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureKickWorld.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

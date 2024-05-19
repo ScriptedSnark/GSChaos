@@ -12,6 +12,7 @@ cvar_t* chaos_dmca_safe;
 cvar_t* chaos_show_voting;
 cvar_t* chaos_timer;
 cvar_t* chaos_draw_as_overlay;
+cvar_t* gl_clear;
 
 void ActivateChaosFeatureW()
 {
@@ -71,6 +72,8 @@ void CChaos::Init()
 	chaos_show_voting = pEngfuncs->pfnRegisterVariable("chaos_show_voting", "0", 0);
 	chaos_timer = pEngfuncs->pfnRegisterVariable("chaos_timer", "30.0", 0);
 	chaos_draw_as_overlay = pEngfuncs->pfnRegisterVariable("chaos_draw_as_overlay", "0", 0);
+
+	gl_clear = pEngfuncs->pfnGetCvarPointer("gl_clear");
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -322,6 +325,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureWideScreen>();
 	RegisterChaosFeature<CFeatureCreepypasta>();
 	RegisterChaosFeature<CFeatureMessWorld>();
+	RegisterChaosFeature<CFeatureKickWorld>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
@@ -664,6 +668,9 @@ void CChaos::OnFrame(double time)
 		else
 			ma_engine_set_volume(&miniAudio, 0.0f);
 	}
+
+	if (gl_clear)
+		gl_clear->value = 1.0f;
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 

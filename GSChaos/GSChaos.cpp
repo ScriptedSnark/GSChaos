@@ -361,18 +361,32 @@ void HOOKED_LoadEntityDLLs(char* szBaseDir)
 
 void HOOKED_R_DrawWorld()
 {
+	glPushMatrix();
+
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (i->IsActive())
+			i->R_DrawWorld();
+	}
+
 	if (!g_bActivatedShader)
 	{
 		ORIG_R_DrawWorld();
+
+		glPopMatrix();
+
 		return;
 	}
 
 	glUseProgram(program);
 	glUniform2f(glGetUniformLocation(program, "iResolution"), ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y);
-	glUniform1f(glGetUniformLocation(program, "iTime"), (float)gChaos.GetGlobalTime());
+	glUniform1f(glGetUniformLocation(program, "iTime"), gChaos.GetGlobalTime());
+
 	ORIG_R_DrawWorld();
 
 	glUseProgram(0);
+
+	glPopMatrix();
 }
 
 void HookClient()

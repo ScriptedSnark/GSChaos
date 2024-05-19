@@ -153,6 +153,7 @@
     <ClCompile Include="CFeatureHook.cpp" />
     <ClCompile Include="CFeatureHorrorAudio.cpp" />
     <ClCompile Include="CFeatureInsaneStepsize.cpp" />
+    <ClCompile Include="CFeatureKickWorld.cpp" />
     <ClCompile Include="CFeatureLongJump.cpp" />
     <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
@@ -316,6 +317,7 @@
     <ClInclude Include="CFeatureHook.h" />
     <ClInclude Include="CFeatureHorrorAudio.h" />
     <ClInclude Include="CFeatureInsaneStepsize.h" />
+    <ClInclude Include="CFeatureKickWorld.h" />
     <ClInclude Include="CFeatureLongJump.h" />
     <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
