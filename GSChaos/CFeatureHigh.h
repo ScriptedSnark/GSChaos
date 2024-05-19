@@ -27,6 +27,8 @@ class CFeatureHigh : public CChaosFeature
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+private:
+	bool m_bDetectedEngineShaders;
 };
 
 #else //!__cplusplus
