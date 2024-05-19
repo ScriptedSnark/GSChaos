@@ -3,6 +3,7 @@
 void CFeatureNegativeStepsize::Init()
 {
 	CChaosFeature::Init();
+	m_flOldStepsizeValue = 18.0f;
 }
 
 void CFeatureNegativeStepsize::ActivateFeature()
@@ -11,7 +12,10 @@ void CFeatureNegativeStepsize::ActivateFeature()
 	sv_stepsize = g_engfuncs->pfnCVarGetPointer("sv_stepsize");
 
 	if (!sv_stepsize)
+	{
+		SERVER_COMMAND(UTIL_VarArgs("sv_stepsize %.01f\n", GetStepsizeValue()));
 		return;
+	}
 
 	m_flOldStepsizeValue = sv_stepsize->value;
 	sv_stepsize->value = GetStepsizeValue();
@@ -25,7 +29,7 @@ void CFeatureNegativeStepsize::DeactivateFeature()
 
 	if (!sv_stepsize)
 	{
-		SERVER_COMMAND(UTIL_VarArgs("sv_stepsize %.01f\n", GetStepsizeValue()));
+		SERVER_COMMAND("sv_stepsize 18\n");
 		return;
 	}
 
@@ -51,6 +55,14 @@ const char* CFeatureNegativeStepsize::GetFeatureName()
 float CFeatureNegativeStepsize::GetStepsizeValue()
 {
 	return -18.0f;
+}
+
+void CFeatureNegativeStepsize::ResetStates()
+{
+	if (sv_stepsize && m_flOldStepsizeValue)
+		sv_stepsize->value = m_flOldStepsizeValue;
+	else
+		SERVER_COMMAND("sv_stepsize 18\n");
 }
 
 double CFeatureNegativeStepsize::GetDuration()
