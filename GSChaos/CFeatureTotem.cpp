@@ -38,6 +38,7 @@ void CFeatureTotem::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
 
+	(*sv_player)->v.health = (int)(*sv_player)->v.health;
 	(*sv_player)->v.flags &= ~FL_GODMODE;
 	m_bActivated = false;
 }
