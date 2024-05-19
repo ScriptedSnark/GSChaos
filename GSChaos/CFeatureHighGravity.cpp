@@ -3,6 +3,7 @@
 void CFeatureHighGravity::Init()
 {
 	CChaosFeature::Init();
+	m_flOldGravityValue = 800.0f;
 }
 
 void CFeatureHighGravity::ActivateFeature()
