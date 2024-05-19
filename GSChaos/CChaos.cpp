@@ -321,6 +321,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureMirrorScreen>();
 	RegisterChaosFeature<CFeatureWideScreen>();
 	RegisterChaosFeature<CFeatureCreepypasta>();
+	RegisterChaosFeature<CFeatureMessWorld>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();

@@ -5,15 +5,6 @@ _GL_Bind ORIG_GL_Bind = NULL;
 
 texture_t** r_notexture_mip;
 int css_texturenum = 0;
-bool bBrokenTextures;
-
-void HOOKED_GL_Bind(int texnum)
-{
-	if (bBrokenTextures)
-		texnum = (*r_notexture_mip)->gl_texturenum;
-
-	ORIG_GL_Bind(texnum);
-}
 
 void CFeatureForgotCSS::Init()
 {
@@ -59,28 +50,18 @@ void CFeatureForgotCSS::Init()
 				break;
 			}
 		});
-
-	/*
-	int status;
-	SPTFind(GL_Bind);
-	CreateHook(GL_Bind);
-
-	MH_EnableHook(MH_ALL_HOOKS);
-	*/
 }
 
 void CFeatureForgotCSS::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-    bBrokenTextures = true;
     m_bActivated = true;
 }
 
 void CFeatureForgotCSS::DeactivateFeature()
 {
     CChaosFeature::DeactivateFeature();
-    bBrokenTextures = false;
     m_bActivated = false;
 }
 
