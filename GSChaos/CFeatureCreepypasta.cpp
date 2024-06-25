@@ -92,7 +92,7 @@ void CFeatureCreepypasta::SwapBuffers()
 
 double CFeatureCreepypasta::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.2;
+	return gChaos.GetChaosTime() * 0.5;
 }
 
 bool CFeatureCreepypasta::UseCustomDuration()
