@@ -32,7 +32,7 @@ void CFeatureDarkness::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 	
-	pEngfuncs->pfnClientCmd(";spk .././chaos/darkness.wav;\n");
+	pEngfuncs->pfnClientCmd(";spk .././chaos/darkness;\n");
 	ShowHudMessage((*sv_player), "Be aware... Use your flashlight...");
 	LIGHT_STYLE(0, "a");
 }
