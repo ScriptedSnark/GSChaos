@@ -403,6 +403,7 @@
     <ClCompile Include="CFeature10GoodEffects.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="in_camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -903,6 +904,7 @@
     <ClInclude Include="CFeature10GoodEffects.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="in_camera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">

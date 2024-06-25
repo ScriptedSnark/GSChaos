@@ -389,6 +389,8 @@ void HOOKED_R_DrawWorld()
 	glPopMatrix();
 }
 
+void CAM_Init(void);
+
 void HookClient()
 {
 	g_lpClient = GetModuleHandle("client.dll");
@@ -406,6 +408,8 @@ void HookClient()
 	CreateHook(Client, HUD_Redraw);
 	CreateHook(Client, V_CalcRefdef);
 	CreateHook(Client, HUD_AddEntity);
+
+	CAM_Init();
 }
 
 void HookEngine()

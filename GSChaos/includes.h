@@ -72,6 +72,7 @@ extern ma_engine miniAudio;
 #include "Utils.h"
 #include "dynamic_precache.h"
 #include "CLWrapper.h"
+#include "in_camera.h"
 
 extern void* g_lpClient;
 extern void* g_lpOpenGL32;

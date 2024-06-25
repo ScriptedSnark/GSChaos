@@ -32,7 +32,6 @@ private:
 	std::chrono::steady_clock::time_point m_lastFrameTime;
 	bool m_bActivated;
 	bool m_bAnimating;
-	cvar_t* cam_idealyaw, *cam_idealpitch, *cam_idealdist;
 	cvar_t* cl_pitchup, *cl_pitchdown;
 	float cvar_values[5];
 };

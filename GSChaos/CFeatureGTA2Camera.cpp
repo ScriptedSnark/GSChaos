@@ -14,13 +14,10 @@ void CFeatureGTA2Camera::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	cam_idealdist = pEngfuncs->pfnGetCvarPointer("cam_idealdist");
-	cam_idealyaw = pEngfuncs->pfnGetCvarPointer("cam_idealyaw");
-	cam_idealpitch = pEngfuncs->pfnGetCvarPointer("cam_idealpitch");
 	cl_pitchup = pEngfuncs->pfnGetCvarPointer("cl_pitchup");
 	cl_pitchdown = pEngfuncs->pfnGetCvarPointer("cl_pitchdown");
 
-	pEngfuncs->pfnClientCmd(";thirdperson;\n");
+	pEngfuncs->pfnClientCmd(";chaos_thirdperson;\n");
 
 	cvar_values[0] = cam_idealdist->value;
 	cvar_values[1] = cam_idealyaw->value;
@@ -45,7 +42,7 @@ void CFeatureGTA2Camera::DeactivateFeature()
 	CChaosFeature::DeactivateFeature();
 	m_bActivated = false;
 
-	pEngfuncs->pfnClientCmd(";firstperson;\n");
+	pEngfuncs->pfnClientCmd(";chaos_firstperson;\n");
 
 	cam_idealdist->value = cvar_values[0];
 	cam_idealyaw->value = cvar_values[1];

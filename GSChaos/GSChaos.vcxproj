@@ -241,6 +241,7 @@
     <ClCompile Include="dynamic_precache.cpp" />
     <ClCompile Include="GSChaos.cpp" />
     <ClCompile Include="imgui_manager.cpp" />
+    <ClCompile Include="in_camera.cpp" />
     <ClCompile Include="parsemsg.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -414,6 +415,7 @@
     <ClInclude Include="hlsdk_mini.hpp" />
     <ClInclude Include="imgui_manager.hpp" />
     <ClInclude Include="includes.h" />
+    <ClInclude Include="in_camera.h" />
     <ClInclude Include="parsemsg.h" />
     <ClInclude Include="pricedown.h" />
     <ClInclude Include="resource.h" />
