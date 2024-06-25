@@ -17,7 +17,6 @@ void CFeatureNegativeStepsize::ActivateFeature()
 		return;
 	}
 
-	m_flOldStepsizeValue = sv_stepsize->value;
 	sv_stepsize->value = GetStepsizeValue();
 	m_bActivated = true;
 }

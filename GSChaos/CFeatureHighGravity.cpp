@@ -18,7 +18,6 @@ void CFeatureHighGravity::ActivateFeature()
 		return;
 	}
 
-	m_flOldGravityValue = sv_gravity->value;
 	m_bActivated = true;
 }
 

@@ -3,6 +3,7 @@
 void CFeatureNegativeAccelerate::Init()
 {
 	CChaosFeature::Init();
+	m_flOldAccelerateValue = 10.0f;
 }
 
 void CFeatureNegativeAccelerate::ActivateFeature()
@@ -13,7 +14,6 @@ void CFeatureNegativeAccelerate::ActivateFeature()
 	if (!sv_accelerate)
 		return;
 
-	m_flOldAccelerateValue = sv_accelerate->value;
 	sv_accelerate->value = -m_flOldAccelerateValue;
 }
 
