@@ -29,6 +29,7 @@ class CFeatureGodMode : public CChaosFeature
 	void ResetStates() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool IsGood() override;
 private:
 	bool m_bActivated;
 };

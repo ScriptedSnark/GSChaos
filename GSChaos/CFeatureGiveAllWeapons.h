@@ -25,6 +25,7 @@ class CFeatureGiveAllWeapons : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+	bool IsGood() override;
 };
 
 #else //!__cplusplus

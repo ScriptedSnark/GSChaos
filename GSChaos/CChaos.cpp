@@ -331,6 +331,7 @@ void CChaos::FeatureInit()
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
 	RegisterChaosFeature<CFeature10Effects>();
+	RegisterChaosFeature<CFeature10GoodEffects>();
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{

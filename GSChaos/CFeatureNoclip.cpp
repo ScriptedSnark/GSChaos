@@ -37,3 +37,8 @@ bool CFeatureNoclip::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureNoclip::IsGood()
+{
+	return true;
+}

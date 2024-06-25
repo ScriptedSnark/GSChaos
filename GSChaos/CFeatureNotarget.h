@@ -29,6 +29,7 @@ class CFeatureNotarget : public CChaosFeature
 	void ResetStates() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool IsGood() override;
 };
 
 #else //!__cplusplus

@@ -47,3 +47,8 @@ const char* CFeatureTotem::GetFeatureName()
 {
 	return "Totem of Undying";
 }
+
+bool CFeatureTotem::IsGood()
+{
+	return true;
+}

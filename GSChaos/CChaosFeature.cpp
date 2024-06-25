@@ -101,3 +101,8 @@ bool CChaosFeature::UseCustomDuration()
 {
 	return false;
 }
+
+bool CChaosFeature::IsGood()
+{
+	return false;
+}

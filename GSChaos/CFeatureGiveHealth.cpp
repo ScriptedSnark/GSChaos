@@ -23,3 +23,8 @@ const char* CFeatureGiveHealth::GetFeatureName()
 {
 	return "Give +100 HP";
 }
+
+bool CFeatureGiveHealth::IsGood()
+{
+	return true;
+}

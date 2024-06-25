@@ -50,3 +50,8 @@ bool CFeatureGodMode::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureGodMode::IsGood()
+{
+	return true;
+}

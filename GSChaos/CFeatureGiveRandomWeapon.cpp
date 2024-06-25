@@ -62,3 +62,8 @@ const char* CFeatureGiveRandomWeapon::GetFeatureName()
 
 	return "Give random weapon";
 }
+
+bool CFeatureGiveRandomWeapon::IsGood()
+{
+	return true;
+}

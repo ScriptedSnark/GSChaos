@@ -22,3 +22,8 @@ const char* CFeatureGiveOneArmor::GetFeatureName()
 {
 	return "Give +1 armor";
 }
+
+bool CFeatureGiveOneArmor::IsGood()
+{
+	return true;
+}

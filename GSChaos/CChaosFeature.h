@@ -38,6 +38,7 @@ public:
 	virtual bool IsActive();
 	virtual double GetDuration();
 	virtual bool UseCustomDuration();
+	virtual bool IsGood();
 
 	double m_flExpireTime;
 private:

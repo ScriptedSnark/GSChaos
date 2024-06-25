@@ -48,3 +48,8 @@ bool CFeatureNotarget::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureNotarget::IsGood()
+{
+	return true;
+}

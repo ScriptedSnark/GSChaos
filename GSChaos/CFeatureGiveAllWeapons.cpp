@@ -38,3 +38,8 @@ const char* CFeatureGiveAllWeapons::GetFeatureName()
 {
 	return "Give all weapons";
 }
+
+bool CFeatureGiveAllWeapons::IsGood()
+{
+	return true;
+}

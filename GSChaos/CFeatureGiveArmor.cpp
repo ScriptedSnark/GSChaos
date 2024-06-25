@@ -23,3 +23,8 @@ const char* CFeatureGiveArmor::GetFeatureName()
 {
 	return "Give +100 armor";
 }
+
+bool CFeatureGiveArmor::IsGood()
+{
+	return true;
+}

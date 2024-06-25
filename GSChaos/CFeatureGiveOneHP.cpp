@@ -22,3 +22,8 @@ const char* CFeatureGiveOneHP::GetFeatureName()
 {
 	return "Give +1 HP";
 }
+
+bool CFeatureGiveOneHP::IsGood()
+{
+	return true;
+}

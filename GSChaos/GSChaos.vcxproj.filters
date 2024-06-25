@@ -400,6 +400,9 @@
     <ClCompile Include="CFeatureTallWorld.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeature10GoodEffects.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -895,6 +898,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureTallWorld.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeature10GoodEffects.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

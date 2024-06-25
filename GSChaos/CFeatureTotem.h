@@ -28,7 +28,7 @@ class CFeatureTotem : public CChaosFeature
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
 	const char* GetFeatureName() override;
-
+	bool IsGood() override;
 private:
 	bool m_bActivated = false;
 	double m_flTotemTime;
