@@ -42,6 +42,21 @@ typedef struct
 	unsigned short	frequency;		// FIXED 8.8 noise frequency (low frequency is a jerk,high frequency is a rumble)
 } ScreenShake;
 
+typedef struct hudtextparms_s
+{
+	float		x;
+	float		y;
+	int			effect;
+	byte		r1, g1, b1, a1;
+	byte		r2, g2, b2, a2;
+	float		fadeinTime;
+	float		fadeoutTime;
+	float		holdTime;
+	float		fxTime;
+	int			channel;
+} hudtextparms_t;
+
+
 void _AngleVectors(const Vector angles, Vector forward, Vector right, Vector up);
 float Length(const vec3_t v);
 void Draw_FillRGBA(int x, int y, int w, int h, int r, int g, int b, int a);
@@ -57,7 +72,9 @@ extern void			UTIL_TraceLine(const Vector& vecStart, const Vector& vecEnd, IGNOR
 void UTIL_ScreenShake(const Vector& center, float amplitude, float frequency, float duration, float radius);
 void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, float fadeHold, int alpha, int flags);
 void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType);
+void UTIL_HudMessage(edict_t* pEntity, const hudtextparms_t& textparms, const char* pMessage);
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture);
+
 
 #else //!__cplusplus
 #error C++ compiler required to compile Utils.h
