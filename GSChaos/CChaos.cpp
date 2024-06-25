@@ -671,9 +671,6 @@ void CChaos::OnFrame(double time)
 			ma_engine_set_volume(&miniAudio, 0.0f);
 	}
 
-	if (gl_clear)
-		gl_clear->value = 1.0f;
-
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 
 	static bool bPaused;

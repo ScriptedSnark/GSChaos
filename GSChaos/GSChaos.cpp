@@ -361,6 +361,9 @@ void HOOKED_LoadEntityDLLs(char* szBaseDir)
 
 void HOOKED_R_DrawWorld()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
 	glPushMatrix();
 
 	for (CChaosFeature* i : gChaosFeatures)
