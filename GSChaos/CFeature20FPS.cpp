@@ -3,15 +3,22 @@
 void CFeature20FPS::Init()
 {
 	CChaosFeature::Init();
+
+	fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
+	fps_value = fps_max->value;
 }
 
 void CFeature20FPS::ActivateFeature()
 {
+	if (!IsActive())
+	{
+		fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
+		fps_value = fps_max->value;
+	}
+
 	CChaosFeature::ActivateFeature();
 
 	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", g_bPreSteamPipe ? 20.0f : 19.5f));
-	fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
-	fps_value = fps_max->value;
 	m_bActivated = true;
 }
 
