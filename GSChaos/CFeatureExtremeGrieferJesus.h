@@ -35,6 +35,8 @@ private:
 	bool m_bActivated;
 	double m_flTimeForSpawn;
 	ma_sound* m_pSound;
+	bool m_bMusicIsPlaying;
+	double m_flMusicTime;
 };
 
 #else //!__cplusplus

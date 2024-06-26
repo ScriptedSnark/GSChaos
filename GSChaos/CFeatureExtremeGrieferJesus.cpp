@@ -13,11 +13,21 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 	m_bActivated = true;
 	m_bSpawned = false;
 
-	ma_engine_play_sound(&miniAudio, "chaos/egj.mp3", NULL);
+	if (!m_bMusicIsPlaying)
+	{
+		m_bMusicIsPlaying = true;
+		m_flMusicTime = gChaos.GetGlobalTime() + 192.0; // track duration (3:12)
+		ma_engine_play_sound(&miniAudio, "chaos/egj.mp3", NULL);
+	}
 }
 
 void CFeatureExtremeGrieferJesus::OnFrame(double time)
 {
+	if (m_bMusicIsPlaying && gChaos.GetGlobalTime() > m_flMusicTime)
+	{
+		m_bMusicIsPlaying = false;
+	}
+
 	if (g_bDespawnJesus)
 	{
 		m_bSpawned = false;
