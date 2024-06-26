@@ -162,6 +162,7 @@
     <ClCompile Include="CFeatureMessWorld.cpp" />
     <ClCompile Include="CFeatureMirrorScreen.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
+    <ClCompile Include="CFeatureModelInsanity.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
@@ -331,6 +332,7 @@
     <ClInclude Include="CFeatureMessWorld.h" />
     <ClInclude Include="CFeatureMirrorScreen.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
+    <ClInclude Include="CFeatureModelInsanity.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />
