@@ -404,6 +404,9 @@
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="in_camera.cpp" />
+    <ClCompile Include="CFeatureTrapPlayer.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -905,6 +908,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="in_camera.h" />
+    <ClInclude Include="CFeatureTrapPlayer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">
