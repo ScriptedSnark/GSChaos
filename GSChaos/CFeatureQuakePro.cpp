@@ -3,11 +3,6 @@
 void CFeatureQuakePro::Init()
 {
 	CChaosFeature::Init();
-}
-
-void CFeatureQuakePro::ActivateFeature()
-{
-	CChaosFeature::ActivateFeature();
 
 	default_fov = pEngfuncs->pfnGetCvarPointer("default_fov");
 
@@ -15,6 +10,30 @@ void CFeatureQuakePro::ActivateFeature()
 		return;
 
 	m_flOldFOVValue = default_fov->value;
+}
+
+void CFeatureQuakePro::ActivateFeature()
+{
+	// do it before actual activating
+	bool bShouldSaveFOV = true;
+	for (auto& i : gChaos.m_activeFeatures)
+	{
+		if (!stricmp(i->GetFeatureName(), "Quake Pro") || !stricmp(i->GetFeatureName(), "Low FOV"))
+		{
+			bShouldSaveFOV = false;
+		}
+	}
+
+	CChaosFeature::ActivateFeature();
+
+	default_fov = pEngfuncs->pfnGetCvarPointer("default_fov");
+
+	if (!default_fov)
+		return;
+
+	if (bShouldSaveFOV)
+		m_flOldFOVValue = default_fov->value;
+
 	default_fov->value = GetFOV();
 }
 
