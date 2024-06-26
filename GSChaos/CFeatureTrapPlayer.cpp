@@ -30,7 +30,7 @@ void CFeatureTrapPlayer::OnFrame(double time)
 	if (!CLWrapper::GetLevelName()[0])
 		return;
 
-	if (!m_bTrap && (*sv_player)->v.flags & FL_ONGROUND && (*sv_player)->v.health > 0.0f)
+	if (!m_bTrap && (*sv_player)->v.flags & FL_ONGROUND && !((*sv_player)->v.flags & FL_DUCKING) && (*sv_player)->v.health > 0.0f)
 	{
 		m_vOrigin = (*sv_player)->v.origin;
 		m_bTrap = true;
