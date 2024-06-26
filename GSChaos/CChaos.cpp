@@ -330,7 +330,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureTrapPlayer>();
 	RegisterChaosFeature<CFeatureThirdPerson>();
 	RegisterChaosFeature<CFeatureModelInsanity>();
-
+	RegisterChaosFeature<CFeatureHalfGameSpeed>();
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
 	RegisterChaosFeature<CFeature10Effects>();

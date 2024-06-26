@@ -212,6 +212,7 @@ extern bool g_bEncrypted;
 #include "CFeatureTrapPlayer.h"
 #include "CFeatureThirdPerson.h"
 #include "CFeatureModelInsanity.h"
+#include "CFeatureHalfGameSpeed.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

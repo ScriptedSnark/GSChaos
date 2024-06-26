@@ -148,6 +148,7 @@
     <ClCompile Include="CFeatureGiveOneArmor.cpp" />
     <ClCompile Include="CFeatureGiveOneHP.cpp" />
     <ClCompile Include="CFeatureGiveRandomWeapon.cpp" />
+    <ClCompile Include="CFeatureHalfGameSpeed.cpp" />
     <ClCompile Include="CFeatureHalfGravity.cpp" />
     <ClCompile Include="CFeatureHigh.cpp" />
     <ClCompile Include="CFeatureHL2Movement.cpp" />
@@ -318,6 +319,7 @@
     <ClInclude Include="CFeatureGiveOneArmor.h" />
     <ClInclude Include="CFeatureGiveOneHP.h" />
     <ClInclude Include="CFeatureGiveRandomWeapon.h" />
+    <ClInclude Include="CFeatureHalfGameSpeed.h" />
     <ClInclude Include="CFeatureHalfGravity.h" />
     <ClInclude Include="CFeatureHigh.h" />
     <ClInclude Include="CFeatureHL2Movement.h" />
