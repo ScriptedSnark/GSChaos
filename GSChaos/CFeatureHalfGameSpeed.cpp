@@ -63,6 +63,16 @@ const char* CFeatureHalfGameSpeed::GetFeatureName()
 	return "Half Game Speed";
 }
 
+double CFeatureHalfGameSpeed::GetDuration()
+{
+	return gChaos.GetChaosTime() * 1.15;
+}
+
+bool CFeatureHalfGameSpeed::UseCustomDuration()
+{
+	return true;
+}
+
 float CFeatureHalfGameSpeed::GetTimescale()
 {
 	return 0.5f;
