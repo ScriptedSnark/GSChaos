@@ -407,6 +407,9 @@
     <ClCompile Include="CFeatureTrapPlayer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureThirdPerson.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -909,6 +912,9 @@
     </ClInclude>
     <ClInclude Include="in_camera.h" />
     <ClInclude Include="CFeatureTrapPlayer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureThirdPerson.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

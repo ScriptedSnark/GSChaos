@@ -223,6 +223,7 @@
     <ClCompile Include="CFeatureTakeOneHP.cpp" />
     <ClCompile Include="CFeatureTallWorld.cpp" />
     <ClCompile Include="CFeatureTeleportToRandomNPC.cpp" />
+    <ClCompile Include="CFeatureThirdPerson.cpp" />
     <ClCompile Include="CFeatureTinyNPCs.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
     <ClCompile Include="CFeatureTrapPlayer.cpp" />
@@ -391,6 +392,7 @@
     <ClInclude Include="CFeatureTakeOneHP.h" />
     <ClInclude Include="CFeatureTallWorld.h" />
     <ClInclude Include="CFeatureTeleportToRandomNPC.h" />
+    <ClInclude Include="CFeatureThirdPerson.h" />
     <ClInclude Include="CFeatureTinyNPCs.h" />
     <ClInclude Include="CFeatureTotem.h" />
     <ClInclude Include="CFeatureTrapPlayer.h" />

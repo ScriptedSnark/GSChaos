@@ -328,6 +328,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureKickWorld>();
 	RegisterChaosFeature<CFeatureTallWorld>();
 	RegisterChaosFeature<CFeatureTrapPlayer>();
+	RegisterChaosFeature<CFeatureThirdPerson>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
