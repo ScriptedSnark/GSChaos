@@ -422,6 +422,9 @@
     <ClCompile Include="CFeatureGameSpeedup.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureGambling.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -939,6 +942,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGameSpeedup.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureGambling.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
