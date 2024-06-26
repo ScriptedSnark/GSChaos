@@ -43,6 +43,7 @@ client_state_t* cl;
 client_state_HL25_t* cl_hl25;
 ref_params_t* g_pRefParams;
 engine_studio_api_t* engine_studio_api;
+float* sys_timescale;
 
 CChaos gChaos;
 CImGuiManager gImGui;
@@ -741,6 +742,37 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
 				}
 
+				break;
+			}
+		});
+
+	void* Host_InitLocal;
+	auto fHost_InitLocal = utils.FindAsync(
+		Host_InitLocal,
+		patterns::engine::Host_InitLocal,
+		[&](auto pattern) {
+			switch (pattern - patterns::engine::Host_InitLocal.cbegin())
+			{
+			default:
+			case 0: // HL-9920
+				DEBUG_PRINT("Searching sys_timescale in HL-9920 pattern...\n");
+				sys_timescale = *reinterpret_cast<float**>(reinterpret_cast<uintptr_t>(Host_InitLocal) + 0x10F);
+
+				if (sys_timescale)
+				{
+					DEBUG_PRINT("[hw dll] Found sys_timescale at 0x%p.\n", sys_timescale);
+					DEBUG_PRINT("[hw dll] sys_timescale == %.01f\n", *sys_timescale);
+				}
+				break;
+			case 1: // HL-8684
+				DEBUG_PRINT("Searching sys_timescale in HL-8684 pattern...\n");
+				sys_timescale = *reinterpret_cast<float**>(reinterpret_cast<uintptr_t>(Host_InitLocal) + 0x48);
+
+				if (sys_timescale)
+				{
+					DEBUG_PRINT("[hw dll] Found sys_timescale at 0x%p.\n", sys_timescale);
+					DEBUG_PRINT("[hw dll] sys_timescale == %.01f\n", *sys_timescale);
+				}
 				break;
 			}
 		});

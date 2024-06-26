@@ -332,6 +332,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureModelInsanity>();
 	RegisterChaosFeature<CFeatureHalfGameSpeed>();
 	RegisterChaosFeature<CFeatureStandstill>();
+	RegisterChaosFeature<CFeatureGameSpeedup>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
