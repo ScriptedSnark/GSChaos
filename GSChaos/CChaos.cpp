@@ -331,6 +331,8 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureThirdPerson>();
 	RegisterChaosFeature<CFeatureModelInsanity>();
 	RegisterChaosFeature<CFeatureHalfGameSpeed>();
+	RegisterChaosFeature<CFeatureStandstill>();
+
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
 	RegisterChaosFeature<CFeature10Effects>();

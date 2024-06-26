@@ -220,6 +220,7 @@
     <ClCompile Include="CFeatureSpawnTeleport.cpp" />
     <ClCompile Include="CFeatureSqueakShephard.cpp" />
     <ClCompile Include="CFeatureSqueakShephards.cpp" />
+    <ClCompile Include="CFeatureStandstill.cpp" />
     <ClCompile Include="CFeatureStop.cpp" />
     <ClCompile Include="CFeatureSwapHealth.cpp" />
     <ClCompile Include="CFeatureTakeOneHP.cpp" />
@@ -391,6 +392,7 @@
     <ClInclude Include="CFeatureSpawnTeleport.h" />
     <ClInclude Include="CFeatureSqueakShephard.h" />
     <ClInclude Include="CFeatureSqueakShephards.h" />
+    <ClInclude Include="CFeatureStandstill.h" />
     <ClInclude Include="CFeatureStop.h" />
     <ClInclude Include="CFeatureSwapHealth.h" />
     <ClInclude Include="CFeatureTakeOneHP.h" />

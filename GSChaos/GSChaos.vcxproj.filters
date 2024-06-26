@@ -416,6 +416,9 @@
     <ClCompile Include="CFeatureHalfGameSpeed.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureStandstill.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -927,6 +930,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureHalfGameSpeed.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureStandstill.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
