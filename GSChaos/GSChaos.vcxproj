@@ -133,6 +133,7 @@
     <ClCompile Include="CFeatureAmIDead.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
     <ClCompile Include="CFeatureBoost.cpp" />
+    <ClCompile Include="CFeatureCheatCodeVoting.cpp" />
     <ClCompile Include="CFeatureCombineEffects.cpp" />
     <ClCompile Include="CFeatureCreepypasta.cpp" />
     <ClCompile Include="CFeatureDarkness.cpp" />
@@ -307,6 +308,7 @@
     <ClInclude Include="CFeatureAmIDead.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
     <ClInclude Include="CFeatureBoost.h" />
+    <ClInclude Include="CFeatureCheatCodeVoting.h" />
     <ClInclude Include="CFeatureCombineEffects.h" />
     <ClInclude Include="CFeatureCreepypasta.h" />
     <ClInclude Include="CFeatureDarkness.h" />

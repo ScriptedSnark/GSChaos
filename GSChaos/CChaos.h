@@ -27,12 +27,6 @@
 #define CHAOS_VOTING_PROGRESS_UPDATE_TIME 0.75
 #define CHAOS_VOTING_PROGRESS_FILE "chaos/voting_progress.txt"
 
-struct TwitchVoter
-{
-	std::string userName;
-	int value;
-};
-
 extern cvar_t* chaos_dmca_safe;
 extern cvar_t* chaos_draw_as_overlay;
 
@@ -77,6 +71,7 @@ public:
 	ImFont* m_pArborcrest;
 
 	std::vector<CChaosFeature*> m_activeFeatures;
+	bool m_bTwitchVoting;
 
 private:
 	std::chrono::time_point<std::chrono::steady_clock, std::chrono::duration<double, std::nano>> m_startTime;
@@ -101,7 +96,6 @@ private:
 	CChaosFeature* m_pCurrentFeature;
 
 	// TWITCH
-	bool m_bTwitchVoting;
 	bool m_bStartedVoting;
 	int m_aiEffectsForVoting[3], m_aiVoteValues[3];
 	int m_iWinnerEffect;

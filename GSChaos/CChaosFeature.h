@@ -35,14 +35,19 @@ public:
 	virtual void SwapBuffers();
 	virtual void R_DrawWorld();
 	virtual void PM_Jump();
+	virtual void Vote(const std::string& user, const std::string& msg);
 	virtual bool IsActive();
 	virtual double GetDuration();
 	virtual bool UseCustomDuration();
 	virtual bool IsGood();
+	virtual void SetVoterNickname(const std::string& name);
+	virtual const char* GetVoterNickname();
 
 	double m_flExpireTime;
 private:
 	bool m_bActivated;
+	std::string m_szPreservedVoterName;
+	std::string m_szVoterName;
 };
 
 extern std::vector<CChaosFeature*> gChaosFeatures;

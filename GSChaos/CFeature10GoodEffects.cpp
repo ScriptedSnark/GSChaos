@@ -9,7 +9,7 @@ void CFeature10GoodEffects::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	for (auto& feature : gChaosFeatures)
+	for (CChaosFeature* feature : gChaosFeatures)
 	{
 		if (feature->IsGood())
 			feature->ActivateFeature();
@@ -19,6 +19,12 @@ void CFeature10GoodEffects::ActivateFeature()
 void CFeature10GoodEffects::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
+
+	for (CChaosFeature* feature : gChaosFeatures)
+	{
+		if (feature->IsGood() && !feature->UseCustomDuration())
+			feature->DeactivateFeature();
+	}
 }
 
 const char* CFeature10GoodEffects::GetFeatureName()

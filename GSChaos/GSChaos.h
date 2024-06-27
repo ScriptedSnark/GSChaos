@@ -19,6 +19,12 @@
 
 #ifdef __cplusplus
 
+struct TwitchVoter
+{
+	std::string userName;
+	int value;
+};
+
 typedef int(__stdcall* _wglSwapBuffers)(HDC);
 typedef LRESULT (APIENTRY* _WndProc)(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 extern _wglSwapBuffers ORIG_wglSwapBuffers;

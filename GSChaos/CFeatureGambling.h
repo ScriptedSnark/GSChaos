@@ -25,6 +25,8 @@ class CFeatureGambling : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+private:
+	bool m_bJackpot;
 };
 
 #else //!__cplusplus

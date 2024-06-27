@@ -170,6 +170,11 @@ void CChaos::InitVotingSystem()
 
 void CChaos::Vote(const std::string& user, const std::string& msg)
 {
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		i->Vote(user, msg);
+	}
+
 	if (!IsVoteStarted())
 		return;
 
@@ -334,6 +339,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureStandstill>();
 	RegisterChaosFeature<CFeatureGameSpeedup>();
 	RegisterChaosFeature<CFeatureGambling>();
+	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCombineEffects>();
@@ -447,7 +453,10 @@ void CChaos::StartVoting()
 
 	InitVotingSystem();
 
-	twitch->SendChatMessage("Start voting!");
+	if (!strcmp(gChaosFeaturesNames[m_aiEffectsForVoting[0]], "Cheat Code Voting") || !strcmp(gChaosFeaturesNames[m_aiEffectsForVoting[1]], "Cheat Code Voting") || !strcmp(gChaosFeaturesNames[m_aiEffectsForVoting[2]], "Cheat Code Voting"))
+		twitch->SendChatMessage("Start voting! By the way, an effect named \"Cheat Code Voting\" has been detected. Effect names: https://github.com/ScriptedSnark/GSChaos#effects");
+	else
+		twitch->SendChatMessage("Start voting!");
 
 	DEBUG_PRINT("Start voting!\n");
 	DEBUG_PRINT("================\n");
@@ -553,6 +562,9 @@ void CChaos::DrawEffectList()
 	if (!m_pCurrentFeature)
 		return;
 
+	char effectName[512];
+	char effectNameWithTimer[512];
+
 	float posY = ImGui::GetIO().DisplaySize.y / 2.f;
 	if (chaos_effectname_ypos && chaos_effectname_ypos->value > 1)
 		posY = chaos_effectname_ypos->value;
@@ -569,21 +581,32 @@ void CChaos::DrawEffectList()
 		{
 			ImVec2 textPos = ImGui::GetCursorPos();
 			const char* featureName = feature->GetFeatureName();
+			const char* voterNickname = feature->GetVoterNickname();
 			double timer = std::max(0.0, feature->m_flExpireTime - gChaos.GetGlobalTime());
+
+			if (voterNickname && strlen(voterNickname) > 0)
+				sprintf_s(effectName, sizeof(effectName), "- %s: %s", voterNickname, featureName);
+			else
+				sprintf_s(effectName, sizeof(effectName), "- %s", featureName);
 
 			if (timer <= 0.0 || !feature->UseCustomDuration())
 			{
 				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "- %s", featureName);
+				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", effectName);
 				ImGui::SetCursorPos(textPos);
-				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "- %s", featureName);
+				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "%s", effectName);
 			}
 			else
 			{
+				if (voterNickname && strlen(voterNickname) > 0)
+					sprintf_s(effectNameWithTimer, sizeof(effectNameWithTimer), "- %s: %s (%.01f)", voterNickname, featureName, timer);
+				else
+					sprintf_s(effectNameWithTimer, sizeof(effectNameWithTimer), "- %s (%.01f)", featureName, timer);
+
 				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "- %s (%.01f)", featureName, timer);
+				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", effectNameWithTimer);
 				ImGui::SetCursorPos(textPos);
-				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "- %s (%.01f)", featureName, timer);
+				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "%s", effectNameWithTimer);
 			}
 		}
 
@@ -763,6 +786,9 @@ void CChaos::OnFrame(double time)
 //#endif
 
 			// After
+			if (strstr(randomFeature->GetFeatureName(), "Cheat Code Voting"))
+				randomFeature = gChaosFeatures[gChaos.GetRandomValue(1, 110)];
+
 			m_pCurrentFeature = randomFeature;
 		}
 		else

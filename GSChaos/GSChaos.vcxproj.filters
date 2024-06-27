@@ -425,6 +425,9 @@
     <ClCompile Include="CFeatureGambling.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureCheatCodeVoting.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -945,6 +948,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGambling.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureCheatCodeVoting.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

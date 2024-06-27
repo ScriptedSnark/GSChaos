@@ -18,6 +18,12 @@ void CChaosFeature::ActivateFeature()
 
 	if (std::find(gChaos.m_activeFeatures.begin(), gChaos.m_activeFeatures.end(), this) == gChaos.m_activeFeatures.end())
 		gChaos.m_activeFeatures.push_back(this);
+
+	if (!m_szPreservedVoterName.empty())
+	{
+		m_szVoterName = m_szPreservedVoterName;
+		m_szPreservedVoterName.clear();
+	}
 }
 
 void CChaosFeature::DeactivateFeature()
@@ -28,6 +34,8 @@ void CChaosFeature::DeactivateFeature()
 	auto it = std::find(gChaos.m_activeFeatures.begin(), gChaos.m_activeFeatures.end(), this);
 	if (it != gChaos.m_activeFeatures.end())
 		gChaos.m_activeFeatures.erase(it);
+
+	SetVoterNickname("");
 }
 
 void CChaosFeature::OnFrame(double time)
@@ -87,6 +95,11 @@ void CChaosFeature::PM_Jump()
 	;
 }
 
+void CChaosFeature::Vote(const std::string& user, const std::string& msg)
+{
+
+}
+
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;
@@ -105,4 +118,17 @@ bool CChaosFeature::UseCustomDuration()
 bool CChaosFeature::IsGood()
 {
 	return false;
+}
+
+void CChaosFeature::SetVoterNickname(const std::string& name)
+{
+	if (IsActive())
+		m_szPreservedVoterName = name;
+	else
+		m_szVoterName = name;
+}
+
+const char* CChaosFeature::GetVoterNickname()
+{
+	return m_szVoterName.c_str();
 }

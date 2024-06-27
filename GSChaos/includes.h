@@ -216,6 +216,7 @@ extern bool g_bEncrypted;
 #include "CFeatureStandstill.h"
 #include "CFeatureGameSpeedup.h"
 #include "CFeatureGambling.h"
+#include "CFeatureCheatCodeVoting.h"
 
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"

@@ -40,8 +40,9 @@ void CFeatureGambling::ActivateFeature()
 		hudTextParams.holdTime = 5.0;
 		hudTextParams.fxTime = 0.25;
 		UTIL_HudMessage((*sv_player), hudTextParams, "JACKPOT !!!");
+		m_bJackpot = true;
 
-		for (auto& i : gChaosFeatures)
+		for (CChaosFeature* i : gChaosFeatures)
 		{
 			if (i->IsGood())
 				i->ActivateFeature();
@@ -56,6 +57,15 @@ void CFeatureGambling::ActivateFeature()
 void CFeatureGambling::DeactivateFeature()
 {
 	CChaosFeature::DeactivateFeature();
+
+	if (!m_bJackpot)
+		return;
+
+	for (CChaosFeature* feature : gChaosFeatures)
+	{
+		if (feature->IsGood() && !feature->UseCustomDuration())
+			feature->DeactivateFeature();
+	}
 }
 
 const char* CFeatureGambling::GetFeatureName()
