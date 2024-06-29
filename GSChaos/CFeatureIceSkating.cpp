@@ -14,7 +14,9 @@ void CFeatureIceSkating::ActivateFeature()
 	if (!sv_friction)
 		return;
 
-	m_flOldFrictionValue = sv_friction->value;
+	if (sv_friction->value != 0.0f)
+		m_flOldFrictionValue = sv_friction->value;
+
 	m_bActivated = true;
 }
 
