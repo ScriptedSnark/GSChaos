@@ -17,7 +17,7 @@ void CFeatureThirdPerson::DeactivateFeature()
 	CChaosFeature::DeactivateFeature();
 
 	bool bShouldDeactivate3rdPerson = true;
-	for (auto& i : gChaos.m_activeFeatures)
+	for (CChaosFeature* i : gChaos.m_activeFeatures)
 	{
 		if (!stricmp(i->GetFeatureName(), "2D Camera"))
 		{

@@ -339,9 +339,10 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureStandstill>();
 	RegisterChaosFeature<CFeatureGameSpeedup>();
 	RegisterChaosFeature<CFeatureGambling>();
-	RegisterChaosFeature<CFeatureCheatCodeVoting>();
+	RegisterChaosFeature<CFeatureViewDistortion>();
 
 	// must be last
+	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();
 	RegisterChaosFeature<CFeature10Effects>();
 	RegisterChaosFeature<CFeature10GoodEffects>();
@@ -771,6 +772,12 @@ void CChaos::OnFrame(double time)
 		// Before
 		if (m_pCurrentFeature && !m_pCurrentFeature->UseCustomDuration())
 			m_pCurrentFeature->DeactivateFeature();
+
+		for (CChaosFeature* i : g_pCheatCodeFeatures)
+		{
+			if (i->IsActive())
+				i->DeactivateFeature();
+		}
 
 		// Do some setup
 		ResetStates();

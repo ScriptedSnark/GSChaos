@@ -22,4 +22,14 @@ namespace CLWrapper
 	{
 		return cl_hl25 ? cl_hl25->levelname : cl->levelname;
 	}
+
+	int* GetStats()
+	{
+		return cl_hl25 ? cl_hl25->stats : cl->stats;
+	}
+
+	cl_entity_t* GetViewent()
+	{
+		return cl_hl25 ? &cl_hl25->viewent : &cl->viewent;
+	}
 }

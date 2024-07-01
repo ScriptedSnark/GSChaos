@@ -25,6 +25,8 @@ namespace CLWrapper
 	event_t* GetEventPrecache();
 	qboolean GetPausedState();
 	const char* GetLevelName();
+	int* GetStats();
+	cl_entity_t* GetViewent();
 }
 
 #else //!__cplusplus

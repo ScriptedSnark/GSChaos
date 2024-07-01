@@ -9,22 +9,26 @@
 typedef void (*_HUD_Frame)(double time);
 typedef int (*_HUD_Redraw)(float time, int intermission);
 typedef void (*_V_CalcRefdef)(struct ref_params_s* pparams);
+typedef void (*_HUD_CreateEntities)(void);
 typedef int (*_HUD_AddEntity)(int type, struct cl_entity_s* ent, const char* modelname);
 
 _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
 _V_CalcRefdef ORIG_V_CalcRefdef = NULL;
+_HUD_CreateEntities ORIG_HUD_CreateEntities = NULL;
 _HUD_AddEntity ORIG_HUD_AddEntity = NULL;
 
 typedef void (*_LoadThisDll)(char* szDllFilename);
 typedef void (*_LoadEntityDLLs)(char* szBaseDir);
 typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
 typedef void (*_R_DrawWorld)();
+typedef void (*_R_RecursiveWorldNode)(mnode_t* node);
 
 _LoadThisDll ORIG_LoadThisDll = NULL;
 _LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
 _ServerActivate ORIG_ServerActivate = NULL;
 _R_DrawWorld ORIG_R_DrawWorld = NULL;
+_R_RecursiveWorldNode ORIG_R_RecursiveWorldNode = NULL;
 
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
@@ -76,6 +80,9 @@ inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3
 }
 
 // OPENGL
+typedef void (*__stdcall _glFrustum)(GLdouble a1, GLdouble a2, GLdouble a3, GLdouble a4, GLdouble a5, GLdouble a6);
+_glFrustum ORIG_glFrustum = NULL;
+
 GLuint program;
 
 _wglSwapBuffers GetSwapBuffersAddr()
@@ -235,6 +242,17 @@ void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
 
 	if (g_FogSkybox == TRUE)
 		RenderFog();
+}
+
+void HOOKED_HUD_CreateEntities(void)
+{
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (i->IsActive())
+			i->HUD_CreateEntities();
+	}
+
+	ORIG_HUD_CreateEntities();
 }
 
 int HOOKED_HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
@@ -789,6 +807,18 @@ void HookEngine()
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 
+void __stdcall HOOKED_glFrustum(GLdouble a1, GLdouble a2, GLdouble a3, GLdouble a4, GLdouble a5, GLdouble a6)
+{
+	if (!g_bActivatedViewDistortion || !g_pRefParams)
+	{
+		ORIG_glFrustum(a1, a2, a3, a4, a5, a6);
+		return;
+	}
+
+	Vector viewangles = g_pRefParams->viewangles;
+	ORIG_glFrustum(a1 + viewangles.x, a2 - viewangles.x, a3, a4, a5, a6);
+}
+
 void HookOpenGL()
 {
 	g_lpOpenGL32 = GetModuleHandle("opengl32.dll");
@@ -801,7 +831,9 @@ void HookOpenGL()
 	ORIG_wglSwapBuffers = GetSwapBuffersAddr();
 
 	Find(OpenGL32, wglSwapBuffers);
+	Find(OpenGL32, glFrustum);
 	CreateHook(OpenGL32, wglSwapBuffers);
+	CreateHook(OpenGL32, glFrustum);
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 

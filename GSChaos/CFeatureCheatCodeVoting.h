@@ -25,6 +25,8 @@ struct VotedFeature
 	std::string user;
 };
 
+extern std::vector<CChaosFeature*> g_pCheatCodeFeatures;
+
 class CFeatureCheatCodeVoting : public CChaosFeature
 {
 	void Init() override;
@@ -35,7 +37,6 @@ class CFeatureCheatCodeVoting : public CChaosFeature
 	bool UseCustomDuration() override;
 	void Vote(const std::string& user, const std::string& msg);
 private:
-	std::vector<CChaosFeature*> m_pFeatures;
 	std::vector<TwitchVoter> m_twitchVoters;
 };
 

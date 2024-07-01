@@ -75,6 +75,11 @@ void CChaosFeature::Restore()
 	;
 }
 
+void CChaosFeature::HUD_CreateEntities()
+{
+	;
+}
+
 void CChaosFeature::HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
 {
 	;

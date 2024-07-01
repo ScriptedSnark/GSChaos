@@ -156,6 +156,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Standstill (1% game speed)
 > Game Speedup
 > Gambling
+> View Distortion
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic
@@ -174,6 +175,6 @@ Special thanks to:
 - suXinjke for [Half-Payne](https://github.com/suXinjke/HalfPayne)
 - un4seen (a.k.a. yanny), JeepyGMI, Kalifron4ik for supporting/playtesting when GSChaos didn't have even 50 effects
 - Tankfird, StereoBucket, JeepyGMI, prolert, gatar, Eold, Bartek(GMI) and other people for suggesting effects, ideas
-- [Ryder Joestar](https://gamebanana.com/members/2142275) for modelling help
+- [Ryder Joestar](https://gamebanana.com/members/2142275) for modelling help (Jesus and Totem)
 - YaLTeR for SPTLib
 - Valve for Half-Life, GoldSrc engine

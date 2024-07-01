@@ -27,11 +27,13 @@ class CFeatureTotem : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	void OnFrame(double time) override;
+	void HUD_CreateEntities() override;
 	const char* GetFeatureName() override;
 	bool IsGood() override;
 private:
 	bool m_bActivated = false;
-	double m_flTotemTime;
+	double m_flTotemTime, m_flModelDisappearTime;
+	int m_iTotemModelIndex;
 };
 
 

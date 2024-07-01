@@ -236,6 +236,7 @@
     <ClCompile Include="CFeatureUltraWideNPCs.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
+    <ClCompile Include="CFeatureViewDistortion.cpp" />
     <ClCompile Include="CFeatureWaterIsALie.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
@@ -411,6 +412,7 @@
     <ClInclude Include="CFeatureUltraWideNPCs.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
+    <ClInclude Include="CFeatureViewDistortion.h" />
     <ClInclude Include="CFeatureWaterIsALie.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />

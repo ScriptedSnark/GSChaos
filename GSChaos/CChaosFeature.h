@@ -31,6 +31,7 @@ public:
 	virtual void Draw();
 	virtual void ResetStates();
 	virtual void Restore();
+	virtual void HUD_CreateEntities();
 	virtual void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname);
 	virtual void SwapBuffers();
 	virtual void R_DrawWorld();

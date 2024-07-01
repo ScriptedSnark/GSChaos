@@ -216,8 +216,9 @@ extern bool g_bEncrypted;
 #include "CFeatureStandstill.h"
 #include "CFeatureGameSpeedup.h"
 #include "CFeatureGambling.h"
-#include "CFeatureCheatCodeVoting.h"
+#include "CFeatureViewDistortion.h"
 
+#include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
 #include "CFeature10GoodEffects.h"
@@ -232,7 +233,7 @@ extern CChaos gChaos;
 
 extern bool g_bActivatedGTA3HUD;
 
-//#define GS_DEBUG
+#define GS_DEBUG
 
 #ifdef GS_DEBUG
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)

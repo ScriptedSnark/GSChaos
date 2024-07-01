@@ -4,6 +4,8 @@
 bool g_bActivatedCheatCodeVoting = false;
 extern Twitch* twitch;
 
+std::vector<CChaosFeature*> g_pCheatCodeFeatures;
+
 std::unordered_map<std::string, std::string> g_featureAliases =
 {
 	{ "SpawnExtremeGrieferJesus", "He comes back." },
@@ -56,12 +58,12 @@ void CFeatureCheatCodeVoting::Vote(const std::string& user, const std::string& m
 		{
 			CChaosFeature* feature = gChaosFeatures[featureIndex];
 
-			auto featureInList = std::find(m_pFeatures.begin(), m_pFeatures.end(), feature);
-			if (featureInList == m_pFeatures.end())
+			auto featureInList = std::find(g_pCheatCodeFeatures.begin(), g_pCheatCodeFeatures.end(), feature);
+			if (featureInList == g_pCheatCodeFeatures.end())
 			{
 				feature->SetVoterNickname(user);
 				m_twitchVoters.push_back({ user, 0 }); // were lazy for another struct =_)
-				m_pFeatures.push_back(feature);
+				g_pCheatCodeFeatures.push_back(feature);
 				DEBUG_PRINT("Twitch user %s voted for feature: %s\n", user.c_str(), featureName.c_str());
 			}
 			else
@@ -94,7 +96,7 @@ void CFeatureCheatCodeVoting::ActivateFeature()
 		twitch->SendChatMessage("Start writing wanted effects names!");
 
 	m_twitchVoters.clear();
-	m_pFeatures.clear();
+	g_pCheatCodeFeatures.clear();
 
 	g_bActivatedCheatCodeVoting = true;
 }
@@ -105,7 +107,7 @@ void CFeatureCheatCodeVoting::DeactivateFeature()
 
 	g_bActivatedCheatCodeVoting = false;
 
-	for (auto& i : m_pFeatures)
+	for (CChaosFeature* i : g_pCheatCodeFeatures)
 	{
 		i->ActivateFeature();
 	}

@@ -16,7 +16,7 @@ void CFeatureQuakePro::ActivateFeature()
 {
 	// do it before actual activating
 	bool bShouldSaveFOV = true;
-	for (auto& i : gChaos.m_activeFeatures)
+	for (CChaosFeature* i : gChaos.m_activeFeatures)
 	{
 		if (!stricmp(i->GetFeatureName(), "Quake Pro") || !stricmp(i->GetFeatureName(), "Low FOV"))
 		{
