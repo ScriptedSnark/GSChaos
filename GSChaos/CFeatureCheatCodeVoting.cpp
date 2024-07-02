@@ -88,7 +88,7 @@ void CFeatureCheatCodeVoting::ActivateFeature()
 
 	if (!gChaos.m_bTwitchVoting)
 	{
-		gChaosFeatures[gChaos.GetRandomValue(1, 100)]->ActivateFeature();
+		gChaosFeatures[gChaos.GetRandomValue(1, gChaosFeatures.size() - 8)]->ActivateFeature();
 		CChaosFeature::DeactivateFeature();
 	}
 

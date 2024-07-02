@@ -205,6 +205,7 @@
     <ClCompile Include="CFeatureQuakeJumpSound.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRandomFog.cpp" />
+    <ClCompile Include="CFeatureRandomGameSpeed.cpp" />
     <ClCompile Include="CFeatureReloadAutosave.cpp" />
     <ClCompile Include="CFeatureRemoveArmor.cpp" />
     <ClCompile Include="CFeatureBSPDementia.cpp" />
@@ -212,6 +213,7 @@
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp" />
     <ClCompile Include="CFeatureRollin.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
+    <ClCompile Include="CFeatureTurbulentHell.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureShake.cpp" />
     <ClCompile Include="CFeatureShuffleEntitiesPositions.cpp" />
@@ -381,6 +383,7 @@
     <ClInclude Include="CFeatureQuakeJumpSound.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRandomFog.h" />
+    <ClInclude Include="CFeatureRandomGameSpeed.h" />
     <ClInclude Include="CFeatureReloadAutosave.h" />
     <ClInclude Include="CFeatureRemoveArmor.h" />
     <ClInclude Include="CFeatureBSPDementia.h" />
@@ -388,6 +391,7 @@
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h" />
     <ClInclude Include="CFeatureRollin.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
+    <ClInclude Include="CFeatureTurbulentHell.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureShake.h" />
     <ClInclude Include="CFeatureShuffleEntitiesPositions.h" />

@@ -340,6 +340,8 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGameSpeedup>();
 	RegisterChaosFeature<CFeatureGambling>();
 	RegisterChaosFeature<CFeatureViewDistortion>();
+	RegisterChaosFeature<CFeatureRandomGameSpeed>();
+	RegisterChaosFeature<CFeatureTurbulentHell>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

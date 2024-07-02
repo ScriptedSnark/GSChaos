@@ -21,6 +21,7 @@
 
 class CFeatureHalfGameSpeed : public CChaosFeature
 {
+public:
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
