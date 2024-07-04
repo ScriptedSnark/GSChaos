@@ -428,13 +428,16 @@
     <ClCompile Include="CFeatureCheatCodeVoting.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
-    <ClCompile Include="CFeatureViewDistortion.cpp">
-      <Filter>Effects</Filter>
-    </ClCompile>
     <ClCompile Include="CFeatureRandomGameSpeed.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="CFeatureTurbulentHell.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureNAAim.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureTempEntityMadness.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -962,13 +965,16 @@
     <ClInclude Include="CFeatureCheatCodeVoting.h">
       <Filter>Effects</Filter>
     </ClInclude>
-    <ClInclude Include="CFeatureViewDistortion.h">
-      <Filter>Effects</Filter>
-    </ClInclude>
     <ClInclude Include="CFeatureRandomGameSpeed.h">
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureTurbulentHell.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNAAim.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureTempEntityMadness.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

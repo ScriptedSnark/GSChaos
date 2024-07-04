@@ -100,6 +100,11 @@ void CChaosFeature::PM_Jump()
 	;
 }
 
+void CChaosFeature::CL_CreateMove(float frametime, struct usercmd_s* cmd, int active)
+{
+	;
+}
+
 void CChaosFeature::Vote(const std::string& user, const std::string& msg)
 {
 

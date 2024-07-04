@@ -168,6 +168,7 @@
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureModelInsanity.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
+    <ClCompile Include="CFeatureNAAim.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
     <ClCompile Include="CFeatureNoclip.cpp" />
@@ -213,6 +214,7 @@
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp" />
     <ClCompile Include="CFeatureRollin.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
+    <ClCompile Include="CFeatureTempEntityMadness.cpp" />
     <ClCompile Include="CFeatureTurbulentHell.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
     <ClCompile Include="CFeatureShake.cpp" />
@@ -238,7 +240,6 @@
     <ClCompile Include="CFeatureUltraWideNPCs.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
-    <ClCompile Include="CFeatureViewDistortion.cpp" />
     <ClCompile Include="CFeatureWaterIsALie.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
@@ -346,6 +347,7 @@
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureModelInsanity.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
+    <ClInclude Include="CFeatureNAAim.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />
     <ClInclude Include="CFeatureNoclip.h" />
@@ -391,6 +393,7 @@
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h" />
     <ClInclude Include="CFeatureRollin.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
+    <ClInclude Include="CFeatureTempEntityMadness.h" />
     <ClInclude Include="CFeatureTurbulentHell.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
     <ClInclude Include="CFeatureShake.h" />
@@ -416,7 +419,6 @@
     <ClInclude Include="CFeatureUltraWideNPCs.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
-    <ClInclude Include="CFeatureViewDistortion.h" />
     <ClInclude Include="CFeatureWaterIsALie.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />

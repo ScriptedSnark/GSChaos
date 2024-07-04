@@ -156,9 +156,10 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Standstill (1% game speed)
 > Game Speedup
 > Gambling
-> View Distortion
 > Random Game Speed
 > Turbulent Hell
+> NA Aim
+> Temp Entity Madness
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic
