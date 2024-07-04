@@ -1,11 +1,17 @@
 #include "includes.h"
 
+// VSync hack by @SmileyAG
+typedef BOOL(APIENTRY* PFNWGLSWAPINTERVALPROC)(int);
+PFNWGLSWAPINTERVALPROC wglSwapIntervalEXT = 0;
+
 void CFeature20FPS::Init()
 {
 	CChaosFeature::Init();
 
 	fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
 	fps_value = fps_max->value;
+
+	wglSwapIntervalEXT = (PFNWGLSWAPINTERVALPROC)wglGetProcAddress("wglSwapIntervalEXT");
 }
 
 void CFeature20FPS::ActivateFeature()
@@ -14,12 +20,21 @@ void CFeature20FPS::ActivateFeature()
 	{
 		fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
 		fps_value = fps_max->value;
+		gl_vsync = pEngfuncs->pfnGetCvarPointer("gl_vsync");
+
+		m_bVSyncEnabled = (gl_vsync && gl_vsync->value);
 	}
 
 	CChaosFeature::ActivateFeature();
 
 	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", g_bPreSteamPipe ? 20.0f : 19.5f));
 	m_bActivated = true;
+
+	if (m_bVSyncEnabled)
+	{
+		if (wglSwapIntervalEXT)
+			wglSwapIntervalEXT(0);
+	}
 }
 
 void CFeature20FPS::DeactivateFeature()
@@ -29,6 +44,12 @@ void CFeature20FPS::DeactivateFeature()
 
 	fps_max->value = fps_value;
 	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", fps_value));
+
+	if (m_bVSyncEnabled)
+	{
+		if (wglSwapIntervalEXT)
+			wglSwapIntervalEXT(1);
+	}
 }
 
 void CFeature20FPS::OnFrame(double time)

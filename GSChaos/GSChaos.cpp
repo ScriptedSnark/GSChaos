@@ -80,9 +80,6 @@ inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3
 }
 
 // OPENGL
-typedef void (*__stdcall _glFrustum)(GLdouble a1, GLdouble a2, GLdouble a3, GLdouble a4, GLdouble a5, GLdouble a6);
-_glFrustum ORIG_glFrustum = NULL;
-
 GLuint program;
 
 _wglSwapBuffers GetSwapBuffersAddr()

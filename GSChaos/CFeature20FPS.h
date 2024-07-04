@@ -30,7 +30,9 @@ class CFeature20FPS : public CChaosFeature
 	bool UseCustomDuration() override;
 private:
 	bool m_bActivated;
+	bool m_bVSyncEnabled;
 	cvar_t* fps_max;
+	cvar_t* gl_vsync;
 	float fps_value;
 };
 
