@@ -440,6 +440,9 @@
     <ClCompile Include="CFeatureTempEntityMadness.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureEUAim.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -975,6 +978,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureTempEntityMadness.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureEUAim.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

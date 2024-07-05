@@ -343,6 +343,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureTurbulentHell>();
 	RegisterChaosFeature<CFeatureNAAim>();
 	RegisterChaosFeature<CFeatureTempEntityMadness>();
+	RegisterChaosFeature<CFeatureEUAim>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

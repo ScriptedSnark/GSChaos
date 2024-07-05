@@ -220,6 +220,7 @@ extern bool g_bEncrypted;
 #include "CFeatureTurbulentHell.h"
 #include "CFeatureNAAim.h"
 #include "CFeatureTempEntityMadness.h"
+#include "CFeatureEUAim.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

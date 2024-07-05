@@ -140,6 +140,7 @@
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
     <ClCompile Include="CFeatureDisableChaosUI.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
+    <ClCompile Include="CFeatureEUAim.cpp" />
     <ClCompile Include="CFeatureExplosion.cpp" />
     <ClCompile Include="CFeatureExtremeGrieferJesus.cpp" />
     <ClCompile Include="CFeatureExtremeGrieferShephard.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="CFeatureDeleteRandomEntity.h" />
     <ClInclude Include="CFeatureDisableChaosUI.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
+    <ClInclude Include="CFeatureEUAim.h" />
     <ClInclude Include="CFeatureExplosion.h" />
     <ClInclude Include="CFeatureExtremeGrieferJesus.h" />
     <ClInclude Include="CFeatureExtremeGrieferShephard.h" />
