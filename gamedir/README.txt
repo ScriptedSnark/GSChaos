@@ -24,6 +24,7 @@ INSTALLATION (FOR WON 2005)
 ADDITIONAL INFO
 ==============
 - !!!Chaos UI rendering is not visible in OBS scene (if chaos_draw_as_overlay is enabled) if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)!!!
+- !!!Some effects like "Creepypasta Mode", "rorriM" and so on are not visible in OBS scene if third-party overlays checkbox is unchecked (doesn't matter if you capture hl.exe as a window, not game)!!!
 - Save your game more often because of potential softlocks/crashes
 
 CVARS AND COMMANDS
