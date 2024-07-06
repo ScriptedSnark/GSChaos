@@ -21,12 +21,11 @@ void CFeatureTurbulentHell::DeactivateFeature()
 
 	for (int i = 0; i < worldModel->numsurfaces; i++)
 	{
-		msurface_HL25_t* s = (msurface_HL25_t*)worldModel->surfaces;
 		// I tried to check texture name, texture flags but water still changes with other geometry...
 		// TODO: fix that mess - ScriptedSnark
 		if (g_bHL25)
 		{
-			s[i].flags &= ~SURF_DRAWTURB;
+			((msurface_HL25_t*)worldModel->surfaces)[i].flags &= ~SURF_DRAWTURB;
 		}
 		else
 		{
@@ -44,10 +43,8 @@ void CFeatureTurbulentHell::R_DrawWorld()
 
 	for (int i = 0; i < worldModel->numsurfaces; i++)
 	{
-		msurface_HL25_t* s = (msurface_HL25_t*)worldModel->surfaces;
-
 		if (g_bHL25)
-			s[i].flags |= SURF_DRAWTURB;
+			((msurface_HL25_t*)worldModel->surfaces)[i].flags |= SURF_DRAWTURB;
 		else
 			worldModel->surfaces[i].flags |= SURF_DRAWTURB;
 	}

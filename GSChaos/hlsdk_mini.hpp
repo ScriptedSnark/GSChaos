@@ -2347,6 +2347,7 @@ typedef struct mleaf_s
 	byte		ambient_sound_level[NUM_AMBIENTS];
 } mleaf_t;
 
+#ifdef SWDS
 struct msurface_s
 {
 	int			visframe;		// should be drawn when node is crossed
@@ -2377,6 +2378,33 @@ struct msurface_s
 
 	decal_t* pdecals;
 };
+#else
+typedef struct glpoly_s glpoly_t;
+
+struct msurface_s
+{
+	int visframe;
+	mplane_t* plane;
+	int flags;
+	int firstedge;
+	int numedges;
+	short texturemins[2];
+	short extents[2];
+	int light_s;
+	int light_t;
+	glpoly_t* polys;
+	msurface_s* texturechain;
+	mtexinfo_t* texinfo;
+	int dlightframe;
+	int dlightbits;
+	int lightmaptexturenum;
+	byte styles[MAXLIGHTMAPS];
+	int cached_light[MAXLIGHTMAPS];
+	qboolean cached_dlight;
+	color24* samples;
+	decal_t* pdecals;
+};
+#endif
 
 typedef struct mdisplaylist_s
 {
@@ -2408,7 +2436,7 @@ typedef struct msurface_HL25_s
 	int light_s;
 	int light_t;
 	glpoly_t* polys;
-	msurface_s* texturechain;
+	msurface_HL25_s* texturechain;
 	mtexinfo_t* texinfo;
 	int dlightframe;
 	int dlightbits;

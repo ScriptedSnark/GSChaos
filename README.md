@@ -161,6 +161,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > NA Aim
 > Temp Entity Madness
 > EU Aim
+> Scrolling Hell
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic

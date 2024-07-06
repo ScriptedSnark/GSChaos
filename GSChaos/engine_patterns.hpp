@@ -141,6 +141,16 @@ namespace patterns
 			"HL-8684",
 			"55 8B EC 81 EC 54 04 00 00");
 
+		PATTERNS(ScrollOffsetHL25,
+			"HL-9920",
+			"55 8B EC 8B 55 ?? 83 EC 10 0F B6 8A ?? ?? ?? ??");
+
+		PATTERNS(ScrollOffset,
+			"HL-8684",
+			"55 8B EC 83 EC 08 8B 45 ?? 33 C9 33 D2 8A 88 ?? ?? ?? ?? 8A 90 ?? ?? ?? ?? C1 E1 08",
+			"HL-4554",
+			"83 EC 08 8B 44 24 ?? 33 C9 33 D2 8A 88 ?? ?? ?? ?? 8A 90 ?? ?? ?? ?? C1 E1 08");
+
 		PATTERNS(S_FindName,
 			"HL-9920",
 			"55 8B EC 53 8B 5D ?? 56 33 F6 57 85 DB",
