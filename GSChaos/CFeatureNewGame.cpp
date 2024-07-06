@@ -31,6 +31,12 @@ void CFeatureNewGame::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
+	if (m_sMapName.empty())
+	{
+		CChaosFeature::DeactivateFeature();
+		return;
+	}
+
 	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";map %s;\n", m_sMapName.c_str()));
 }
 
