@@ -72,6 +72,8 @@ bool g_bActivatedShader = false;
 extern texture_t** r_notexture_mip;
 extern volatile dma_t* shm;
 
+bool g_bOpenWarningWindow = true;
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3, long a4)
 {
@@ -117,6 +119,41 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 		program = OpenGLShader::CreateProgram(NULL, fragment);
 
 		initialized = true;
+	}
+
+	if (g_bOpenWarningWindow)
+	{
+		ImGui_ImplWin32_NewFrame();
+		ImGui_ImplOpenGL2_NewFrame();
+		ImGui::NewFrame();
+
+		// Here you draw...
+		// -------------------------
+
+		// Always center this window when appearing
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+		ImGui::PushFont(gChaos.m_fontTrebuchet);
+
+		if (ImGui::Begin("GSChaos Warning", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse))
+		{
+			ImGui::Text("WARNING! This mod may not be suitable for players suffering from migraine, epilepsy and so on.\nPlay on your own risk!");
+			ImGui::Separator();
+
+			if (ImGui::Button("OK", ImVec2(120, 0))) { g_bOpenWarningWindow = false; }
+			ImGui::SetItemDefaultFocus();
+
+			ImGui::End();
+		}
+
+		ImGui::PopFont();
+
+		// -------------------------
+
+		glViewport(0, 0, (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+		ImGui::Render();
+		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 	}
 
 	if (chaos_draw_as_overlay)
