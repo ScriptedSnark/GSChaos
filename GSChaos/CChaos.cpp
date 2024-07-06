@@ -580,7 +580,7 @@ void CChaos::DrawEffectList()
 	ImGui::SetNextWindowSize(ImVec2(0.f, 0.f));
 	ImGui::SetNextWindowPos(ImVec2(0.f, posY), ImGuiCond_Always);
 
-	if (ImGui::Begin("#EFFECTS", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings))
+	if (ImGui::Begin("#EFFECTS", nullptr, ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings))
 	{
 		if (m_fontTrebuchet)
 			ImGui::PushFont(m_fontTrebuchet);

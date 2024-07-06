@@ -136,9 +136,9 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 
 		ImGui::PushFont(gChaos.m_fontTrebuchet);
 
-		if (ImGui::Begin("GSChaos Warning", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse))
+		if (ImGui::Begin("GSChaos Warning", nullptr, ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse))
 		{
-			ImGui::Text("WARNING! This mod may not be suitable for players suffering from migraine, epilepsy and so on.\nPlay on your own risk!");
+			ImGui::Text("WARNING! This mod may not be suitable for players suffering from migraine, epilepsy and so on.\nPlay at your own risk!");
 			ImGui::Separator();
 
 			if (ImGui::Button("OK", ImVec2(120, 0))) { g_bOpenWarningWindow = false; }

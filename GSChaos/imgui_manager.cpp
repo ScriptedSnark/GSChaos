@@ -24,6 +24,10 @@ void CImGuiManager::InitBackends(void* hwnd)
 	ImGui_ImplWin32_Init(hwnd);
 
 	// Do other things...
+
+	// Disable CTRL+Tab shortcuts (global): assign a "None" route to steal the route to our two shortcuts
+	ImGui::SetShortcutRouting(ImGuiMod_Ctrl | ImGuiKey_Tab, ImGuiKeyOwner_None);
+	ImGui::SetShortcutRouting(ImGuiMod_Ctrl | ImGuiMod_Shift | ImGuiKey_Tab, ImGuiKeyOwner_None);
 }
 
 //-----------------------------------------------------------------------------

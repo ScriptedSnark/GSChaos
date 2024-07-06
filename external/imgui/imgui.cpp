@@ -4824,6 +4824,8 @@ void ImGui::NewFrame()
 #endif
 
     CallContextHooks(&g, ImGuiContextHookType_NewFramePost);
+
+    g.NavWindowingTarget = NULL;
 }
 
 // FIXME: Add a more explicit sort order in the window structure.
