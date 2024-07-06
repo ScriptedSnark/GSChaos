@@ -95,6 +95,14 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 
 	if (!initialized)
 	{
+		if (FILE* file = fopen("TEMP_chaoswarning", "r"))
+		{
+			fclose(file);
+			g_bOpenWarningWindow = false;
+		}
+		else
+			g_bOpenWarningWindow = true;
+
 		GLenum result = glewInit();
 		if (result != GLEW_OK)
 		{
@@ -141,7 +149,14 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 			ImGui::Text("WARNING! This mod may not be suitable for players suffering from migraine, epilepsy and so on.\nPlay at your own risk!");
 			ImGui::Separator();
 
-			if (ImGui::Button("OK", ImVec2(120, 0))) { g_bOpenWarningWindow = false; }
+			if (ImGui::Button("OK", ImVec2(120, 0))) 
+			{ 
+				FILE* file = fopen("TEMP_chaoswarning", "w");
+				fclose(file);
+
+				g_bOpenWarningWindow = false;
+
+			}
 			ImGui::SetItemDefaultFocus();
 
 			ImGui::End();
