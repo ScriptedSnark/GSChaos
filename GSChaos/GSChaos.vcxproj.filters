@@ -446,6 +446,9 @@
     <ClCompile Include="CFeatureScrollingHell.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureDelete5RandomEntities.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -987,6 +990,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureScrollingHell.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureDelete5RandomEntities.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
