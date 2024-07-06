@@ -97,6 +97,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 
 	int i;
 
+	// TODO: make S_StartDynamicSound/S_StartStaticSound calls for CChaosFeature
 	if (g_bMLGAudio)
 	{
 		i = gChaos.GetRandomValue(0, g_szMLGSounds.size() - 1);
@@ -142,7 +143,15 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
 
-	if (g_bMLGAudio || g_bHEVMadness || g_bScientistMadness)
+	if (g_bActivatedKilometer)
+	{
+		sfx = S_LateLoadSound("../../chaos/buffm249_scream.wav");
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
+	}
+
+	if (g_bMLGAudio || g_bHEVMadness || g_bScientistMadness || g_bActivatedKilometer)
 		return;
 
 	if (!g_bActivatedGTA3HUD && !g_bActivatedGTAVCHUD)
@@ -226,7 +235,15 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
 
-	if (g_bMLGAudio || g_bHEVMadness || g_bScientistMadness)
+	if (g_bActivatedKilometer)
+	{
+		sfx = S_LateLoadSound("../../chaos/buffm249_scream.wav");
+		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+
+		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
+	}
+
+	if (g_bMLGAudio || g_bHEVMadness || g_bScientistMadness || g_bActivatedKilometer)
 		return;
 
 	if (!g_bActivatedGTA3HUD && !g_bActivatedGTAVCHUD)

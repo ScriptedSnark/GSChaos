@@ -223,6 +223,7 @@ extern bool g_bEncrypted;
 #include "CFeatureEUAim.h"
 #include "CFeatureScrollingHell.h"
 #include "CFeatureDelete5RandomEntities.h"
+#include "CFeatureKilometer.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

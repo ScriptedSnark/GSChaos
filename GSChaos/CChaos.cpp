@@ -346,6 +346,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureEUAim>();
 	RegisterChaosFeature<CFeatureScrollingHell>();
 	RegisterChaosFeature<CFeatureDelete5RandomEntities>();
+	RegisterChaosFeature<CFeatureKilometer>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
