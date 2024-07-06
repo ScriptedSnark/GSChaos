@@ -31,7 +31,7 @@ const char* CFeatureNAAim::GetFeatureName()
 
 double CFeatureNAAim::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.75;
+	return gChaos.GetChaosTime() * 1.25;
 }
 
 bool CFeatureNAAim::UseCustomDuration()
