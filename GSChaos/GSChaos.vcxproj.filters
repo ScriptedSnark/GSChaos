@@ -452,6 +452,9 @@
     <ClCompile Include="CFeatureKilometer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureDinnerbone.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -999,6 +1002,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureKilometer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureDinnerbone.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

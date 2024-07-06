@@ -139,6 +139,7 @@
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureDelete5RandomEntities.cpp" />
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
+    <ClCompile Include="CFeatureDinnerbone.cpp" />
     <ClCompile Include="CFeatureDisableChaosUI.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureEUAim.cpp" />
@@ -322,6 +323,7 @@
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureDelete5RandomEntities.h" />
     <ClInclude Include="CFeatureDeleteRandomEntity.h" />
+    <ClInclude Include="CFeatureDinnerbone.h" />
     <ClInclude Include="CFeatureDisableChaosUI.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureEUAim.h" />
