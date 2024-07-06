@@ -54,6 +54,8 @@ void CFeatureShuffleEntitiesPositions::ActivateFeature()
 			e->v.origin = entPositions[i];
 		}
 	}
+
+	SERVER_COMMAND(";save chaos;load chaos;\n");
 }
 
 void CFeatureShuffleEntitiesPositions::DeactivateFeature()

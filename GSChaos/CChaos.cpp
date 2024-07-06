@@ -348,6 +348,8 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureDelete5RandomEntities>();
 	RegisterChaosFeature<CFeatureKilometer>();
 	RegisterChaosFeature<CFeatureDinnerbone>();
+	RegisterChaosFeature<CFeatureMinerals>();
+	RegisterChaosFeature<CFeatureMoveAllNPCsToPlayer>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

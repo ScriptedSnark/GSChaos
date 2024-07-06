@@ -225,6 +225,8 @@ extern bool g_bEncrypted;
 #include "CFeatureDelete5RandomEntities.h"
 #include "CFeatureKilometer.h"
 #include "CFeatureDinnerbone.h"
+#include "CFeatureMinerals.h"
+#include "CFeatureMoveAllNPCsToPlayer.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

@@ -168,10 +168,12 @@
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
     <ClCompile Include="CFeatureMegaJump.cpp" />
     <ClCompile Include="CFeatureMessWorld.cpp" />
+    <ClCompile Include="CFeatureMinerals.cpp" />
     <ClCompile Include="CFeatureMirrorScreen.cpp" />
     <ClCompile Include="CFeatureMLGAudio.cpp" />
     <ClCompile Include="CFeatureModelInsanity.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
+    <ClCompile Include="CFeatureMoveAllNPCsToPlayer.cpp" />
     <ClCompile Include="CFeatureNAAim.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
@@ -352,10 +354,12 @@
     <ClInclude Include="CFeatureMakeItBunDem.h" />
     <ClInclude Include="CFeatureMegaJump.h" />
     <ClInclude Include="CFeatureMessWorld.h" />
+    <ClInclude Include="CFeatureMinerals.h" />
     <ClInclude Include="CFeatureMirrorScreen.h" />
     <ClInclude Include="CFeatureMLGAudio.h" />
     <ClInclude Include="CFeatureModelInsanity.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
+    <ClInclude Include="CFeatureMoveAllNPCsToPlayer.h" />
     <ClInclude Include="CFeatureNAAim.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />

@@ -455,6 +455,12 @@
     <ClCompile Include="CFeatureDinnerbone.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMinerals.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureMoveAllNPCsToPlayer.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1005,6 +1011,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureDinnerbone.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMinerals.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureMoveAllNPCsToPlayer.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
