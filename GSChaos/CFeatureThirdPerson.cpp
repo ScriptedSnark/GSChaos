@@ -37,7 +37,7 @@ const char* CFeatureThirdPerson::GetFeatureName()
 
 double CFeatureThirdPerson::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.65;
+	return gChaos.GetChaosTime() * 1.5;
 }
 
 bool CFeatureThirdPerson::UseCustomDuration()
