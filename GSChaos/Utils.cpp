@@ -315,6 +315,10 @@ void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType
 		if (pevInflictor.pContainingEntity)
 		{
 			// Tell Ammo Hud that the player is dead
+			if (strstr(pEngfuncs->pfnGetGameDirectory(), "czeror")) // HACK FOR COUNTER-STRIKE CONDITION ZERO: DELETED SCENES
+				return;
+
+			// TODO: make this thing work for any mod
 			MESSAGE_BEGIN(MSG_ONE, REG_USER_MSG("CurWeapon", 0), NULL, pevInflictor.pContainingEntity);
 			WRITE_BYTE(0);
 			WRITE_BYTE(0XFF);
