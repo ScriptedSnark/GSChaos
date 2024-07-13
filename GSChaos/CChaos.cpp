@@ -44,6 +44,14 @@ void PrintChaosVersion()
 	gChaos.PrintVersion();
 }
 
+void Simulate()
+{
+	for (int i = 0; i < 1000; i++)
+	{
+		pEngfuncs->Con_Printf("%d, ", gChaos.GetRandomEffect(0, gChaosFeatures.size() - 1));
+	}
+}
+
 void CChaos::Init()
 {
 	DEBUG_PRINT("CChaos::Init\n");
@@ -66,6 +74,8 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_version", PrintChaosVersion);
 	pEngfuncs->pfnAddCommand("chaos_reset", ResetChaos);
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
+	
+	pEngfuncs->pfnAddCommand("chaos_simulate", Simulate);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
 	chaos_dmca_safe = pEngfuncs->pfnRegisterVariable("chaos_dmca_safe", "1", 0);
@@ -789,6 +799,12 @@ void CChaos::OnFrame(double time)
 				i->DeactivateFeature();
 		}
 
+		for (CChaosFeature* i : m_activeFeatures)
+		{
+			if (i->IsActive() && !i->UseCustomDuration())
+				i->DeactivateFeature();
+		}
+
 		// Do some setup
 		ResetStates();
 		
@@ -803,8 +819,11 @@ void CChaos::OnFrame(double time)
 //#endif
 
 			// After
-			if (strstr(randomFeature->GetFeatureName(), "Cheat Code Voting"))
-				randomFeature = gChaosFeatures[gChaos.GetRandomValue(1, 110)];
+			while (strstr(randomFeature->GetFeatureName(), "Cheat Code Voting"))
+			{
+				i = GetRandomEffect(0, gChaosFeatures.size() - 1);
+				randomFeature = gChaosFeatures[i];
+			}
 
 			m_pCurrentFeature = randomFeature;
 		}
