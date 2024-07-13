@@ -68,6 +68,14 @@ void HOOKED_PM_Move(struct playermove_s* ppmove, qboolean server)
 		bHooked = true;
 	}
 
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		if (!i->IsActive())
+			continue;
+
+		i->PM_Move(ppmove, server);
+	}
+
 	ORIG_PM_Move(ppmove, server);
 }
 

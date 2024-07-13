@@ -105,6 +105,11 @@ void CChaosFeature::CL_CreateMove(float frametime, struct usercmd_s* cmd, int ac
 	;
 }
 
+void CChaosFeature::PM_Move(struct playermove_s* ppmove, qboolean server)
+{
+	;
+}
+
 void CChaosFeature::Vote(const std::string& user, const std::string& msg)
 {
 

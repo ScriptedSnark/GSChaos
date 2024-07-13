@@ -228,6 +228,7 @@ extern bool g_bEncrypted;
 #include "CFeatureMinerals.h"
 #include "CFeatureMoveAllNPCsToPlayer.h"
 #include "CFeatureChipmunks.h"
+#include "CFeatureFloatingPointInaccuracy.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

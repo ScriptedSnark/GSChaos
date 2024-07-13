@@ -361,6 +361,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureMinerals>();
 	RegisterChaosFeature<CFeatureMoveAllNPCsToPlayer>();
 	RegisterChaosFeature<CFeatureChipmunks>();
+	RegisterChaosFeature<CFeatureFloatingPointInaccuracy>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

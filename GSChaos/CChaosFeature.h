@@ -37,6 +37,7 @@ public:
 	virtual void R_DrawWorld();
 	virtual void PM_Jump();
 	virtual void CL_CreateMove(float frametime, struct usercmd_s* cmd, int active);
+	virtual void PM_Move(struct playermove_s* ppmove, qboolean server);
 	virtual void Vote(const std::string& user, const std::string& msg);
 	virtual bool IsActive();
 	virtual double GetDuration();
