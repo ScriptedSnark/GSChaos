@@ -10,7 +10,7 @@ void CFeatureDisableChaosUI::ActivateFeature()
 	CChaosFeature::ActivateFeature();
 	g_bDisableChaosUI = true;
 
-	
+	pEngfuncs->pfnClientCmd(";say \"Where's my Chaos UI??? :o\";");
 }
 
 void CFeatureDisableChaosUI::DeactivateFeature()
