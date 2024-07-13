@@ -12,7 +12,7 @@ void CFeatureTempEntityMadness::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 
-	m_flTimeToSpawn = gChaos.GetGlobalTime() + 0.5;
+	m_flTimeToSpawn = gChaos.GetGlobalTime() + 1.5;
 }
 
 void CFeatureTempEntityMadness::DeactivateFeature()
