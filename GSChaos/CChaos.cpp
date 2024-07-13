@@ -360,6 +360,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureDinnerbone>();
 	RegisterChaosFeature<CFeatureMinerals>();
 	RegisterChaosFeature<CFeatureMoveAllNPCsToPlayer>();
+	RegisterChaosFeature<CFeatureChipmunks>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

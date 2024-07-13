@@ -92,6 +92,10 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		pitch = gChaos.GetRandomValue(10, 50);
 		attenuation = gChaos.GetRandomValue(0.25f, 0.75f);
 	}
+	else if (g_bActivatedChipmunks)
+	{
+		pitch *= 1.75;
+	}
 
 	DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
 
@@ -186,6 +190,10 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 	{
 		pitch = gChaos.GetRandomValue(10, 50);
 		attenuation = gChaos.GetRandomValue(0.25f, 0.75f);
+	}
+	else if (g_bActivatedChipmunks)
+	{
+		pitch *= 1.75;
 	}
 
 	int i;
