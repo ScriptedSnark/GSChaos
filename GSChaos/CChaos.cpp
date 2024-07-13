@@ -75,7 +75,7 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_reset", ResetChaos);
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 	
-	pEngfuncs->pfnAddCommand("chaos_simulate", Simulate);
+	pEngfuncs->pfnAddCommand("random_simulate", Simulate);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
 	chaos_dmca_safe = pEngfuncs->pfnRegisterVariable("chaos_dmca_safe", "1", 0);
