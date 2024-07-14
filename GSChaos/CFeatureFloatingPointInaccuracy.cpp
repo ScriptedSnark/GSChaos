@@ -85,7 +85,7 @@ void CFeatureFloatingPointInaccuracy::OnFrame(double time)
 	CastFloatsToInt(gpGlobals->trace_endpos);
 	CastFloatsToInt(gpGlobals->trace_plane_normal);
 
-	m_flNextThink = gChaos.GetGlobalTime() + 0.1;
+	m_flNextThink = gChaos.GetGlobalTime() + 0.01;
 
 	// TODO: cast gpGlobals->time
 }

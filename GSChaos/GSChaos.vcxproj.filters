@@ -461,6 +461,12 @@
     <ClCompile Include="CFeatureMoveAllNPCsToPlayer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureChipmunks.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureFloatingPointInaccuracy.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1017,6 +1023,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMoveAllNPCsToPlayer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureFloatingPointInaccuracy.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureChipmunks.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
