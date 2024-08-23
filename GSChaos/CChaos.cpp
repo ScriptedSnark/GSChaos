@@ -302,7 +302,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureBoost>();
 	RegisterChaosFeature<CFeatureNotarget>();
 
-	if (!g_bEncrypted && !g_bPreSteamPipe)
+	if (!g_bEncrypted && !g_bPreSteamPipe && stricmp(pEngfuncs->pfnGetGameDirectory(), "bshift"))
 		RegisterChaosFeature<CFeatureSpawnFastrun>();
 
 	RegisterChaosFeature<CFeatureNice>();

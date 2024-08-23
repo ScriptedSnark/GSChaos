@@ -44,7 +44,7 @@ int HOOKED_PF_precache_model_I(char* s)
 		if (sv->models[0] == nullptr)
 			g_ErrorModel = ORIG_PF_precache_model_I("../chaos/error.mdl");
 
-		if (!g_bEncrypted && !g_bPreSteamPipe)
+		if (!g_bEncrypted && !g_bPreSteamPipe && stricmp(pEngfuncs->pfnGetGameDirectory(), "bshift"))
 			ORIG_PF_precache_model_I("../chaos/fastrun.bsp");
 	}
 
