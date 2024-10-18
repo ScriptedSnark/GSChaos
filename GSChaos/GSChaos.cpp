@@ -529,7 +529,16 @@ void HookEngine()
 			switch (pattern - patterns::engine::ClientDLL_Init.cbegin())
 			{
 			default:
-			case 0: // HL-9920
+			case 0: // HL-10210
+				DEBUG_PRINT("Searching pEngfuncs in HL-10210 pattern...\n");
+				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 0x1AB);
+
+				if (pEngfuncs)
+					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
+
+				break;
+
+			case 1: // HL-9920
 				DEBUG_PRINT("Searching pEngfuncs in HL-9920 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 0x18B);
 
@@ -537,7 +546,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
-			case 1: // HL-8684
+			case 2: // HL-8684
 				DEBUG_PRINT("Searching pEngfuncs in HL-8684 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 181);
 
@@ -545,7 +554,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
-			case 2: // HL-4554
+			case 3: // HL-4554
 				DEBUG_PRINT("Searching pEngfuncs in HL-4554 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 226);
 
@@ -553,7 +562,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
-			case 3: // HL-3248
+			case 4: // HL-3248
 				DEBUG_PRINT("Searching pEngfuncs in HL-3248 pattern...\n");
 				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 203);
 
@@ -793,7 +802,18 @@ void HookEngine()
 			switch (pattern - patterns::engine::ClientDLL_HudInit.cbegin())
 			{
 			default:
-			case 0: // HL-9920
+			case 0: // HL-10210
+				DEBUG_PRINT("Searching engine_studio_api in HL-10210 pattern...\n");
+				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x4D);
+
+				if (engine_studio_api)
+				{
+					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
+				}
+
+				break;
+
+			case 1: // HL-9920
 				DEBUG_PRINT("Searching engine_studio_api in HL-9920 pattern...\n");
 				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x4D);
 
@@ -803,7 +823,7 @@ void HookEngine()
 				}
 
 				break;
-			case 1: // HL-8684
+			case 2: // HL-8684
 				DEBUG_PRINT("Searching engine_studio_api in HL-8684 pattern...\n");
 				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x2A);
 
@@ -813,7 +833,7 @@ void HookEngine()
 				}
 
 				break;
-			case 2: // HL-4554
+			case 3: // HL-4554
 				DEBUG_PRINT("Searching engine_studio_api in HL-4554 pattern...\n");
 				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x28);
 
