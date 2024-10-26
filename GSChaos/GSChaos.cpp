@@ -897,7 +897,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
 					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
 					g_bHL25 = false;
-					g_bPreSteamPipe = false;
+					g_bPreSteamPipe = true;
 					DEBUG_PRINT("g_bPreSteamPipe: true\n");
 				}
 				break;
