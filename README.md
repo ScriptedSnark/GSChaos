@@ -9,7 +9,7 @@ ASI plugin for GoldSrc Engine. Adds "Chaos" in game (new chaotic effect every 30
 
 Inspired by Chaos mods from the GTA universe (by zolika1351), I decided to make my own for HL1 and GoldSrc in particular (you can run almost any mod with it).
 
-Supports builds `9920` (HL25), `8684` (steam_legacy), `4554` (GoldSrc Package, 2009), `3248` (Half-Life 2005 WON package)
+Supports builds `10210` (HL26), `9920` (HL25), `5936` (Cry of Fear), `8684` (steam_legacy), `4554` (GoldSrc Package, 2009), `3248` (Half-Life 2005 WON package)
 
 **Download via Github: [CLICK](https://github.com/ScriptedSnark/GSChaos/releases/tag/continuous)**
 
@@ -42,6 +42,9 @@ To vote, you need to type `NUMBER` in chat (for example, `2`).
 If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISABLED.ini`.
 
 ## Effects
+
+<details><summary>HL effect list</summary>
+
 ```
 > New Game :tf:
 > Audio Corrupt
@@ -174,6 +177,8 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Let's make it more chaotic
 > Let's not make it more chaotic :3
 ```
+
+</details>
 
 ## Effects (CRY OF FEAR)
 <details><summary>CoF effect list</summary>
