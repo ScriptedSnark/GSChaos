@@ -80,8 +80,8 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         files: | 
-        GSChaos_HL.zip
-        GSChaos_CoF.zip
+            GSChaos_HL.zip
+            GSChaos_CoF.zip
 
         tag_name: continuous
         draft: false
