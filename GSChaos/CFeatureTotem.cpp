@@ -18,7 +18,7 @@ void HOOKED_R_DrawViewModel()
 		return;
 	}
 
-	g_iModelIndex = PRECACHE_MODEL("../chaos/v_totem.mdl"); // we're doing baddest hacks here... - ScriptedSnark
+	g_iModelIndex = PRECACHE_MODEL(CHAOS_PATH "v_totem.mdl"); // we're doing baddest hacks here... - ScriptedSnark
 	cl_entity_t* viewent = CLWrapper::GetViewent();
 
 	model_t* oldMod = viewent->model;

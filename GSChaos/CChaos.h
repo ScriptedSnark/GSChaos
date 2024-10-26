@@ -27,6 +27,12 @@
 #define CHAOS_VOTING_PROGRESS_UPDATE_TIME 0.75
 #define CHAOS_VOTING_PROGRESS_FILE "chaos/voting_progress.txt"
 
+#ifdef COF_BUILD
+#define CHAOS_TEXT_COLOR 1.f, 1.f, 1.f
+#else
+#define CHAOS_TEXT_COLOR 1.f, 0.627f, 0.117f
+#endif
+
 extern cvar_t* chaos_dmca_safe;
 extern cvar_t* chaos_draw_as_overlay;
 

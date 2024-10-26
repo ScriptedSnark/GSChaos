@@ -300,6 +300,9 @@ void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType
 		WRITE_COORD(0);
 		WRITE_COORD(0);
 		WRITE_COORD(0);
+#ifdef COF_BUILD
+		WRITE_BYTE(1);
+#endif
 		MESSAGE_END();
 	}
 
@@ -377,7 +380,7 @@ void UTIL_HudMessage(edict_t* pEntity, const hudtextparms_t& textparms, const ch
 }
 
 
-#define TEXTURE_BASEID (4800 - 1) // MAX_GLTEXTURES
+#define TEXTURE_BASEID 12000
 
 // Simple helper function to load an image into a OpenGL texture with common settings
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
@@ -393,14 +396,10 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 
 	// Create a OpenGL texture identifier
 	GLuint image_texture;
-	if (g_bPreSteamPipe) // set own IDs because of the engine...
-	{
-		// xWhitey, thank you so much for that idea!
-		counter++;
-		image_texture = TEXTURE_BASEID - counter;
-	}
-	else
-		glGenTextures(1, &image_texture);
+
+	// xWhitey, thank you so much for that idea!
+	counter++;
+	image_texture = TEXTURE_BASEID + counter;
 
 	glBindTexture(GL_TEXTURE_2D, image_texture);
 

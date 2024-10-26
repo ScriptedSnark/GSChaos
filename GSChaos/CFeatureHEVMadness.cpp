@@ -12,7 +12,11 @@ void CFeatureHEVMadness::Init()
 
 	try
 	{
+#ifdef COF_BUILD
+		for (const auto& entry : std::filesystem::directory_iterator("cryoffear\\sound\\subtitles"))
+#else
 		for (const auto& entry : std::filesystem::directory_iterator("valve\\sound\\fvox"))
+#endif
 		{
 			if (entry.is_regular_file())
 			{
@@ -45,7 +49,11 @@ void CFeatureHEVMadness::DeactivateFeature()
 
 const char* CFeatureHEVMadness::GetFeatureName()
 {
+#ifdef COF_BUILD
+	return "VOICES IN YOUR HEAD";
+#else
 	return "HEV Madness";
+#endif
 }
 
 double CFeatureHEVMadness::GetDuration()

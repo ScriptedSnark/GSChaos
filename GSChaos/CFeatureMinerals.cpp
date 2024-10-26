@@ -8,7 +8,7 @@ void CFeatureMinerals::Init()
 void CFeatureMinerals::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	m_iCrystalModel = PRECACHE_MODEL("../../chaos/crystal.mdl"); // HACK
+	m_iCrystalModel = PRECACHE_MODEL(CHAOS_PATH "crystal.mdl"); // HACK
 }
 
 void CFeatureMinerals::DeactivateFeature()
@@ -38,7 +38,7 @@ const char* CFeatureMinerals::GetFeatureName()
 
 double CFeatureMinerals::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.25;
+	return gChaos.GetChaosTime() * 0.675;
 }
 
 bool CFeatureMinerals::UseCustomDuration()

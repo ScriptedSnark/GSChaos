@@ -62,6 +62,18 @@ void CFeatureSet1HP::Init()
 
 				break;
 			}
+			case 4: // CoF-5936
+			{
+				DEBUG_PRINT("Searching sv_player in CoF-5936 pattern...\n");
+				sv_player = *reinterpret_cast<edict_t***>(reinterpret_cast<uintptr_t>(SV_ExecuteClientMessage) + 0xC1);
+
+				if (sv_player)
+				{
+					DEBUG_PRINT("[hw dll] Found sv_player at 0x%p.\n", sv_player);
+				}
+
+				break;
+			}
 			}
 		});
 }

@@ -30,7 +30,9 @@ void CFeatureMoveAllNPCsToPlayer::ActivateFeature()
 		(*sv_player)->v.velocity = Vector(0, 0, 0); // just to not be stuck (doesn't matter, we'll stuck anyway :xdd:)
 	}
 
+#ifndef COF_BUILD
 	SERVER_COMMAND(";save chaos;load chaos;\n"); // TOO LAZY TO HOOK SOMETHING LIKE SV_SendClientDatagram
+#endif
 }
 
 void CFeatureMoveAllNPCsToPlayer::DeactivateFeature()

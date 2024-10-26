@@ -47,7 +47,7 @@ void CFeatureMakeItBunDem::OnFrame(double time)
 
 	if (gChaos.GetGlobalTime() > burnTimer)
 	{
-		g_flameSpr = PRECACHE_MODEL("../chaos/flame.spr"); // smh
+		g_flameSpr = PRECACHE_MODEL(CHAOS_PATH "flame.spr"); // smh
 		Burn();
 		burnTimer = gChaos.GetGlobalTime() + 0.6;
 	}

@@ -34,8 +34,11 @@ void CFeatureHook::OnFrame(double time)
 
 	UTIL_TraceLine((*sv_player)->v.origin, end, dont_ignore_monsters, (*sv_player), &tr);
 
+#ifdef COF_BUILD
+	int iBeam = pEngfuncs->pEventAPI->EV_FindModelIndex("sprites/gunsmoke.spr");
+#else
 	int iBeam = pEngfuncs->pEventAPI->EV_FindModelIndex("sprites/smoke.spr");
-
+#endif
 	pEngfuncs->pEfxAPI->R_BeamPoints(
 		(*sv_player)->v.origin,
 		tr.vecEndPos,

@@ -175,6 +175,131 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Let's not make it more chaotic :3
 ```
 
+## Effects (CRY OF FEAR)
+<details><summary>CoF effect list</summary>
+
+```
+> Audio Corrupt
+> Set 1 HP
+> I believe I can fly
+> Remove Armor
+> Zero Gravity
+> Invisible entities
+> Ohio
+> Nothing
+> Darkness
+> Totem of Undying
+> Forgot to install CS 1.6 :o
+> X2 Gravity
+> God Mode
+> Everyone has God Mode!
+> Give random weapon
+> GTA HUD
+> player_weaponstrip
+> Spawn Griefer Shephard
+> Entity spin
+> 2D Camera
+> 1% chance of death
+> Spawn random entity
+> Sleepy
+> Force 20 FPS
+> VOICES IN YOUR HEAD
+> Negative Stepsize
+> Lobotomy
+> Upside Down
+> Let's see Jeepy's lasagna
+> Hyper Gravity Field
+> Ice Skating
+> Invert Velocity
+> Need for Speed
+> Make It Bun Dem
+> Bikini Bottom
+> X10 Gravity
+> Overwrite Quicksave
+> Stop
+> Get Noclip
+> Give +100 HP
+> HL2 Movement
+> Give +100 armor
+> Am I dead?
+> Node Graph
+> Spawn Extreme Griefer Shephard
+> Insane Stepsize
+> Nuke player
+> +duck
+> monster_worldspawn
+> Spawn fastrun.bsp
+> World Hallucination
+> Give +1 HP
+> Take 1 HP
+> Scientist Madness
+> MLG Audio
+> No HUD
+> Negative Accelerate
+> Boost
+> Nice
+> Notarget
+> Half-Gravity
+> Rollin'
+> High
+> Shake
+> Slap
+> Play AG
+> Swap health and armor
+> Teleport to random NPC
+> Shuffle entities positions
+> Wide NPCs
+> Ultra wide NPCs
+> Tiny NPCs
+> Paper NPCs
+> Give +1 armor
+> Replace models with player
+> Horror Audio
+> Disable Chaos UI
+> Random fog
+> Worst Bhop Cap
+> Long Jump
+> He comes back.
+> Mega Jump
+> Spawn 5 random entities
+> Give all weapons
+> Water is a lie
+> Quake jump sound
+> +hook
+> Teleport to spawn point
+> rorriM
+> "It's easier to aim", they said
+> Creepypasta Mode
+> Mess Up World
+> Kick World
+> Tall World
+> Trap Player
+> Third person
+> Model Insanity
+> Half Game Speed
+> Standstill (1% game speed)
+> Game Speedup
+> Gambling
+> Random Game Speed
+> Turbulent Hell
+> NA Aim
+> Temp Entity Madness
+> EU Aim
+> Scrolling Hell
+> Kilometer
+> Dinnerbone
+> Minerals
+> Move all NPCs to player
+> Chipmunks
+> Floating Point Inaccuracy
+> Cheat Code Voting !!!(available with Twitch voting)!!!
+> 3 Effects in 1
+> Let's make it more chaotic
+> Let's not make it more chaotic :3
+```
+
+</details>
+
 Credits
 ==============
 Author: ScriptedSnark

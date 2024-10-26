@@ -33,6 +33,16 @@ void CFeatureTempEntityMadness::OnFrame(double time)
 
 	if (m_flTimeToSpawn < gChaos.GetGlobalTime())
 	{
+#ifdef COF_BUILD
+		m_BeamSprite = PRECACHE_MODEL("sprites/lgtning.spr");
+		m_FireSprite = PRECACHE_MODEL("sprites/fire.spr");
+		m_SmokeSprite = PRECACHE_MODEL("sprites/steam1.spr");
+		m_ShockwaveSprite = PRECACHE_MODEL("sprites/camera.spr");
+		m_LightningSprite = PRECACHE_MODEL("sprites/xspark4.spr");
+		m_GlowSprite = PRECACHE_MODEL("sprites/xspark4.spr");
+		m_RockModel = PRECACHE_MODEL("models/simon_gibs.mdl"); // :D
+		m_SkullModel = PRECACHE_MODEL("models/Facehead.mdl");
+#else
 		m_BeamSprite = PRECACHE_MODEL("sprites/lgtning.spr");
 		m_FireSprite = PRECACHE_MODEL("sprites/fire.spr");
 		m_SmokeSprite = PRECACHE_MODEL("sprites/steam1.spr");
@@ -41,7 +51,7 @@ void CFeatureTempEntityMadness::OnFrame(double time)
 		m_GlowSprite = PRECACHE_MODEL("sprites/xspark4.spr");
 		m_RockModel = PRECACHE_MODEL("models/rockgibs.mdl");
 		m_SkullModel = PRECACHE_MODEL("models/gib_skull.mdl");
-
+#endif
 		int value = gChaos.GetRandomValue(0, 23);
 		switch (value)
 		{

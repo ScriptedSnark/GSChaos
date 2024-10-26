@@ -217,7 +217,7 @@ void CFeatureExtremeGrieferShephard::Restore()
 
 const char* CFeatureExtremeGrieferShephard::GetModelName()
 {
-	return "../chaos/shephard.mdl";
+	return CHAOS_PATH "shephard.mdl";
 }
 
 const char* CFeatureExtremeGrieferShephard::GetClassname()

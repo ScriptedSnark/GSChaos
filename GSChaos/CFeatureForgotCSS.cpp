@@ -48,8 +48,20 @@ void CFeatureForgotCSS::Init()
 				}
 
 				break;
+
+			case 3: // CoF-5936
+				DEBUG_PRINT("Searching r_notexture_mip in CoF-5936 pattern...\n");
+				r_notexture_mip = *reinterpret_cast<texture_t***>(reinterpret_cast<uintptr_t>(R_InitTextures) + 0x19);
+
+				if (r_notexture_mip)
+				{
+					DEBUG_PRINT("[hw dll] Found r_notexture_mip at 0x%p.\n", r_notexture_mip);
+				}
+
+				break;
 			}
 		});
+
 }
 
 void CFeatureForgotCSS::ActivateFeature()

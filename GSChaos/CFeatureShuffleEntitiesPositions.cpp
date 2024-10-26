@@ -55,7 +55,9 @@ void CFeatureShuffleEntitiesPositions::ActivateFeature()
 		}
 	}
 
+#ifndef COF_BUILD
 	SERVER_COMMAND(";save chaos;load chaos;\n");
+#endif
 }
 
 void CFeatureShuffleEntitiesPositions::DeactivateFeature()

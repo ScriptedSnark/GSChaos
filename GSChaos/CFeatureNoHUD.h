@@ -24,7 +24,14 @@ class CFeatureNoHUD : public CChaosFeature
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
+#ifdef COF_BUILD
+	void OnFrame(double time) override;
+#endif
 	const char* GetFeatureName() override;
+#ifdef COF_BUILD
+private:
+	cvar_t* hud_draw;
+#endif
 };
 
 #else //!__cplusplus

@@ -11,7 +11,11 @@ void CFeatureScientistMadness::Init()
 
 	try
 	{
+#ifndef COF_BUILD
 		for (const auto& entry : std::filesystem::directory_iterator("valve\\sound\\scientist"))
+#else
+		for (const auto& entry : std::filesystem::directory_iterator("cryoffear\\sound\\doc_ai"))
+#endif
 		{
 			if (entry.is_regular_file())
 			{

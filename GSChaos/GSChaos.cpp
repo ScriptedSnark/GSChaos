@@ -25,6 +25,14 @@ typedef void (*_LoadEntityDLLs)(char* szBaseDir);
 typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
 typedef void (*_R_DrawWorld)();
 
+#ifdef COF_BUILD
+typedef int (*_Host_ValidSave)();
+typedef void (*_PlayerPostThink)(edict_t* pEntity);
+
+_Host_ValidSave ORIG_Host_ValidSave = NULL;
+_PlayerPostThink ORIG_PlayerPostThink = NULL;
+#endif
+
 _LoadThisDll ORIG_LoadThisDll = NULL;
 _LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
 _ServerActivate ORIG_ServerActivate = NULL;
@@ -48,6 +56,10 @@ client_state_HL25_t* cl_hl25;
 ref_params_t* g_pRefParams;
 engine_studio_api_t* engine_studio_api;
 float* sys_timescale;
+
+#ifdef COF_BUILD
+qboolean* cofSaveHack; // from BunnymodXT
+#endif
 
 CChaos gChaos;
 CImGuiManager gImGui;
@@ -74,6 +86,11 @@ extern volatile dma_t* shm;
 
 bool g_bOpenWarningWindow = true;
 
+#ifdef COF_BUILD
+typedef HMODULE(WINAPI* _LoadLibraryA)(LPCSTR lpLibFileName);
+_LoadLibraryA ORIG_LoadLibraryA = NULL;
+#endif
+
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3, long a4)
 {
@@ -81,6 +98,30 @@ inline long __stdcall HOOKED_WndProc(const HWND a1, unsigned int a2, unsigned a3
 	return CallWindowProcA(ORIG_WndProc, a1, a2, a3, a4);
 }
 
+void GetExportedMonstersAndWeapons(HMODULE module);
+
+#ifdef COF_BUILD
+/*
+================
+HOOKED_LoadLibraryA
+================
+*/
+HMODULE WINAPI HOOKED_LoadLibraryA(LPCSTR lpLibFileName)
+{
+	HMODULE hModule = ORIG_LoadLibraryA(lpLibFileName);
+	if (hModule)
+		DEBUG_PRINT("[WinAPI] Loaded DLL: %s\n", lpLibFileName);
+	else
+		return hModule;
+
+	if (strstr(lpLibFileName, "hl.dll"))
+	{
+		GetExportedMonstersAndWeapons(hModule);
+	}
+
+	return hModule;
+}
+#endif
 // OPENGL
 GLuint program;
 
@@ -368,6 +409,10 @@ void GetExportedMonstersAndWeapons(HMODULE module)
 			if (strstr(functionName, "furniture") || strstr(functionName, "cine") || strstr(functionName, "repel") || strstr(functionName, "maw") || strstr(functionName, "generic") || strstr(functionName, "mortar") || strstr(functionName, "osprey"))
 				continue;
 
+#ifdef COF_BUILD
+			if (strstr(functionName, "cof_monster") || strstr(functionName, "boss"))
+				continue;
+#endif
 			g_szExportedEntityList.push_back(functionName);
 		}
 	}
@@ -413,10 +458,28 @@ void HOOKED_ServerActivate(edict_t* pEdictList, int edictCount, int clientMax)
 	gChaos.ResetStates();
 }
 
+#ifdef COF_BUILD
+void HOOKED_PlayerPostThink(edict_t* pEntity)
+{
+	bool noclip_set = false;
+	if (pEntity && pEntity->pvPrivateData)
+	{
+		if (pEntity->v.movetype == MOVETYPE_NOCLIP)
+			noclip_set = true;
+	}
+
+	ORIG_PlayerPostThink(pEntity);
+
+	if (noclip_set)
+		pEntity->v.movetype = MOVETYPE_NOCLIP;
+}
+#endif
+
 void HOOKED_LoadEntityDLLs(char* szBaseDir)
 {
 	ORIG_LoadEntityDLLs(szBaseDir);
 
+#ifndef COF_BUILD
 	int status;
 
 	if (g_bEncrypted)
@@ -436,6 +499,7 @@ void HOOKED_LoadEntityDLLs(char* szBaseDir)
 	}
 
 	MH_EnableHook(MH_ALL_HOOKS);
+#endif
 }
 
 void HOOKED_R_DrawWorld()
@@ -470,6 +534,16 @@ void HOOKED_R_DrawWorld()
 
 	glPopMatrix();
 }
+
+#ifdef COF_BUILD
+int HOOKED_Host_ValidSave()
+{
+	if (cofSaveHack)
+		*cofSaveHack = 1;
+
+	return ORIG_Host_ValidSave();
+}
+#endif
 
 void CAM_Init(void);
 
@@ -570,6 +644,14 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
 
 				break;
+			case 5: // CoF-5936
+				DEBUG_PRINT("Searching pEngfuncs in CoF-5936 pattern...\n");
+				pEngfuncs = *reinterpret_cast<cl_enginefunc_t**>(reinterpret_cast<uintptr_t>(ClientDLL_Init) + 230);
+
+				if (pEngfuncs)
+					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
+
+				break;
 			}
 		});
 
@@ -608,6 +690,18 @@ void HookEngine()
 				DEBUG_PRINT("Searching g_engfuncs in HL-4554 pattern...\n");
 				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 91);
 				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 86);
+
+				if (g_engfuncs)
+					DEBUG_PRINT("[hw dll] Found g_engfuncs at 0x%p.\n", g_engfuncs);
+
+				if (gpGlobals)
+					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
+				break;
+
+			case 3: // CoF-5936
+				DEBUG_PRINT("Searching g_engfuncs in CoF-5936 pattern...\n");
+				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 118);
+				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 113);
 
 				if (g_engfuncs)
 					DEBUG_PRINT("[hw dll] Found g_engfuncs at 0x%p.\n", g_engfuncs);
@@ -654,6 +748,42 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
 
 				break;
+
+			case 3: // CoF-5936
+				DEBUG_PRINT("Searching gEntityInterface in CoF-5936 pattern...\n");
+
+				gEntityInterface = *reinterpret_cast<DLL_FUNCTIONS**>(reinterpret_cast<uintptr_t>(LoadEntityDLLs) + 0x550);
+
+				if (gEntityInterface)
+				{
+					DEBUG_PRINT("[hw dll] Found gEntityInterface at 0x%p.\n", gEntityInterface);
+
+					int status;
+
+					if (g_bEncrypted)
+						MemUtils::MarkAsExecutable(gEntityInterface->pfnPM_Move);
+
+					status = MH_CreateHook(gEntityInterface->pfnPM_Move, HOOKED_PM_Move, reinterpret_cast<void**>(&ORIG_PM_Move));
+					if (status != MH_OK) {
+						printf("[hw dll] Couldn't create hook for gEntityInterface->pfnPM_Move.\n");
+					}
+
+					if (g_bEncrypted)
+						MemUtils::MarkAsExecutable(gEntityInterface->pfnServerActivate);
+
+					status = MH_CreateHook(gEntityInterface->pfnServerActivate, HOOKED_ServerActivate, reinterpret_cast<void**>(&ORIG_ServerActivate));
+					if (status != MH_OK) {
+						printf("[hw dll] Couldn't create hook for gEntityInterface->pfnServerActivate.\n");
+					}
+
+#ifdef COF_BUILD
+					status = MH_CreateHook(gEntityInterface->pfnPlayerPostThink, HOOKED_PlayerPostThink, reinterpret_cast<void**>(&ORIG_PlayerPostThink));
+					if (status != MH_OK) {
+						printf("[hw dll] Couldn't create hook for gEntityInterface->pfnPlayerPostThink.\n");
+					}
+#endif
+				}
+				break;
 			}
 		});
 
@@ -685,6 +815,15 @@ void HookEngine()
 			case 2: // HL-4554
 				DEBUG_PRINT("Searching sv in HL-4554 pattern...\n");
 				sv = *reinterpret_cast<server_t**>(reinterpret_cast<uintptr_t>(Host_ClearMemory) + 0x5C);
+				if (sv)
+				{
+					DEBUG_PRINT("[hw dll] Found sv at 0x%p.\n", sv);
+				}
+				break;
+
+			case 3: // CoF-5936
+				DEBUG_PRINT("Searching sv in CoF-5936 pattern...\n");
+				sv = *reinterpret_cast<server_t**>(reinterpret_cast<uintptr_t>(Host_ClearMemory) + 0x5D);
 				if (sv)
 				{
 					DEBUG_PRINT("[hw dll] Found sv at 0x%p.\n", sv);
@@ -737,7 +876,7 @@ void HookEngine()
 					DEBUG_PRINT("g_bPreSteamPipe: true\n");
 				}
 				break;
-			case 3:
+			case 3: // HL-3248
 				DEBUG_PRINT("Searching cl in HL-3248 pattern...\n");
 				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 1);
 				if (cl)
@@ -746,6 +885,19 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
 					g_bHL25 = false;
 					g_bPreSteamPipe = true;
+					DEBUG_PRINT("g_bPreSteamPipe: true\n");
+				}
+				break;
+
+			case 4: // CoF-5936
+				DEBUG_PRINT("Searching cl in CoF-5936 pattern...\n");
+				cl = *reinterpret_cast<client_state_t**>(reinterpret_cast<uintptr_t>(CL_Init) + 0x5B8);
+				if (cl)
+				{
+					DEBUG_PRINT("[hw dll] Found cl at 0x%p.\n", cl);
+					DEBUG_PRINT("[hw dll] cl->time: %.01f\n", cl->time);
+					g_bHL25 = false;
+					g_bPreSteamPipe = false;
 					DEBUG_PRINT("g_bPreSteamPipe: true\n");
 				}
 				break;
@@ -790,7 +942,17 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] shm->speed == %i\n", shm->speed);
 				}
 				break;
-			
+
+			case 3: // CoF-5936
+				DEBUG_PRINT("Searching shm in CoF-5936 pattern...\n");
+				shm = *reinterpret_cast<dma_t**>(reinterpret_cast<uintptr_t>(SNDDMA_InitDirect) + 0xE);
+
+				if (shm)
+				{
+					DEBUG_PRINT("[hw dll] Found shm at 0x%p.\n", shm);
+					DEBUG_PRINT("[hw dll] shm->speed == %i\n", shm->speed);
+				}
+				break;
 			}
 		});
 
@@ -843,6 +1005,17 @@ void HookEngine()
 				}
 
 				break;
+
+			case 4: // CoF-5936
+				DEBUG_PRINT("Searching engine_studio_api in CoF-5936 pattern...\n");
+				engine_studio_api = *reinterpret_cast<engine_studio_api_t**>(reinterpret_cast<uintptr_t>(ClientDLL_HudInit) + 0x30);
+
+				if (engine_studio_api)
+				{
+					DEBUG_PRINT("[hw dll] Found engine_studio_api at 0x%p.\n", engine_studio_api);
+				}
+
+				break;
 			}
 		});
 
@@ -874,8 +1047,40 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] sys_timescale == %.01f\n", *sys_timescale);
 				}
 				break;
+			case 2: // CoF-5936
+				DEBUG_PRINT("Searching sys_timescale in CoF-5936 pattern...\n");
+				sys_timescale = *reinterpret_cast<float**>(reinterpret_cast<uintptr_t>(Host_InitLocal) + 0x58);
+
+				if (sys_timescale)
+				{
+					DEBUG_PRINT("[hw dll] Found sys_timescale at 0x%p.\n", sys_timescale);
+					DEBUG_PRINT("[hw dll] sys_timescale == %.01f\n", *sys_timescale);
+				}
+				break;
 			}
 		});
+
+#ifdef COF_BUILD
+	auto fHost_ValidSave = utils.FindAsync(
+		ORIG_Host_ValidSave,
+		patterns::engine::Host_ValidSave,
+		[&](auto pattern) {
+			auto f = reinterpret_cast<uintptr_t>(ORIG_Host_ValidSave);
+			switch (pattern - patterns::engine::Host_ValidSave.cbegin())
+			{
+			default:
+			case 0: // CoF-5936
+				cofSaveHack = *reinterpret_cast<qboolean**>(f + 21);
+
+				if (cofSaveHack)
+				{
+					*cofSaveHack = TRUE;
+				}
+
+				break;
+			}
+		});
+#endif
 
 	int status;
 
@@ -885,6 +1090,9 @@ void HookEngine()
 	EngineCreateHook(LoadThisDll);
 	EngineCreateHook(LoadEntityDLLs);
 	EngineCreateHook(R_DrawWorld);
+#ifdef COF_BUILD
+	EngineCreateHook(Host_ValidSave);
+#endif
 
 	MH_EnableHook(MH_ALL_HOOKS);
 }
@@ -902,6 +1110,19 @@ void HookOpenGL()
 
 	Find(OpenGL32, wglSwapBuffers);
 	CreateHook(OpenGL32, wglSwapBuffers);
+
+	// also hook WinAPI (CoF)
+#ifdef COF_BUILD
+	if (MH_CreateHook(&LoadLibraryA, &HOOKED_LoadLibraryA, reinterpret_cast<LPVOID*>(&ORIG_LoadLibraryA)) != MH_OK)
+	{
+		DEBUG_PRINT("[WinAPI] Couldn't create LoadLibraryA hook.\n");
+	}
+	else
+	{
+		DEBUG_PRINT("[WinAPI] Created LoadLibraryA hook.\n");
+	}
+#endif
+
 	MH_EnableHook(MH_ALL_HOOKS);
 }
 

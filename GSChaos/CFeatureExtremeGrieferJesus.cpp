@@ -64,7 +64,7 @@ const char* CFeatureExtremeGrieferJesus::GetFeatureName()
 
 const char* CFeatureExtremeGrieferJesus::GetModelName()
 {
-	return "../chaos/egj.mdl";
+	return CHAOS_PATH "egj.mdl";
 }
 
 const char* CFeatureExtremeGrieferJesus::GetClassname()

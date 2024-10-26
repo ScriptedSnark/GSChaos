@@ -28,6 +28,11 @@ class CFeatureReplaceModelsWithPlayer : public CChaosFeature
 	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+
+#ifdef COF_BUILD
+private:
+	int m_iSimonModel;
+#endif
 };
 
 #else //!__cplusplus

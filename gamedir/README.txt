@@ -4,18 +4,26 @@ WARNING! Mod is unstable and can cause softlocks/crashes!
 
 REQUIREMENTS
 ==============
-GoldSrc: build 3248/4554/8684/9920
+GoldSrc: build 3248/4554/8684/9920 or Cry of Fear
 Graphics mode: OpenGL (Software is not supported)
 
 INSTALLATION (FOR GOLDSRC PACKAGE / STEAM VERSION)
 ==============
-1. Extract ZIP to your Half-Life directory (you can create backup for hl.exe)
+1. Extract GSChaos_HL.zip contents to your Half-Life directory (you can create backup for hl.exe)
 2. Run game
 3. If you see progress bar on top in game, Chaos Mod is installed successfully!
 
+INSTALLATION (FOR CRY OF FEAR)
+==============
+1. Extract GSChaos_CoF.zip contents to your Cry of Fear directory
+2. Replace cof.exe with hl.exe (you also can create backup for cof.exe)
+ALTERNATIVE: replace DemoPlayer.dll with ASILoader_3248.dll (UNRECOMMENDED)
+3. Run game
+4. If you see progress bar on top in game, Chaos Mod is installed successfully!
+
 INSTALLATION (FOR WON 2005)
 ==============
-1. Extract ZIP to your Half-Life directory. DO NOT REPLACE HL.EXE!!!
+1. Extract GSChaos_HL.zip contents to your Half-Life directory. DO NOT REPLACE HL.EXE!!!
 2. Rename DemoPlayer.dll to any name (for backup)
 3. Rename ASILoader_3248.dll to DemoPlayer.dll
 4. Run game

@@ -912,6 +912,10 @@ typedef struct usercmd_s
 	byte    impulse;          // Impulse command issued.
 	byte	weaponselect;	// Current weapon id
 
+#ifdef COF_BUILD
+	qboolean is_donator;
+#endif
+
 // Experimental player impact stuff.
 	int		impact_index;
 	vec3_t	impact_position;
@@ -1215,6 +1219,10 @@ typedef struct entvars_s
 
 	int			light_level;
 
+#ifdef COF_BUILD
+	byte		cof_unknown[4];
+#endif
+
 	int			sequence;		// animation sequence
 	int			gaitsequence;	// movement animation sequence for player (0 for none)
 	float		frame;			// % playback position in animation sequences (0..255)
@@ -1321,6 +1329,10 @@ typedef struct entvars_s
 	edict_t* euser2;
 	edict_t* euser3;
 	edict_t* euser4;
+
+#ifdef COF_BUILD
+	byte		cof_unknown2[4];
+#endif
 } entvars_t;
 
 #define	MAX_ENT_LEAFS	48

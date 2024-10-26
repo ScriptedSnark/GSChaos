@@ -42,10 +42,10 @@ int HOOKED_PF_precache_model_I(char* s)
 	if (sv->state == ss_loading)
 	{
 		if (sv->models[0] == nullptr)
-			g_ErrorModel = ORIG_PF_precache_model_I("../chaos/error.mdl");
+			g_ErrorModel = ORIG_PF_precache_model_I(CHAOS_PATH "error.mdl");
 
 		if (!g_bEncrypted && !g_bPreSteamPipe && stricmp(pEngfuncs->pfnGetGameDirectory(), "bshift"))
-			ORIG_PF_precache_model_I("../chaos/fastrun.bsp");
+			ORIG_PF_precache_model_I(CHAOS_PATH "fastrun.bsp");
 	}
 
 	modelname = s;
@@ -206,7 +206,7 @@ void HOOKED_PF_setmodel_I(edict_t* e, const char* m)
 	if (!HOOKED_PF_precache_model_I((char*)m))
 	{
 		pEngfuncs->Con_DPrintf("PF_setmodel_I: Could not set model %s \n", m);
-		m = "../chaos/error.mdl";
+		m = CHAOS_PATH "error.mdl";
 	}
 
 	ORIG_PF_setmodel_I(e, m);
@@ -305,18 +305,18 @@ void PrintEdictInfo()
 	edict_t* e = ORIG_EDICT_NUM(atoi(pEngfuncs->Cmd_Argv(1)));
 	cl_entity_t* client_e = pEngfuncs->GetEntityByIndex(atoi(pEngfuncs->Cmd_Argv(1)));
 
-	DEBUG_PRINT("SERVER-PART\n");
-	DEBUG_PRINT("=================\n");
-	DEBUG_PRINT("Edict %i\n", atoi(pEngfuncs->Cmd_Argv(1)));
-	DEBUG_PRINT("e->v.model: %s\n", STRING(e->v.model));
-	DEBUG_PRINT("e->v.modelindex: %i\n", e->v.modelindex);
-	DEBUG_PRINT("=================\n");
+	pEngfuncs->Con_Printf("SERVER-PART\n");
+	pEngfuncs->Con_Printf("=================\n");
+	pEngfuncs->Con_Printf("Edict %i\n", atoi(pEngfuncs->Cmd_Argv(1)));
+	pEngfuncs->Con_Printf("e->v.model: %s\n", STRING(e->v.model));
+	pEngfuncs->Con_Printf("e->v.modelindex: %i\n", e->v.modelindex);
+	pEngfuncs->Con_Printf("=================\n");
 
-	DEBUG_PRINT("\nCLIENT-PART\n");
-	DEBUG_PRINT("=================\n");
-	DEBUG_PRINT("Edict %i\n", atoi(pEngfuncs->Cmd_Argv(1)));
-	DEBUG_PRINT("e->v.model: %s\n", client_e->model->name);
-	DEBUG_PRINT("=================\n");
+	pEngfuncs->Con_Printf("\nCLIENT-PART\n");
+	pEngfuncs->Con_Printf("=================\n");
+	pEngfuncs->Con_Printf("Edict %i\n", atoi(pEngfuncs->Cmd_Argv(1)));
+	pEngfuncs->Con_Printf("e->v.model: %s\n", client_e->model->name);
+	pEngfuncs->Con_Printf("=================\n");
 }
 
 void InitDynamicPrecache()
@@ -362,5 +362,5 @@ void InitDynamicPrecache()
 
 	MH_EnableHook(MH_ALL_HOOKS);
 
-	//pEngfuncs->pfnAddCommand("print_edict", PrintEdictInfo);
+	pEngfuncs->pfnAddCommand("print_edict", PrintEdictInfo);
 }

@@ -233,8 +233,10 @@ int CChaos::GetWinnerEffect()
 
 void CChaos::FeatureInit()
 {
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureNewGame>();
 	RegisterChaosFeature<CFeatureAudioCorrupt>();
+#endif
 	RegisterChaosFeature<CFeatureSet1HP>();
 	RegisterChaosFeature<CFeatureFly>();
 	RegisterChaosFeature<CFeatureRemoveArmor>();
@@ -248,10 +250,14 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureHighGravity>();
 	RegisterChaosFeature<CFeatureGodMode>();
 	RegisterChaosFeature<CFeatureGlobalGodMode>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureExplosion>();
 	RegisterChaosFeature<CFeatureIchthyosaur>();
+#endif
 	RegisterChaosFeature<CFeatureGiveRandomWeapon>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureGruntAmbush>();
+#endif
 	RegisterChaosFeature<CFeatureGTA3HUD>();
 	RegisterChaosFeature<CFeatureWeaponStrip>();
 	RegisterChaosFeature<CFeatureGrieferShephard>();
@@ -261,12 +267,16 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSpawnRandomEntity>();
 	RegisterChaosFeature<CFeatureSleepy>();
 	RegisterChaosFeature<CFeature20FPS>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureBSPDementia>();
+#endif
 	RegisterChaosFeature<CFeatureHEVMadness>();
 	RegisterChaosFeature<CFeatureNegativeStepsize>();
 	RegisterChaosFeature<CFeatureLobotomy>();
 	RegisterChaosFeature<CFeatureUpsideDown>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureNPCExplode>();
+#endif
 	RegisterChaosFeature<CFeatureJeepy>();
 	RegisterChaosFeature<CFeatureGravityField>();
 	RegisterChaosFeature<CFeatureIceSkating>();
@@ -285,7 +295,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNodeGraphRebuilding>();
 	RegisterChaosFeature<CFeatureExtremeGrieferShephard>();
 	RegisterChaosFeature<CFeatureInsaneStepsize>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureDeleteRandomEntity>();
+#endif
 	RegisterChaosFeature<CFeatureNuke>();
 	RegisterChaosFeature<CFeaturePlusDuck>();
 	RegisterChaosFeature<CFeatureMonsterWorldspawn>();
@@ -295,10 +307,14 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureScientistMadness>();
 	RegisterChaosFeature<CFeatureMLGAudio>();
 	RegisterChaosFeature<CFeatureNoHUD>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureQuakePro>();
+#endif
 	RegisterChaosFeature<CFeatureNegativeAccelerate>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureSqueakShephard>();
 	RegisterChaosFeature<CFeatureSqueakShephards>();
+#endif
 	RegisterChaosFeature<CFeatureBoost>();
 	RegisterChaosFeature<CFeatureNotarget>();
 
@@ -322,12 +338,16 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureGiveOneArmor>();
 	RegisterChaosFeature<CFeatureReplaceModelsWithPlayer>();
 	RegisterChaosFeature<CFeatureHorrorAudio>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureLowFOV>();
+#endif
 	RegisterChaosFeature<CFeatureDisableChaosUI>();
 	RegisterChaosFeature<CFeatureRandomFog>();
 	RegisterChaosFeature<CFeatureWorstBhopCap>();
 	RegisterChaosFeature<CFeatureLongJump>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureReloadAutosave>();
+#endif
 	RegisterChaosFeature<CFeatureExtremeGrieferJesus>();
 	RegisterChaosFeature<CFeatureMegaJump>();
 	RegisterChaosFeature<CFeatureSpawn5RandomEntities>();
@@ -355,7 +375,9 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureTempEntityMadness>();
 	RegisterChaosFeature<CFeatureEUAim>();
 	RegisterChaosFeature<CFeatureScrollingHell>();
+#ifndef COF_BUILD
 	RegisterChaosFeature<CFeatureDelete5RandomEntities>();
+#endif
 	RegisterChaosFeature<CFeatureKilometer>();
 	RegisterChaosFeature<CFeatureDinnerbone>();
 	RegisterChaosFeature<CFeatureMinerals>();
@@ -617,7 +639,7 @@ void CChaos::DrawEffectList()
 				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
 				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", effectName);
 				ImGui::SetCursorPos(textPos);
-				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "%s", effectName);
+				ImGui::TextColored(ImVec4(CHAOS_TEXT_COLOR, 1.f), "%s", effectName);
 			}
 			else
 			{
@@ -629,7 +651,7 @@ void CChaos::DrawEffectList()
 				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
 				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", effectNameWithTimer);
 				ImGui::SetCursorPos(textPos);
-				ImGui::TextColored(ImVec4(1.f, 0.627f, 0.117f, 1.f), "%s", effectNameWithTimer);
+				ImGui::TextColored(ImVec4(CHAOS_TEXT_COLOR, 1.f), "%s", effectNameWithTimer);
 			}
 		}
 
@@ -696,6 +718,9 @@ void CChaos::Draw()
 
 void CChaos::ResetStates()
 {
+	if (!sv_player)
+		return;
+
 	if (!(*sv_player))
 		return;
 

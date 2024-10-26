@@ -108,9 +108,9 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 
 		char buffer[64];
 		if (!strstr(sfx->name, "weapons"))
-			sprintf_s(buffer, "../../chaos/mlg/%s", g_szMLGSounds[i].c_str());
+			sprintf_s(buffer, CHAOS_PATH "mlg/%s", g_szMLGSounds[i].c_str());
 		else
-			sprintf_s(buffer, "../../chaos/mlg/intervention_420.wav");
+			sprintf_s(buffer, CHAOS_PATH "mlg/intervention_420.wav");
 
 		sfx = S_LateLoadSound(buffer);
 		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
@@ -122,11 +122,19 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 	{
 		i = gChaos.GetRandomValue(0, g_szHEVSounds.size() - 1);
 
+#ifdef COF_BUILD
+		char buffer[64];
+		if (!strstr(sfx->name, "weapons"))
+			sprintf_s(buffer, "subtitles/%s", g_szHEVSounds[i].c_str());
+		else
+			sprintf_s(buffer, "inventory/inventory_close.wav");
+#else
 		char buffer[64];
 		if (!strstr(sfx->name, "weapons"))
 			sprintf_s(buffer, "../../valve/sound/fvox/%s", g_szHEVSounds[i].c_str());
 		else
 			sprintf_s(buffer, "../../valve/sound/fvox/beep.wav");
+#endif
 
 		sfx = S_LateLoadSound(buffer);
 		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
@@ -138,9 +146,13 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 	{
 		i = gChaos.GetRandomValue(0, g_szSciSounds.size() - 1);
 
+#ifdef COF_BUILD
+		char buffer[64];
+		sprintf_s(buffer, "doc_ai/%s", g_szSciSounds[i].c_str());
+#else
 		char buffer[64];
 		sprintf_s(buffer, "../../valve/sound/scientist/%s", g_szSciSounds[i].c_str());
-
+#endif
 		sfx = S_LateLoadSound(buffer);
 		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
@@ -234,8 +246,13 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 	{
 		i = gChaos.GetRandomValue(0, g_szSciSounds.size() - 1);
 
+#ifdef COF_BUILD
+		char buffer[64];
+		sprintf_s(buffer, "doc_ai/%s", g_szSciSounds[i].c_str());
+#else
 		char buffer[64];
 		sprintf_s(buffer, "../../valve/sound/scientist/%s", g_szSciSounds[i].c_str());
+#endif
 
 		sfx = S_LateLoadSound(buffer);
 		DEBUG_PRINT("sfx->name: %s\n", sfx->name);

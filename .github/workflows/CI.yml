@@ -21,17 +21,29 @@ jobs:
       with:
         submodules: recursive
     - uses: microsoft/setup-msbuild@v1.1
-    - name: Build Chaos Mod
+
+    - name: Build Chaos Mod (GoldSrc)
       run: msbuild /m /t:Build /p:Configuration=Release GSChaos.sln
-    - name: Prepare artifacts
+    - name: Prepare HL artifacts
       run: |
         mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
         mv Release/GSChaos.pdb .\gamedir\asi_plugins\
-        Compress-Archive -Path .\gamedir\* -Destination GSChaos.zip
+        Compress-Archive -Path .\gamedir\* -Destination GSChaos_HL.zip
+
+    - name: Build Chaos Mod (Cry of Fear)
+      run: msbuild /m /t:Rebuild /p:CoFBuild=COF_BUILD;Configuration=Release GSChaos.sln
+    - name: Prepare CoF artifacts
+      run: |
+        rm .\gamedir\asi_plugins\GSChaos.asi
+        rm .\gamedir\asi_plugins\GSChaos.pdb
+        mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
+        mv Release/GSChaos.pdb .\gamedir\asi_plugins\
+        Compress-Archive -Path .\gamedir\* -Destination GSChaos_CoF.zip
+
     - name: Deploy
       uses: actions/upload-artifact@v3
       with:
-        name: GSChaos_DEV
+        name: GSChaos_CoF
         path: ./gamedir/
     - name: Check for pull request
       uses: 8BitJonny/gh-get-current-pr@2.2.0
@@ -67,7 +79,10 @@ jobs:
       uses: softprops/action-gh-release@v0.1.15
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        files: GSChaos.zip
+        files: | 
+        GSChaos_HL.zip
+        GSChaos_CoF.zip
+
         tag_name: continuous
         draft: false
         prerelease: true

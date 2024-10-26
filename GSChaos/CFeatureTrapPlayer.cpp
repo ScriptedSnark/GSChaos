@@ -43,8 +43,8 @@ void CFeatureTrapPlayer::OnFrame(double time)
 			m_pTrap = CREATE_NAMED_ENTITY(MAKE_STRING("monster_furniture"));
 			if (m_pTrap)
 			{
-				PRECACHE_MODEL("../chaos/zombie_trap.mdl");
-				SET_MODEL(m_pTrap, "../chaos/zombie_trap.mdl");
+				PRECACHE_MODEL(CHAOS_PATH "zombie_trap.mdl");
+				SET_MODEL(m_pTrap, CHAOS_PATH "zombie_trap.mdl");
 
 				gEntityInterface->pfnSpawn(m_pTrap);
 
