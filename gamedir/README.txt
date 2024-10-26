@@ -4,7 +4,7 @@ WARNING! Mod is unstable and can cause softlocks/crashes!
 
 REQUIREMENTS
 ==============
-GoldSrc: build 3248/4554/8684/9920 or Cry of Fear
+GoldSrc: build 3248/4554/8684/9920/10210 or Cry of Fear
 Graphics mode: OpenGL (Software is not supported)
 
 INSTALLATION (FOR GOLDSRC PACKAGE / STEAM VERSION)
@@ -16,10 +16,8 @@ INSTALLATION (FOR GOLDSRC PACKAGE / STEAM VERSION)
 INSTALLATION (FOR CRY OF FEAR)
 ==============
 1. Extract GSChaos_CoF.zip contents to your Cry of Fear directory
-2. Replace cof.exe with hl.exe (you also can create backup for cof.exe)
-ALTERNATIVE: replace DemoPlayer.dll with ASILoader_3248.dll (UNRECOMMENDED)
-3. Run game
-4. If you see progress bar on top in game, Chaos Mod is installed successfully!
+2. Run game
+3. If you see progress bar on top in game, Chaos Mod is installed successfully!
 
 INSTALLATION (FOR WON 2005)
 ==============

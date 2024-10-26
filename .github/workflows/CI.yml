@@ -38,6 +38,7 @@ jobs:
         rm .\gamedir\asi_plugins\GSChaos.pdb
         mv Release/GSChaos.dll .\gamedir\asi_plugins\GSChaos.asi
         mv Release/GSChaos.pdb .\gamedir\asi_plugins\
+        ren .\gamedir\hl.exe cof.exe
         Compress-Archive -Path .\gamedir\* -Destination GSChaos_CoF.zip
 
     - name: Deploy
