@@ -31,7 +31,7 @@ jobs:
         Compress-Archive -Path .\gamedir\* -Destination GSChaos_HL.zip
 
     - name: Build Chaos Mod (Cry of Fear)
-      run: msbuild /m /t:Rebuild /p:CoFBuild=COF_BUILD;Configuration=Release GSChaos.sln
+      run: msbuild /m /t:Rebuild /p:CoFBuild=COF_BUILD /p:Configuration=Release GSChaos.sln
     - name: Prepare CoF artifacts
       run: |
         rm .\gamedir\asi_plugins\GSChaos.asi
