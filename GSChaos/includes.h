@@ -39,9 +39,10 @@
 #include <gl/GL.h>
 #include "Shader.h"
 
-//MINIAUDIO
-#include "miniaudio.h"
-extern ma_engine miniAudio;
+//SOLOUD
+#include "soloud.h"
+#include "soloud_wav.h"
+#include "ChaosLoudManager.h"
 
 //IMGUI
 #include "imgui.h"
@@ -242,6 +243,7 @@ extern bool g_bEncrypted;
 extern HWND g_hWndOfGame;
 extern Utils utils;
 extern CChaos gChaos;
+extern SoLoud::Soloud gSoloud; // SoLoud engine
 
 extern bool g_bActivatedGTA3HUD;
 

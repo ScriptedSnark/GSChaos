@@ -22,7 +22,7 @@ void CFeatureNuke::Init()
 void CFeatureNuke::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	ma_engine_play_sound(&miniAudio, "valve/sound/ambience/jetflyby1.wav", NULL);
+	ChaosLoud::EmitSound(SND_JETFLY);
 	m_flTimeToExplode = gChaos.GetGlobalTime() + 8.0;
 }
 

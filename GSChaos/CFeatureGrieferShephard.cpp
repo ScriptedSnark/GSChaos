@@ -72,7 +72,7 @@ void CFeatureGrieferShephard::Spawn()
 
 	m_bActivateMeleeCombat = false;
 	m_flRocketTime = gChaos.GetGlobalTime() + SHEPHARD_ROCKET_TIME;
-	ma_engine_play_sound(&miniAudio, "valve/sound/hgrunt/c2a3_hg_laugh.wav", NULL);
+	ChaosLoud::EmitSound(SND_HG_LAUGH);
 }
 
 void CFeatureGrieferShephard::Think()

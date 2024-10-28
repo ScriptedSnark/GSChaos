@@ -53,11 +53,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;BUILD_HL25;GLEW_STATIC;$(CoFBuild);GS_DEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;BUILD_HL25;GLEW_STATIC;WITH_MINIAUDIO;$(CoFBuild);GS_DEBUG;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -80,11 +80,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>WIN32;BUILD_HL25;GLEW_STATIC;$(CoFBuild);NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;BUILD_HL25;GLEW_STATIC;WITH_MINIAUDIO;$(CoFBuild);NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,7 +121,55 @@
     <ClCompile Include="..\external\MinHook\hde\hde64.c" />
     <ClCompile Include="..\external\MinHook\hook.c" />
     <ClCompile Include="..\external\MinHook\trampoline.c" />
-    <ClCompile Include="..\external\miniaudio\miniaudio.c" />
+    <ClCompile Include="..\external\soloud\src\audiosource\monotone\soloud_monotone.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\noise\soloud_noise.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\openmpt\soloud_openmpt.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\openmpt\soloud_openmpt_dll.c" />
+    <ClCompile Include="..\external\soloud\src\audiosource\sfxr\soloud_sfxr.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\speech\darray.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\speech\klatt.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\speech\resonator.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\speech\soloud_speech.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\speech\tts.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\tedsid\sid.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\tedsid\soloud_tedsid.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\tedsid\ted.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\vic\soloud_vic.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\vizsn\soloud_vizsn.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\wav\dr_impl.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\wav\soloud_wav.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\wav\soloud_wavstream.cpp" />
+    <ClCompile Include="..\external\soloud\src\audiosource\wav\stb_vorbis.c" />
+    <ClCompile Include="..\external\soloud\src\backend\miniaudio\soloud_miniaudio.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_audiosource.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_bus.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_3d.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_basicops.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_faderops.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_filterops.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_getters.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_setters.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_voicegroup.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_core_voiceops.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_fader.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_fft.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_fft_lut.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_file.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_filter.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_misc.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_queue.cpp" />
+    <ClCompile Include="..\external\soloud\src\core\soloud_thread.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_bassboostfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_biquadresonantfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_dcremovalfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_echofilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_fftfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_flangerfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_freeverbfilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_lofifilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_robotizefilter.cpp" />
+    <ClCompile Include="..\external\soloud\src\filter\soloud_waveshaperfilter.cpp" />
     <ClCompile Include="..\external\SPTLib\DetoursUtils.cpp" />
     <ClCompile Include="..\external\StackWalker.cpp" />
     <ClCompile Include="..\external\twitch\twitch.cpp" />
@@ -257,6 +305,7 @@
     <ClCompile Include="CFeatureWorstBhopCap.cpp" />
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
+    <ClCompile Include="ChaosLoudManager.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
     <ClCompile Include="CrashHandler.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
@@ -293,7 +342,16 @@
     <ClInclude Include="..\external\MinHook\hde\table64.h" />
     <ClInclude Include="..\external\MinHook\MinHook.h" />
     <ClInclude Include="..\external\MinHook\trampoline.h" />
-    <ClInclude Include="..\external\miniaudio\miniaudio.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\speech\darray.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\speech\klatt.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\speech\resonator.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\speech\tts.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\tedsid\sid.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\tedsid\ted.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\wav\dr_flac.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\wav\dr_mp3.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\wav\dr_wav.h" />
+    <ClInclude Include="..\external\soloud\src\audiosource\wav\stb_vorbis.h" />
     <ClInclude Include="..\external\SPTLib\DetoursUtils.hpp" />
     <ClInclude Include="..\external\SPTLib\MemUtils.h" />
     <ClInclude Include="..\external\SPTLib\patterns.hpp" />
@@ -463,10 +521,14 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="sf_arborcrest.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="ChaosLoudManager.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GSChaos.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\external\soloud\src\audiosource\speech\Elements.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

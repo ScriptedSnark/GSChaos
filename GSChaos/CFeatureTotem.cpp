@@ -69,7 +69,7 @@ void CFeatureTotem::ActivateFeature()
 
 	pEngfuncs->pfnWeaponAnim(0, 0);
 
-	ma_engine_play_sound(&miniAudio, "chaos/totem.wav", NULL);
+	ChaosLoud::EmitSound(SND_TOTEM);
 }
 
 void CFeatureTotem::OnFrame(double time)

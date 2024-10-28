@@ -67,6 +67,8 @@ void CChaos::Init()
 	InitDynamicPrecache();
 	FeatureInit();
 
+	ChaosLoud::LoadSounds();
+
 	m_lpRandomDevice = new CTrustedRandom();
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
@@ -515,6 +517,8 @@ void CChaos::StartVoting()
 
 void CChaos::Reset()
 {
+	ChaosLoud::StopAllSounds();
+
 	for (CChaosFeature* feature : gChaosFeatures)
 	{
 		if (feature && feature->IsActive())
@@ -738,16 +742,7 @@ void CChaos::ResetStates()
 
 void CChaos::OnFrame(double time)
 {
-	static cvar_t* volume;
-	if (!volume)
-		volume = CVAR_GET_POINTER("volume");
-	else
-	{ // spaghetti
-		if (volume->value > 0.0f)
-			ma_engine_set_volume(&miniAudio, std::max(0.0f, volume->value) + 0.1f);
-		else
-			ma_engine_set_volume(&miniAudio, 0.0f);
-	}
+	ChaosLoud::UpdateVolume();
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 

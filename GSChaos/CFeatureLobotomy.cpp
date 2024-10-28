@@ -66,7 +66,7 @@ void CFeatureLobotomy::OnFrame(double time)
 	{
 		if (!m_bPlayedSound)
 		{
-			ma_engine_play_sound(&miniAudio, "chaos/lobotomy.wav", NULL);
+			ChaosLoud::EmitSound(SND_LOBOTOMY);
 			m_bPlayedSound = true;
 		}
 

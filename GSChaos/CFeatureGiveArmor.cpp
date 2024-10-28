@@ -10,7 +10,7 @@ void CFeatureGiveArmor::ActivateFeature()
 	CChaosFeature::ActivateFeature();
 
 	(*sv_player)->v.armorvalue += 100.0f;
-	ma_engine_play_sound(&miniAudio, "valve/sound/items/suitchargeok1.wav", NULL);
+	ChaosLoud::EmitSound(SND_SUITCHARGEOK);
 	UTIL_ScreenFade((*sv_player), Vector(255, 160, 0), 1.25f, 0.1f, 192, FFADE_IN);
 }
 

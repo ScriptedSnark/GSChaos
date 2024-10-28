@@ -9,7 +9,7 @@ void CFeatureJeepy::ActivateFeature()
 {
 	CFeatureForgotCSS::ActivateFeature();
 
-	ma_engine_play_sound(&miniAudio, "chaos/lasagna.mp3", NULL);
+	ChaosLoud::EmitSound(SND_LASAGNA);
 }
 
 int CFeatureJeepy::GetTextureID()

@@ -64,7 +64,7 @@ qboolean* cofSaveHack; // from BunnymodXT
 CChaos gChaos;
 CImGuiManager gImGui;
 
-ma_engine miniAudio;
+SoLoud::Soloud gSoloud; // SoLoud engine
 
 _wglSwapBuffers ORIG_wglSwapBuffers = NULL;
 _WndProc ORIG_WndProc = NULL;
@@ -1145,10 +1145,12 @@ extern "C" __declspec(dllexport) void ASIMain()
 		return;
 	}
 
-	ma_result result = ma_engine_init(NULL, &miniAudio);
-	if (result != MA_SUCCESS)
+	SoLoud::result result = gSoloud.init();
+
+	if (result != SoLoud::SO_NO_ERROR)
 	{
-		MessageBoxA(NULL, "Failed to initialize MiniAudio. Exiting...", "GSChaos", MB_OK | MB_ICONERROR);
+		printf("SoLoud init result: %d\n", result);
+		MessageBoxA(NULL, "Failed to initialize SoLoud with MiniAudio backend. Exiting...\n", "GSChaos", MB_OK | MB_ICONERROR);
 		exit(1);
 		return;
 	}
@@ -1159,6 +1161,6 @@ extern "C" __declspec(dllexport) void ASIMain()
 extern "C" __declspec(dllexport) void ASIShutdown()
 {
 	gChaos.Shutdown();
-	ma_engine_uninit(&miniAudio);
+	gSoloud.deinit();
 	MH_Uninitialize();
 }

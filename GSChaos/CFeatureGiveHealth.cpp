@@ -10,7 +10,7 @@ void CFeatureGiveHealth::ActivateFeature()
 	CChaosFeature::ActivateFeature();
 
 	(*sv_player)->v.health += 100.0f;
-	ma_engine_play_sound(&miniAudio, "valve/sound/items/smallmedkit1.wav", NULL);
+	ChaosLoud::EmitSound(SND_SMALLMEDKIT);
 	UTIL_ScreenFade((*sv_player), Vector(0, 192, 0), 1.25f, 0.1f, 192, FFADE_IN);
 }
 

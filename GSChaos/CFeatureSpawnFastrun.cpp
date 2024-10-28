@@ -24,7 +24,7 @@ void CFeatureSpawnFastrun::ActivateFeature()
 	gEntityInterface->pfnSpawn(fastrun);
 
 	m_flSpawnTime = gChaos.GetGlobalTime() + 3.5;
-	ma_engine_play_sound(&miniAudio, "valve/sound/debris/beamstart5.wav", NULL);
+	ChaosLoud::EmitSound(SND_BEAMSTART5);
 
 	fastrun->v.origin = (*sv_player)->v.origin;
 	fastrun->v.movetype = MOVETYPE_PUSH;

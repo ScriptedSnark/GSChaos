@@ -8,7 +8,7 @@ void CFeatureHook::Init()
 void CFeatureHook::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
-	ma_engine_play_sound(&miniAudio, "valve/sound/weapons/xbow_hit2.wav", NULL);
+	ChaosLoud::EmitSound(SND_XBOW_HIT);
 }
 
 void CFeatureHook::DeactivateFeature()

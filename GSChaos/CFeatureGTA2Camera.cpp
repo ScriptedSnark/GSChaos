@@ -34,7 +34,7 @@ void CFeatureGTA2Camera::ActivateFeature()
 	m_bActivated = true;
 	m_bAnimating = true;
 
-	ma_engine_play_sound(&miniAudio, "chaos/sci_respect.wav", NULL);
+	ChaosLoud::EmitSound(SND_RESPECT);
 }
 
 void CFeatureGTA2Camera::DeactivateFeature()

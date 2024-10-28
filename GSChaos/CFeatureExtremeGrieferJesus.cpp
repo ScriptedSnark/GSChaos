@@ -13,11 +13,11 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 	m_bActivated = true;
 	m_bSpawned = false;
 
-	if (!m_bMusicIsPlaying)
+	if (!m_bMusicIsPlaying) // TODO: remove this logic because SoLoud handles that already
 	{
 		m_bMusicIsPlaying = true;
 		m_flMusicTime = gChaos.GetGlobalTime() + 192.0; // track duration (3:12)
-		ma_engine_play_sound(&miniAudio, "chaos/egj.mp3", NULL);
+		ChaosLoud::EmitSound(MUSIC_JESUS);
 	}
 }
 

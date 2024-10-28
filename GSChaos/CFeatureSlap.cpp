@@ -9,7 +9,7 @@ void CFeatureSlap::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
 	UTIL_ScreenFade((*sv_player), Vector(255, 255, 255), 0.75f, 0.0f, 255, FFADE_IN);
-	ma_engine_play_sound(&miniAudio, "chaos/slap.mp3", NULL);
+	ChaosLoud::EmitSound(SND_SLAP);
 	(*sv_player)->v.punchangle = Vector(-64.0f, -84.0f, 0.0f);
 }
 

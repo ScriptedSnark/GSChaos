@@ -20,7 +20,7 @@ void CFeatureMakeItBunDem::ActivateFeature()
 
 	if (chaos_dmca_safe->value == 0)
 	{
-		ma_engine_play_sound(&miniAudio, "chaos/ucieczka_nastroj.wav", NULL);
+		ChaosLoud::EmitSound(SND_BUNDEM);
 	}
 	
 	sfx_t* sfx = S_LateLoadSound("../../chaos/burn.wav");

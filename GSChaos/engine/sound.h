@@ -185,7 +185,7 @@ struct voxword_t
 // User-setable variables
 // ====================================================================
 
-#define MAX_CHANNELS 128
-#define MAX_DYNAMIC_CHANNELS 8
+#define GOLDSRC_MAX_CHANNELS 128
+#define GOLDSRC_MAX_DYNAMIC_CHANNELS 8
 
 #endif // SOUND_H
