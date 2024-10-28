@@ -420,3 +420,50 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 
 	return true;
 }
+
+float UTIL_Hue2RGB(float p, float q, float t)
+{
+	if (t < 0.0f) {
+		t = t + 1.0f;
+	}
+
+	if (t > 1.0f) {
+		t = t - 1.0f;
+	}
+
+	if (t < 1.0f / 6.0f) {
+		return p + (q - p) * 6.0f * t;
+	}
+
+	if (t < 1.0f / 2.0f) {
+		return q;
+	}
+
+	if (t < 2.0f / 3.0f) {
+		return p + (q - p) * ((2.0f / 3.0f) - t) * 6.0f;
+	}
+
+	return p;
+}
+
+Vector UTIL_HSL2RGB(Vector _HSL)
+{
+	Vector vecRGB;
+
+	if (_HSL.y == 0.0f) {
+		vecRGB.x = _HSL.z;
+		vecRGB.y = _HSL.z;
+		vecRGB.z = _HSL.z;
+
+		return vecRGB;
+	}
+
+	float q = _HSL.z < 0.5f ? _HSL.z * (1.0f + _HSL.y) : _HSL.z + _HSL.y - _HSL.z * _HSL.y;
+	float p = 2.0f * _HSL.z - q;
+
+	vecRGB.x = UTIL_Hue2RGB(p, q, _HSL.x + (1.0f / 3.0f));
+	vecRGB.y = UTIL_Hue2RGB(p, q, _HSL.x);
+	vecRGB.z = UTIL_Hue2RGB(p, q, _HSL.x - (1.0f / 3.0f));
+
+	return vecRGB;
+}

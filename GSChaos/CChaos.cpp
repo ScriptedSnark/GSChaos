@@ -60,6 +60,8 @@ void CChaos::Init()
 	m_flChaosTime = m_flTime + CHAOS_ACTIVATE_TIMER;
 	m_bInitialized = true;
 
+	m_bRainbowBar = GetRandomValue(1, 100) >= 60; // 40% chance
+
 	m_iBarColor[0] = 255; // default
 	m_iBarColor[1] = 180; // half-life
 	m_iBarColor[2] = 30;  // hud color
@@ -755,9 +757,29 @@ void CChaos::ResetStates()
 	}
 }
 
+void CChaos::OnRainbowFrame()
+{
+	float flSpeed = 0.25f; // TODO: configure? 
+	float flDeltaTime = pEngfuncs->GetClientTime() - pEngfuncs->hudGetClientOldTime(); // can be replaced with ImGui::GetIO().DeltaTime
+
+	m_flGlowRGB_HUE += flSpeed * flDeltaTime;
+
+	while (m_flGlowRGB_HUE > 1.0f)
+		m_flGlowRGB_HUE -= 1.0f;
+
+	Vector vecRGB = UTIL_HSL2RGB(Vector(m_flGlowRGB_HUE, 1.0f, 0.5f)); // saturation, lightness
+
+	m_iBarColor[0] = vecRGB.x * 255.0f;
+	m_iBarColor[1] = vecRGB.y * 255.0f;
+	m_iBarColor[2] = vecRGB.z * 255.0f;
+}
+
 void CChaos::OnFrame(double time)
 {
 	ChaosLoud::UpdateVolume();
+
+	if (m_bRainbowBar)
+		OnRainbowFrame();
 
 	m_bInGame = pEngfuncs->pfnGetLevelName()[0];
 
@@ -822,10 +844,13 @@ void CChaos::OnFrame(double time)
 		else
 			m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
 		
-		m_iBarColor[0] = GetRandomValue(0, 255);
-		m_iBarColor[1] = GetRandomValue(0, 255);
-		m_iBarColor[2] = GetRandomValue(0, 255);
-		
+		if (!m_bRainbowBar)
+		{
+			m_iBarColor[0] = GetRandomValue(0, 255);
+			m_iBarColor[1] = GetRandomValue(0, 255);
+			m_iBarColor[2] = GetRandomValue(0, 255);
+		}
+
 		// Before
 		if (m_pCurrentFeature && !m_pCurrentFeature->UseCustomDuration())
 			m_pCurrentFeature->DeactivateFeature();

@@ -58,6 +58,7 @@ public:
 	void DrawVoting();
 	void Draw();
 	void ResetStates();
+	void OnRainbowFrame();
 	void OnFrame(double time);
 	void ActivateChaosFeature(int i);
 	int GetRandomValue(int min, int max);
@@ -89,6 +90,8 @@ private:
 	bool m_bInitialized = false;
 	bool m_bInGame = false;
 	bool m_bPaused;
+	bool m_bRainbowBar;
+	float m_flGlowRGB_HUE;
 	float m_flProgress;
 	double m_flChaosTime;
 	double m_flRealTime;
