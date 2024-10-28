@@ -6,6 +6,17 @@
 
 #include "includes.h"
 
+#ifdef NDEBUG
+#undef NDEBUG
+#include "assert.h"
+#define NDEBUG
+#else
+#include "assert.h"
+#endif
+
+typedef void (*__wassert)(wchar_t const* _Message, wchar_t const* _File, unsigned _Line);
+__wassert ORIG_wassert = NULL;
+
 typedef void (*_HUD_Frame)(double time);
 typedef int (*_HUD_Redraw)(float time, int intermission);
 typedef void (*_V_CalcRefdef)(struct ref_params_s* pparams);
@@ -570,6 +581,23 @@ void HookClient()
 	CAM_Init();
 }
 
+void HOOKED_wassert(wchar_t const* _Message, wchar_t const* _File, unsigned _Line)
+{
+	return;
+}
+
+void DisableAsserts()
+{
+	MH_STATUS status = MH_CreateHook(_wassert, HOOKED_wassert, reinterpret_cast<void**>(&ORIG_wassert));
+
+	if (status != MH_OK)
+		printf("[WinAPI] Couldn't create hook for _wassert.\n");
+	else
+		printf("[WinAPI] Detected HL26. Hooked _wassert.\n");
+
+	MH_EnableHook(MH_ALL_HOOKS);
+}
+
 void HookEngine()
 {
 	static void* base;
@@ -609,6 +637,8 @@ void HookEngine()
 
 				if (pEngfuncs)
 					DEBUG_PRINT("[hw dll] Found cl_enginefuncs at 0x%p.\n", pEngfuncs);
+
+				DisableAsserts();
 
 				break;
 

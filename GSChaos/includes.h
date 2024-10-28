@@ -254,7 +254,7 @@ extern bool g_bActivatedGTA3HUD;
 #ifdef GS_DEBUG
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)
 #else
-#define DEBUG_PRINT(...)
+#define DEBUG_PRINT(...) ((void)0)
 #endif
 
 #define Find(lib, func_name) \
