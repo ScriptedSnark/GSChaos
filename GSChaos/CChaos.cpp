@@ -194,29 +194,44 @@ void CChaos::Vote(const std::string& user, const std::string& msg)
 
 	auto it = std::find_if(m_twitchVoters.begin(), m_twitchVoters.end(), [&](const TwitchVoter& voter) {
 		return voter.userName == user;
-	});
-
-	if (it != m_twitchVoters.end())
-	{
-		DEBUG_PRINT("Twitch user %s has already voted.\n", user.c_str());
-		return;
-	}
+		});
 
 	if (msg.size() == 1 && std::isdigit(msg[0]))
 	{
 		voteValue = std::stoi(msg);
 		if (voteValue >= 1 && voteValue <= 3)
 		{
-			m_twitchVoters.push_back({ user, voteValue - 1 });
-			m_aiVoteValues[voteValue - 1]++;
-			DEBUG_PRINT("Twitch user %s voted for option %i\n", user.c_str(), voteValue);
+			if (it != m_twitchVoters.end())
+			{
+				int previousVote = it->value;
+				if (previousVote != (voteValue - 1))
+				{
+					if (previousVote >= 0 && previousVote < 3) // TOO MANY IF CONDITIONS
+						m_aiVoteValues[previousVote]--;
+
+					it->value = voteValue - 1;
+					m_aiVoteValues[voteValue - 1]++;
+					DEBUG_PRINT("Twitch user %s changed vote to option %i\n", user.c_str(), voteValue);
+				}
+				else
+				{
+					DEBUG_PRINT("Twitch user %s voted for the same option %i again\n", user.c_str(), voteValue);
+				}
+			}
+			else
+			{
+				m_twitchVoters.push_back({ user, voteValue - 1 });
+				m_aiVoteValues[voteValue - 1]++;
+				DEBUG_PRINT("Twitch user %s voted for option %i\n", user.c_str(), voteValue);
+			}
 		}
 		else
 		{
 			DEBUG_PRINT("Invalid vote value: %i\n", voteValue);
 		}
 	}
-	else {
+	else
+	{
 		DEBUG_PRINT("Invalid vote message: %s\n", msg.c_str());
 	}
 }

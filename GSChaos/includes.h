@@ -247,7 +247,7 @@ extern SoLoud::Soloud gSoloud; // SoLoud engine
 
 extern bool g_bActivatedGTA3HUD;
 
-#define GS_DEBUG
+//#define GS_DEBUG
 
 #define CHAOS_PATH "../chaos/"
 
