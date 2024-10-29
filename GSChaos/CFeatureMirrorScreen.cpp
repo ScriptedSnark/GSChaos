@@ -89,3 +89,8 @@ void CFeatureMirrorScreen::SwapBuffers()
 
 	glDisable(GL_BLEND);
 }
+
+bool CFeatureMirrorScreen::CanBeInfinite()
+{
+	return true;
+}

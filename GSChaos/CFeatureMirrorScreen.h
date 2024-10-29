@@ -30,6 +30,7 @@ class CFeatureMirrorScreen : public CChaosFeature
 	void SwapBuffers() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 };
 
 #else //!__cplusplus
