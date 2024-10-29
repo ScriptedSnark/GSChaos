@@ -403,6 +403,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureMoveAllNPCsToPlayer>();
 	RegisterChaosFeature<CFeatureChipmunks>();
 	RegisterChaosFeature<CFeatureFloatingPointInaccuracy>();
+	RegisterChaosFeature<CFeatureEBoost>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
