@@ -621,6 +621,9 @@
     <ClCompile Include="CFeatureOverwriteAutosave.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureOverthinking.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1220,6 +1223,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureOverwriteAutosave.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureOverthinking.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

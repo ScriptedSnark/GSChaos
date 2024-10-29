@@ -257,6 +257,7 @@
     <ClCompile Include="CFeatureNuke.cpp" />
     <ClCompile Include="CFeatureOhio.cpp" />
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
+    <ClCompile Include="CFeatureOverthinking.cpp" />
     <ClCompile Include="CFeatureOverwriteAutosave.cpp" />
     <ClCompile Include="CFeaturePaperNPCs.cpp" />
     <ClCompile Include="CFeaturePlayAG.cpp" />
@@ -458,6 +459,7 @@
     <ClInclude Include="CFeatureNuke.h" />
     <ClInclude Include="CFeatureOhio.h" />
     <ClInclude Include="CFeatureOnePercentDeath.h" />
+    <ClInclude Include="CFeatureOverthinking.h" />
     <ClInclude Include="CFeatureOverwriteAutosave.h" />
     <ClInclude Include="CFeaturePaperNPCs.h" />
     <ClInclude Include="CFeaturePlayAG.h" />
