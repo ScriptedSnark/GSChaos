@@ -66,6 +66,7 @@ void CFeatureSpawnRandomEntity::ActivateFeature()
 	m_pszEntityName = g_szExportedEntityList[i];
 
 	Vector origin = (*sv_player)->v.origin;
+	UTIL_MakeVectors((*sv_player)->v.angles);
 	pent->v.origin = origin + gpGlobals->v_forward * 128;
 	gEntityInterface->pfnSpawn(pent);
 }
