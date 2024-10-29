@@ -39,6 +39,7 @@ public:
 	virtual void CL_CreateMove(float frametime, struct usercmd_s* cmd, int active);
 	virtual void PM_Move(struct playermove_s* ppmove, qboolean server);
 	virtual void Vote(const std::string& user, const std::string& msg);
+	virtual void V_CalcRefdef(struct ref_params_s* pparams);
 	virtual bool IsActive();
 	virtual double GetDuration();
 	virtual bool UseCustomDuration();

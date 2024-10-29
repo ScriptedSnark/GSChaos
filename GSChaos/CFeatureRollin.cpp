@@ -24,6 +24,12 @@ void CFeatureRollin::DeactivateFeature()
 	pEngfuncs->SetViewAngles(viewAngles);
 }
 
+void CFeatureRollin::V_CalcRefdef(struct ref_params_s* pparams)
+{
+	pparams->viewangles[2] += 0.1f;
+	pparams->cl_viewangles[2] = pparams->viewangles[2];
+}
+
 const char* CFeatureRollin::GetFeatureName()
 {
 	return "Rollin'";

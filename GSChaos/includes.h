@@ -231,6 +231,7 @@ extern bool g_bEncrypted;
 #include "CFeatureChipmunks.h"
 #include "CFeatureFloatingPointInaccuracy.h"
 #include "CFeatureEBoost.h"
+#include "CFeatureViewOfsInsanity.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

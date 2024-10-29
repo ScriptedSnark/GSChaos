@@ -615,6 +615,9 @@
     <ClCompile Include="CFeatureEBoost.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureViewOfsInsanity.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1208,6 +1211,9 @@
       <Filter>SoLoud</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureEBoost.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureViewOfsInsanity.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

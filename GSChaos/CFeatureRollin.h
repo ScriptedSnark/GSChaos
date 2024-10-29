@@ -26,6 +26,7 @@ class CFeatureRollin : public CChaosFeature
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
+	void V_CalcRefdef(struct ref_params_s* pparams) override;
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;

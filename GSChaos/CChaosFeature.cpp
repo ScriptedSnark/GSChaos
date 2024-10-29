@@ -112,7 +112,12 @@ void CChaosFeature::PM_Move(struct playermove_s* ppmove, qboolean server)
 
 void CChaosFeature::Vote(const std::string& user, const std::string& msg)
 {
+	;
+}
 
+void CChaosFeature::V_CalcRefdef(struct ref_params_s* pparams)
+{
+	;
 }
 
 bool CChaosFeature::IsActive()

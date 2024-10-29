@@ -332,10 +332,10 @@ int HOOKED_HUD_Redraw(float time, int intermission)
 
 void HOOKED_V_CalcRefdef(struct ref_params_s* pparams)
 {
-	if (g_bActivatedRollin)
+	for (CChaosFeature* i : gChaosFeatures)
 	{
-		pparams->viewangles[2] += 0.1f;
-		pparams->cl_viewangles[2] = pparams->viewangles[2];
+		if (i->IsActive())
+			i->V_CalcRefdef(pparams);
 	}
 
 	g_pRefParams = pparams;
