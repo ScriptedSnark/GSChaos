@@ -119,3 +119,8 @@ bool CFeatureBikiniBottom::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureBikiniBottom::CanBeInfinite()
+{
+	return true;
+}

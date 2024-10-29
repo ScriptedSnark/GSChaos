@@ -31,3 +31,8 @@ bool CFeatureWaterIsALie::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureWaterIsALie::CanBeInfinite()
+{
+	return true;
+}

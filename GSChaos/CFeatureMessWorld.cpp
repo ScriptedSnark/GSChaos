@@ -63,3 +63,7 @@ const char* CFeatureMessWorld::GetFeatureName()
 	return "Mess Up World";
 }
 
+bool CFeatureMessWorld::CanBeInfinite()
+{
+	return true;
+}

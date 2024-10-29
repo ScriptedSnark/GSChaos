@@ -44,6 +44,8 @@ public:
 	void InitVotingSystem();
 	void FeatureInit();
 	void LoadFonts();
+	void ToggleConsistentMode();
+	void AddConsistentEffects(int idx);
 	void VoteThink();
 	void WriteVotingProgress();
 	void StartVoting();
@@ -91,6 +93,7 @@ private:
 	bool m_bInGame = false;
 	bool m_bPaused;
 	bool m_bRainbowBar;
+	bool m_bConsistentMode = false;
 	float m_flGlowRGB_HUE;
 	float m_flProgress;
 	double m_flChaosTime;

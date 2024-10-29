@@ -188,3 +188,8 @@ bool CFeatureEUAim::UseCustomDuration()
 {
 	return true;	
 }
+
+bool CFeatureEUAim::CanBeInfinite()
+{
+	return true;
+}

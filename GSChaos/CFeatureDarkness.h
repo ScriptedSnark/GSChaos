@@ -28,6 +28,7 @@ class CFeatureDarkness : public CChaosFeature
 	void Restore() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 };
 
 #else //!__cplusplus

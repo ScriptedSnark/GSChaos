@@ -35,3 +35,8 @@ bool CFeatureLongJump::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureLongJump::CanBeInfinite()
+{
+	return true;
+}

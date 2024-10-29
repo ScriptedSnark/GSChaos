@@ -60,3 +60,8 @@ bool CFeatureMLGAudio::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureMLGAudio::CanBeInfinite()
+{
+	return true;
+}

@@ -73,3 +73,8 @@ bool CFeatureNegativeStepsize::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureNegativeStepsize::CanBeInfinite()
+{
+	return true;
+}

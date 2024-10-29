@@ -143,3 +143,8 @@ bool CFeatureForgotCSS::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureForgotCSS::CanBeInfinite()
+{
+	return true;
+}

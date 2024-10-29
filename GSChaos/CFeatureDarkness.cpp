@@ -63,3 +63,8 @@ bool CFeatureDarkness::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureDarkness::CanBeInfinite()
+{
+	return true;
+}

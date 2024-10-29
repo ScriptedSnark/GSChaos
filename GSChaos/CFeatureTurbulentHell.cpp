@@ -64,3 +64,8 @@ bool CFeatureTurbulentHell::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureTurbulentHell::CanBeInfinite()
+{
+	return true;
+}

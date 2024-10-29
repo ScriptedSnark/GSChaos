@@ -74,3 +74,8 @@ bool CFeatureGTA2Camera::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureGTA2Camera::CanBeInfinite()
+{
+	return true;
+}

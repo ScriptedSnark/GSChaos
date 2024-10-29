@@ -99,3 +99,8 @@ bool CFeatureCreepypasta::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureCreepypasta::CanBeInfinite()
+{
+	return true;
+}

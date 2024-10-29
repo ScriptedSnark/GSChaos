@@ -45,3 +45,8 @@ bool CFeatureAmIDead::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureAmIDead::CanBeInfinite()
+{
+	return true;
+}

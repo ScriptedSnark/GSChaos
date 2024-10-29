@@ -28,6 +28,7 @@ class CFeatureEBoost : public CChaosFeature
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 };
 
 #else //!__cplusplus

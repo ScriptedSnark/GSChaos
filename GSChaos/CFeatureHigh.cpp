@@ -43,3 +43,8 @@ bool CFeatureHigh::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureHigh::CanBeInfinite()
+{
+	return true;
+}

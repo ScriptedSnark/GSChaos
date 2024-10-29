@@ -240,3 +240,8 @@ bool CFeatureExtremeGrieferShephard::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureExtremeGrieferShephard::CanBeInfinite()
+{
+	return true;
+}

@@ -35,6 +35,7 @@ public:
 	void Restore() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 	virtual const char* GetModelName();
 	virtual const char* GetClassname();
 	virtual bool UseRenderFX();

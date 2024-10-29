@@ -140,6 +140,11 @@ bool CChaosFeature::IsGood()
 	return false;
 }
 
+bool CChaosFeature::CanBeInfinite()
+{
+	return false;
+}
+
 void CChaosFeature::SetVoterNickname(const std::string& name)
 {
 	if (IsActive())

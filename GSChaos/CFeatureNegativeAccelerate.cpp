@@ -55,3 +55,8 @@ bool CFeatureNegativeAccelerate::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureNegativeAccelerate::CanBeInfinite()
+{
+	return true;
+}

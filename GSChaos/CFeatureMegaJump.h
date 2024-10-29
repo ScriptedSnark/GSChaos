@@ -28,6 +28,7 @@ class CFeatureMegaJump : public CChaosFeature
 	void PM_Jump() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 };
 
 #else //!__cplusplus

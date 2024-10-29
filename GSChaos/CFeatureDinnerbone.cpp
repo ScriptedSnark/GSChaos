@@ -51,3 +51,8 @@ bool CFeatureDinnerbone::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureDinnerbone::CanBeInfinite()
+{
+	return true;
+}

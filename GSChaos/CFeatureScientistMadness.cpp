@@ -60,3 +60,8 @@ bool CFeatureScientistMadness::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureScientistMadness::CanBeInfinite()
+{
+	return true;
+}

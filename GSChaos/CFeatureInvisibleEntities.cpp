@@ -71,3 +71,8 @@ bool CFeatureInvisibleEntities::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureInvisibleEntities::CanBeInfinite()
+{
+	return true;
+}

@@ -28,6 +28,7 @@ class CFeatureIceSkating : public CChaosFeature
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 private:
 	bool m_bActivated;
 	cvar_t* sv_friction;

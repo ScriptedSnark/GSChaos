@@ -33,3 +33,8 @@ bool CFeatureKilometer::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureKilometer::CanBeInfinite()
+{
+	return true;
+}

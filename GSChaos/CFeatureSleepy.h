@@ -28,6 +28,7 @@ class CFeatureSleepy : public CChaosFeature
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 private:
 	bool m_bActivated;
 	double m_flSleepyTime;

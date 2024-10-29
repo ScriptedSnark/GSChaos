@@ -28,6 +28,7 @@ class CFeatureReplaceModelsWithPlayer : public CChaosFeature
 	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 
 #ifdef COF_BUILD
 private:

@@ -47,3 +47,8 @@ bool CFeatureUpsideDown::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureUpsideDown::CanBeInfinite()
+{
+	return true;
+}

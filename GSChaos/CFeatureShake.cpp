@@ -37,3 +37,8 @@ bool CFeatureShake::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureShake::CanBeInfinite()
+{
+	return true;
+}

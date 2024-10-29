@@ -44,3 +44,8 @@ bool CFeatureRollin::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureRollin::CanBeInfinite()
+{
+	return true;
+}

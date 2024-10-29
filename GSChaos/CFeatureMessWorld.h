@@ -31,6 +31,7 @@ class CFeatureMessWorld : public CChaosFeature
 	void MessTextures();
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 private:
 	double m_flMessTime;
 };

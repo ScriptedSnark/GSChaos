@@ -36,3 +36,8 @@ bool CFeatureWorstBhopCap::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureWorstBhopCap::CanBeInfinite()
+{
+	return true;
+}

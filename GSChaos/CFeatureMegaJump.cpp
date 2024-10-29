@@ -34,3 +34,8 @@ bool CFeatureMegaJump::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureMegaJump::CanBeInfinite()
+{
+	return true;
+}

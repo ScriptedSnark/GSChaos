@@ -56,3 +56,8 @@ bool CFeatureIceSkating::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureIceSkating::CanBeInfinite()
+{
+	return true;
+}

@@ -144,3 +144,8 @@ bool CFeatureHL2Movement::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureHL2Movement::CanBeInfinite()
+{
+	return true;
+}

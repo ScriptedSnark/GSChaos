@@ -47,3 +47,8 @@ bool CFeatureEBoost::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureEBoost::CanBeInfinite()
+{
+	return true;
+}

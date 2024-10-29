@@ -65,3 +65,8 @@ bool CFeatureHEVMadness::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureHEVMadness::CanBeInfinite()
+{
+	return true;
+}

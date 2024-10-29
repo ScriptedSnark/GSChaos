@@ -45,3 +45,8 @@ bool CFeatureMinerals::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureMinerals::CanBeInfinite()
+{
+	return true;
+}

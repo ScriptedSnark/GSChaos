@@ -48,3 +48,8 @@ bool CFeatureOverthinking::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureOverthinking::CanBeInfinite()
+{
+	return true;
+}

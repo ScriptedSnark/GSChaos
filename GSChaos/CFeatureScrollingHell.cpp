@@ -116,3 +116,8 @@ bool CFeatureScrollingHell::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureScrollingHell::CanBeInfinite()
+{
+	return true;
+}

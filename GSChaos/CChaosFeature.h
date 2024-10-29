@@ -44,6 +44,7 @@ public:
 	virtual double GetDuration();
 	virtual bool UseCustomDuration();
 	virtual bool IsGood();
+	virtual bool CanBeInfinite();
 	virtual void SetVoterNickname(const std::string& name);
 	virtual const char* GetVoterNickname();
 

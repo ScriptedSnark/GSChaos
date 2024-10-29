@@ -49,3 +49,8 @@ bool CFeatureSleepy::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureSleepy::CanBeInfinite()
+{
+	return true;
+}

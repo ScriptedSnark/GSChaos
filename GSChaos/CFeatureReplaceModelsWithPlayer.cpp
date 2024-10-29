@@ -65,3 +65,8 @@ bool CFeatureReplaceModelsWithPlayer::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureReplaceModelsWithPlayer::CanBeInfinite()
+{
+	return true;
+}

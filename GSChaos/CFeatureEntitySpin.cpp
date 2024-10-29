@@ -45,3 +45,8 @@ bool CFeatureEntitySpin::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureEntitySpin::CanBeInfinite()
+{
+	return true;
+}

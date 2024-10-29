@@ -1,4 +1,4 @@
-//TWITCH
+﻿//TWITCH
 #include "twitch/twitch.h"
 #include "includes.h"
 
@@ -44,6 +44,30 @@ void PrintChaosVersion()
 	gChaos.PrintVersion();
 }
 
+void _AddConsistentEffects()
+{
+	if (pEngfuncs->Cmd_Argc() <= 1)
+	{
+		pEngfuncs->Con_Printf("usage:  chaos_consistent_effects_add <id>\n");
+		return;
+	}
+
+	int idx = atoi(pEngfuncs->Cmd_Argv(1));
+
+	if (idx < 0 || idx > int(gChaosFeatures.size() - 1))
+	{
+		pEngfuncs->Con_Printf("Wrong ID!\n");
+		return;
+	}
+
+	gChaos.AddConsistentEffects(atoi(pEngfuncs->Cmd_Argv(1)));
+}
+
+void _ToggleConsistentMode()
+{
+	gChaos.ToggleConsistentMode();
+}
+
 void Simulate()
 {
 	for (int i = 0; i < 1000; i++)
@@ -78,6 +102,8 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_version", PrintChaosVersion);
 	pEngfuncs->pfnAddCommand("chaos_reset", ResetChaos);
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
+	pEngfuncs->pfnAddCommand("chaos_consistent_effects_add", _AddConsistentEffects);
+	pEngfuncs->pfnAddCommand("chaos_consistent_mode", _ToggleConsistentMode);
 	
 	pEngfuncs->pfnAddCommand("random_simulate", Simulate);
 
@@ -435,6 +461,24 @@ void CChaos::LoadFonts()
 	style.AntiAliasedFill = false;
 	style.AntiAliasedLinesUseTex = false;
 
+	ImVector<ImWchar> fnt_main_ranges;
+	{
+		ImWchar _ranges[] = {
+			0x2000, 0x206F, // General Punctuation (for Overline)
+			0x2070, 0x209F, // Superscripts and Subscripts
+			0x2200, 0x22FF, // Mathematical Operators (for logical and, or)
+			0x3000, 0x036F, // Combining Diacritical Marks (for Combining Overline)
+			0,
+		};
+
+		ImFontGlyphRangesBuilder builder;
+		builder.AddRanges(io.Fonts->GetGlyphRangesDefault());
+		builder.AddRanges(io.Fonts->GetGlyphRangesCyrillic());
+		builder.AddRanges(_ranges);
+
+		builder.BuildRanges(&fnt_main_ranges);
+	}
+
 	std::string fontPath;
 	fontPath = getenv("SystemRoot");
 	fontPath += "\\Fonts\\trebucbd.ttf";
@@ -447,10 +491,62 @@ void CChaos::LoadFonts()
 	io.Fonts->Build();
 	m_pArborcrest = io.Fonts->AddFontFromMemoryCompressedTTF(SF_Arborcrest_compressed_data, SF_Arborcrest_compressed_size, 22.f);
 	io.Fonts->Build();
-	m_fontTrebuchet = io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 22.f);
+	m_fontTrebuchet = io.Fonts->AddFontFromFileTTF(fontPath.c_str(), 22.f, NULL, fnt_main_ranges.Data);
 	io.Fonts->Build();
 
 	DEBUG_PRINT("CChaos::LoadFonts -> Adding Trebuchet MS...\nPath: %s\n", fontPath.c_str());
+}
+
+void CChaos::ToggleConsistentMode()
+{
+	for (CChaosFeature* feature : gChaosFeatures)
+	{
+		if (feature && feature->IsActive())
+		{
+			feature->DeactivateFeature();
+			feature->m_flExpireTime = 0.0;
+		}
+	}
+
+	m_bConsistentMode = !m_bConsistentMode;
+
+	if (m_bConsistentMode)
+	{
+		pEngfuncs->Con_Printf("WARNING! Consistent mode has been enabled!\nAdd some effects with \"chaos_consistent_effects_add\" command.\n");
+	}
+	else
+	{
+		pEngfuncs->Con_Printf("WARNING! Consistent mode has been disabled!\n");
+	}
+}
+
+void CChaos::AddConsistentEffects(int idx)
+{
+	if (!m_bConsistentMode)
+		return;
+
+	CChaosFeature* pFeature = gChaosFeatures[idx];
+
+	if (!pFeature->CanBeInfinite())
+	{
+		pEngfuncs->Con_Printf("Feature (effect) \"%s\" can't be consistent. Choose something else.\n", pFeature->GetFeatureName());
+		pEngfuncs->Con_Printf("Here is the list of consistent effects:\n");
+
+		int id = 0;
+		for (CChaosFeature* i : gChaosFeatures)
+		{
+			if (i->CanBeInfinite())
+			{
+				pEngfuncs->Con_Printf("- %s (ID: %d)\n", i->GetFeatureName(), id);
+			}
+
+			id++;
+		}
+		return;
+	}
+
+	m_pCurrentFeature = pFeature;
+	m_pCurrentFeature->ActivateFeature();
 }
 
 void CChaos::VoteThink()
@@ -458,7 +554,7 @@ void CChaos::VoteThink()
 	if (!twitch)
 		return;
 
-	m_bTwitchVoting = twitch->status == TWITCH_CONNECTED ? true : false;
+	m_bTwitchVoting = (twitch->status == TWITCH_CONNECTED && !m_bConsistentMode) ? true : false;
 
 	if (!m_bTwitchVoting)
 		return;
@@ -539,6 +635,8 @@ void CChaos::StartVoting()
 void CChaos::Reset()
 {
 	ChaosLoud::StopAllSounds();
+
+	m_bConsistentMode = false;
 
 	for (CChaosFeature* feature : gChaosFeatures)
 	{
@@ -659,12 +757,12 @@ void CChaos::DrawEffectList()
 			else
 				sprintf_s(effectName, sizeof(effectName), "- %s", featureName);
 
-			if (timer <= 0.0 || !feature->UseCustomDuration())
+			if (timer <= 0.0 || !feature->UseCustomDuration() || m_bConsistentMode)
 			{
 				ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", effectName);
+				ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s %s", effectName, m_bConsistentMode ? u8"(∞)" : "");
 				ImGui::SetCursorPos(textPos);
-				ImGui::TextColored(ImVec4(CHAOS_TEXT_COLOR, 1.f), "%s", effectName);
+				ImGui::TextColored(ImVec4(CHAOS_TEXT_COLOR, 1.f), "%s %s", effectName, m_bConsistentMode ? u8"(∞)" : "");
 			}
 			else
 			{
@@ -730,9 +828,14 @@ void CChaos::DrawVoting()
 
 void CChaos::Draw()
 {
-	DrawBar();
-	DrawEffectList();
-	DrawVoting();
+	if (!m_bConsistentMode)
+	{
+		DrawBar();
+		DrawEffectList();
+		DrawVoting();
+	}
+	else
+		DrawEffectList();
 
 	// TODO: do not draw if cl.paused is true
 	for (CChaosFeature* i : gChaosFeatures)
@@ -829,13 +932,15 @@ void CChaos::OnFrame(double time)
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{
-		i->ExpireThink();
+		if (!m_bConsistentMode)
+			i->ExpireThink();
+
 		i->OnFrame(m_flTime);
 	}
 
 	VoteThink();
 
-	if (m_flChaosTime && m_flChaosTime <= m_flTime)
+	if (m_flChaosTime && m_flChaosTime <= m_flTime && !m_bConsistentMode)
 	{
 		DEBUG_PRINT("ACTIVATE NEW CHAOS FEATURE\n");
 		
@@ -912,6 +1017,12 @@ void CChaos::OnFrame(double time)
 
 void CChaos::ActivateChaosFeature(int i)
 {
+	if (m_bConsistentMode)
+	{
+		pEngfuncs->Con_Printf("Can't activate anything when consistent mode is enabled.\n");
+		return;
+	}
+
 	// Before
 	if (m_pCurrentFeature)
 		m_pCurrentFeature->DeactivateFeature();

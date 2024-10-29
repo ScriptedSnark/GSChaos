@@ -29,6 +29,7 @@ class CFeatureNegativeStepsize : public CChaosFeature
 	void ResetStates() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 
 	virtual float GetStepsizeValue();
 private:

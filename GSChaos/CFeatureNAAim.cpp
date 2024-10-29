@@ -38,3 +38,8 @@ bool CFeatureNAAim::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureNAAim::CanBeInfinite()
+{
+	return true;
+}

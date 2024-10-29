@@ -29,6 +29,7 @@ class CFeatureForgotCSS : public CChaosFeature
 	virtual int GetTextureID();
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override;
 public:
 	void ActivateFeature() override;
 private:
