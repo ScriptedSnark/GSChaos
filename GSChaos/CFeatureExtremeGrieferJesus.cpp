@@ -9,7 +9,7 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 	if (m_bActivated)
 		return;
 
-	m_flTimeForSpawn = gChaos.GetRealTime() + 38.0;
+	m_flTimeForSpawn = pEngfuncs->GetAbsoluteTime() + 38.0;
 	m_bActivated = true;
 	m_bSpawned = false;
 
@@ -44,7 +44,7 @@ void CFeatureExtremeGrieferJesus::OnFrame(double time)
 	if (!m_bActivated)
 		return;
 
-	if (m_flTimeForSpawn > gChaos.GetRealTime())
+	if (m_flTimeForSpawn > pEngfuncs->GetAbsoluteTime())
 	{
 		CChaosFeature::OnFrame(time);
 		return;

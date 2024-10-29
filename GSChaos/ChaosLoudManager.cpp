@@ -37,7 +37,7 @@ namespace ChaosLoud
 			return;
 
 		//g_wBank[idx].setSingleInstance(true);
-		gSoloud.play(g_wBank[idx]);
+		gSoloud.play(g_wBank[idx], g_flVolume);
 	}
 
 	void StopSound(int idx)
@@ -77,6 +77,8 @@ namespace ChaosLoud
 			{
 				g_wBank[i].setVolume(g_flVolume);
 			}
+
+			gSoloud.setGlobalVolume(g_flVolume);
 		}
 	}
 }
