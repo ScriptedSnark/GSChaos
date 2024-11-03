@@ -13,21 +13,11 @@ void CFeatureExtremeGrieferJesus::ActivateFeature()
 	m_bActivated = true;
 	m_bSpawned = false;
 
-	if (!m_bMusicIsPlaying) // TODO: remove this logic because SoLoud handles that already
-	{
-		m_bMusicIsPlaying = true;
-		m_flMusicTime = gChaos.GetGlobalTime() + 192.0; // track duration (3:12)
-		ChaosLoud::EmitSound(MUSIC_JESUS);
-	}
+	ChaosLoud::EmitSound(MUSIC_JESUS);
 }
 
 void CFeatureExtremeGrieferJesus::OnFrame(double time)
 {
-	if (m_bMusicIsPlaying && gChaos.GetGlobalTime() > m_flMusicTime)
-	{
-		m_bMusicIsPlaying = false;
-	}
-
 	if (g_bDespawnJesus)
 	{
 		m_bSpawned = false;

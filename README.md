@@ -28,6 +28,7 @@ Additional info:
 - `chaos_draw_as_overlay` - if enabled, it draws Chaos UI as overlay and requires enabling 3rd-party overlays in OBS
 - `chaos_consistent_mode` - switches consistent mode. Consistent mode involves turning on certain effects for an unlimited amount of time without Chaos bar/timer.
 - `chaos_consistent_effects_add` - activate consistent effect (works only with consistent mode enabled)
+- `chaos_volume_multiplier` - increases volume from SoLoud sounds (volume->value * chaos_volume_multiplier->value)
 
 ## Twitch voting integration (WIP)
 GSChaos supports Twitch chat voting. If you want to use it, then do some steps:

@@ -4,10 +4,15 @@ namespace ChaosLoud
 {
 	SoLoud::Wav g_wBank[SOUNDBANK_SIZE];
 	float g_flVolume = 0.0f;
-	cvar_t* volume;
+	cvar_t* volume, *chaos_volume_multiplier;
 
 	void LoadSounds()
 	{
+		if (chaos_volume_multiplier == nullptr)
+		{
+			chaos_volume_multiplier = pEngfuncs->pfnRegisterVariable("chaos_volume_multiplier", "8", 0);
+		}
+
 		g_wBank[MUSIC_JESUS].load("chaos/egj.mp3");
 		g_wBank[MUSIC_OPFOR01].load("chaos/opfor01.mp3");
 		g_wBank[SND_SLAP].load("chaos/slap.mp3");
@@ -65,13 +70,16 @@ namespace ChaosLoud
 
 	void UpdateVolume()
 	{
+		if (chaos_volume_multiplier)
+			chaos_volume_multiplier->value = std::clamp(chaos_volume_multiplier->value, 1.0f, 100.0f); // just for sanity
+
 		if (volume == nullptr)
 		{
 			volume = pEngfuncs->pfnGetCvarPointer("volume");
 		}
 		else
 		{
-			g_flVolume = std::clamp(volume->value, 0.0f, 2.0f) * 2.0f;
+			g_flVolume = std::clamp(volume->value, 0.0f, 2.0f) * (chaos_volume_multiplier ? chaos_volume_multiplier->value : 10.0f);
 			
 			for (int i = 0; i < SOUNDBANK_SIZE; i++)
 			{
