@@ -433,6 +433,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureViewOfsInsanity>();
 	RegisterChaosFeature<CFeatureOverwriteAutosave>();
 	RegisterChaosFeature<CFeatureOverthinking>();
+	RegisterChaosFeature<CFeatureNightvision>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

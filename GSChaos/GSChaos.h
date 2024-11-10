@@ -37,6 +37,11 @@ extern bool g_bHL25;
 extern bool g_bPreSteamPipe;
 extern bool g_bDrawHUD;
 
+extern SCREENINFO g_screenInfo;
+
+#define ScreenWidth g_screenInfo.iWidth
+#define ScreenHeight g_screenInfo.iHeight
+
 extern qboolean g_FogSkybox, g_FogOn;
 extern float g_FogDensity, g_FogStartDistance, g_FogStopDistance;
 extern float g_FogColor[4], g_FogColorRGB[4];

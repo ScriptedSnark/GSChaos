@@ -10,7 +10,7 @@ namespace ChaosLoud
 	{
 		if (chaos_volume_multiplier == nullptr)
 		{
-			chaos_volume_multiplier = pEngfuncs->pfnRegisterVariable("chaos_volume_multiplier", "8", 0);
+			chaos_volume_multiplier = pEngfuncs->pfnRegisterVariable("chaos_volume_multiplier", "4", 0);
 		}
 
 		g_wBank[MUSIC_JESUS].load("chaos/egj.mp3");
@@ -79,7 +79,7 @@ namespace ChaosLoud
 		}
 		else
 		{
-			g_flVolume = std::clamp(volume->value, 0.0f, 2.0f) * (chaos_volume_multiplier ? chaos_volume_multiplier->value : 10.0f);
+			g_flVolume = std::clamp(volume->value, 0.0f, 2.0f) * (chaos_volume_multiplier ? chaos_volume_multiplier->value : 5.0f);
 			
 			for (int i = 0; i < SOUNDBANK_SIZE; i++)
 			{

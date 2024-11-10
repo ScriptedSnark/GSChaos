@@ -68,6 +68,8 @@ ref_params_t* g_pRefParams;
 engine_studio_api_t* engine_studio_api;
 float* sys_timescale;
 
+SCREENINFO g_screenInfo;
+
 #ifdef COF_BUILD
 qboolean* cofSaveHack; // from BunnymodXT
 #endif
@@ -317,6 +319,9 @@ void HOOKED_HUD_Frame(double time)
 
 		initialized = true;
 	}
+
+	g_screenInfo.iSize = sizeof(g_screenInfo);
+	pEngfuncs->pfnGetScreenInfo(&g_screenInfo);
 
 	ORIG_HUD_Frame(time);
 	gChaos.OnFrame(time);
