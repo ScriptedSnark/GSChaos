@@ -630,6 +630,9 @@
     <ClCompile Include="CFeatureVoidclip.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureLowDrawDistance.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1238,6 +1241,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureVoidclip.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureLowDrawDistance.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

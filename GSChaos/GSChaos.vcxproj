@@ -215,6 +215,7 @@
     <ClCompile Include="CFeatureKickWorld.cpp" />
     <ClCompile Include="CFeatureKilometer.cpp" />
     <ClCompile Include="CFeatureLongJump.cpp" />
+    <ClCompile Include="CFeatureLowDrawDistance.cpp" />
     <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
     <ClCompile Include="CFeatureMegaJump.cpp" />
@@ -419,6 +420,7 @@
     <ClInclude Include="CFeatureKickWorld.h" />
     <ClInclude Include="CFeatureKilometer.h" />
     <ClInclude Include="CFeatureLongJump.h" />
+    <ClInclude Include="CFeatureLowDrawDistance.h" />
     <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
     <ClInclude Include="CFeatureMegaJump.h" />
