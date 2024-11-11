@@ -182,6 +182,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Nightvision
 > Voidclip
 > Low Draw Distance
+> SUPERHOT
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic
@@ -312,6 +313,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > Overthinking
 > Nightvision
 > Voidclip
+> SUPERHOT
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic

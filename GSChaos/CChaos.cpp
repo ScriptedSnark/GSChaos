@@ -436,6 +436,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureNightvision>();
 	RegisterChaosFeature<CFeatureVoidclip>();
 	RegisterChaosFeature<CFeatureLowDrawDistance>();
+	RegisterChaosFeature<CFeatureSuperhot>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

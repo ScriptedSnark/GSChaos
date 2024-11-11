@@ -276,6 +276,7 @@
     <ClCompile Include="CFeatureRollin.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureScrollingHell.cpp" />
+    <ClCompile Include="CFeatureSuperhot.cpp" />
     <ClCompile Include="CFeatureTempEntityMadness.cpp" />
     <ClCompile Include="CFeatureTurbulentHell.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
@@ -481,6 +482,7 @@
     <ClInclude Include="CFeatureRollin.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureScrollingHell.h" />
+    <ClInclude Include="CFeatureSuperhot.h" />
     <ClInclude Include="CFeatureTempEntityMadness.h" />
     <ClInclude Include="CFeatureTurbulentHell.h" />
     <ClInclude Include="CFeatureSet1HP.h" />

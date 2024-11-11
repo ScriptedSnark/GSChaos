@@ -237,6 +237,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNightvision.h"
 #include "CFeatureVoidclip.h"
 #include "CFeatureLowDrawDistance.h"
+#include "CFeatureSuperhot.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
