@@ -624,6 +624,12 @@
     <ClCompile Include="CFeatureOverthinking.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNightvision.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="CFeatureVoidclip.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1226,6 +1232,12 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureOverthinking.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNightvision.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureVoidclip.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

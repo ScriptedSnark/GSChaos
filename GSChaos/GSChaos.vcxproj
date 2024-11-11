@@ -302,6 +302,7 @@
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
     <ClCompile Include="CFeatureViewOfsInsanity.cpp" />
+    <ClCompile Include="CFeatureVoidclip.cpp" />
     <ClCompile Include="CFeatureWaterIsALie.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
@@ -505,6 +506,7 @@
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
     <ClInclude Include="CFeatureViewOfsInsanity.h" />
+    <ClInclude Include="CFeatureVoidclip.h" />
     <ClInclude Include="CFeatureWaterIsALie.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />
