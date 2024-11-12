@@ -441,6 +441,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeaturePortrait>();
 	RegisterChaosFeature<CFeatureDisableOneMovementKey>();
 	RegisterChaosFeature<CFeatureInvertMovementInputs>();
+	RegisterChaosFeature<CFeatureOHKO>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

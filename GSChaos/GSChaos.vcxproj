@@ -264,6 +264,7 @@
     <ClCompile Include="CFeatureNPCExplode.cpp" />
     <ClCompile Include="CFeatureNuke.cpp" />
     <ClCompile Include="CFeatureOhio.cpp" />
+    <ClCompile Include="CFeatureOHKO.cpp" />
     <ClCompile Include="CFeatureOnePercentDeath.cpp" />
     <ClCompile Include="CFeatureOverthinking.cpp" />
     <ClCompile Include="CFeatureOverwriteAutosave.cpp" />
@@ -474,6 +475,7 @@
     <ClInclude Include="CFeatureNPCExplode.h" />
     <ClInclude Include="CFeatureNuke.h" />
     <ClInclude Include="CFeatureOhio.h" />
+    <ClInclude Include="CFeatureOHKO.h" />
     <ClInclude Include="CFeatureOnePercentDeath.h" />
     <ClInclude Include="CFeatureOverthinking.h" />
     <ClInclude Include="CFeatureOverwriteAutosave.h" />
