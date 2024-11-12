@@ -645,6 +645,9 @@
     <ClCompile Include="CFeatureDisableOneMovementKey.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureInvertMovementInputs.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1268,6 +1271,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureDisableOneMovementKey.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureInvertMovementInputs.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

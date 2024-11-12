@@ -241,6 +241,7 @@ extern bool g_bEncrypted;
 #include "CFeatureNoAttacking.h"
 #include "CFeaturePortrait.h"
 #include "CFeatureDisableOneMovementKey.h"
+#include "CFeatureInvertMovementInputs.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
