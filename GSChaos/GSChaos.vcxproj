@@ -193,6 +193,7 @@
     <ClCompile Include="CFeatureDeleteRandomEntity.cpp" />
     <ClCompile Include="CFeatureDinnerbone.cpp" />
     <ClCompile Include="CFeatureDisableChaosUI.cpp" />
+    <ClCompile Include="CFeatureDisableOneMovementKey.cpp" />
     <ClCompile Include="CFeatureEBoost.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureEUAim.cpp" />
@@ -401,6 +402,7 @@
     <ClInclude Include="CFeatureDeleteRandomEntity.h" />
     <ClInclude Include="CFeatureDinnerbone.h" />
     <ClInclude Include="CFeatureDisableChaosUI.h" />
+    <ClInclude Include="CFeatureDisableOneMovementKey.h" />
     <ClInclude Include="CFeatureEBoost.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureEUAim.h" />

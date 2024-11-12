@@ -240,6 +240,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSuperhot.h"
 #include "CFeatureNoAttacking.h"
 #include "CFeaturePortrait.h"
+#include "CFeatureDisableOneMovementKey.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

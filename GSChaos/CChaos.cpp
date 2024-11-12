@@ -439,6 +439,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSuperhot>();
 	RegisterChaosFeature<CFeatureNoAttacking>();
 	RegisterChaosFeature<CFeaturePortrait>();
+	RegisterChaosFeature<CFeatureDisableOneMovementKey>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

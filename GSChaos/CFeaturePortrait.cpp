@@ -28,7 +28,7 @@ void CFeaturePortrait::Draw()
 
 const char* CFeaturePortrait::GetFeatureName()
 {
-	return "Portrait Mode";
+	return "Portrait";
 }
 
 double CFeaturePortrait::GetDuration()
