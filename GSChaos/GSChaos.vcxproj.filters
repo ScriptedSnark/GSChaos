@@ -639,6 +639,9 @@
     <ClCompile Include="CFeatureNoAttacking.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeaturePortrait.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1256,6 +1259,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureNoAttacking.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeaturePortrait.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

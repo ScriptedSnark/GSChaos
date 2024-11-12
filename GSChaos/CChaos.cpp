@@ -438,6 +438,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureLowDrawDistance>();
 	RegisterChaosFeature<CFeatureSuperhot>();
 	RegisterChaosFeature<CFeatureNoAttacking>();
+	RegisterChaosFeature<CFeaturePortrait>();
 
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();

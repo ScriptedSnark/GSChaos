@@ -467,3 +467,10 @@ Vector UTIL_HSL2RGB(Vector _HSL)
 
 	return vecRGB;
 }
+
+float UTIL_GetScreenCoord(float flValue)
+{
+	float flBase = ScreenWidth > ScreenHeight ? static_cast<float>(ScreenHeight) : static_cast<float>(ScreenWidth);
+
+	return static_cast<float>(static_cast<int>(flValue * flBase / ScreenHeight));
+}

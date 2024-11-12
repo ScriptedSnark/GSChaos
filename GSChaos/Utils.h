@@ -76,6 +76,7 @@ void UTIL_HudMessage(edict_t* pEntity, const hudtextparms_t& textparms, const ch
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture);
 float UTIL_Hue2RGB(float p, float q, float t);
 Vector UTIL_HSL2RGB(Vector _HSL);
+float UTIL_GetScreenCoord(float flValue);
 
 #else //!__cplusplus
 #error C++ compiler required to compile Utils.h

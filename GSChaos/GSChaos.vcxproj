@@ -57,7 +57,7 @@
       <ConformanceMode>false</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;../GSChaos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -84,7 +84,7 @@
       <ConformanceMode>false</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../external/MinHook;../external/sptlib;../external/imgui;../external/sdl2;../external/sdl2/include;../external/miniaudio;../external/glew/include;../external/soloud/include;../external;../GSChaos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -110,7 +110,10 @@
     <ClCompile Include="..\external\fmt\printf.cc" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl2.cpp" />
     <ClCompile Include="..\external\imgui\backends\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\external\imgui\backends\imgui_impl_win32.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\external\imgui\imgui.cpp" />
     <ClCompile Include="..\external\imgui\imgui_demo.cpp" />
     <ClCompile Include="..\external\imgui\imgui_draw.cpp" />
@@ -265,6 +268,7 @@
     <ClCompile Include="CFeaturePaperNPCs.cpp" />
     <ClCompile Include="CFeaturePlayAG.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
+    <ClCompile Include="CFeaturePortrait.cpp" />
     <ClCompile Include="CFeatureQuakeJumpSound.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRandomFog.cpp" />
@@ -472,6 +476,7 @@
     <ClInclude Include="CFeaturePaperNPCs.h" />
     <ClInclude Include="CFeaturePlayAG.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
+    <ClInclude Include="CFeaturePortrait.h" />
     <ClInclude Include="CFeatureQuakeJumpSound.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRandomFog.h" />

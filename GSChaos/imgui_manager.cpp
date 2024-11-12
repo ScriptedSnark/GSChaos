@@ -30,11 +30,25 @@ void CImGuiManager::InitBackends(void* hwnd)
 	ImGui::SetShortcutRouting(ImGuiMod_Ctrl | ImGuiMod_Shift | ImGuiKey_Tab, ImGuiKeyOwner_None);
 }
 
+bool CImGuiManager::CanUseEngineResolution()
+{
+	return (ScreenWidth > 0 && ScreenHeight > 0);
+}
+
+void CImGuiManager::UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale)
+{
+	displaySize = ImVec2(ScreenWidth, ScreenHeight);
+	//frameBufferScale = ImVec2(1, 1);
+}
+
 //-----------------------------------------------------------------------------
 // Draw ImGui elements
 //-----------------------------------------------------------------------------
 void CImGuiManager::Draw()
 {
+	if (ScreenWidth <= 0 || ScreenHeight <= 0)
+		return;
+
 	ImGui_ImplWin32_NewFrame();
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui::NewFrame();
@@ -48,7 +62,7 @@ void CImGuiManager::Draw()
 
 	// -------------------------
 
-	glViewport(0, 0, (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+	glViewport(0, 0, ScreenWidth, ScreenHeight);
 	ImGui::Render();
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }

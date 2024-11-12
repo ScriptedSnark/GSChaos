@@ -18,6 +18,8 @@ class CImGuiManager
 public:
 	void Init();
 	void InitBackends(void* hwnd);
+	bool CanUseEngineResolution();
+	void UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale);
 	void Draw();
 };
 
