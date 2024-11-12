@@ -710,18 +710,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
 
 				break;
-			case 1: // HL-8684
-				DEBUG_PRINT("Searching g_engfuncs in HL-8684 pattern...\n");
-				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5F);
-				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 0x5A);
-
-				if (g_engfuncs)
-					DEBUG_PRINT("[hw dll] Found g_engfuncs at 0x%p.\n", g_engfuncs);
-
-				if (gpGlobals)
-					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
-				break;
-			case 2: // HL-4554
+			case 1: // HL-4554
 				DEBUG_PRINT("Searching g_engfuncs in HL-4554 pattern...\n");
 				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 91);
 				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 86);
@@ -733,7 +722,7 @@ void HookEngine()
 					DEBUG_PRINT("[hw dll] Found gpGlobals at 0x%p.\n", gpGlobals);
 				break;
 
-			case 3: // CoF-5936
+			case 2: // CoF-5936
 				DEBUG_PRINT("Searching g_engfuncs in CoF-5936 pattern...\n");
 				g_engfuncs = *reinterpret_cast<enginefuncs_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 118);
 				gpGlobals = *reinterpret_cast<globalvars_t**>(reinterpret_cast<uintptr_t>(LoadThisDll) + 113);

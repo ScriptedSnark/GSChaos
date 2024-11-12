@@ -230,6 +230,7 @@
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
     <ClCompile Include="CFeatureNightvision.cpp" />
+    <ClCompile Include="CFeatureNoAttacking.cpp" />
     <ClCompile Include="CFeatureNoclip.cpp" />
     <ClCompile Include="CFeatureNodeGraphRebuilding.cpp" />
     <ClCompile Include="CFeatureNoHUD.cpp" />
@@ -436,6 +437,7 @@
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />
     <ClInclude Include="CFeatureNightvision.h" />
+    <ClInclude Include="CFeatureNoAttacking.h" />
     <ClInclude Include="CFeatureNoclip.h" />
     <ClInclude Include="CFeatureNodeGraphRebuilding.h" />
     <ClInclude Include="CFeatureNoHUD.h" />

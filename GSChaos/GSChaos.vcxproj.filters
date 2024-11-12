@@ -636,6 +636,9 @@
     <ClCompile Include="CFeatureSuperhot.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureNoAttacking.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1250,6 +1253,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureSuperhot.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureNoAttacking.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
