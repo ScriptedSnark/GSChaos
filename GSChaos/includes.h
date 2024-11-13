@@ -75,6 +75,8 @@
 #include "CLWrapper.h"
 #include "in_camera.h"
 
+extern CImGuiManager gImGui;
+
 extern void* g_lpClient;
 extern void* g_lpOpenGL32;
 extern void* g_lpHW;

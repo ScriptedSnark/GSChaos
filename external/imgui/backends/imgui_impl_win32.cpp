@@ -384,7 +384,7 @@ void    ImGui_ImplWin32_NewFrame()
     ::GetClientRect(bd->hWnd, &rect);
     if (gImGui.CanUseEngineResolution())
     {
-        gImGui.UpdateResolution(io.DisplaySize, io.DisplayFramebufferScale);
+        gImGui.UpdateResolution(io.DisplaySize, io.DisplayFramebufferScale, ImVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top)));
     }
     else
         io.DisplaySize = ImVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));

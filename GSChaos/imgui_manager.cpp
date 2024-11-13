@@ -35,8 +35,9 @@ bool CImGuiManager::CanUseEngineResolution()
 	return (ScreenWidth > 0 && ScreenHeight > 0);
 }
 
-void CImGuiManager::UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale)
+void CImGuiManager::UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale, ImVec2 realDisplaySize)
 {
+	m_vecRealDisplaySize = realDisplaySize;
 	displaySize = ImVec2(ScreenWidth, ScreenHeight);
 	//frameBufferScale = ImVec2(1, 1);
 }
@@ -62,7 +63,8 @@ void CImGuiManager::Draw()
 
 	// -------------------------
 
-	glViewport(0, 0, ScreenWidth, ScreenHeight);
+	glViewport(0, 0, (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+
 	ImGui::Render();
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 }

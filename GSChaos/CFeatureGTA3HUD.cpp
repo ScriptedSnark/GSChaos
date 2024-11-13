@@ -182,6 +182,12 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		return;
 	}
 
+	if (strstr(sfx->name, "items/9mmclip1.wav"))
+	{
+		ChaosLoud::EmitSound(SND_GTA_AMMO);
+		return;
+	}
+
 	if (strstr(sfx->name, "items/smallmedkit1.wav"))
 	{
 		ChaosLoud::EmitSound(g_bActivatedGTA3HUD ? SND_GTA3_ITEM_PICKUP : SND_GTAVC_ITEM_PICKUP);
@@ -328,6 +334,8 @@ void CFeatureGTA3HUD::ActivateFeature()
 
 	m_bActivated = true;
 
+	m_flFlashHealthTime = 0.0f;
+
 	g_bActivatedGTAVCHUD = false;
 	g_bActivatedGTA3HUD = false;
 
@@ -360,6 +368,8 @@ void CFeatureGTA3HUD::Draw()
 
 	if (CLWrapper::GetPausedState())
 		return;
+
+	static int oldHealth;
 
 	DrawNotify();
 
@@ -408,10 +418,18 @@ void CFeatureGTA3HUD::Draw()
 
 	GLuint textureID = g_bActivatedGTA3HUD ? g_ActiveWeapon->iiiTextureID : g_ActiveWeapon->vcTextureID;
 
-	if ((gChaos.GetFrameCount() & 16) && (*sv_player)->v.health < 10.0f)
+	int health = (int)(*sv_player)->v.health;
+	int armor = (int)(*sv_player)->v.armorvalue;
+
+	if (oldHealth > health)
+		m_flFlashHealthTime = pEngfuncs->GetAbsoluteTime() + 0.25f;
+
+	if ((ImGui::GetFrameCount() & 8) && (health < 10.0f || m_flFlashHealthTime > pEngfuncs->GetAbsoluteTime()))
 		m_bFlashHealth = true;
 	else
 		m_bFlashHealth = false;
+
+	oldHealth = health;
 
 	ImVec2 screenPos = ImVec2(ImGui::GetIO().DisplaySize.x - 384, ImGui::GetIO().DisplaySize.y - (ImGui::GetIO().DisplaySize.y / 1.05f));
 
@@ -420,20 +438,20 @@ void CFeatureGTA3HUD::Draw()
 	if (ImGui::Begin("#GTAHUD", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings))
 	{
 		ImVec2 previousPos, curPos;
-		static ImVec2 iconPos = ImVec2(0.0f,0.0f);
+		static ImVec2 iconPos = ImVec2(0.0f, 0.0f);
 
 		ImGui::Spacing();
 		ImGui::Spacing();
 
 		//==========================
-		
+
 		// DRAW ARMOR (FOR POSITION)
 		ImGui::Image((void*)nullptr, ImVec2(56.0f / 1.75f, 51.0f / 1.75f));
 
 		ImGui::SameLine();
 		ImGui::PushFont(gChaos.m_pPricedown);
 
-		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", (int)(*sv_player)->v.armorvalue);
+		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", armor);
 
 		ImGui::PopFont();
 
@@ -445,7 +463,7 @@ void CFeatureGTA3HUD::Draw()
 		ImGui::SameLine();
 		ImGui::PushFont(gChaos.m_pPricedown);
 
-		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", (int)(*sv_player)->v.health);
+		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", health);
 		ImGui::PopFont();
 
 		curPos = ImGui::GetCursorPos();
@@ -455,7 +473,7 @@ void CFeatureGTA3HUD::Draw()
 		// DRAW WEAPON ICON
 
 		ImGui::SameLine();
-		
+
 		ImVec2 weaponIconPos = ImGui::GetCursorPos();
 		ImGui::Image((void*)textureID, ImVec2(128, 128));
 
@@ -464,7 +482,7 @@ void CFeatureGTA3HUD::Draw()
 		// DRAW ARMOR
 		ImGui::SetCursorPosY(curPos.y + 24.0f);
 
-		if ((*sv_player)->v.armorvalue > 0.0f)
+		if (armor > 0.0f)
 		{
 			ImVec2 armorIconPos = ImGui::GetCursorPos();
 			// SHADOW
@@ -481,21 +499,21 @@ void CFeatureGTA3HUD::Draw()
 		ImGui::SameLine();
 		ImGui::PushFont(gChaos.m_pPricedown);
 
-		if ((*sv_player)->v.armorvalue > 0.0f)
+		if (armor > 0)
 		{
 			ImVec2 armorPos = ImGui::GetCursorPos();
 
 			// SHADOW
 			ImGui::SetCursorPos(ImVec2(armorPos.x + 2, armorPos.y + 2));
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 255.0f / 255.0f), "%03d", (int)(*sv_player)->v.armorvalue);
+			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 255.0f / 255.0f), "%03d", armor);
 
 			// REAL
 			ImGui::SetCursorPos(armorPos);
 
-			ImGui::TextColored(armorColor, "%03d", (int)(*sv_player)->v.armorvalue);
+			ImGui::TextColored(armorColor, "%03d", armor);
 		}
 		else
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", (int)(*sv_player)->v.armorvalue);
+			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", armor);
 
 		ImGui::PopFont();
 
@@ -522,31 +540,48 @@ void CFeatureGTA3HUD::Draw()
 
 		if (m_bFlashHealth)
 		{
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", (int)(*sv_player)->v.health);
+			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 0.0f), "%03d", health);
 		}
 		else
 		{
 			ImVec2 healthPos = ImGui::GetCursorPos();
 			ImGui::SetCursorPos(ImVec2(healthPos.x + 2, healthPos.y + 2));
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%03d", (int)(*sv_player)->v.health);
+			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%03d", health);
 
 			ImGui::SetCursorPos(healthPos);
-			ImGui::TextColored(healthColor, "%03d", (int)(*sv_player)->v.health);
+			ImGui::TextColored(healthColor, "%03d", health);
 		}
 
 		ImGui::PopFont();
 
 		// DRAW WEAPON AMMO
-		/*
-		ImGui::SetCursorPos(ImVec2(weaponIconPos.x + 64, weaponIconPos.y + 96));
-		ImGui::PushFont(m_pArialBlack);
-		ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%i/%i", g_ActiveWeapon->iClip, g_ActiveWeapon->iAmmo);
-		ImGui::PopFont();
-		
-		ImGui::GetForegroundDrawList()->AddText(m_pArialBlack, 24.0f, weaponIconPos, ImGui::GetColorU32(ImVec4(0.0f, 0.0f, 0.0f, 1.0f)),  UTIL_VarArgs("%i/%i", g_ActiveWeapon->iClip, g_ActiveWeapon->iAmmo));
-		*/
+
+		// TODO: FINALLY GET PROPER AMMO/CLIP INFORMATION
+		if (g_bActivatedGTAVCHUD)
+		{
+			char buffer[16];
+			//sprintf_s(buffer, "%d/%d", g_ActiveWeapon->iClip, g_ActiveWeapon->iAmmo);
+			sprintf_s(buffer, "69/420");
+
+			ImVec2 ammoTextSize = gChaos.m_pArborcrest->CalcTextSizeA(22.0f, FLT_MAX, 0.0f, buffer);
+
+			ImVec2 centeredPos = ImVec2(
+				(weaponIconPos.x + 64) - (ammoTextSize.x / 2.0f),
+				(weaponIconPos.y + 144) - (ammoTextSize.y / 2.0f)
+			);
+
+			ImGui::SetCursorPos(ImVec2(centeredPos.x + 2.0f, centeredPos.y + 2.0f));
+			ImGui::PushFont(gChaos.m_pArborcrest);
+			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%s", buffer);
+			ImGui::PopFont();
+
+			ImGui::SetCursorPos(centeredPos);
+			ImGui::PushFont(gChaos.m_pArborcrest);
+			ImGui::TextColored(ImVec4(GTAVC_HUD_HEALTH_COLOR, 1.0f), "%s", buffer);
+			ImGui::PopFont();
+		}
+
 		ImGui::End();
-		//ImGui::GetWindowDrawList()->AddImage((void*)g_ActiveWeapon->textureID, ImVec2(0.0f, 0.0f), ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y), ImVec2(0, 0), ImVec2(1, 1));
 	}
 }
 

@@ -57,6 +57,7 @@ private:
 	bool m_bFlashHealth;
 	bool m_bNotificationActive;
 	double m_notifyStartTime;
+	float m_flFlashHealthTime;
 	const char* m_notifyMessage;
 };
 

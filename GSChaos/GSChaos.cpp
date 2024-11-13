@@ -221,6 +221,7 @@ int __stdcall HOOKED_wglSwapBuffers(HDC a1)
 		// -------------------------
 
 		glViewport(0, 0, (int)ImGui::GetIO().DisplaySize.x, (int)ImGui::GetIO().DisplaySize.y);
+
 		ImGui::Render();
 		ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 	}
@@ -303,9 +304,11 @@ void HOOKED_HUD_Frame(double time)
 	{
 		gChaos.Init();
 
+		ImVec2 realDisplaySize = gImGui.m_vecRealDisplaySize;
+
 		// create a load of blank pixels to create textures with
-		unsigned char* pBlankTex = new unsigned char[ImGui::GetIO().DisplaySize.x * ImGui::GetIO().DisplaySize.y * 3];
-		memset(pBlankTex, 0, ImGui::GetIO().DisplaySize.x * ImGui::GetIO().DisplaySize.y * 3);
+		unsigned char* pBlankTex = new unsigned char[realDisplaySize.x * realDisplaySize.y * 3];
+		memset(pBlankTex, 0, realDisplaySize.x * realDisplaySize.y * 3);
 
 		// Create the SCREEN-HOLDING TEXTURE
 		glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);

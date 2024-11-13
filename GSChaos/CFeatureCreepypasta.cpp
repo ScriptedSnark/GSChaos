@@ -22,8 +22,8 @@ const char* CFeatureCreepypasta::GetFeatureName()
 
 void CFeatureCreepypasta::SwapBuffers()
 {
-	int width = ImGui::GetIO().DisplaySize.x;
-	int height = ImGui::GetIO().DisplaySize.y;
+	int width = gImGui.m_vecRealDisplaySize.x;
+	int height = gImGui.m_vecRealDisplaySize.y;
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
 	glEnable(GL_BLEND);
@@ -49,6 +49,8 @@ void CFeatureCreepypasta::SwapBuffers()
 
 	glEnable(GL_COLOR_LOGIC_OP);
 	glLogicOp(GL_COPY_INVERTED);
+	
+	glViewport(0, 0, gImGui.m_vecRealDisplaySize.x, gImGui.m_vecRealDisplaySize.y);
 
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 0);
@@ -79,6 +81,7 @@ void CFeatureCreepypasta::SwapBuffers()
 	glEnd();
 
 	// Restore OpenGL states
+
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
 

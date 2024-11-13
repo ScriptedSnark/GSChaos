@@ -19,8 +19,10 @@ public:
 	void Init();
 	void InitBackends(void* hwnd);
 	bool CanUseEngineResolution();
-	void UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale);
+	void UpdateResolution(ImVec2& displaySize, ImVec2& frameBufferScale, ImVec2 realDisplaySize);
 	void Draw();
+	
+	ImVec2 m_vecRealDisplaySize;
 };
 
 #endif //IMGUI_MANAGER_HPP_GUARD

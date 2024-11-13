@@ -648,6 +648,9 @@
     <ClCompile Include="CFeatureInvertMovementInputs.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureOHKO.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1274,6 +1277,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureInvertMovementInputs.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureOHKO.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

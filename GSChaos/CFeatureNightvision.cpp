@@ -52,6 +52,12 @@ void CFeatureNightvision::Draw()
 	if (!IsActive())
 		return;
 
+	if (m_nvSprite == NULL)
+	{
+		m_nvSprite = LoadSprite("../chaos/of_nv_b.spr");
+		return;
+	}
+
 	// Top left of the screen.
 	int x, y;
 	x = y = 0;
