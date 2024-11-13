@@ -663,3 +663,8 @@ bool CFeatureGTA3HUD::UseCustomDuration()
 {
 	return true;
 }
+
+bool CFeatureGTA3HUD::CanBeInfinite()
+{
+	return true;
+}
