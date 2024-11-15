@@ -40,6 +40,7 @@ public:
 	virtual void PM_Move(struct playermove_s* ppmove, qboolean server);
 	virtual void Vote(const std::string& user, const std::string& msg);
 	virtual void V_CalcRefdef(struct ref_params_s* pparams);
+	virtual void VidInit();
 	virtual bool IsActive();
 	virtual double GetDuration();
 	virtual bool UseCustomDuration();

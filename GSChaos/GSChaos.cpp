@@ -17,6 +17,7 @@
 typedef void (*__wassert)(wchar_t const* _Message, wchar_t const* _File, unsigned _Line);
 __wassert ORIG_wassert = NULL;
 
+typedef int (*_HUD_VidInit)(void);
 typedef void (*_HUD_Frame)(double time);
 typedef int (*_HUD_Redraw)(float time, int intermission);
 typedef void (*_V_CalcRefdef)(struct ref_params_s* pparams);
@@ -24,6 +25,7 @@ typedef void (*_HUD_CreateEntities)(void);
 typedef int (*_HUD_AddEntity)(int type, struct cl_entity_s* ent, const char* modelname);
 typedef void (*_CL_CreateMove)(float frametime, struct usercmd_s* cmd, int active);
 
+_HUD_VidInit ORIG_HUD_VidInit = NULL;
 _HUD_Frame ORIG_HUD_Frame = NULL;
 _HUD_Redraw ORIG_HUD_Redraw = NULL;
 _V_CalcRefdef ORIG_V_CalcRefdef = NULL;
@@ -295,6 +297,18 @@ void DisableFog()
 	pEngfuncs->pTriAPI->Fog(0, 0, 0, 0);
 
 	glDisable(GL_FOG);
+}
+
+int HOOKED_HUD_VidInit(void)
+{
+	int res = ORIG_HUD_VidInit();
+
+	for (CChaosFeature* i : gChaosFeatures)
+	{
+		i->VidInit();
+	}
+
+	return res;
 }
 
 void HOOKED_HUD_Frame(double time)
@@ -575,11 +589,13 @@ void HookClient()
 
 	int status;
 
+	Find(Client, HUD_VidInit);
 	Find(Client, HUD_Frame);
 	Find(Client, HUD_Redraw);
 	Find(Client, V_CalcRefdef);
 	Find(Client, HUD_AddEntity);
 	Find(Client, CL_CreateMove);
+	CreateHook(Client, HUD_VidInit);
 	CreateHook(Client, HUD_Frame);
 	CreateHook(Client, HUD_Redraw);
 	CreateHook(Client, V_CalcRefdef);

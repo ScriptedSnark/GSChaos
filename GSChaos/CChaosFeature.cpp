@@ -120,6 +120,11 @@ void CChaosFeature::V_CalcRefdef(struct ref_params_s* pparams)
 	;
 }
 
+void CChaosFeature::VidInit()
+{
+	;
+}
+
 bool CChaosFeature::IsActive()
 {
 	return m_bActivated;

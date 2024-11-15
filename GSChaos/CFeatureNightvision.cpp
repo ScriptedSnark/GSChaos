@@ -90,6 +90,11 @@ void CFeatureNightvision::Draw()
 	m_iFrame++;
 }
 
+void CFeatureNightvision::VidInit()
+{
+	m_nvSprite = LoadSprite("../chaos/of_nv_b.spr");
+}
+
 const char* CFeatureNightvision::GetFeatureName()
 {
 	return "Nightvision";

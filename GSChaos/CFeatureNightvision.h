@@ -25,6 +25,7 @@ class CFeatureNightvision : public CChaosFeature
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	void Draw() override;
+	void VidInit() override;
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
