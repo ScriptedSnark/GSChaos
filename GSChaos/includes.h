@@ -250,6 +250,7 @@ extern bool g_bEncrypted;
 #include "CFeatureCombineEffects.h"
 #include "CFeature10Effects.h"
 #include "CFeature10GoodEffects.h"
+#include "CFeatureComboTime.h"
 //========================
 
 #include "CChaos.h"

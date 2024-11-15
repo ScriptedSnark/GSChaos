@@ -187,6 +187,7 @@
     <ClCompile Include="CFeatureCheatCodeVoting.cpp" />
     <ClCompile Include="CFeatureChipmunks.cpp" />
     <ClCompile Include="CFeatureCombineEffects.cpp" />
+    <ClCompile Include="CFeatureComboTime.cpp" />
     <ClCompile Include="CFeatureCreepypasta.cpp" />
     <ClCompile Include="CFeatureDarkness.cpp" />
     <ClCompile Include="CFeatureDelete5RandomEntities.cpp" />
@@ -398,6 +399,7 @@
     <ClInclude Include="CFeatureCheatCodeVoting.h" />
     <ClInclude Include="CFeatureChipmunks.h" />
     <ClInclude Include="CFeatureCombineEffects.h" />
+    <ClInclude Include="CFeatureComboTime.h" />
     <ClInclude Include="CFeatureCreepypasta.h" />
     <ClInclude Include="CFeatureDarkness.h" />
     <ClInclude Include="CFeatureDelete5RandomEntities.h" />

@@ -448,6 +448,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureCombineEffects>();
 	RegisterChaosFeature<CFeature10Effects>();
 	RegisterChaosFeature<CFeature10GoodEffects>();
+	RegisterChaosFeature<CFeatureComboTime>();
 
 	for (CChaosFeature* i : gChaosFeatures)
 	{
@@ -517,6 +518,7 @@ void CChaos::ToggleConsistentMode()
 		}
 	}
 
+	m_bComboTime = false;
 	m_bConsistentMode = !m_bConsistentMode;
 
 	if (m_bConsistentMode)
@@ -580,7 +582,7 @@ void CChaos::VoteThink()
 		return;
 	}
 
-	if (m_flTime > (m_flChaosTime / 3.0))
+	if (m_flTime > (m_flChaosTime / 3.0) && !m_bComboTime)
 	{
 		StartVoting();
 	}
@@ -646,6 +648,7 @@ void CChaos::Reset()
 	ChaosLoud::StopAllSounds();
 
 	m_bConsistentMode = false;
+	m_bComboTime = false;
 
 	for (CChaosFeature* feature : gChaosFeatures)
 	{
@@ -663,21 +666,34 @@ void CChaos::Reset()
 	g_bDespawnExShephard = true;
 	g_bDespawnJesus = true;
 
-	auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
-	m_startTime = currentTime;
-
-	m_pauseStartTime = std::chrono::high_resolution_clock::now();
-
-	if (chaos_timer && chaos_timer->value > 15.0f)
-		m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
-	else
-		m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
+	ResetChaosBarTimer();
 
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
 	m_lpRandomDevice->GenerateNewSeedTable();
 
 	if (m_bTwitchVoting)
 		InitVotingSystem();
+}
+
+void CChaos::ResetChaosBarTimer()
+{
+	// Reset timer
+	auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
+	m_pauseStartTime = std::chrono::high_resolution_clock::now();
+	m_startTime = currentTime;
+
+	if (!m_bComboTime)
+	{
+		if (chaos_timer && chaos_timer->value > 15.0f)
+			m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
+		else
+			m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
+	}
+	else
+	{
+		m_flChaosTime = CHAOS_ACTIVATE_TIMER * 0.05;
+	}
+
 }
 
 void CChaos::Shutdown()
@@ -953,15 +969,14 @@ void CChaos::OnFrame(double time)
 	{
 		DEBUG_PRINT("ACTIVATE NEW CHAOS FEATURE\n");
 		
-		// Reset timer
-		auto currentTime = std::chrono::high_resolution_clock::now() - m_pauseOffset;
-		m_startTime = currentTime;
+		if (m_bComboTime && m_iHackCounter > 5)
+		{
+			m_bComboTime = false;
+			m_iHackCounter = 0;
+		}
 
-		if (chaos_timer && chaos_timer->value > 15.0f)
-			m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
-		else
-			m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
-		
+		ResetChaosBarTimer();
+
 		if (!m_bRainbowBar)
 		{
 			m_iBarColor[0] = GetRandomValue(0, 255);
@@ -987,16 +1002,15 @@ void CChaos::OnFrame(double time)
 
 		// Do some setup
 		ResetStates();
-		
+
+		if (m_bComboTime)
+			m_iHackCounter++;
+
 		if (!m_bTwitchVoting)
 		{
 			// Pick random effect
-//#ifndef GS_DEBUG
 			int i = GetRandomEffect(0, gChaosFeatures.size() - 1);
 			CChaosFeature* randomFeature = gChaosFeatures[i];
-//#else
-//			CChaosFeature* randomFeature = gChaosFeatures[gChaosFeatures.size() - 1];
-//#endif
 
 			// After
 			while (strstr(randomFeature->GetFeatureName(), "Cheat Code Voting"))
@@ -1007,7 +1021,7 @@ void CChaos::OnFrame(double time)
 
 			m_pCurrentFeature = randomFeature;
 		}
-		else
+		else // !m_bComboTime check could be here but meh...
 		{
 			m_iWinnerEffect = GetWinnerEffect();
 			m_pCurrentFeature = gChaosFeatures[m_iWinnerEffect];
@@ -1042,6 +1056,11 @@ void CChaos::ActivateChaosFeature(int i)
 	// After
 	m_pCurrentFeature = randomFeature;
 	m_pCurrentFeature->ActivateFeature();
+}
+
+void CChaos::EnableComboTime()
+{
+	m_bComboTime = true;
 }
 
 // TODO: improve random
@@ -1086,7 +1105,10 @@ double CChaos::GetTime()
 
 double CChaos::GetChaosTime()
 {
-	return m_flChaosTime;
+	if (m_bComboTime)
+		return m_flChaosTime / 0.05;
+	else
+		return m_flChaosTime;
 }
 
 double CChaos::GetGlobalTime()

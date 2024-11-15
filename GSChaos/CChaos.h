@@ -52,6 +52,7 @@ public:
 	void Vote(const std::string& user, const std::string& msg);
 	int GetWinnerEffect();
 	void Reset();
+	void ResetChaosBarTimer();
 	void Shutdown();
 	void PrintVersion();
 	bool IsVoteStarted();
@@ -63,6 +64,7 @@ public:
 	void OnRainbowFrame();
 	void OnFrame(double time);
 	void ActivateChaosFeature(int i);
+	void EnableComboTime();
 	int GetRandomValue(int min, int max);
 	int GetRandomEffect(int min, int max);
 	float GetRandomValue(float min, float max);
@@ -104,6 +106,7 @@ private:
 	int m_iBarColor[3];
 	int m_iHackCounter;
 	int m_aiPreviousRandomValue[3];
+	bool m_bComboTime;
 	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
 
