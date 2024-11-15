@@ -36,8 +36,8 @@ bool CFeatureWideScreen::UseCustomDuration()
 
 void CFeatureWideScreen::SwapBuffers()
 {
-	int width = ImGui::GetIO().DisplaySize.x;
-	int height = ImGui::GetIO().DisplaySize.y;
+	int width = gImGui.m_vecRealDisplaySize.x;
+	int height = gImGui.m_vecRealDisplaySize.y;
 
 	glBlendFunc(GL_SRC_ALPHA, GL_ZERO);
 	glEnable(GL_BLEND);
@@ -63,6 +63,8 @@ void CFeatureWideScreen::SwapBuffers()
 	glBindTexture(GL_TEXTURE_RECTANGLE_NV, 32767);
 
 	glColor4f(1, 1, 1, 1);
+
+	glViewport(0, 0, gImGui.m_vecRealDisplaySize.x, gImGui.m_vecRealDisplaySize.y);
 
 	glBegin(GL_QUADS);
 	glTexCoord2f(0, 0);
