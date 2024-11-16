@@ -216,6 +216,7 @@
     <ClCompile Include="CFeatureHL2Movement.cpp" />
     <ClCompile Include="CFeatureHook.cpp" />
     <ClCompile Include="CFeatureHorrorAudio.cpp" />
+    <ClCompile Include="CFeatureInputDelay.cpp" />
     <ClCompile Include="CFeatureInsaneStepsize.cpp" />
     <ClCompile Include="CFeatureInvertMovementInputs.cpp" />
     <ClCompile Include="CFeatureKickWorld.cpp" />
@@ -428,6 +429,7 @@
     <ClInclude Include="CFeatureHL2Movement.h" />
     <ClInclude Include="CFeatureHook.h" />
     <ClInclude Include="CFeatureHorrorAudio.h" />
+    <ClInclude Include="CFeatureInputDelay.h" />
     <ClInclude Include="CFeatureInsaneStepsize.h" />
     <ClInclude Include="CFeatureInvertMovementInputs.h" />
     <ClInclude Include="CFeatureKickWorld.h" />

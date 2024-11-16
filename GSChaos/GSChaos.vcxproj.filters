@@ -652,6 +652,7 @@
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="CFeatureComboTime.cpp">
+    <ClCompile Include="CFeatureInputDelay.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1286,6 +1287,7 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureComboTime.h">
+    <ClInclude Include="CFeatureInputDelay.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
