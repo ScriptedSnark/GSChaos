@@ -133,7 +133,7 @@ const char* CFeatureInputDelay::GetFeatureName()
 
 double CFeatureInputDelay::GetDuration()
 {
-	return gChaos.GetChaosTime() * 1.25;
+	return gChaos.GetChaosTime() * 1.66667;
 }
 
 bool CFeatureInputDelay::UseCustomDuration()
