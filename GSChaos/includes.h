@@ -33,6 +33,7 @@
 #include <random>
 #include <fstream>
 #include <filesystem>
+#include <queue>
 
 //GL
 #include <gl/glew.h>
@@ -245,6 +246,7 @@ extern bool g_bEncrypted;
 #include "CFeatureDisableOneMovementKey.h"
 #include "CFeatureInvertMovementInputs.h"
 #include "CFeatureOHKO.h"
+#include "CFeatureInputDelay.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
