@@ -18,7 +18,6 @@
 #pragma once
 
 #ifdef __cplusplus
-#include <queue>
 
 class CFeatureInputDelay : public CChaosFeature
 {

@@ -1,6 +1,8 @@
 #include "includes.h"
+#include "mathlib.h"
 
-double delay = 0.25;
+double g_dblInputDelay = 0.25;
+
 void CFeatureInputDelay::Init()
 {
 	CChaosFeature::Init();
@@ -12,6 +14,7 @@ void CFeatureInputDelay::ActivateFeature()
 	m_first = true;
 	m_vfirst = true;
 
+	// TODO: get some constant values if these cvars aren't available (mod-specific)
 	cl_pitchup = pEngfuncs->pfnGetCvarPointer("cl_pitchup");
 	cl_pitchdown = pEngfuncs->pfnGetCvarPointer("cl_pitchdown");
 }
@@ -23,33 +26,6 @@ void CFeatureInputDelay::DeactivateFeature()
 	std::queue<usercmd_time_s>().swap(m_commandQueue);
 	std::queue<viewangles_time_s>().swap(m_viewQueue);
 	CChaosFeature::DeactivateFeature();
-}
-
-static void VectorCopy(float* in, float* out)
-{
-	out[0] = in[0];
-	out[1] = in[1];
-	out[2] = in[2];
-}
-
-static void VectorSub(float* in, float* out)
-{
-	out[0] -= in[0];
-	out[1] -= in[1];
-	out[2] -= in[2];
-}
-
-static void VectorAdd(float* in, float* out)
-{
-	out[0] += in[0];
-	out[1] += in[1];
-	out[2] += in[2];
-}
-// Taken from pm_shared / pm_math.c 
-static float anglemod(float a)
-{
-	a = (360.0 / 65536) * ((int)(a * (65536 / 360.0)) & 65535);
-	return a;
 }
 
 void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, int active)
@@ -69,7 +45,7 @@ void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, i
 
 	// Not sure what the best way to do this is, but I think I'll just drop inputs if
 	// too many happen to hit the delay threshold (fps change, menu buffering)
-	while (!m_commandQueue.empty() && m_commandQueue.front().time + delay <= time)
+	while (!m_commandQueue.empty() && m_commandQueue.front().time + g_dblInputDelay <= time)
 	{
 		m_lastcmd = m_commandQueue.front().cmd;
 		m_commandQueue.pop();
@@ -95,7 +71,7 @@ void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, i
 
 	m_viewQueue.push(viewangles_time_s{ {cangles[0], cangles[1], cangles[2]},  time });
 
-	while (!m_viewQueue.empty() && m_viewQueue.front().time + delay <= time)
+	while (!m_viewQueue.empty() && m_viewQueue.front().time + g_dblInputDelay <= time)
 	{
 		// Copy and apply the delta to the view.
 		VectorCopy(m_viewQueue.front().vangles, cangles);

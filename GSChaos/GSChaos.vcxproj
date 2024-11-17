@@ -549,6 +549,7 @@
     <ClInclude Include="imgui_manager.hpp" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="in_camera.h" />
+    <ClInclude Include="mathlib.h" />
     <ClInclude Include="parsemsg.h" />
     <ClInclude Include="pricedown.h" />
     <ClInclude Include="resource.h" />

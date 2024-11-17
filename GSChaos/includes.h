@@ -33,6 +33,7 @@
 #include <random>
 #include <fstream>
 #include <filesystem>
+#include <queue>
 
 //GL
 #include <gl/glew.h>
