@@ -183,6 +183,7 @@
     <ClCompile Include="CFeature20FPS.cpp" />
     <ClCompile Include="CFeatureAmIDead.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
+    <ClCompile Include="CFeatureBlur.cpp" />
     <ClCompile Include="CFeatureBoost.cpp" />
     <ClCompile Include="CFeatureCheatCodeVoting.cpp" />
     <ClCompile Include="CFeatureChipmunks.cpp" />
@@ -396,6 +397,7 @@
     <ClInclude Include="CFeature20FPS.h" />
     <ClInclude Include="CFeatureAmIDead.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
+    <ClInclude Include="CFeatureBlur.h" />
     <ClInclude Include="CFeatureBoost.h" />
     <ClInclude Include="CFeatureCheatCodeVoting.h" />
     <ClInclude Include="CFeatureChipmunks.h" />

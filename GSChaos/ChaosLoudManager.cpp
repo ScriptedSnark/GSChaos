@@ -35,6 +35,8 @@ namespace ChaosLoud
 		g_wBank[SND_PAIN].load("chaos/pl_pain2.wav");
 		g_wBank[SND_XBOW_HIT].load("chaos/xbow_hit.wav");
 		g_wBank[SND_GTA_AMMO].load("chaos/gta_ammo.wav");
+		g_wBank[SND_BEER1].load("chaos/wrongbeer.wav");
+		g_wBank[SND_BEER2].load("chaos/beerresponsible.wav");
 	}
 
 	void EmitSound(int idx)

@@ -247,6 +247,7 @@ extern bool g_bEncrypted;
 #include "CFeatureInvertMovementInputs.h"
 #include "CFeatureOHKO.h"
 #include "CFeatureInputDelay.h"
+#include "CFeatureBlur.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

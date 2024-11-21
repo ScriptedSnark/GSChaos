@@ -657,6 +657,9 @@
     <ClCompile Include="CFeatureInputDelay.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureBlur.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1292,6 +1295,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureInputDelay.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureBlur.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
