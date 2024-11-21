@@ -14,7 +14,6 @@ void CFeatureInputDelay::ActivateFeature()
 	m_first = true;
 	m_vfirst = true;
 
-	// TODO: get some constant values if these cvars aren't available (mod-specific)
 	cl_pitchup = pEngfuncs->pfnGetCvarPointer("cl_pitchup");
 	cl_pitchdown = pEngfuncs->pfnGetCvarPointer("cl_pitchdown");
 }
@@ -79,10 +78,13 @@ void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, i
 		// same as in client sdk
 		m_lastview[1] = anglemod(m_lastview[1]);
 
-		if (m_lastview[0] > cl_pitchdown->value)
-			m_lastview[0] = cl_pitchdown->value;
-		if (m_lastview[0] < -cl_pitchup->value)
-			m_lastview[0] = -cl_pitchup->value;
+		float pitchup = cl_pitchup ? cl_pitchup->value : 89.0f;
+		float pitchdown = cl_pitchdown ? cl_pitchdown->value : 89.0f;
+
+		if (m_lastview[0] > pitchdown)
+			m_lastview[0] = pitchdown;
+		if (m_lastview[0] < -pitchup)
+			m_lastview[0] = -pitchup;
 		m_viewQueue.pop();
 	}
 	m_lastview[2] = roll;

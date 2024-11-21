@@ -89,3 +89,8 @@ void CFeatureWideScreen::SwapBuffers()
 
 	glDisable(GL_BLEND);
 }
+
+bool CFeatureWideScreen::CanBeInfinite()
+{
+	return true;
+}
