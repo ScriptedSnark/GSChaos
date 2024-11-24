@@ -226,6 +226,7 @@
     <ClCompile Include="CFeatureLowDrawDistance.cpp" />
     <ClCompile Include="CFeatureLowFOV.cpp" />
     <ClCompile Include="CFeatureMakeItBunDem.cpp" />
+    <ClCompile Include="CFeatureMaxwell.cpp" />
     <ClCompile Include="CFeatureMegaJump.cpp" />
     <ClCompile Include="CFeatureMessWorld.cpp" />
     <ClCompile Include="CFeatureMinerals.cpp" />
@@ -440,6 +441,7 @@
     <ClInclude Include="CFeatureLowDrawDistance.h" />
     <ClInclude Include="CFeatureLowFOV.h" />
     <ClInclude Include="CFeatureMakeItBunDem.h" />
+    <ClInclude Include="CFeatureMaxwell.h" />
     <ClInclude Include="CFeatureMegaJump.h" />
     <ClInclude Include="CFeatureMessWorld.h" />
     <ClInclude Include="CFeatureMinerals.h" />
