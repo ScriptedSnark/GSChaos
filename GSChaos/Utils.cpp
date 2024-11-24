@@ -3,7 +3,7 @@
 //STB
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
-
+#define GL_REPEAT 0x2901
 #define GL_CLAMP_TO_EDGE 0x812F
 
 inline int	  ENTINDEX(edict_t* pEdict) { return (*g_engfuncs->pfnIndexOfEdict)(pEdict); }
@@ -379,14 +379,12 @@ void UTIL_HudMessage(edict_t* pEntity, const hudtextparms_t& textparms, const ch
 	MESSAGE_END();
 }
 
-
-#define TEXTURE_BASEID 12000
-
+int g_iTextureCounter;
 // Simple helper function to load an image into a OpenGL texture with common settings
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 {
 	// Load from file
-	static int counter;
+	//static int counter;
 
 	int image_width = 0;
 	int image_height = 0;
@@ -398,16 +396,18 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 	GLuint image_texture;
 
 	// xWhitey, thank you so much for that idea!
-	counter++;
-	image_texture = TEXTURE_BASEID + counter;
+	g_iTextureCounter++;
+	image_texture = TEXTURE_BASEID + g_iTextureCounter;
 
 	glBindTexture(GL_TEXTURE_2D, image_texture);
 
 	// Setup filtering parameters for display
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // This is required on WebGL for non power-of-two textures
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); // Same
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE); // This is required on WebGL for non power-of-two textures
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE); // Same
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	// Upload pixels into texture
 #if defined(GL_UNPACK_ROW_LENGTH) && !defined(__EMSCRIPTEN__)
@@ -418,6 +418,37 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 
 	*out_texture = image_texture;
 
+	return true;
+}
+
+bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char** image_frames, int* image_width, int* image_height)
+{
+	if (frames < 1) return false;
+	int cur_image_width = 0;
+	int cur_image_height = 0;
+	char filename[256] = { 0 };
+	size_t baselen = strlen(base_filename);
+	strncpy_s(filename, 256, base_filename, 256);
+	
+	for (int i = 0; i < frames; i++)
+	{
+		sprintf_s(filename + baselen, 256 - baselen, "%03u", i);
+		unsigned char* image_data = stbi_load(filename, &cur_image_width, &cur_image_height, NULL, 1);
+		if (image_data == NULL)
+			return false;
+		image_frames[i] = image_data;
+		if (*image_width == 0) *image_width = cur_image_width;
+		if (*image_height == 0) *image_height = cur_image_height;
+		if (*image_width != cur_image_width || *image_height != cur_image_height)
+		{
+			for (int j = 0; j > -1; j--)
+			{
+				stbi_image_free(image_frames[j]);
+			}
+			image_frames = nullptr;
+			return false;
+		}
+	}
 	return true;
 }
 
