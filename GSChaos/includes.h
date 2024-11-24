@@ -248,6 +248,7 @@ extern bool g_bEncrypted;
 #include "CFeatureOHKO.h"
 #include "CFeatureInputDelay.h"
 #include "CFeatureBlur.h"
+#include "CFeatureMaxwell.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

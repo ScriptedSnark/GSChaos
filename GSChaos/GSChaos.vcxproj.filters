@@ -660,6 +660,9 @@
     <ClCompile Include="CFeatureBlur.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureMaxwell.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1298,6 +1301,10 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureBlur.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="mathlib.h" />
+    <ClInclude Include="CFeatureMaxwell.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

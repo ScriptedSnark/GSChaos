@@ -37,6 +37,9 @@ namespace ChaosLoud
 		g_wBank[SND_GTA_AMMO].load("chaos/gta_ammo.wav");
 		g_wBank[SND_BEER1].load("chaos/wrongbeer.wav");
 		g_wBank[SND_BEER2].load("chaos/beerresponsible.wav");
+		
+		g_wBank[SND_MAXWELL].load("chaos/maxwell/maxwell.wav");
+		g_wBank[SND_MAXWELL].setLooping(1);
 	}
 
 	void EmitSound(int idx)
