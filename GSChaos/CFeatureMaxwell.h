@@ -42,6 +42,7 @@ private:
 	int m_iMaxwellModel;
 	GLuint m_iMaxwellID;
 	unsigned char** frames;
+	bool loaded = false;
 };
 
 #else //!__cplusplus

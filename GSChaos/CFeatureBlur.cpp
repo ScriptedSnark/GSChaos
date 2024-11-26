@@ -37,7 +37,7 @@ const char* CFeatureBlur::GetFeatureName()
 
 double CFeatureBlur::GetDuration()
 {
-	return gChaos.GetChaosTime() * 1.08;
+	return gChaos.GetChaosTime() * 0.85;
 }
 
 bool CFeatureBlur::UseCustomDuration()

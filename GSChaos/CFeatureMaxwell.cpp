@@ -6,7 +6,7 @@ void CFeatureMaxwell::Init()
 
 	frames = new unsigned char* [FRAMECOUNT];
 	// Bit of an ugly way to load but it'll do for now.
-	LoadTexturesFromFiles("chaos/maxwell/maxwell", FRAMECOUNT, frames, &width, &height);
+	loaded = LoadTexturesFromFiles("chaos/maxwell/maxwell", FRAMECOUNT, frames, &width, &height);
 	m_iMaxwellID = TEXTURE_BASEID + ++g_iTextureCounter;
 	fps = 15;
 }
@@ -14,7 +14,7 @@ void CFeatureMaxwell::Init()
 void CFeatureMaxwell::ActivateFeature()
 {
 	CFeatureForgotCSS::ActivateFeature();
-	textureUpdatingActive = true;
+	textureUpdatingActive = true && loaded;
 	ChaosLoud::EmitSound(SND_MAXWELL);
 	m_iMaxwellModel = PRECACHE_MODEL(CHAOS_PATH "maxwell/dingus.mdl"); // HACK
 }
@@ -26,7 +26,7 @@ void CFeatureMaxwell::DeactivateFeature()
 }
 void CFeatureMaxwell::OnFrame(double time)
 {
-	if (!textureUpdatingActive)
+	if (!textureUpdatingActive || !loaded)
 		return;
 
 	int newFrame = (int)(pEngfuncs->GetAbsoluteTime() * fps) % FRAMECOUNT;
@@ -65,7 +65,7 @@ const char* CFeatureMaxwell::GetFeatureName()
 
 double CFeatureMaxwell::GetDuration()
 {
-	return gChaos.GetChaosTime() * 1.05;
+	return gChaos.GetChaosTime() * 1.15;
 }
 
 bool CFeatureMaxwell::UseCustomDuration()

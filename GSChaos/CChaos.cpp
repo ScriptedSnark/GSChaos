@@ -445,6 +445,8 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureInputDelay>();
 	RegisterChaosFeature<CFeatureBlur>();
 	RegisterChaosFeature<CFeatureMaxwell>();
+	RegisterChaosFeature<CFeatureSwapAttacks>();
+	RegisterChaosFeature<CFeatureTwitchy>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();

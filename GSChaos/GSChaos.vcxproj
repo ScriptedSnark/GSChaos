@@ -68,7 +68,7 @@
       <AdditionalOptions>/MAP %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>$(SolutionDir)filecopy.bat</Command>
+      <Command>$(SolutionDir)filecopy.bat "$(SolutionDir)$(Configuration)" "$(HalfLifeDir)"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copying GSChaos to ASI directory</Message>
@@ -289,6 +289,7 @@
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureScrollingHell.cpp" />
     <ClCompile Include="CFeatureSuperhot.cpp" />
+    <ClCompile Include="CFeatureSwapAttacks.cpp" />
     <ClCompile Include="CFeatureTempEntityMadness.cpp" />
     <ClCompile Include="CFeatureTurbulentHell.cpp" />
     <ClCompile Include="CFeatureSet1HP.cpp" />
@@ -312,6 +313,7 @@
     <ClCompile Include="CFeatureTinyNPCs.cpp" />
     <ClCompile Include="CFeatureTotem.cpp" />
     <ClCompile Include="CFeatureTrapPlayer.cpp" />
+    <ClCompile Include="CFeatureTwitchy.cpp" />
     <ClCompile Include="CFeatureUltraWideNPCs.cpp" />
     <ClCompile Include="CFeatureUpsideDown.cpp" />
     <ClCompile Include="CFeatureBikiniBottom.cpp" />
@@ -504,6 +506,7 @@
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureScrollingHell.h" />
     <ClInclude Include="CFeatureSuperhot.h" />
+    <ClInclude Include="CFeatureSwapAttacks.h" />
     <ClInclude Include="CFeatureTempEntityMadness.h" />
     <ClInclude Include="CFeatureTurbulentHell.h" />
     <ClInclude Include="CFeatureSet1HP.h" />
@@ -527,6 +530,7 @@
     <ClInclude Include="CFeatureTinyNPCs.h" />
     <ClInclude Include="CFeatureTotem.h" />
     <ClInclude Include="CFeatureTrapPlayer.h" />
+    <ClInclude Include="CFeatureTwitchy.h" />
     <ClInclude Include="CFeatureUltraWideNPCs.h" />
     <ClInclude Include="CFeatureUpsideDown.h" />
     <ClInclude Include="CFeatureBikiniBottom.h" />
