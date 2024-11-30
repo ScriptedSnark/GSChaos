@@ -1,12 +1,15 @@
 #include "includes.h"
+#include "mathlib.h"
 #define FRAMECOUNT 86
 void CFeatureMaxwell::Init()
 {
-	CChaosFeature::Init();
+	//CChaosFeature::Init();
 
 	frames = new unsigned char* [FRAMECOUNT];
+	if (frames == nullptr)
+		return;
 	// Bit of an ugly way to load but it'll do for now.
-	loaded = LoadTexturesFromFiles("chaos/maxwell/maxwell", FRAMECOUNT, frames, &width, &height);
+	loaded = LoadTexturesFromFiles("chaos/maxwell/maxwell", FRAMECOUNT, frames, width, height);
 	m_iMaxwellID = TEXTURE_BASEID + ++g_iTextureCounter;
 	fps = 15;
 }
@@ -46,8 +49,16 @@ void CFeatureMaxwell::HUD_AddEntity(int type, struct cl_entity_s* ent, const cha
 	if (ent->model->type != mod_studio)
 		return;
 
-	if (pEngfuncs->hudGetModelByIndex(m_iMaxwellModel))
+	if (auto model = pEngfuncs->hudGetModelByIndex(m_iMaxwellModel))
+	{
+		double time = pEngfuncs->GetAbsoluteTime();
 		ent->model = pEngfuncs->hudGetModelByIndex(m_iMaxwellModel);
+		// angle makes items rotate too but also makes curstate angle stick
+		ent->angles.y = anglemod(-time * 72.0) - 180.0f;
+		ent->curstate.angles.y = ent->angles.y;
+		// helps stop a small jitter when entities move and change direction.
+		ent->latched.prevangles.y = ent->angles.y;
+	}
 }
 
 void CFeatureMaxwell::Restore()

@@ -421,7 +421,7 @@ bool LoadTextureFromFile(const char* filename, GLuint* out_texture)
 	return true;
 }
 
-bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char** image_frames, int* image_width, int* image_height)
+bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char** image_frames, int& image_width, int& image_height)
 {
 	if (frames < 1) return false;
 	int cur_image_width = 0;
@@ -437,9 +437,9 @@ bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char
 		if (image_data == NULL)
 			return false;
 		image_frames[i] = image_data;
-		if (*image_width == 0) *image_width = cur_image_width;
-		if (*image_height == 0) *image_height = cur_image_height;
-		if (*image_width != cur_image_width || *image_height != cur_image_height)
+		if (image_width == 0) image_width = cur_image_width;
+		if (image_height == 0) image_height = cur_image_height;
+		if (image_width != cur_image_width || image_height != cur_image_height)
 		{
 			for (int j = 0; j > -1; j--)
 			{

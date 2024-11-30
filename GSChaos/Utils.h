@@ -76,7 +76,7 @@ void UTIL_ScreenFade(edict_t* pEntity, const Vector& color, float fadeTime, floa
 void UTIL_TakeDamage(entvars_t& pevInflictor, float flDamage, int bitsDamageType);
 void UTIL_HudMessage(edict_t* pEntity, const hudtextparms_t& textparms, const char* pMessage);
 bool LoadTextureFromFile(const char* filename, GLuint* out_texture);
-bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char** image_frames, int* image_width, int* image_height);
+bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char** image_frames, int& image_width, int& image_height);
 float UTIL_Hue2RGB(float p, float q, float t);
 Vector UTIL_HSL2RGB(Vector _HSL);
 float UTIL_GetScreenCoord(float flValue);
