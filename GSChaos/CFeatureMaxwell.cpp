@@ -76,7 +76,7 @@ const char* CFeatureMaxwell::GetFeatureName()
 
 double CFeatureMaxwell::GetDuration()
 {
-	return gChaos.GetChaosTime() * 1.15;
+	return gChaos.GetChaosTime() * 2.0;
 }
 
 bool CFeatureMaxwell::UseCustomDuration()
