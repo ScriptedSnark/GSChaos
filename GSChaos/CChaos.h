@@ -75,6 +75,10 @@ public:
 	int GetFrameCount();
 	bool IsReady();
 
+	// For HUD elements
+	void ResetDeaths();
+	void UpdateDeaths();
+
 	ImFont* m_fontTrebuchet;
 	ImFont* m_pArialBlack;
 	ImFont* m_pArialBlackItalic;
@@ -109,6 +113,11 @@ private:
 	bool m_bComboTime;
 	CTrustedRandom* m_lpRandomDevice;
 	CChaosFeature* m_pCurrentFeature;
+
+	// For HUD elements
+	float m_flOldHealth;
+	float m_flHealth;
+	int m_iDeaths;
 
 	// TWITCH
 	bool m_bStartedVoting;
