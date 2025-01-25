@@ -329,6 +329,7 @@
     <ClCompile Include="CFeatureX10Gravity.cpp" />
     <ClCompile Include="CFeatureZeroGravity.cpp" />
     <ClCompile Include="ChaosLoudManager.cpp" />
+    <ClCompile Include="ChaosStats.cpp" />
     <ClCompile Include="CLWrapper.cpp" />
     <ClCompile Include="CrashHandler.cpp" />
     <ClCompile Include="dynamic_precache.cpp" />
@@ -546,6 +547,7 @@
     <ClInclude Include="CFeatureWorstBhopCap.h" />
     <ClInclude Include="CFeatureX10Gravity.h" />
     <ClInclude Include="CFeatureZeroGravity.h" />
+    <ClInclude Include="ChaosStats.h" />
     <ClInclude Include="CLWrapper.h" />
     <ClInclude Include="CrashHandler.h" />
     <ClInclude Include="dynamic_precache.h" />

@@ -122,6 +122,8 @@ public:
 	int m_iDeaths;
 	int m_iLoads;
 	int m_iJumps;
+	int m_iCrashes;
+	int m_iEffectsCounter;
 private:
 	// TWITCH
 	bool m_bStartedVoting;

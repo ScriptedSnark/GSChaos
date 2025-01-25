@@ -51,6 +51,10 @@ public:
 			localtime_s(&m_CrashTime, &timestamp);
 			strftime(m_szCrashFileName, sizeof(m_szCrashFileName), "crash-%Y-%m-%d-%H-%M-%S", &m_CrashTime);
 
+			gChaos.m_iCrashes++;
+			ChaosStats::SetStatsFromCurrentSession();
+			ChaosStats::WriteStats();
+
 			CreateCrashReport(pExceptionInfo);
 			CreateMiniDump(pExceptionInfo);
 			ShowCrashDialog(pExceptionInfo);

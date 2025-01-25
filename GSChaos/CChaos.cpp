@@ -15,6 +15,7 @@ cvar_t* chaos_draw_as_overlay;
 cvar_t* chaos_hud_deaths;
 cvar_t* chaos_hud_loads;
 cvar_t* chaos_hud_jumps;
+cvar_t* chaos_hud_crashes;
 cvar_t* gl_clear;
 
 void ActivateChaosFeatureW()
@@ -74,16 +75,25 @@ void _ToggleConsistentMode()
 void _ResetDeaths()
 {
 	gChaos.m_iDeaths = 0;
+
+	ChaosStats::SetStatsFromCurrentSession();
+	ChaosStats::WriteStats();
 }
 
 void _ResetLoads()
 {
 	gChaos.m_iLoads = 0;
+
+	ChaosStats::SetStatsFromCurrentSession();
+	ChaosStats::WriteStats();
 }
 
 void _ResetJumps()
 {
 	gChaos.m_iJumps = 0;
+
+	ChaosStats::SetStatsFromCurrentSession();
+	ChaosStats::WriteStats();
 }
 
 void Simulate()
@@ -112,6 +122,7 @@ void CChaos::Init()
 	FeatureInit();
 
 	ChaosLoud::LoadSounds();
+	ChaosStats::ReadStats();
 
 	m_lpRandomDevice = new CTrustedRandom();
 	m_lpRandomDevice->FeedRandWithTime(time(NULL));
@@ -132,9 +143,12 @@ void CChaos::Init()
 	chaos_show_voting = pEngfuncs->pfnRegisterVariable("chaos_show_voting", "0", 0);
 	chaos_timer = pEngfuncs->pfnRegisterVariable("chaos_timer", "30.0", 0);
 	chaos_draw_as_overlay = pEngfuncs->pfnRegisterVariable("chaos_draw_as_overlay", "0", 0);
+	
+	// TODO: replace it with one cvar
 	chaos_hud_deaths = pEngfuncs->pfnRegisterVariable("chaos_hud_deaths", "0", 0);
 	chaos_hud_loads = pEngfuncs->pfnRegisterVariable("chaos_hud_loads", "0", 0);
 	chaos_hud_jumps = pEngfuncs->pfnRegisterVariable("chaos_hud_jumps", "0", 0);
+	chaos_hud_crashes = pEngfuncs->pfnRegisterVariable("chaos_hud_crashes", "0", 0);
 
 	gl_clear = pEngfuncs->pfnGetCvarPointer("gl_clear");
 
@@ -908,6 +922,12 @@ void CChaos::Draw()
 	if (chaos_hud_jumps->value)
 	{
 		UTIL_DrawTextTopRight((ScreenHeight / 2) + flYOffset, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Jumps: ^8%d", m_iJumps));
+		flYOffset += 22.0f;
+	}
+
+	if (chaos_hud_crashes->value)
+	{
+		UTIL_DrawTextTopRight((ScreenHeight / 2) + flYOffset, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Crashes: ^1%d", m_iCrashes));
 	}
 
 	// TODO: do not draw if cl.paused is true

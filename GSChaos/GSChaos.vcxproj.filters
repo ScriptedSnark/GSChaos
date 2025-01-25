@@ -672,6 +672,7 @@
     <ClCompile Include="CFeaturePunchangle.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="ChaosStats.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1325,6 +1326,7 @@
     <ClInclude Include="CFeaturePunchangle.h">
       <Filter>Effects</Filter>
     </ClInclude>
+    <ClInclude Include="ChaosStats.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">

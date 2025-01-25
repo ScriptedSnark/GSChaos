@@ -491,6 +491,9 @@ void HOOKED_ServerActivate(edict_t* pEdictList, int edictCount, int clientMax)
 {
 	ORIG_ServerActivate(pEdictList, edictCount, clientMax);
 	gChaos.ResetStates();
+
+	ChaosStats::SetStatsFromCurrentSession();
+	ChaosStats::WriteStats();
 }
 
 #ifdef COF_BUILD
@@ -1217,6 +1220,9 @@ extern "C" __declspec(dllexport) void ASIMain()
 
 extern "C" __declspec(dllexport) void ASIShutdown()
 {
+	ChaosStats::SetStatsFromCurrentSession();
+	ChaosStats::WriteStats();
+
 	gChaos.Shutdown();
 	gSoloud.deinit();
 	MH_Uninitialize();

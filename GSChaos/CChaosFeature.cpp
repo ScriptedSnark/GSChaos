@@ -10,6 +10,8 @@ void CChaosFeature::Init()
 
 void CChaosFeature::ActivateFeature()
 {
+	gChaos.m_iEffectsCounter++;
+
 	DEBUG_PRINT("CChaosFeature::ActivateFeature\n");
 	DEBUG_PRINT("%s\n", GetFeatureName());
 
