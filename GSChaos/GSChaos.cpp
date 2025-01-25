@@ -37,6 +37,7 @@ typedef void (*_LoadThisDll)(char* szDllFilename);
 typedef void (*_LoadEntityDLLs)(char* szBaseDir);
 typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
 typedef void (*_R_DrawWorld)();
+typedef int (*_Host_Load)(const char* pName);
 
 #ifdef COF_BUILD
 typedef int (*_Host_ValidSave)();
@@ -50,6 +51,7 @@ _LoadThisDll ORIG_LoadThisDll = NULL;
 _LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
 _ServerActivate ORIG_ServerActivate = NULL;
 _R_DrawWorld ORIG_R_DrawWorld = NULL;
+_Host_Load ORIG_Host_Load = NULL;
 
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
@@ -566,6 +568,16 @@ void HOOKED_R_DrawWorld()
 	glUseProgram(0);
 
 	glPopMatrix();
+}
+
+int HOOKED_Host_Load(const char* pName)
+{
+	int result = ORIG_Host_Load(pName);
+
+	if (result)
+		gChaos.m_iLoads++;
+
+	return result;
 }
 
 #ifdef COF_BUILD
@@ -1130,9 +1142,11 @@ void HookEngine()
 	SPTFind(LoadThisDll);
 	SPTFind(LoadEntityDLLs);
 	SPTFind(R_DrawWorld);
+	SPTFind(Host_Load);
 	EngineCreateHook(LoadThisDll);
 	EngineCreateHook(LoadEntityDLLs);
 	EngineCreateHook(R_DrawWorld);
+	EngineCreateHook(Host_Load);
 #ifdef COF_BUILD
 	EngineCreateHook(Host_ValidSave);
 #endif

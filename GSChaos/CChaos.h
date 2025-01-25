@@ -29,8 +29,10 @@
 
 #ifdef COF_BUILD
 #define CHAOS_TEXT_COLOR 1.f, 1.f, 1.f
+#define CHAOS_TEXT_COLOR_BYTE 255, 255, 255
 #else
 #define CHAOS_TEXT_COLOR 1.f, 0.627f, 0.117f
+#define CHAOS_TEXT_COLOR_BYTE 255, 160, 30
 #endif
 
 extern cvar_t* chaos_dmca_safe;
@@ -77,6 +79,7 @@ public:
 
 	// For HUD elements
 	void ResetDeaths();
+	void ResetLoads();
 	void UpdateDeaths();
 
 	ImFont* m_fontTrebuchet;
@@ -117,8 +120,10 @@ private:
 	// For HUD elements
 	float m_flOldHealth;
 	float m_flHealth;
+public:
 	int m_iDeaths;
-
+	int m_iLoads;
+private:
 	// TWITCH
 	bool m_bStartedVoting;
 	int m_aiEffectsForVoting[3], m_aiVoteValues[3];

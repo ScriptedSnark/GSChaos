@@ -505,3 +505,148 @@ float UTIL_GetScreenCoord(float flValue)
 
 	return static_cast<float>(static_cast<int>(flValue * flBase / ScreenHeight));
 }
+
+ImVec2 UTIL_CalculateTextSize(const char* text)
+{
+	return gChaos.m_fontTrebuchet->CalcTextSizeA(22.0f, FLT_MAX, 0.0f, text);
+}
+
+// COLOR CODE
+static ImVec4 s_DefaultColorCodeColors[10] = {
+	ImVec4(0xFF, 0xA0, 0x1E, 0xFF), // ^0 orange/reset
+	ImVec4(0xFF, 0x00, 0x00, 0xFF), // ^1 red
+	ImVec4(0x00, 0xFF, 0x00, 0xFF), // ^2 green
+	ImVec4(0xFF, 0xFF, 0x00, 0xFF), // ^3 yellow
+	ImVec4(0x00, 0x00, 0xFF, 0xFF), // ^4 blue
+	ImVec4(0x00, 0xFF, 0xFF, 0xFF), // ^5 cyan
+	ImVec4(0xFF, 0x00, 0xFF, 0xFF), // ^6 magenta
+	ImVec4(0x88, 0x88, 0x88, 0xFF), // ^7 grey
+	ImVec4(0xFF, 0xFF, 0xFF, 0xFF), // ^8 white
+	ImVec4(0xFF, 0xA0, 0x1E, 0xFF), // ^9 orange/reset
+};
+
+inline bool IsColorCode(const char* s)
+{
+	return (s[0] == '^' && s[1] >= '0' && s[1] <= '9');
+}
+
+void UTIL_DrawTextWithShadow(ImVec2 pos, Vector color, const char* text)
+{
+	ImVec2 shadowPos = ImVec2(pos.x + 2.0f, pos.y + 2.0f);
+
+	ImGui::GetBackgroundDrawList()->AddText(gChaos.m_fontTrebuchet, 22.0f, shadowPos, IM_COL32(0, 0, 0, 255), text);
+	ImGui::GetBackgroundDrawList()->AddText(gChaos.m_fontTrebuchet, 22.0f, pos, IM_COL32(color.x, color.y, color.z, 255), text);
+}
+
+void UTIL_DrawColoredText(ImVec2 startPos, const char* text, Vector defaultColor)
+{
+	// TODO: fix text position with color codes
+	if (!text || !*text)
+		return;
+
+	ImVec2 pos = startPos;
+	Vector currentColor = defaultColor;
+
+	const char* c1 = text;
+	const char* c2 = text;
+
+	while (true)
+	{
+		while (*c2 && *(c2 + 1) && !IsColorCode(c2))
+			c2++;
+
+		if (IsColorCode(c2))
+		{
+			int colorIndex = *(c2 + 1) - '0';
+
+			std::string segment(c1, c2 - c1);
+			if (!segment.empty())
+			{
+				UTIL_DrawTextWithShadow(pos, currentColor, segment.c_str());
+				pos.x += gChaos.m_fontTrebuchet->CalcTextSizeA(22.0f, FLT_MAX, 0.0f, segment.c_str()).x;
+			}
+
+			if (colorIndex == 0 || colorIndex == 9)
+			{
+				currentColor = defaultColor;
+			}
+			else
+			{
+				currentColor = Vector(
+					s_DefaultColorCodeColors[colorIndex].x,
+					s_DefaultColorCodeColors[colorIndex].y,
+					s_DefaultColorCodeColors[colorIndex].z
+				);
+			}
+
+			c2 += 2;
+			c1 = c2;
+		}
+		else
+		{
+			std::string segment(c1);
+			if (!segment.empty())
+			{
+				UTIL_DrawTextWithShadow(pos, currentColor, segment.c_str());
+			}
+			break;
+		}
+	}
+}
+
+// TODO: make all these things as one function
+void UTIL_DrawTextTopLeft(float y, Vector color, const char* text)
+{
+	ImVec2 pos = ImVec2(10.0f, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void UTIL_DrawTextTopRight(float y, Vector color, const char* text)
+{
+	ImVec2 textSize = UTIL_CalculateTextSize(text);
+	float x = ImGui::GetIO().DisplaySize.x - textSize.x - 10.0f; // EXTRA OFFSET
+	ImVec2 pos = ImVec2(x, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void UTIL_DrawTextTopCenter(float y, Vector color, const char* text)
+{
+	ImVec2 textSize = UTIL_CalculateTextSize(text);
+	float x = (ImGui::GetIO().DisplaySize.x - textSize.x) * 0.5f;
+	ImVec2 pos = ImVec2(x, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void DrawTextBottomLeft(float yOffset, Vector color, const char* text)
+{
+	float y = ImGui::GetIO().DisplaySize.y - yOffset;
+	ImVec2 pos = ImVec2(10.0f, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void UTIL_DrawTextBottomRight(float yOffset, Vector color, const char* text)
+{
+	ImVec2 textSize = UTIL_CalculateTextSize(text);
+	float x = ImGui::GetIO().DisplaySize.x - textSize.x - 10.0f; // EXTRA OFFSET
+	float y = ImGui::GetIO().DisplaySize.y - yOffset;
+	ImVec2 pos = ImVec2(x, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void UTIL_DrawTextBottomCenter(float yOffset, Vector color, const char* text)
+{
+	ImVec2 textSize = UTIL_CalculateTextSize(text);
+	float x = (ImGui::GetIO().DisplaySize.x - textSize.x) * 0.5f;
+	float y = ImGui::GetIO().DisplaySize.y - yOffset;
+	ImVec2 pos = ImVec2(x, y);
+	UTIL_DrawColoredText(pos, text, color);
+}
+
+void UTIL_DrawTextCenterScreen(Vector color, const char* text)
+{
+	ImVec2 textSize = UTIL_CalculateTextSize(text);
+	float x = (ImGui::GetIO().DisplaySize.x - textSize.x) * 0.5f;
+	float y = (ImGui::GetIO().DisplaySize.y - textSize.y) * 0.5f;
+	ImVec2 pos = ImVec2(x, y);
+	UTIL_DrawColoredText(pos, text, color);
+}

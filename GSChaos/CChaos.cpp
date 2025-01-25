@@ -13,6 +13,7 @@ cvar_t* chaos_show_voting;
 cvar_t* chaos_timer;
 cvar_t* chaos_draw_as_overlay;
 cvar_t* chaos_hud_deaths;
+cvar_t* chaos_hud_loads;
 cvar_t* gl_clear;
 
 void ActivateChaosFeatureW()
@@ -74,6 +75,11 @@ void _ResetDeaths()
 	gChaos.ResetDeaths();
 }
 
+void _ResetLoads()
+{
+	gChaos.ResetLoads();
+}
+
 void Simulate()
 {
 	for (int i = 0; i < 1000; i++)
@@ -110,7 +116,8 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_activate", ActivateChaosFeatureW);
 	pEngfuncs->pfnAddCommand("chaos_consistent_effects_add", _AddConsistentEffects);
 	pEngfuncs->pfnAddCommand("chaos_consistent_mode", _ToggleConsistentMode);
-	pEngfuncs->pfnAddCommand("chaos_deaths_reset", _ResetDeaths);
+	pEngfuncs->pfnAddCommand("chaos_reset_deaths", _ResetDeaths);
+	pEngfuncs->pfnAddCommand("chaos_reset_loads", _ResetLoads);
 	pEngfuncs->pfnAddCommand("random_simulate", Simulate);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
@@ -119,7 +126,8 @@ void CChaos::Init()
 	chaos_timer = pEngfuncs->pfnRegisterVariable("chaos_timer", "30.0", 0);
 	chaos_draw_as_overlay = pEngfuncs->pfnRegisterVariable("chaos_draw_as_overlay", "0", 0);
 	chaos_hud_deaths = pEngfuncs->pfnRegisterVariable("chaos_hud_deaths", "0", 0);
-	
+	chaos_hud_loads = pEngfuncs->pfnRegisterVariable("chaos_hud_loads", "0", 0);
+
 	gl_clear = pEngfuncs->pfnGetCvarPointer("gl_clear");
 
 	for (int i = 0; i < 3; i++)
@@ -874,43 +882,17 @@ void CChaos::Draw()
 		DrawEffectList();
 
 	// Additional Chaos HUD elements (not effects)
-	
-	// Deaths HUD
+	float flYOffset = 0.0f;
+
 	if (chaos_hud_deaths->value)
 	{
-		// TODO: write separate util functions for drawing text/align and so on
-		ImVec2 deathsTextSize = gChaos.m_fontTrebuchet->CalcTextSizeA(22.0f, FLT_MAX, 0.0f, "Deaths: ");
-		ImVec2 numberTextSize = gChaos.m_fontTrebuchet->CalcTextSizeA(22.0f, FLT_MAX, 0.0f, UTIL_VarArgs("%d", m_iDeaths));
+		UTIL_DrawTextTopRight(ScreenHeight / 2, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Deaths: ^1%d", m_iDeaths));
+		flYOffset += 22.0f;
+	}
 
-		float windowWidth = deathsTextSize.x + numberTextSize.x + 20.0f;
-		float windowHeight = 50.0f; // just in case
-
-		ImVec2 windowPos = ImVec2(ImGui::GetIO().DisplaySize.x - windowWidth - 10.0f, (ImGui::GetIO().DisplaySize.y - windowHeight) / 2.0f);
-
-		ImGui::SetNextWindowPos(windowPos, ImGuiCond_Always);
-		ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight), ImGuiCond_Always);
-
-		if (ImGui::Begin("#DEATHS", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav | ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoSavedSettings))
-		{
-			ImGui::PushFont(gChaos.m_fontTrebuchet);
-
-			float textY = (windowHeight - deathsTextSize.y) / 2.0f;
-			ImVec2 textPos = ImVec2(10.0f, textY);
-
-			ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "Deaths: ");
-			ImGui::SetCursorPos(textPos);
-			ImGui::TextColored(ImVec4(CHAOS_TEXT_COLOR, 1.f), "Deaths: ");
-
-			textPos.x += deathsTextSize.x;
-			ImGui::SetCursorPos(ImVec2(textPos.x + 2, textPos.y + 2));
-			ImGui::TextColored(ImVec4(0.0f, 0.0f, 0.0f, 1.0f), "%d", m_iDeaths);
-			ImGui::SetCursorPos(textPos);
-			ImGui::TextColored(ImVec4(1.0f, 0.0f, 0.0f, 1.f), "%d", m_iDeaths);
-
-			ImGui::PopFont();
-			ImGui::End();
-		}
+	if (chaos_hud_loads->value)
+	{
+		UTIL_DrawTextTopRight((ScreenHeight / 2) + flYOffset, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Loads: ^7%d", m_iLoads));
 	}
 
 	// TODO: do not draw if cl.paused is true
@@ -1190,6 +1172,11 @@ bool CChaos::IsReady()
 void CChaos::ResetDeaths()
 {
 	m_iDeaths = 0;
+}
+
+void CChaos::ResetLoads()
+{
+	m_iLoads = 0;
 }
 
 void CChaos::UpdateDeaths()

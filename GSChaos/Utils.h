@@ -80,6 +80,15 @@ bool LoadTexturesFromFiles(const char* base_filename, byte frames, unsigned char
 float UTIL_Hue2RGB(float p, float q, float t);
 Vector UTIL_HSL2RGB(Vector _HSL);
 float UTIL_GetScreenCoord(float flValue);
+ImVec2 UTIL_CalculateTextSize(const char* text);
+void UTIL_DrawTextWithShadow(ImVec2 pos, Vector color, const char* text);
+void UTIL_DrawColoredText(ImVec2 startPos, const char* text, Vector defaultColor);
+// TODO: make all these things as one function
+void UTIL_DrawTextTopLeft(float y, Vector color, const char* text);
+void UTIL_DrawTextTopRight(float y, Vector color, const char* text);
+void UTIL_DrawTextTopCenter(float y, Vector color, const char* text);
+void DrawTextBottomLeft(float yOffset, Vector color, const char* text);
+void UTIL_DrawTextBottomRight(float yOffset, Vector color, const char* text);
 
 #else //!__cplusplus
 #error C++ compiler required to compile Utils.h
