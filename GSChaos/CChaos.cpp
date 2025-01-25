@@ -485,6 +485,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureSwapAttacks>();
 	RegisterChaosFeature<CFeatureTwitchy>();
 	RegisterChaosFeature<CFeaturePunchangle>();
+	RegisterChaosFeature<CFeatureNoSaveLoading>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();

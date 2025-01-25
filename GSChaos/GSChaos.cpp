@@ -575,6 +575,9 @@ void HOOKED_R_DrawWorld()
 
 int HOOKED_Host_Load(const char* pName)
 {
+	if (g_bNoLoad)
+		return 0;
+
 	int result = ORIG_Host_Load(pName);
 
 	if (result)

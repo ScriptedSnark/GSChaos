@@ -673,6 +673,9 @@
       <Filter>Effects</Filter>
     </ClCompile>
     <ClCompile Include="ChaosStats.cpp" />
+    <ClCompile Include="CFeatureNoSaveLoading.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1327,6 +1330,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="ChaosStats.h" />
+    <ClInclude Include="CFeatureNoSaveLoading.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Hooking">

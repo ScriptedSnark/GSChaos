@@ -252,6 +252,7 @@ extern bool g_bEncrypted;
 #include "CFeatureSwapAttacks.h"
 #include "CFeatureTwitchy.h"
 #include "CFeaturePunchangle.h"
+#include "CFeatureNoSaveLoading.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
