@@ -29,6 +29,13 @@ Additional info:
 - `chaos_consistent_mode` - switches consistent mode. Consistent mode involves turning on certain effects for an unlimited amount of time without Chaos bar/timer.
 - `chaos_consistent_effects_add` - activate consistent effect (works only with consistent mode enabled)
 - `chaos_volume_multiplier` - increases volume from SoLoud sounds (volume->value * chaos_volume_multiplier->value)
+- `chaos_hud_deaths` - Death counter HUD
+- `chaos_hud_loads` - Save loading counter HUD
+- `chaos_hud_jumps` - Jump counter HUD
+- `chaos_hud_crashes` - Crash counter HUD
+- `chaos_reset_deaths` - Reset death counter
+- `chaos_reset_loads` - Reset save loading counter
+- `chaos_reset_jumps` - Reset jump counter
 
 ## Twitch voting integration (WIP)
 GSChaos supports Twitch chat voting. If you want to use it, then do some steps:
