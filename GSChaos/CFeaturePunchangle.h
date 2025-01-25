@@ -1,25 +1,25 @@
 /**
  * Copyright - ScriptedSnark, 2024-2025.
- * CFeatureShake.h
+ * CFeaturePunchangle.h
  *
  * Project (GSChaos) header file
  * Authors: ScriptedSnark.
  * Do not delete this comment block. Respect others' work!
  */
 
-#ifdef CFEATURESHAKE_H_RECURSE_GUARD
-#error Recursive header files inclusion detected in CFeatureShake.h
-#else //CFEATURESHAKE_H_RECURSE_GUARD
+#ifdef CFEATUREPUNCHANGLE_H_RECURSE_GUARD
+#error Recursive header files inclusion detected in CFeaturePunchangle.h
+#else //CFEATUREPUNCHANGLE_H_RECURSE_GUARD
 
-#define CFEATURESHAKE_H_RECURSE_GUARD
+#define CFEATUREPUNCHANGLE_H_RECURSE_GUARD
 
-#ifndef CFEATURESHAKE_H_GUARD
-#define CFEATURESHAKE_H_GUARD
+#ifndef CFEATUREPUNCHANGLE_H_GUARD
+#define CFEATUREPUNCHANGLE_H_GUARD
 #pragma once
 
 #ifdef __cplusplus
 
-class CFeatureShake : public CChaosFeature
+class CFeaturePunchangle : public CChaosFeature
 {
 	void Init() override;
 	void ActivateFeature() override;
@@ -32,10 +32,10 @@ class CFeatureShake : public CChaosFeature
 };
 
 #else //!__cplusplus
-#error C++ compiler required to compile CFeatureShake.h
+#error C++ compiler required to compile CFeaturePunchangle.h
 #endif //__cplusplus
 
-#endif //CFEATURESHAKE_H_GUARD
+#endif //CFEATUREPUNCHANGLE_H_GUARD
 
-#undef CFEATURESHAKE_H_RECURSE_GUARD
-#endif //CFEATURESHAKE_H_RECURSE_GUARD
+#undef CFEATUREPUNCHANGLE_H_RECURSE_GUARD
+#endif //CFEATUREPUNCHANGLE_H_RECURSE_GUARD

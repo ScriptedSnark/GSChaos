@@ -1,5 +1,5 @@
 /**
- * Copyright - ScriptedSnark, 2024.
+ * Copyright - ScriptedSnark, 2024-2025.
  * CFeatureGTA3HUD.h
  *
  * Project (GSChaos) header file

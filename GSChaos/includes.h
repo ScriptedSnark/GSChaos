@@ -1,5 +1,5 @@
 /**
- * Copyright - ScriptedSnark, 2024.
+ * Copyright - ScriptedSnark, 2024-2025.
  * includes.h - includes of project
  *
  * Project (GSChaos) header file
@@ -251,6 +251,7 @@ extern bool g_bEncrypted;
 #include "CFeatureMaxwell.h"
 #include "CFeatureSwapAttacks.h"
 #include "CFeatureTwitchy.h"
+#include "CFeaturePunchangle.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

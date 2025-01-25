@@ -1,5 +1,5 @@
 /**
- * Copyright - ScriptedSnark, 2024.
+ * Copyright - ScriptedSnark, 2024-2025.
  * CChaos.h - chaos
  *
  * Project (GSChaos) header file

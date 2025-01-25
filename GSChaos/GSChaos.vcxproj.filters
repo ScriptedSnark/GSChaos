@@ -669,6 +669,9 @@
     <ClCompile Include="CFeatureTwitchy.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeaturePunchangle.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1317,6 +1320,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureTwitchy.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeaturePunchangle.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

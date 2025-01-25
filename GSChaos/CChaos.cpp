@@ -470,6 +470,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureMaxwell>();
 	RegisterChaosFeature<CFeatureSwapAttacks>();
 	RegisterChaosFeature<CFeatureTwitchy>();
+	RegisterChaosFeature<CFeaturePunchangle>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();

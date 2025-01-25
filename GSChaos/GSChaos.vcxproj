@@ -276,6 +276,7 @@
     <ClCompile Include="CFeaturePlayAG.cpp" />
     <ClCompile Include="CFeaturePlusDuck.cpp" />
     <ClCompile Include="CFeaturePortrait.cpp" />
+    <ClCompile Include="CFeaturePunchangle.cpp" />
     <ClCompile Include="CFeatureQuakeJumpSound.cpp" />
     <ClCompile Include="CFeatureQuakePro.cpp" />
     <ClCompile Include="CFeatureRandomFog.cpp" />
@@ -493,6 +494,7 @@
     <ClInclude Include="CFeaturePlayAG.h" />
     <ClInclude Include="CFeaturePlusDuck.h" />
     <ClInclude Include="CFeaturePortrait.h" />
+    <ClInclude Include="CFeaturePunchangle.h" />
     <ClInclude Include="CFeatureQuakeJumpSound.h" />
     <ClInclude Include="CFeatureQuakePro.h" />
     <ClInclude Include="CFeatureRandomFog.h" />
