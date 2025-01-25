@@ -14,6 +14,7 @@ cvar_t* chaos_timer;
 cvar_t* chaos_draw_as_overlay;
 cvar_t* chaos_hud_deaths;
 cvar_t* chaos_hud_loads;
+cvar_t* chaos_hud_jumps;
 cvar_t* gl_clear;
 
 void ActivateChaosFeatureW()
@@ -72,12 +73,17 @@ void _ToggleConsistentMode()
 
 void _ResetDeaths()
 {
-	gChaos.ResetDeaths();
+	gChaos.m_iDeaths = 0;
 }
 
 void _ResetLoads()
 {
-	gChaos.ResetLoads();
+	gChaos.m_iLoads = 0;
+}
+
+void _ResetJumps()
+{
+	gChaos.m_iJumps = 0;
 }
 
 void Simulate()
@@ -118,6 +124,7 @@ void CChaos::Init()
 	pEngfuncs->pfnAddCommand("chaos_consistent_mode", _ToggleConsistentMode);
 	pEngfuncs->pfnAddCommand("chaos_reset_deaths", _ResetDeaths);
 	pEngfuncs->pfnAddCommand("chaos_reset_loads", _ResetLoads);
+	pEngfuncs->pfnAddCommand("chaos_reset_jumps", _ResetJumps);
 	pEngfuncs->pfnAddCommand("random_simulate", Simulate);
 
 	chaos_effectname_ypos = pEngfuncs->pfnRegisterVariable("chaos_effectname_ypos", "0.0", 0);
@@ -127,6 +134,7 @@ void CChaos::Init()
 	chaos_draw_as_overlay = pEngfuncs->pfnRegisterVariable("chaos_draw_as_overlay", "0", 0);
 	chaos_hud_deaths = pEngfuncs->pfnRegisterVariable("chaos_hud_deaths", "0", 0);
 	chaos_hud_loads = pEngfuncs->pfnRegisterVariable("chaos_hud_loads", "0", 0);
+	chaos_hud_jumps = pEngfuncs->pfnRegisterVariable("chaos_hud_jumps", "0", 0);
 
 	gl_clear = pEngfuncs->pfnGetCvarPointer("gl_clear");
 
@@ -893,6 +901,12 @@ void CChaos::Draw()
 	if (chaos_hud_loads->value)
 	{
 		UTIL_DrawTextTopRight((ScreenHeight / 2) + flYOffset, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Loads: ^7%d", m_iLoads));
+		flYOffset += 22.0f;
+	}
+
+	if (chaos_hud_jumps->value)
+	{
+		UTIL_DrawTextTopRight((ScreenHeight / 2) + flYOffset, Vector(CHAOS_TEXT_COLOR_BYTE), UTIL_VarArgs("Jumps: ^8%d", m_iJumps));
 	}
 
 	// TODO: do not draw if cl.paused is true
@@ -1168,17 +1182,6 @@ bool CChaos::IsReady()
 }
 
 // For HUD elements
-
-void CChaos::ResetDeaths()
-{
-	m_iDeaths = 0;
-}
-
-void CChaos::ResetLoads()
-{
-	m_iLoads = 0;
-}
-
 void CChaos::UpdateDeaths()
 {
 	if (sv->state == ss_dead)

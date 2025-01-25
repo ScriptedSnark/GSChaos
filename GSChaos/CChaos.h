@@ -78,8 +78,6 @@ public:
 	bool IsReady();
 
 	// For HUD elements
-	void ResetDeaths();
-	void ResetLoads();
 	void UpdateDeaths();
 
 	ImFont* m_fontTrebuchet;
@@ -123,6 +121,7 @@ private:
 public:
 	int m_iDeaths;
 	int m_iLoads;
+	int m_iJumps;
 private:
 	// TWITCH
 	bool m_bStartedVoting;

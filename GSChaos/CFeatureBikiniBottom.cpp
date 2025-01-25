@@ -12,6 +12,8 @@ playermove_s* g_svpmove;
 bool g_bActivatedBikiniBottom;
 bool g_bActivatedDisableWater;
 
+bool g_bValueForKeyLock = false;
+
 // HACK
 // We need to perform HL2_PM_Jump code in PM_Jump environment but I'm too lazy to support million server DLLs so yeah...
 // It can also mess player movement in other mods btw
@@ -21,11 +23,16 @@ const char* HOOKED_PM_Info_ValueForKey(const char* s, const char* key)
 
 	if (!stricmp(key, "slj"))
 	{
+		if (g_bValueForKeyLock)
+			gChaos.m_iJumps++;
+
 		for (CChaosFeature* i : gChaosFeatures)
 		{
 			if (i->IsActive())
 				i->PM_Jump();
 		}
+
+		g_bValueForKeyLock = !g_bValueForKeyLock;
 	}
 
 	return result;
