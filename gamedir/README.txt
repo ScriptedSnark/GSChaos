@@ -36,13 +36,23 @@ ADDITIONAL INFO
 CVARS AND COMMANDS
 ==============
 - `chaos_activate` - activate effect (from 0 to (LATEST EFFECT NUM - 1)) | `sv_cheats 1` is required!
-- `chaos_reset` - reset RNG, chaos bar (can be useful for potential runs)
-- `chaos_version` - prints version and Chaos Mod details
+- `chaos_reset` - reset effects, RNG and all states
+- `chaos_version` - prints version and Chaos Mod details including effect list
 - `chaos_dmca_safe` - if enabled, it doesn't allow to play some sounds which are ©
 - `chaos_effectname_ypos` - sets position of effect name text by vertical (Y coord)
 - `chaos_show_voting` - draw voting progress in Chaos UI so you can see it without checking OBS
 - `chaos_timer` - sets time until the next effect
 - `chaos_draw_as_overlay` - if enabled, it draws Chaos UI as overlay and requires enabling 3rd-party overlays in OBS
+- `chaos_consistent_mode` - switches consistent mode. Consistent mode involves turning on certain effects for an unlimited amount of time without Chaos bar/timer.
+- `chaos_consistent_effects_add` - activate consistent effect (works only with consistent mode enabled)
+- `chaos_volume_multiplier` - increases volume from SoLoud sounds (volume->value * chaos_volume_multiplier->value)
+- `chaos_hud_deaths` - Death counter HUD
+- `chaos_hud_loads` - Save loading counter HUD
+- `chaos_hud_jumps` - Jump counter HUD
+- `chaos_hud_crashes` - Crash counter HUD
+- `chaos_reset_deaths` - Reset death counter
+- `chaos_reset_loads` - Reset save loading counter
+- `chaos_reset_jumps` - Reset jump counter
 
 TWITCH CHAT VOTING INTEGRATION
 ==============
