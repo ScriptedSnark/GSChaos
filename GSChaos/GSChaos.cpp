@@ -38,6 +38,7 @@ typedef void (*_LoadEntityDLLs)(char* szBaseDir);
 typedef void (*_ServerActivate)(edict_t* pEdictList, int edictCount, int clientMax);
 typedef void (*_R_DrawWorld)();
 typedef int (*_Host_Load)(const char* pName);
+typedef void (*_Host_Reload_f)();
 
 #ifdef COF_BUILD
 typedef int (*_Host_ValidSave)();
@@ -52,6 +53,7 @@ _LoadEntityDLLs ORIG_LoadEntityDLLs = NULL;
 _ServerActivate ORIG_ServerActivate = NULL;
 _R_DrawWorld ORIG_R_DrawWorld = NULL;
 _Host_Load ORIG_Host_Load = NULL;
+_Host_Reload_f ORIG_Host_Reload_f = NULL;
 
 Utils utils = Utils::Utils(NULL, NULL, NULL);
 
@@ -573,9 +575,21 @@ void HOOKED_R_DrawWorld()
 	glPopMatrix();
 }
 
+bool g_bInHostReload = false;
+
+void HOOKED_Host_Reload_f()
+{
+	g_bInHostReload = true;
+	ORIG_Host_Reload_f();
+	g_bInHostReload = false;
+}
+
 int HOOKED_Host_Load(const char* pName)
 {
-	if (g_bNoLoad)
+	if (g_bNoLoad && !g_bInHostReload)
+		return 0;
+
+	if (!(g_bInHostReload && (*sv_player)->v.health < 1.0f))
 		return 0;
 
 	int result = ORIG_Host_Load(pName);
@@ -1148,10 +1162,12 @@ void HookEngine()
 	SPTFind(LoadThisDll);
 	SPTFind(LoadEntityDLLs);
 	SPTFind(R_DrawWorld);
+	SPTFind(Host_Reload_f);
 	SPTFind(Host_Load);
 	EngineCreateHook(LoadThisDll);
 	EngineCreateHook(LoadEntityDLLs);
 	EngineCreateHook(R_DrawWorld);
+	EngineCreateHook(Host_Reload_f);
 	EngineCreateHook(Host_Load);
 #ifdef COF_BUILD
 	EngineCreateHook(Host_ValidSave);
