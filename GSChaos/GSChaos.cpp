@@ -589,7 +589,7 @@ int HOOKED_Host_Load(const char* pName)
 	if (g_bNoLoad && !g_bInHostReload)
 		return 0;
 
-	if (!(g_bInHostReload && (*sv_player)->v.health < 1.0f))
+	if (g_bNoLoad && g_bInHostReload && (*sv_player)->v.health >= 1.0f)
 		return 0;
 
 	int result = ORIG_Host_Load(pName);
