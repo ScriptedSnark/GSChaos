@@ -149,4 +149,20 @@ inline void* GET_PRIVATE(edict_t* pent)
 
 #define PLAYER_CNX_STATS		( *g_engfuncs->pfnGetPlayerStats )
 
+inline void EMIT_SOUND_DYN(edict_t* entity, int channel, const char* sample, float volume, float attenuation,
+	int flags, int pitch)
+{
+	EMIT_SOUND_DYN2(entity, channel, sample, volume, attenuation, flags, pitch);
+}
+
+inline void EMIT_SOUND(edict_t* entity, int channel, const char* sample, float volume, float attenuation)
+{
+	EMIT_SOUND_DYN(entity, channel, sample, volume, attenuation, 0, PITCH_NORM);
+}
+
+inline void STOP_SOUND(edict_t* entity, int channel, const char* sample)
+{
+	EMIT_SOUND_DYN(entity, channel, sample, 0, 0, SND_STOP, PITCH_NORM);
+}
+
 #endif		//ENGINECALLBACK_H

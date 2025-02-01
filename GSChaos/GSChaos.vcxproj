@@ -202,6 +202,7 @@
     <ClCompile Include="CFeatureExplosion.cpp" />
     <ClCompile Include="CFeatureExtremeGrieferJesus.cpp" />
     <ClCompile Include="CFeatureExtremeGrieferShephard.cpp" />
+    <ClCompile Include="CFeatureFirework.cpp" />
     <ClCompile Include="CFeatureFloatingPointInaccuracy.cpp" />
     <ClCompile Include="CFeatureGambling.cpp" />
     <ClCompile Include="CFeatureGameSpeedup.cpp" />
@@ -422,6 +423,7 @@
     <ClInclude Include="CFeatureExplosion.h" />
     <ClInclude Include="CFeatureExtremeGrieferJesus.h" />
     <ClInclude Include="CFeatureExtremeGrieferShephard.h" />
+    <ClInclude Include="CFeatureFirework.h" />
     <ClInclude Include="CFeatureFloatingPointInaccuracy.h" />
     <ClInclude Include="CFeatureGambling.h" />
     <ClInclude Include="CFeatureGameSpeedup.h" />

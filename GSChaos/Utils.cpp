@@ -6,8 +6,6 @@
 #define GL_REPEAT 0x2901
 #define GL_CLAMP_TO_EDGE 0x812F
 
-inline int	  ENTINDEX(edict_t* pEdict) { return (*g_engfuncs->pfnIndexOfEdict)(pEdict); }
-
 void _AngleVectors(const Vector angles, Vector forward, Vector right, Vector up)
 {
 	float		angle;

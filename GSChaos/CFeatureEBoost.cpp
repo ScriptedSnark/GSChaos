@@ -20,16 +20,19 @@ void CFeatureEBoost::CL_CreateMove(float frametime, struct usercmd_s* cmd, int a
 	if (!(*sv_player))
 		return;
 
+	if (!g_svpmove)
+		return;
+
 	Vector fwd;
 	pEngfuncs->pfnAngleVectors(g_svpmove->angles, fwd, NULL, NULL);
 
 	fwd.Normalize();
 
-	float zVel = (*sv_player)->v.velocity.z;
+	float zVel = (*sv_player)->v.velocity[2];
 	if (cmd->buttons & IN_USE) // we do a little trolling here because +use slows down player
 	{
 		(*sv_player)->v.velocity = (*sv_player)->v.velocity + fwd * 15;
-		(*sv_player)->v.velocity.z = zVel;
+		(*sv_player)->v.velocity[2] = zVel;
 	}
 }
 
