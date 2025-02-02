@@ -196,6 +196,7 @@
     <ClCompile Include="CFeatureDinnerbone.cpp" />
     <ClCompile Include="CFeatureDisableChaosUI.cpp" />
     <ClCompile Include="CFeatureDisableOneMovementKey.cpp" />
+    <ClCompile Include="CFeatureEarthquake.cpp" />
     <ClCompile Include="CFeatureEBoost.cpp" />
     <ClCompile Include="CFeatureEntitySpin.cpp" />
     <ClCompile Include="CFeatureEUAim.cpp" />
@@ -417,6 +418,7 @@
     <ClInclude Include="CFeatureDinnerbone.h" />
     <ClInclude Include="CFeatureDisableChaosUI.h" />
     <ClInclude Include="CFeatureDisableOneMovementKey.h" />
+    <ClInclude Include="CFeatureEarthquake.h" />
     <ClInclude Include="CFeatureEBoost.h" />
     <ClInclude Include="CFeatureEntitySpin.h" />
     <ClInclude Include="CFeatureEUAim.h" />

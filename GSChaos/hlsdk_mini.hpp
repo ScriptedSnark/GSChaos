@@ -4020,3 +4020,8 @@ inline edict_t* INDEXENT(int iEdictNum) { return (*g_engfuncs->pfnPEntityOfEntIn
 inline BOOL FNullEnt(EOFFSET eoffset) { return eoffset == 0; }
 inline BOOL FNullEnt(const edict_t* pent) { return pent == NULL || FNullEnt(OFFSET(pent)); }
 inline BOOL FNullEnt(entvars_t* pev) { return pev == NULL || FNullEnt(OFFSET(pev)); }
+
+// Keeps clutter down a bit, when using a float as a bit-vector
+#define SetBits(flBitVector, bits) ((flBitVector) = (int)(flBitVector) | (bits))
+#define ClearBits(flBitVector, bits) ((flBitVector) = (int)(flBitVector) & ~(bits))
+#define FBitSet(flBitVector, bit) ((int)(flBitVector) & (bit))

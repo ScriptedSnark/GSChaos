@@ -679,6 +679,9 @@
     <ClCompile Include="CFeatureFirework.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureEarthquake.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1337,6 +1340,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureFirework.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureEarthquake.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
