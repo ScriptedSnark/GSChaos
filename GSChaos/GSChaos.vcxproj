@@ -237,6 +237,7 @@
     <ClCompile Include="CFeatureModelInsanity.cpp" />
     <ClCompile Include="CFeatureMonsterWorldspawn.cpp" />
     <ClCompile Include="CFeatureMoveAllNPCsToPlayer.cpp" />
+    <ClCompile Include="CFeatureMovetypeBounce.cpp" />
     <ClCompile Include="CFeatureNAAim.cpp" />
     <ClCompile Include="CFeatureNegativeAccelerate.cpp" />
     <ClCompile Include="CFeatureNice.cpp" />
@@ -459,6 +460,7 @@
     <ClInclude Include="CFeatureModelInsanity.h" />
     <ClInclude Include="CFeatureMonsterWorldspawn.h" />
     <ClInclude Include="CFeatureMoveAllNPCsToPlayer.h" />
+    <ClInclude Include="CFeatureMovetypeBounce.h" />
     <ClInclude Include="CFeatureNAAim.h" />
     <ClInclude Include="CFeatureNegativeAccelerate.h" />
     <ClInclude Include="CFeatureNice.h" />
