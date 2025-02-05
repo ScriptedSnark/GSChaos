@@ -41,7 +41,7 @@ const char* CFeatureNotarget::GetFeatureName()
 
 double CFeatureNotarget::GetDuration()
 {
-	return gChaos.GetChaosTime() * 0.25;
+	return gChaos.GetChaosTime() * 1.5;
 }
 
 bool CFeatureNotarget::UseCustomDuration()
