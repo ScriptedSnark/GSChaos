@@ -97,7 +97,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		pitch *= 1.75;
 	}
 
-	DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
+	//DEBUG_PRINT("[hw.dll] S_StartDynamicSound: %s\n", sfx->name);
 
 	int i;
 
@@ -113,7 +113,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 			sprintf_s(buffer, CHAOS_PATH "mlg/intervention_420.wav");
 
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -137,7 +137,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 #endif
 
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -154,7 +154,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 		sprintf_s(buffer, "../../valve/sound/scientist/%s", g_szSciSounds[i].c_str());
 #endif
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -162,7 +162,7 @@ void HOOKED_S_StartDynamicSound(int entnum, int entchannel, sfx_t* sfx, vec_t* o
 	if (g_bActivatedKilometer)
 	{
 		sfx = S_LateLoadSound("../../chaos/buffm249_scream.wav");
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartDynamicSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -202,7 +202,7 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 	if (!sfx)
 		return;
 
-	DEBUG_PRINT("[hw.dll] S_StartStaticSound: %s\n", sfx->name);
+	//DEBUG_PRINT("[hw.dll] S_StartStaticSound: %s\n", sfx->name);
 
 	if (g_bActivatedHorrorAudio)
 	{
@@ -227,7 +227,7 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 			sprintf_s(buffer, "../../chaos/mlg/intervention_420.wav");
 		
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartStaticSound(entnum, CHAN_VOICE, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -243,7 +243,7 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 			sprintf_s(buffer, "../../valve/sound/fvox/beep.wav");
 
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -261,7 +261,7 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 #endif
 
 		sfx = S_LateLoadSound(buffer);
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
@@ -269,7 +269,7 @@ void HOOKED_S_StartStaticSound(int entnum, int entchannel, sfx_t* sfx, vec_t* or
 	if (g_bActivatedKilometer)
 	{
 		sfx = S_LateLoadSound("../../chaos/buffm249_scream.wav");
-		DEBUG_PRINT("sfx->name: %s\n", sfx->name);
+		//DEBUG_PRINT("sfx->name: %s\n", sfx->name);
 
 		ORIG_S_StartStaticSound(entnum, entchannel, sfx, origin, fvol, attenuation, flags, pitch);
 	}
