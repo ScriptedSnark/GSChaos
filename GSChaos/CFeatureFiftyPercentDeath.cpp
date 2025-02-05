@@ -2,42 +2,25 @@
 
 void CFeatureFiftyPercentDeath::Init()
 {
-	CChaosFeature::Init();
+	CFeatureOnePercentDeath::Init();
 }
 
 void CFeatureFiftyPercentDeath::ActivateFeature()
 {
-	CChaosFeature::ActivateFeature();
-
-	if (gChaos.GetRandomValue(1, 100) > 50)
-	{
-		edict_t* pent = CREATE_NAMED_ENTITY(MAKE_STRING("rpg_rocket"));
-		if (!pent)
-		{
-			(*sv_player)->v.health = -20.0f;
-			return;
-		}
-		pent->v.origin = (*sv_player)->v.origin;
-		pent->v.angles = (*sv_player)->v.angles;
-		pent->v.dmg = 2048;
-		pent->v.dmgtime = 1.0f;
-		pent->v.nextthink = gpGlobals->time + 0.1f;
-		gEntityInterface->pfnSpawn(pent);
-		gEntityInterface->pfnThink(pent);
-		gEntityInterface->pfnTouch((*sv_player), pent);
-		gEntityInterface->pfnTouch(pent, (*sv_player));
-
-		if ((*sv_player)->v.health > 1.0f)
-			(*sv_player)->v.health = -20.0f;
-	}
+	CFeatureOnePercentDeath::ActivateFeature();
 }
 
 void CFeatureFiftyPercentDeath::DeactivateFeature()
 {
-	CChaosFeature::DeactivateFeature();
+	CFeatureOnePercentDeath::DeactivateFeature();
 }
 
 const char* CFeatureFiftyPercentDeath::GetFeatureName()
 {
 	return "50% chance of death";
+}
+
+bool CFeatureFiftyPercentDeath::ShouldKill()
+{
+	return (gChaos.GetRandomValue(1, 100) > 50);
 }

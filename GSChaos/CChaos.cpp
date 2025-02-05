@@ -731,7 +731,7 @@ void CChaos::ResetChaosBarTimer()
 
 	if (!m_bComboTime)
 	{
-		if (chaos_timer && chaos_timer->value > 15.0f)
+		if (chaos_timer && chaos_timer->value >= 15.0f)
 			m_flChaosTime = m_bTwitchVoting ? (double)chaos_timer->value + CHAOS_ADDITIONAL_TIME : (double)chaos_timer->value;
 		else
 			m_flChaosTime = m_bTwitchVoting ? CHAOS_ACTIVATE_TIMER + CHAOS_ADDITIONAL_TIME : CHAOS_ACTIVATE_TIMER;
@@ -1063,7 +1063,7 @@ void CChaos::OnFrame(double time)
 
 		for (CChaosFeature* i : g_pCheatCodeFeatures)
 		{
-			if (i->IsActive())
+			if (i->IsActive() && !i->UseCustomDuration())
 				i->DeactivateFeature();
 		}
 

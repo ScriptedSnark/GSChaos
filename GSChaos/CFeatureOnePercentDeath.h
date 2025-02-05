@@ -21,10 +21,16 @@
 
 class CFeatureOnePercentDeath : public CChaosFeature
 {
+public:
 	void Init() override;
 	void ActivateFeature() override;
+	void OnFrame(double time) override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+	virtual bool ShouldKill();
+private:
+	bool m_bSpawnedRocket;
+	bool m_bKillAfterDeactivate;
 };
 
 #else //!__cplusplus

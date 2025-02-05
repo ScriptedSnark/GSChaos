@@ -19,12 +19,13 @@
 
 #ifdef __cplusplus
 
-class CFeatureFiftyPercentDeath : public CChaosFeature
+class CFeatureFiftyPercentDeath : public CFeatureOnePercentDeath
 {
 	void Init() override;
 	void ActivateFeature() override;
 	void DeactivateFeature() override;
 	const char* GetFeatureName() override;
+	bool ShouldKill() override;
 };
 
 #else //!__cplusplus
