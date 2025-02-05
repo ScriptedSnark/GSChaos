@@ -256,6 +256,7 @@ extern bool g_bEncrypted;
 #include "CFeatureFirework.h"
 #include "CFeatureEarthquake.h"
 #include "CFeatureMovetypeBounce.h"
+#include "CFeatureFiftyPercentDeath.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
