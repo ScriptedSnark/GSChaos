@@ -24,7 +24,7 @@ const char* CFeatureWaterIsALie::GetFeatureName()
 
 double CFeatureWaterIsALie::GetDuration()
 {
-	return gChaos.GetChaosTime() * 2.0;
+	return gChaos.GetChaosTime() * 2.2;
 }
 
 bool CFeatureWaterIsALie::UseCustomDuration()
