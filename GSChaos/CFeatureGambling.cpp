@@ -33,7 +33,7 @@ void CFeatureGambling::ActivateFeature()
 
 	UTIL_HudMessage((*sv_player), hudTextParams, UTIL_VarArgs("You've got %d HP, %d armor!", (int)(*sv_player)->v.health, (int)(*sv_player)->v.armorvalue));
 
-	if ((*sv_player)->v.health >= 245.0f && (*sv_player)->v.armorvalue >= 245.0f)
+	if ((*sv_player)->v.health >= 230.0f && (*sv_player)->v.armorvalue >= 230.0f)
 	{
 		hudTextParams.effect = 1;
 		hudTextParams.channel = 2;
