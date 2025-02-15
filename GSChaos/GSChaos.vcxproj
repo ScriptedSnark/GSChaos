@@ -330,6 +330,7 @@
     <ClCompile Include="CFeatureViewOfsInsanity.cpp" />
     <ClCompile Include="CFeatureVoidclip.cpp" />
     <ClCompile Include="CFeatureWaterIsALie.cpp" />
+    <ClCompile Include="CFeatureWaterPush.cpp" />
     <ClCompile Include="CFeatureWeaponStrip.cpp" />
     <ClCompile Include="CFeatureWhereAreYouGoing.cpp" />
     <ClCompile Include="CFeatureWideNPCs.cpp" />
@@ -555,6 +556,7 @@
     <ClInclude Include="CFeatureViewOfsInsanity.h" />
     <ClInclude Include="CFeatureVoidclip.h" />
     <ClInclude Include="CFeatureWaterIsALie.h" />
+    <ClInclude Include="CFeatureWaterPush.h" />
     <ClInclude Include="CFeatureWeaponStrip.h" />
     <ClInclude Include="CFeatureWhereAreYouGoing.h" />
     <ClInclude Include="CFeatureWideNPCs.h" />
