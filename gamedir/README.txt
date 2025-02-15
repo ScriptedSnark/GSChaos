@@ -57,7 +57,7 @@ CVARS AND COMMANDS
 TWITCH CHAT VOTING INTEGRATION
 ==============
 GSChaos supports Twitch chat voting. If you want to use it, then do some steps:
-1. Edit `chaos/twitch.ini`. It should have your [OAuth password](https://twitchapps.com/tmi/) and Twitch username
+1. Rename `chaos/twitch_EXAMPLE.ini` to `twitch.ini`. Edit this file. It should have your [OAuth password](https://twitchtokengenerator.com/quick/VbyNA08rOT) in format `oauth:TOKEN` (from website you just copy access token and paste instead of `TOKEN`) and Twitch username
 2. Add text element (GDI) to your OBS scene
 3. Pass a path of `chaos/voting_progress.txt` in text options
 4. Run the game and check if everything is installed successfully (wait for 10 seconds in game after chaos bar activating so you can check voting system)
