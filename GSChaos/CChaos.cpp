@@ -490,6 +490,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureEarthquake>();
 	RegisterChaosFeature<CFeatureMovetypeBounce>();
 	RegisterChaosFeature<CFeatureFiftyPercentDeath>();
+	RegisterChaosFeature<CFeatureWhereAreYouGoing>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();
