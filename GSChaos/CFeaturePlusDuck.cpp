@@ -8,6 +8,7 @@ void CFeaturePlusDuck::Init()
 void CFeaturePlusDuck::ActivateFeature()
 {
 	CChaosFeature::ActivateFeature();
+	ChaosLoud::EmitSound(SND_DUCK);
 }
 
 void CFeaturePlusDuck::DeactivateFeature()
