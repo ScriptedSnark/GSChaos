@@ -685,6 +685,9 @@
     <ClCompile Include="CFeatureMovetypeBounce.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureFiftyPercentDeath.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1349,6 +1352,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureMovetypeBounce.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureFiftyPercentDeath.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

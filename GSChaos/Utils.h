@@ -87,8 +87,9 @@ void UTIL_DrawColoredText(ImVec2 startPos, const char* text, Vector defaultColor
 void UTIL_DrawTextTopLeft(float y, Vector color, const char* text);
 void UTIL_DrawTextTopRight(float y, Vector color, const char* text);
 void UTIL_DrawTextTopCenter(float y, Vector color, const char* text);
-void DrawTextBottomLeft(float yOffset, Vector color, const char* text);
+void UTIL_DrawTextBottomLeft(float yOffset, Vector color, const char* text);
 void UTIL_DrawTextBottomRight(float yOffset, Vector color, const char* text);
+bool UTIL_CalcScreen(Vector& _Origin, Vector& _Screen, const ImVec2 _ScreenInfo);
 
 #else //!__cplusplus
 #error C++ compiler required to compile Utils.h

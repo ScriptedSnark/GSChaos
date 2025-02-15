@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "mathlib.h"
 
 // With Vice City HUD this code became even worse! MUGA
 
@@ -371,8 +372,10 @@ void CFeatureGTA3HUD::Draw()
 
 	static int oldHealth;
 
+	// Notify
 	DrawNotify();
 
+	// Main HUD code
 	ImVec4 armorColor = g_bActivatedGTA3HUD ? ImVec4(GTA3_HUD_ARMOR_COLOR, 255.0f / 255.0f) : ImVec4(GTAVC_HUD_ARMOR_COLOR, 255.0f / 255.0f);
 	ImVec4 healthColor = g_bActivatedGTA3HUD ? ImVec4(GTA3_HUD_HEALTH_COLOR, 255.0f / 255.0f) : ImVec4(GTAVC_HUD_HEALTH_COLOR, 255.0f / 255.0f);
 	GLuint healthIconID = g_bActivatedGTA3HUD ? g_iHealthIconID : g_iVCHealthIconID;
@@ -582,6 +585,33 @@ void CFeatureGTA3HUD::Draw()
 		}
 
 		ImGui::End();
+	}
+}
+
+void CFeatureGTA3HUD::HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname)
+{
+	if (ent->model->type != mod_studio)
+		return;
+
+	if (strstr(ent->model->name, "w_"))
+	{
+		// Spin model (thanks to StereoBucket for Maxwell effect)
+		double time = pEngfuncs->GetAbsoluteTime();
+		ent->angles.y = anglemod(-time * 72.0) - 180.0f;
+		ent->curstate.angles.y = ent->angles.y;
+		ent->latched.prevangles.y = ent->angles.y;
+
+		// Glow
+		dlight_t* dl = pEngfuncs->pEfxAPI->CL_AllocDlight(0);
+		VectorCopy(ent->curstate.origin, dl->origin);
+		dl->radius = 64;
+		dl->color.r = 255;
+		dl->color.g = 0;
+		dl->color.b = 0;
+		dl->die = pEngfuncs->GetClientTime() + 0.01;
+
+		// Circles
+		//m_vecCirclePositions.push_back(ent->curstate.origin + Vector(0, 0, 8));
 	}
 }
 

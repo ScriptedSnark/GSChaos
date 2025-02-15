@@ -48,6 +48,7 @@ class CFeatureGTA3HUD : public CChaosFeature
 	const char* GetFeatureName() override;
 	void OnFrame(double time) override;
 	void Draw() override;
+	void HUD_AddEntity(int type, struct cl_entity_s* ent, const char* modelname) override;
 	void Notify(const char* msg);
 	void DrawNotify();
 	double GetDuration() override;
@@ -60,6 +61,7 @@ private:
 	double m_notifyStartTime;
 	float m_flFlashHealthTime;
 	const char* m_notifyMessage;
+	std::vector<Vector> m_vecCirclePositions;
 };
 
 #else //!__cplusplus

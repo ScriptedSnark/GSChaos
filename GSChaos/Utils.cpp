@@ -615,7 +615,7 @@ void UTIL_DrawTextTopCenter(float y, Vector color, const char* text)
 	UTIL_DrawColoredText(pos, text, color);
 }
 
-void DrawTextBottomLeft(float yOffset, Vector color, const char* text)
+void UTIL_DrawTextBottomLeft(float yOffset, Vector color, const char* text)
 {
 	float y = ImGui::GetIO().DisplaySize.y - yOffset;
 	ImVec2 pos = ImVec2(10.0f, y);
@@ -647,4 +647,17 @@ void UTIL_DrawTextCenterScreen(Vector color, const char* text)
 	float y = (ImGui::GetIO().DisplaySize.y - textSize.y) * 0.5f;
 	ImVec2 pos = ImVec2(x, y);
 	UTIL_DrawColoredText(pos, text, color);
+}
+
+bool UTIL_CalcScreen(Vector& _Origin, Vector& _Screen, const ImVec2 _ScreenInfo)
+{
+	bool bResult = (pEngfuncs->pTriAPI->WorldToScreen(_Origin, _Screen) == 0);
+
+	if (_Screen.x < 1 && _Screen.y < 1 && _Screen.x > -1 && _Screen.y > -1 && bResult) {
+		_Screen.x = _Screen.x * (int)_ScreenInfo.x / 2 + (int)_ScreenInfo.x / 2;
+		_Screen.y = -_Screen.y * (int)_ScreenInfo.y / 2 + (int)_ScreenInfo.y / 2;
+		return bResult;
+	}
+
+	return false;
 }
