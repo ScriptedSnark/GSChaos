@@ -31,6 +31,7 @@ class CFeatureExtremeGrieferJesus : public CFeatureExtremeGrieferShephard
 	bool UseRenderFX() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override { return true; }
 private:
 	bool m_bActivated;
 	double m_flTimeForSpawn;

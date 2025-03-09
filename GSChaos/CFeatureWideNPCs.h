@@ -31,6 +31,7 @@ public:
 	virtual float GetScale();
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override { return true; }
 private:
 	cl_entity_t* m_pCurrentEntity;
 	model_t* m_pRenderModel;

@@ -44,10 +44,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup>
+    <HalfLifeDir>E:\Games\GoldSrc Package 2.4\Chaos\Half-Life WON\</HalfLifeDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -210,6 +213,7 @@
     <ClCompile Include="CFeatureFiftyPercentDeath.cpp" />
     <ClCompile Include="CFeatureFirework.cpp" />
     <ClCompile Include="CFeatureFloatingPointInaccuracy.cpp" />
+    <ClCompile Include="CFeatureGalangaAmbush.cpp" />
     <ClCompile Include="CFeatureGambling.cpp" />
     <ClCompile Include="CFeatureGameSpeedup.cpp" />
     <ClCompile Include="CFeatureGiveAllWeapons.cpp" />
@@ -296,6 +300,7 @@
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp" />
     <ClCompile Include="CFeatureRollin.cpp" />
+    <ClCompile Include="CFeatureRoulette.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureScrollingHell.cpp" />
     <ClCompile Include="CFeatureSuperhot.cpp" />
@@ -436,6 +441,7 @@
     <ClInclude Include="CFeatureFiftyPercentDeath.h" />
     <ClInclude Include="CFeatureFirework.h" />
     <ClInclude Include="CFeatureFloatingPointInaccuracy.h" />
+    <ClInclude Include="CFeatureGalangaAmbush.h" />
     <ClInclude Include="CFeatureGambling.h" />
     <ClInclude Include="CFeatureGameSpeedup.h" />
     <ClInclude Include="CFeatureGiveAllWeapons.h" />
@@ -522,6 +528,7 @@
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h" />
     <ClInclude Include="CFeatureRollin.h" />
+    <ClInclude Include="CFeatureRoulette.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureScrollingHell.h" />
     <ClInclude Include="CFeatureSuperhot.h" />

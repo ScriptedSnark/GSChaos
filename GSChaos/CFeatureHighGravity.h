@@ -29,6 +29,7 @@ class CFeatureHighGravity : public CChaosFeature
 	void ResetStates() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override { return true; }
 
 	virtual float GetGravityValue();
 private:

@@ -30,6 +30,7 @@ public:
 	double GetDuration() override;
 	bool UseCustomDuration() override;
 	virtual float GetTimescale();
+	bool CanBeInfinite() override { return true; };
 };
 
 #else //!__cplusplus

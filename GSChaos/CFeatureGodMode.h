@@ -30,6 +30,7 @@ class CFeatureGodMode : public CChaosFeature
 	double GetDuration() override;
 	bool UseCustomDuration() override;
 	bool IsGood() override;
+	bool CanBeInfinite() override { return true; };
 private:
 	bool m_bActivated;
 };

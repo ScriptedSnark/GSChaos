@@ -661,3 +661,13 @@ bool UTIL_CalcScreen(Vector& _Origin, Vector& _Screen, const ImVec2 _ScreenInfo)
 
 	return false;
 }
+
+bool UTIL_IsValidEntity(edict_t* pent)
+{
+	int b = pent - sv->edicts;
+	if (b < 0 || b >= sv->num_edicts)
+		return false;
+	if (!pent || pent->free || (pent->v.flags & FL_KILLME))
+		return false;
+	return true;
+}

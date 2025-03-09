@@ -83,7 +83,7 @@ bool CFeatureFirework::UseCustomDuration()
 
 bool CFeatureFirework::CanBeInfinite()
 {
-	return false;
+	return true;
 }
 
 void CFeatureFirework::Restore()

@@ -29,6 +29,7 @@ class CFeatureFloatingPointInaccuracy : public CChaosFeature
 	const char* GetFeatureName() override;
 	double GetDuration() override;
 	bool UseCustomDuration() override;
+	bool CanBeInfinite() override { return true; };
 private:
 	double m_flNextThink;
 };

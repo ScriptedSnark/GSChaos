@@ -90,6 +90,7 @@ void UTIL_DrawTextTopCenter(float y, Vector color, const char* text);
 void UTIL_DrawTextBottomLeft(float yOffset, Vector color, const char* text);
 void UTIL_DrawTextBottomRight(float yOffset, Vector color, const char* text);
 bool UTIL_CalcScreen(Vector& _Origin, Vector& _Screen, const ImVec2 _ScreenInfo);
+bool UTIL_IsValidEntity(edict_t* pent);
 
 #else //!__cplusplus
 #error C++ compiler required to compile Utils.h

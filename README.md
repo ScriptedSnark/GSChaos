@@ -208,6 +208,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > 50% chance of death
 > Where are you going?
 > Water Push
+> Galanga Ambush
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic
@@ -358,6 +359,7 @@ If you don't want to play with this feature, rename `twitch.ini` to `twitch_DISA
 > 50% chance of death
 > Where are you going?
 > Water Push
+> Galanga Ambush
 > Cheat Code Voting !!!(available with Twitch voting)!!!
 > 3 Effects in 1
 > Let's make it more chaotic

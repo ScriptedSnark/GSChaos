@@ -259,6 +259,7 @@ extern bool g_bEncrypted;
 #include "CFeatureFiftyPercentDeath.h"
 #include "CFeatureWhereAreYouGoing.h"
 #include "CFeatureWaterPush.h"
+#include "CFeatureGalangaAmbush.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"
