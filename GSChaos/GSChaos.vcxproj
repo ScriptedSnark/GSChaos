@@ -300,7 +300,6 @@
     <ClCompile Include="CFeatureOverwriteQuicksave.cpp" />
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp" />
     <ClCompile Include="CFeatureRollin.cpp" />
-    <ClCompile Include="CFeatureRoulette.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
     <ClCompile Include="CFeatureScrollingHell.cpp" />
     <ClCompile Include="CFeatureSuperhot.cpp" />
@@ -528,7 +527,6 @@
     <ClInclude Include="CFeatureOverwriteQuicksave.h" />
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h" />
     <ClInclude Include="CFeatureRollin.h" />
-    <ClInclude Include="CFeatureRoulette.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
     <ClInclude Include="CFeatureScrollingHell.h" />
     <ClInclude Include="CFeatureSuperhot.h" />
