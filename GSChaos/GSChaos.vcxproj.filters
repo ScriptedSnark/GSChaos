@@ -694,9 +694,6 @@
     <ClCompile Include="CFeatureWaterPush.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
-    <ClCompile Include="CFeatureRoulette.cpp">
-      <Filter>Effects</Filter>
-    </ClCompile>
     <ClCompile Include="CFeatureGalangaAmbush.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
@@ -1373,9 +1370,6 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureWaterPush.h">
-      <Filter>Effects</Filter>
-    </ClInclude>
-    <ClInclude Include="CFeatureRoulette.h">
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGalangaAmbush.h">
