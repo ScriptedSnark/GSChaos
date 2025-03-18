@@ -61,6 +61,8 @@ void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, i
 	// same as with cmd buffering
 	if (m_vfirst)
 	{
+		if (cangles[0] == 0 && cangles[1] == 0 && cangles[2] == 0)
+			return;
 		VectorCopy(cangles, m_lastview);
 		m_vfirst = false;
 		return;
@@ -96,12 +98,12 @@ void CFeatureInputDelay::CL_CreateMove(float frametime, struct usercmd_s* cmd, i
 void CFeatureInputDelay::Restore()
 {
 	m_vfirst = true;
-	std::queue<viewangles_time_s>().swap(m_viewQueue);
+	//std::queue<viewangles_time_s>().swap(m_viewQueue);
 }
 void CFeatureInputDelay::VidInit() 
 {
 	m_vfirst = true;
-	std::queue<viewangles_time_s>().swap(m_viewQueue);
+	//std::queue<viewangles_time_s>().swap(m_viewQueue);
 }
 
 const char* CFeatureInputDelay::GetFeatureName()
