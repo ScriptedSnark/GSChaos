@@ -700,6 +700,9 @@
     <ClCompile Include="CFeatureArmorSpeedometer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureFlashbang.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1379,6 +1382,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureArmorSpeedometer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureFlashbang.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
