@@ -697,6 +697,9 @@
     <ClCompile Include="CFeatureGalangaAmbush.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureArmorSpeedometer.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1373,6 +1376,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureGalangaAmbush.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureArmorSpeedometer.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>

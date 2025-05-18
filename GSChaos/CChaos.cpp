@@ -493,6 +493,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureWhereAreYouGoing>();
 	RegisterChaosFeature<CFeatureWaterPush>();
 	RegisterChaosFeature<CFeatureGalangaAmbush>();
+	RegisterChaosFeature<CFeatureArmorSpeedometer>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();

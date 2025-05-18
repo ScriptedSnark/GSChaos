@@ -189,6 +189,7 @@
     <ClCompile Include="CFeature10GoodEffects.cpp" />
     <ClCompile Include="CFeature20FPS.cpp" />
     <ClCompile Include="CFeatureAmIDead.cpp" />
+    <ClCompile Include="CFeatureArmorSpeedometer.cpp" />
     <ClCompile Include="CFeatureAudioCorrupt.cpp" />
     <ClCompile Include="CFeatureBlur.cpp" />
     <ClCompile Include="CFeatureBoost.cpp" />
@@ -416,6 +417,7 @@
     <ClInclude Include="CFeature10GoodEffects.h" />
     <ClInclude Include="CFeature20FPS.h" />
     <ClInclude Include="CFeatureAmIDead.h" />
+    <ClInclude Include="CFeatureArmorSpeedometer.h" />
     <ClInclude Include="CFeatureAudioCorrupt.h" />
     <ClInclude Include="CFeatureBlur.h" />
     <ClInclude Include="CFeatureBoost.h" />
