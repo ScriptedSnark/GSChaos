@@ -303,6 +303,7 @@
     <ClCompile Include="CFeatureReplaceModelsWithPlayer.cpp" />
     <ClCompile Include="CFeatureRollin.cpp" />
     <ClCompile Include="CFeatureScientistMadness.cpp" />
+    <ClCompile Include="CFeatureScreamer.cpp" />
     <ClCompile Include="CFeatureScrollingHell.cpp" />
     <ClCompile Include="CFeatureSuperhot.cpp" />
     <ClCompile Include="CFeatureSwapAttacks.cpp" />
@@ -532,6 +533,7 @@
     <ClInclude Include="CFeatureReplaceModelsWithPlayer.h" />
     <ClInclude Include="CFeatureRollin.h" />
     <ClInclude Include="CFeatureScientistMadness.h" />
+    <ClInclude Include="CFeatureScreamer.h" />
     <ClInclude Include="CFeatureScrollingHell.h" />
     <ClInclude Include="CFeatureSuperhot.h" />
     <ClInclude Include="CFeatureSwapAttacks.h" />

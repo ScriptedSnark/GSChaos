@@ -262,6 +262,7 @@ extern bool g_bEncrypted;
 #include "CFeatureGalangaAmbush.h"
 #include "CFeatureArmorSpeedometer.h"
 #include "CFeatureFlashbang.h"
+#include "CFeatureScreamer.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

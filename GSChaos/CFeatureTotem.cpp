@@ -6,32 +6,41 @@ typedef void (*_R_DrawViewModel)();
 _R_DrawViewModel ORIG_R_DrawViewModel = NULL;
 
 int g_iModelIndex;
+extern bool g_bActivatedScreamer;
 bool g_bActivatedTotem;
 double g_flModelDisappearTime;
 double oldWeapontime;
 
 void HOOKED_R_DrawViewModel()
 {
-	if (!g_bActivatedTotem)
+	if (!g_bActivatedTotem && !g_bActivatedScreamer)
 	{
 		ORIG_R_DrawViewModel();
 		return;
 	}
-
-	g_iModelIndex = PRECACHE_MODEL(CHAOS_PATH "v_totem.mdl"); // we're doing baddest hacks here... - ScriptedSnark
+	
+	char* modelName = g_bActivatedTotem ? CHAOS_PATH "v_totem.mdl" : CHAOS_PATH "screamer1.mdl";
+	g_iModelIndex = PRECACHE_MODEL(modelName); // we're doing baddest hacks here... - ScriptedSnark
 	cl_entity_t* viewent = CLWrapper::GetViewent();
 
 	model_t* oldMod = viewent->model;
 
-	ORIG_R_DrawViewModel();
+	if (!g_bActivatedScreamer)
+	{
+		ORIG_R_DrawViewModel();
 
-	viewent->model = pEngfuncs->hudGetModelByIndex(g_iModelIndex);
+		viewent->model = pEngfuncs->hudGetModelByIndex(g_iModelIndex);
 
-	ORIG_R_DrawViewModel();
+		ORIG_R_DrawViewModel();
 
-	viewent->model = oldMod;
-
-	if (g_flModelDisappearTime < gChaos.GetGlobalTime() && (*sv_player) && CLWrapper::GetWorldModel())
+		viewent->model = oldMod;
+	}
+	else
+	{
+		viewent->model = pEngfuncs->hudGetModelByIndex(g_iModelIndex);
+		ORIG_R_DrawViewModel();
+	}
+	if (g_flModelDisappearTime < gChaos.GetGlobalTime() && (*sv_player) && CLWrapper::GetWorldModel() && !g_bActivatedScreamer)
 	{
 		UTIL_MakeVectors((*sv_player)->v.angles);
 		Vector origin = (*sv_player)->v.origin + (*sv_player)->v.view_ofs + gpGlobals->v_forward * 16;
