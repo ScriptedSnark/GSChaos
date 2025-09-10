@@ -31,8 +31,10 @@ class CFeature20FPS : public CChaosFeature
 private:
 	bool m_bActivated;
 	bool m_bVSyncEnabled;
+	bool m_bOverrideDisabled;
 	cvar_t* fps_max;
 	cvar_t* gl_vsync;
+	cvar_t* fps_override;
 	float fps_value;
 };
 

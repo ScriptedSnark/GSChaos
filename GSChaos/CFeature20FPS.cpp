@@ -21,14 +21,21 @@ void CFeature20FPS::ActivateFeature()
 		fps_max = pEngfuncs->pfnGetCvarPointer("fps_max");
 		fps_value = fps_max->value;
 		gl_vsync = pEngfuncs->pfnGetCvarPointer("gl_vsync");
+		fps_override = pEngfuncs->pfnGetCvarPointer("fps_override");
 
 		m_bVSyncEnabled = (gl_vsync && gl_vsync->value);
+		m_bOverrideDisabled = (fps_override && !fps_override->value);
 	}
 
 	CChaosFeature::ActivateFeature();
 
 	pEngfuncs->pfnClientCmd(UTIL_VarArgs(";fps_max %.01f;\n", g_bPreSteamPipe ? 20.0f : 19.5f));
 	m_bActivated = true;
+
+	if (m_bOverrideDisabled)
+	{
+		fps_override->value = 1.0f;
+	}
 
 	if (m_bVSyncEnabled)
 	{
@@ -49,6 +56,11 @@ void CFeature20FPS::DeactivateFeature()
 	{
 		if (wglSwapIntervalEXT)
 			wglSwapIntervalEXT(1);
+	}
+
+	if (m_bOverrideDisabled && fps_override->value)
+	{
+		fps_override->value = 0.0f;
 	}
 }
 
