@@ -263,6 +263,7 @@ extern bool g_bEncrypted;
 #include "CFeatureArmorSpeedometer.h"
 #include "CFeatureFlashbang.h"
 #include "CFeatureScreamer.h"
+#include "CFeatureCatchMeLater.h"
 
 #include "CFeatureCheatCodeVoting.h"
 #include "CFeatureCombineEffects.h"

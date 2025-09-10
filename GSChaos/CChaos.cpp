@@ -496,6 +496,7 @@ void CChaos::FeatureInit()
 	RegisterChaosFeature<CFeatureArmorSpeedometer>();
 	RegisterChaosFeature<CFeatureFlashbang>();
 	RegisterChaosFeature<CFeatureScreamer>();
+	RegisterChaosFeature<CFeatureCatchMeLater>();
 	// must be last
 	RegisterChaosFeature<CFeatureCheatCodeVoting>();
 	RegisterChaosFeature<CFeatureCombineEffects>();

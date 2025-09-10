@@ -706,6 +706,9 @@
     <ClCompile Include="CFeatureScreamer.cpp">
       <Filter>Effects</Filter>
     </ClCompile>
+    <ClCompile Include="CFeatureCatchMeLater.cpp">
+      <Filter>Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h" />
@@ -1391,6 +1394,9 @@
       <Filter>Effects</Filter>
     </ClInclude>
     <ClInclude Include="CFeatureScreamer.h">
+      <Filter>Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="CFeatureCatchMeLater.h">
       <Filter>Effects</Filter>
     </ClInclude>
   </ItemGroup>
